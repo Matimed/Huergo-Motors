@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gv = new System.Windows.Forms.DataGridView();
@@ -50,8 +50,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(47, 19);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(402, 20);
+            this.textBox1.Size = new System.Drawing.Size(432, 20);
             this.textBox1.TabIndex = 0;
+            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
             // 
             // label1
             // 
@@ -79,7 +80,7 @@
             this.gv.Name = "gv";
             this.gv.ReadOnly = true;
             this.gv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gv.Size = new System.Drawing.Size(518, 245);
+            this.gv.Size = new System.Drawing.Size(548, 311);
             this.gv.TabIndex = 3;
             // 
             // Id
@@ -107,9 +108,9 @@
             // PrecioVenta
             // 
             this.PrecioVenta.DataPropertyName = "PrecioVenta";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle6.NullValue = "0";
-            this.PrecioVenta.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.NullValue = "0";
+            this.PrecioVenta.DefaultCellStyle = dataGridViewCellStyle5;
             this.PrecioVenta.HeaderText = "$ Venta";
             this.PrecioVenta.Name = "PrecioVenta";
             this.PrecioVenta.ReadOnly = true;
@@ -117,7 +118,7 @@
             // btModificar
             // 
             this.btModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btModificar.Location = new System.Drawing.Point(374, 296);
+            this.btModificar.Location = new System.Drawing.Point(404, 362);
             this.btModificar.Name = "btModificar";
             this.btModificar.Size = new System.Drawing.Size(75, 23);
             this.btModificar.TabIndex = 4;
@@ -128,7 +129,7 @@
             // btBuscar
             // 
             this.btBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btBuscar.Location = new System.Drawing.Point(455, 16);
+            this.btBuscar.Location = new System.Drawing.Point(485, 16);
             this.btBuscar.Name = "btBuscar";
             this.btBuscar.Size = new System.Drawing.Size(75, 23);
             this.btBuscar.TabIndex = 5;
@@ -138,7 +139,7 @@
             // btNuevo
             // 
             this.btNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btNuevo.Location = new System.Drawing.Point(455, 296);
+            this.btNuevo.Location = new System.Drawing.Point(485, 362);
             this.btNuevo.Name = "btNuevo";
             this.btNuevo.Size = new System.Drawing.Size(75, 23);
             this.btNuevo.TabIndex = 6;
@@ -149,7 +150,7 @@
             // btEliminar
             // 
             this.btEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btEliminar.Location = new System.Drawing.Point(293, 296);
+            this.btEliminar.Location = new System.Drawing.Point(323, 362);
             this.btEliminar.Name = "btEliminar";
             this.btEliminar.Size = new System.Drawing.Size(75, 23);
             this.btEliminar.TabIndex = 7;
@@ -160,7 +161,7 @@
             // btCerrar
             // 
             this.btCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btCerrar.Location = new System.Drawing.Point(12, 296);
+            this.btCerrar.Location = new System.Drawing.Point(12, 362);
             this.btCerrar.Name = "btCerrar";
             this.btCerrar.Size = new System.Drawing.Size(75, 23);
             this.btCerrar.TabIndex = 8;
@@ -172,7 +173,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(542, 331);
+            this.ClientSize = new System.Drawing.Size(572, 397);
             this.Controls.Add(this.btCerrar);
             this.Controls.Add(this.btEliminar);
             this.Controls.Add(this.btNuevo);

@@ -1,0 +1,11 @@
+L:\proyecto1\Huergo-Motors\HuergoMotorsVentas\bin\Debug\HuergoMotorsVentas.exe
+L:\proyecto1\Huergo-Motors\HuergoMotorsVentas\bin\Debug\HuergoMotorsVentas.pdb
+L:\proyecto1\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.csprojAssemblyReference.cache
+L:\proyecto1\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.frmMDI.resources
+L:\proyecto1\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.frmVehiculos.resources
+L:\proyecto1\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.frmVehiculosAlta.resources
+L:\proyecto1\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.Properties.Resources.resources
+L:\proyecto1\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.csproj.GenerateResource.cache
+L:\proyecto1\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.csproj.CoreCompileInputs.cache
+L:\proyecto1\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.exe
+L:\proyecto1\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.pdb
