@@ -13,6 +13,8 @@ namespace HuergoMotorsVentas
             InitializeComponent();
         }
 
+
+        //se le aplica el filtro al gv, es decir agarra lo del filtro y se lo aplica al gv.
         private void frmVehiculos_Load(object sender, EventArgs e)
         {
             gv.AutoGenerateColumns = false;
@@ -25,7 +27,6 @@ namespace HuergoMotorsVentas
 
         private void RecargarDatos()
         {
-            //Implementar filtros...
             string query = "SELECT * FROM Vehiculos";
             DataTable dt = new DataTable();
 
@@ -72,7 +73,9 @@ namespace HuergoMotorsVentas
         }
         DataSet resultados = new DataSet();
         DataView mifiltro;
-
+        
+        
+        //lee los datos de las tablas de sql,tipo se conecta entre el sql y la gv
         public void leer_datos (string query ,ref DataSet dstprincipal, string tabla)
         {
             try
@@ -93,24 +96,27 @@ namespace HuergoMotorsVentas
         
         }
 
-        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+
+        //Este seria el code del filtro y al terminar de escribir el filtro, se borra la palabra escrita
+        private void btBuscar_Click(object sender, EventArgs e)
         {
             string salida_datos = "";
             string[] palabras_busqueda = this.textBox1.Text.Split(' ');
-            foreach(string palabra in palabras_busqueda)
+            foreach (string palabra in palabras_busqueda)
             {
-                if (salida_datos.Length==0){
+                if (salida_datos.Length == 0)
+                {
                     salida_datos = "(Tipo LIKE '%" + palabra + "%' OR Modelo LIKE '%" + palabra + "%' )";
 
                 }
-                else
+                else 
                 {
-                    salida_datos+= "AND (Tipo LIKE '%" + palabra + "%' OR Modelo LIKE '%" + palabra + "%' )"; 
+                  salida_datos += "AND (Tipo LIKE '%" + palabra + "%' OR Modelo LIKE '%" + palabra + "%' )";
                 }
 
             }
+            textBox1.Text = "";
             this.mifiltro.RowFilter = salida_datos;
-
         }
     }
 }
