@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txId = new System.Windows.Forms.TextBox();
+            this.txPrecio = new System.Windows.Forms.TextBox();
             this.txTipo = new System.Windows.Forms.TextBox();
             this.txModelo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,22 +38,21 @@
             this.btAceptar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // txId
+            // txPrecio
             // 
-            this.txId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txPrecio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txId.Location = new System.Drawing.Point(103, 34);
-            this.txId.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txId.Name = "txId";
-            this.txId.ReadOnly = true;
-            this.txId.Size = new System.Drawing.Size(376, 26);
-            this.txId.TabIndex = 0;
+            this.txPrecio.Location = new System.Drawing.Point(103, 106);
+            this.txPrecio.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txPrecio.Name = "txPrecio";
+            this.txPrecio.Size = new System.Drawing.Size(376, 26);
+            this.txPrecio.TabIndex = 0;
             // 
             // txTipo
             // 
             this.txTipo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txTipo.Location = new System.Drawing.Point(103, 74);
+            this.txTipo.Location = new System.Drawing.Point(103, 38);
             this.txTipo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txTipo.Name = "txTipo";
             this.txTipo.Size = new System.Drawing.Size(376, 26);
@@ -63,7 +62,7 @@
             // 
             this.txModelo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txModelo.Location = new System.Drawing.Point(103, 114);
+            this.txModelo.Location = new System.Drawing.Point(103, 72);
             this.txModelo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txModelo.Name = "txModelo";
             this.txModelo.Size = new System.Drawing.Size(376, 26);
@@ -72,17 +71,17 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(72, 37);
+            this.label1.Location = new System.Drawing.Point(42, 109);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(23, 20);
+            this.label1.Size = new System.Drawing.Size(53, 20);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Id";
+            this.label1.Text = "Precio";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(56, 77);
+            this.label2.Location = new System.Drawing.Point(56, 41);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 20);
@@ -92,7 +91,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(34, 117);
+            this.label3.Location = new System.Drawing.Point(34, 75);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 20);
@@ -102,6 +101,7 @@
             // btCancelar
             // 
             this.btCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btCancelar.Location = new System.Drawing.Point(325, 194);
             this.btCancelar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btCancelar.Name = "btCancelar";
@@ -137,7 +137,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txModelo);
             this.Controls.Add(this.txTipo);
-            this.Controls.Add(this.txId);
+            this.Controls.Add(this.txPrecio);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -152,7 +152,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txId;
+        private System.Windows.Forms.TextBox txPrecio;
         private System.Windows.Forms.TextBox txTipo;
         private System.Windows.Forms.TextBox txModelo;
         private System.Windows.Forms.Label label1;

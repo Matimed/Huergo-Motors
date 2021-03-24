@@ -21,9 +21,7 @@ namespace HuergoMotorsVentas
 
         private void frmVehiculosAlta_Load(object sender, EventArgs e)
         {
-
         }
-
         internal void CargarDatos(int id)
         {
             try
@@ -45,7 +43,7 @@ namespace HuergoMotorsVentas
                 if (!dt.Rows[0].IsNull("Modelo")) modelo = (string)dt.Rows[0]["Modelo"];
                 if (!dt.Rows[0].IsNull("PrecioVenta")) precioVenta = (decimal)dt.Rows[0]["PrecioVenta"];
 
-                txId.Text = Convert.ToString(id);
+                txPrecio.Text = Convert.ToString(precioVenta);
                 txModelo.Text = modelo;
                 txTipo.Text = tipo;
             

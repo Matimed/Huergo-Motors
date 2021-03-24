@@ -42,24 +42,34 @@ namespace HuergoMotorsVentas
         {
             if (gv.SelectedRows.Count == 1)
             {
-                object item = gv.SelectedRows[0].DataBoundItem;
-                int id = (int)((DataRowView)item)["Id"];
-
-                frmVehiculosAlta f = new frmVehiculosAlta();
-                f.CargarDatos(id);
-                f.ShowDialog();
-
-                //Solo recargo datos si se cerró con un OK.
-                if (f.DialogResult == DialogResult.OK)
-                {
-                    RecargarDatos();
-                }
+                CargarABM("Modificar");
+            }
+            else
+            { 
+                MessageBox.Show("Debe seleccionar un elemento para modificar",
+                    "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
+        private void CargarABM(string modo)
+        {
+            frmVehiculosAlta f = new frmVehiculosAlta();
+            if (modo == "Modificar")
+            {
+                object item = gv.SelectedRows[0].DataBoundItem;
+                int id = (int)((DataRowView)item)["Id"];
+                f.CargarDatos(id);
+            }
+            f.ShowDialog();
+            //Solo recargo datos si se cerró con un OK.
+            if (f.DialogResult == DialogResult.OK)
+            {
+                RecargarDatos();
+            }
+        }
         private void btNuevo_Click(object sender, EventArgs e)
         {
-            //ToDo: Implementar "Nuevo"
+            CargarABM("Agregar");
         }
 
         private void btEliminar_Click(object sender, EventArgs e)
@@ -91,7 +101,7 @@ namespace HuergoMotorsVentas
             }
             catch (Exception ex)
             {
-            
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         
         }
@@ -101,7 +111,7 @@ namespace HuergoMotorsVentas
         private void btBuscar_Click(object sender, EventArgs e)
         {
             string salida_datos = "";
-            string[] palabras_busqueda = this.textBox1.Text.Split(' ');
+            string[] palabras_busqueda = this.txFiltro.Text.Split(' ');
             foreach (string palabra in palabras_busqueda)
             {
                 if (salida_datos.Length == 0)
@@ -115,7 +125,7 @@ namespace HuergoMotorsVentas
                 }
 
             }
-            textBox1.Text = "";
+            txFiltro.Text = "";
             this.mifiltro.RowFilter = salida_datos;
         }
     }
