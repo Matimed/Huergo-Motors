@@ -42,19 +42,20 @@ namespace HuergoMotorsVentas
         {
             if (gv.SelectedRows.Count == 1)
             {
-                CargarABM("Modificar");
+                CargarABM("modificar");
             }
             else
             { 
                 MessageBox.Show("Debe seleccionar un elemento para modificar",
-                    "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    "modificar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         private void CargarABM(string modo)
         {
-            frmVehiculosAlta f = new frmVehiculosAlta();
-            if (modo == "Modificar")
+
+            frmVehiculosAlta f = new frmVehiculosAlta(modo);
+            if (modo == "modificar")
             {
                 object item = gv.SelectedRows[0].DataBoundItem;
                 int id = (int)((DataRowView)item)["Id"];
@@ -69,7 +70,7 @@ namespace HuergoMotorsVentas
         }
         private void btNuevo_Click(object sender, EventArgs e)
         {
-            CargarABM("Agregar");
+            CargarABM("agregar");
         }
 
         private void btEliminar_Click(object sender, EventArgs e)

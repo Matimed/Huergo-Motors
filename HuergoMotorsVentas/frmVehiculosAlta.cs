@@ -14,17 +14,23 @@ namespace HuergoMotorsVentas
     public partial class frmVehiculosAlta : Form
     {
         public int Id { get; set; } //Esto es una 'propiedad'.
+        public string Modo { get; private set; }
 
-        public frmVehiculosAlta()
+        public frmVehiculosAlta(string modo)
         {
             InitializeComponent();
+            Modo = modo;
         }
 
         private void frmVehiculosAlta_Load(object sender, EventArgs e)
         {
+            txModelo.Text = "";
+            txTipo.Text = "";
+            txPrecio.Text="0.00";
             //Saca el focus del textbox y lo pone en el label por estetica
             this.ActiveControl = label1;
         }
+     
         internal void CargarDatos(int id)
         {
             try
@@ -68,34 +74,42 @@ namespace HuergoMotorsVentas
 
         private void btAceptar_Click(object sender, EventArgs e)
         {
-            var resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
-                 "Sobresctibir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (resp == DialogResult.Yes)
+            if (Modo == "modificar")
             {
-                try
+                var resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
+                                 "Sobresctibir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (resp == DialogResult.Yes)
                 {
-                    string update = $"UPDATE Vehiculos SET Tipo='{txTipo.Text}', Modelo='{txModelo.Text}', PrecioVenta='{txPrecio.Text}' WHERE Id={Id}";
-
-                    //ToDo: Utilizar bloques 'using' =)
-                    using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))
+                    try
                     {
-                        conn.Open();
-                        SqlCommand cmd = new SqlCommand(update, conn);
-                        int result = cmd.ExecuteNonQuery();
-                        MessageBox.Show($"{result} registro/s actualizados correctamente",
-                        "Actualización correcta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    };
-                    //Al setear el DialogResult se cierra el formulario.
-                    this.DialogResult = DialogResult.OK;
+                        string update = $"UPDATE Vehiculos SET Tipo='{txTipo.Text}', Modelo='{txModelo.Text}', PrecioVenta='{txPrecio.Text}' WHERE Id={Id}";
+
+                        //ToDo: Utilizar bloques 'using' =)
+                        using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))
+                        {
+                            conn.Open();
+                            SqlCommand cmd = new SqlCommand(update, conn);
+                            int result = cmd.ExecuteNonQuery();
+                            MessageBox.Show($"{result} registro/s actualizados correctamente",
+                            "Actualización correcta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        };
+                        //Al setear el DialogResult se cierra el formulario.
+                        this.DialogResult = DialogResult.OK;
+                    }
+                    catch (Exception ex)
+                    {
+                        //El bloque Try-Catch me permite capturar errores (excepciones) en el código, y en este caso mostrar un mensaje.
+                        MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    //El bloque Try-Catch me permite capturar errores (excepciones) en el código, y en este caso mostrar un mensaje.
-                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+            }
+            else if (Modo == "agregar")
+            {
+                //ToDo: Agregar el insert
             }
 
-           
+
         }
     }
 }
