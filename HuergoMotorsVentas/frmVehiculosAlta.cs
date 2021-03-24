@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -21,6 +22,8 @@ namespace HuergoMotorsVentas
 
         private void frmVehiculosAlta_Load(object sender, EventArgs e)
         {
+            //Saca el focus del textbox y lo pone en el label por estetica
+            this.ActiveControl = label1;
         }
         internal void CargarDatos(int id)
         {
@@ -42,11 +45,14 @@ namespace HuergoMotorsVentas
                 if (!dt.Rows[0].IsNull("Tipo")) tipo = (string)dt.Rows[0]["Tipo"];
                 if (!dt.Rows[0].IsNull("Modelo")) modelo = (string)dt.Rows[0]["Modelo"];
                 if (!dt.Rows[0].IsNull("PrecioVenta")) precioVenta = (decimal)dt.Rows[0]["PrecioVenta"];
+                
+                //Escribe el número con puntos en lugar de comas para no dar error en la DB
+                NumberFormatInfo nfi = new NumberFormatInfo();
+                nfi.NumberDecimalSeparator = ".";
 
-                txPrecio.Text = Convert.ToString(precioVenta);
+                txPrecio.Text = precioVenta.ToString(nfi);
                 txModelo.Text = modelo;
                 txTipo.Text = tipo;
-            
             }
             catch (Exception ex)
             {
@@ -68,7 +74,7 @@ namespace HuergoMotorsVentas
             {
                 try
                 {
-                    string update = $"UPDATE Vehiculos SET Tipo='{txTipo.Text}' WHERE Id={Id}";
+                    string update = $"UPDATE Vehiculos SET Tipo='{txTipo.Text}', Modelo='{txModelo.Text}', PrecioVenta='{txPrecio.Text}' WHERE Id={Id}";
 
                     //ToDo: Utilizar bloques 'using' =)
                     using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))
@@ -79,7 +85,6 @@ namespace HuergoMotorsVentas
                         MessageBox.Show($"{result} registro/s actualizados correctamente",
                         "Actualización correcta", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     };
-                    
                     //Al setear el DialogResult se cierra el formulario.
                     this.DialogResult = DialogResult.OK;
                 }
