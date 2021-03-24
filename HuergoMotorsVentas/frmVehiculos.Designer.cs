@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gv = new System.Windows.Forms.DataGridView();
@@ -48,17 +48,19 @@
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(47, 19);
+            this.textBox1.Location = new System.Drawing.Point(70, 29);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(432, 20);
+            this.textBox1.Size = new System.Drawing.Size(441, 26);
             this.textBox1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 22);
+            this.label1.Location = new System.Drawing.Point(18, 34);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.Size = new System.Drawing.Size(44, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Filtro";
             // 
@@ -75,11 +77,12 @@
             this.Tipo,
             this.Modelo,
             this.PrecioVenta});
-            this.gv.Location = new System.Drawing.Point(12, 45);
+            this.gv.Location = new System.Drawing.Point(18, 69);
+            this.gv.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gv.Name = "gv";
             this.gv.ReadOnly = true;
             this.gv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gv.Size = new System.Drawing.Size(548, 311);
+            this.gv.Size = new System.Drawing.Size(617, 249);
             this.gv.TabIndex = 3;
             // 
             // Id
@@ -107,9 +110,9 @@
             // PrecioVenta
             // 
             this.PrecioVenta.DataPropertyName = "PrecioVenta";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.NullValue = "0";
-            this.PrecioVenta.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.NullValue = "0";
+            this.PrecioVenta.DefaultCellStyle = dataGridViewCellStyle3;
             this.PrecioVenta.HeaderText = "$ Venta";
             this.PrecioVenta.Name = "PrecioVenta";
             this.PrecioVenta.ReadOnly = true;
@@ -117,9 +120,10 @@
             // btModificar
             // 
             this.btModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btModificar.Location = new System.Drawing.Point(404, 362);
+            this.btModificar.Location = new System.Drawing.Point(402, 328);
+            this.btModificar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btModificar.Name = "btModificar";
-            this.btModificar.Size = new System.Drawing.Size(75, 23);
+            this.btModificar.Size = new System.Drawing.Size(112, 35);
             this.btModificar.TabIndex = 4;
             this.btModificar.Text = "Modificar";
             this.btModificar.UseVisualStyleBackColor = true;
@@ -128,9 +132,10 @@
             // btBuscar
             // 
             this.btBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btBuscar.Location = new System.Drawing.Point(485, 16);
+            this.btBuscar.Location = new System.Drawing.Point(523, 25);
+            this.btBuscar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btBuscar.Name = "btBuscar";
-            this.btBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btBuscar.Size = new System.Drawing.Size(112, 35);
             this.btBuscar.TabIndex = 5;
             this.btBuscar.Text = "Buscar";
             this.btBuscar.UseVisualStyleBackColor = true;
@@ -139,9 +144,10 @@
             // btNuevo
             // 
             this.btNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btNuevo.Location = new System.Drawing.Point(485, 362);
+            this.btNuevo.Location = new System.Drawing.Point(281, 328);
+            this.btNuevo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btNuevo.Name = "btNuevo";
-            this.btNuevo.Size = new System.Drawing.Size(75, 23);
+            this.btNuevo.Size = new System.Drawing.Size(112, 35);
             this.btNuevo.TabIndex = 6;
             this.btNuevo.Text = "Nuevo";
             this.btNuevo.UseVisualStyleBackColor = true;
@@ -150,9 +156,10 @@
             // btEliminar
             // 
             this.btEliminar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btEliminar.Location = new System.Drawing.Point(323, 362);
+            this.btEliminar.Location = new System.Drawing.Point(523, 328);
+            this.btEliminar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btEliminar.Name = "btEliminar";
-            this.btEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btEliminar.Size = new System.Drawing.Size(112, 35);
             this.btEliminar.TabIndex = 7;
             this.btEliminar.Text = "Eliminar";
             this.btEliminar.UseVisualStyleBackColor = true;
@@ -161,9 +168,10 @@
             // btCerrar
             // 
             this.btCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btCerrar.Location = new System.Drawing.Point(12, 362);
+            this.btCerrar.Location = new System.Drawing.Point(18, 328);
+            this.btCerrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btCerrar.Name = "btCerrar";
-            this.btCerrar.Size = new System.Drawing.Size(75, 23);
+            this.btCerrar.Size = new System.Drawing.Size(112, 35);
             this.btCerrar.TabIndex = 8;
             this.btCerrar.Text = "Cerrar";
             this.btCerrar.UseVisualStyleBackColor = true;
@@ -171,9 +179,9 @@
             // 
             // frmVehiculos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(572, 397);
+            this.ClientSize = new System.Drawing.Size(653, 382);
             this.Controls.Add(this.btCerrar);
             this.Controls.Add(this.btEliminar);
             this.Controls.Add(this.btNuevo);
@@ -182,8 +190,9 @@
             this.Controls.Add(this.gv);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmVehiculos";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Vehículos - Consulta";
             this.Load += new System.EventHandler(this.frmVehiculos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gv)).EndInit();

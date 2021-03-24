@@ -64,28 +64,35 @@ namespace HuergoMotorsVentas
 
         private void btAceptar_Click(object sender, EventArgs e)
         {
-            try
+            var resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
+                 "Sobresctibir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resp == DialogResult.Yes)
             {
-                string update = $"UPDATE Vehiculos SET Tipo='{txTipo.Text}' WHERE Id={Id}";
+                try
+                {
+                    string update = $"UPDATE Vehiculos SET Tipo='{txTipo.Text}' WHERE Id={Id}";
 
-                //ToDo: Utilizar bloques 'using' =)
-                SqlConnection conn = new SqlConnection(frmMDI.ConnectionString);
-                conn.Open();
-                SqlCommand cmd = new SqlCommand(update, conn);
+                    //ToDo: Utilizar bloques 'using' =)
+                    SqlConnection conn = new SqlConnection(frmMDI.ConnectionString);
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(update, conn);
 
-                int result = cmd.ExecuteNonQuery();
+                    int result = cmd.ExecuteNonQuery();
 
-                MessageBox.Show($"{result} registros actualizados correctamente", 
-                    "Actualización correcta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"{result} registros actualizados correctamente",
+                        "Actualización correcta", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                //Al setear el DialogResult se cierra el formulario.
-                this.DialogResult = DialogResult.OK;
+                    //Al setear el DialogResult se cierra el formulario.
+                    this.DialogResult = DialogResult.OK;
+                }
+                catch (Exception ex)
+                {
+                    //El bloque Try-Catch me permite capturar errores (excepciones) en el código, y en este caso mostrar un mensaje.
+                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (Exception ex)
-            {
-                //El bloque Try-Catch me permite capturar errores (excepciones) en el código, y en este caso mostrar un mensaje.
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
+           
         }
     }
 }
