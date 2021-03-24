@@ -73,15 +73,15 @@ namespace HuergoMotorsVentas
                     string update = $"UPDATE Vehiculos SET Tipo='{txTipo.Text}' WHERE Id={Id}";
 
                     //ToDo: Utilizar bloques 'using' =)
-                    SqlConnection conn = new SqlConnection(frmMDI.ConnectionString);
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(update, conn);
-
-                    int result = cmd.ExecuteNonQuery();
-
-                    MessageBox.Show($"{result} registros actualizados correctamente",
+                    using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))
+                    {
+                        conn.Open();
+                        SqlCommand cmd = new SqlCommand(update, conn);
+                        int result = cmd.ExecuteNonQuery();
+                        MessageBox.Show($"{result} registro/s actualizados correctamente",
                         "Actualización correcta", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    };
+                    
                     //Al setear el DialogResult se cierra el formulario.
                     this.DialogResult = DialogResult.OK;
                 }
