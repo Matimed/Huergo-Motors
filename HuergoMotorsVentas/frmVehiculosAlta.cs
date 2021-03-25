@@ -24,9 +24,9 @@ namespace HuergoMotorsVentas
 
         private void frmVehiculosAlta_Load(object sender, EventArgs e)
         {
-            txModelo.Text = "";
-            txTipo.Text = "";
-            txPrecio.Text="0.00";
+            txtModelo.Text = "";
+            txtTipo.Text = "";
+            txtPrecio.Text="0.00";
             //Saca el focus del textbox y lo pone en el label por estetica
             this.ActiveControl = label1;
         }
@@ -56,9 +56,9 @@ namespace HuergoMotorsVentas
                 NumberFormatInfo nfi = new NumberFormatInfo();
                 nfi.NumberDecimalSeparator = ".";
 
-                txPrecio.Text = precioVenta.ToString(nfi);
-                txModelo.Text = modelo;
-                txTipo.Text = tipo;
+                txtPrecio.Text = precioVenta.ToString(nfi);
+                txtModelo.Text = modelo;
+                txtTipo.Text = tipo;
             }
             catch (Exception ex)
             {
@@ -82,7 +82,7 @@ namespace HuergoMotorsVentas
                 {
                     try
                     {
-                        string update = $"UPDATE Vehiculos SET Tipo='{txTipo.Text}', Modelo='{txModelo.Text}', PrecioVenta='{txPrecio.Text}' WHERE Id={Id}";
+                        string update = $"UPDATE Vehiculos SET Tipo='{txtTipo.Text}', Modelo='{txtModelo.Text}', PrecioVenta='{txtPrecio.Text}' WHERE Id={Id}";
 
                         //ToDo: Utilizar bloques 'using' =)
                         using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))

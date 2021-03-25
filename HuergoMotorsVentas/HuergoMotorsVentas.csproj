@@ -44,6 +44,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmAccesorios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAccesorios.Designer.cs">
+      <DependentUpon>FrmAccesorios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAccesoriosAlta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAccesoriosAlta.Designer.cs">
+      <DependentUpon>FrmAccesoriosAlta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClientes.Designer.cs">
+      <DependentUpon>FrmClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmClientesAlta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClientesAlta.Designer.cs">
+      <DependentUpon>FrmClientesAlta.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMDI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,8 +86,29 @@
     <Compile Include="frmVehiculosAlta.Designer.cs">
       <DependentUpon>frmVehiculosAlta.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmVendedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVendedores.Designer.cs">
+      <DependentUpon>FrmVendedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVendedoresAlta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVendedoresAlta.Designer.cs">
+      <DependentUpon>FrmVendedoresAlta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAccesorios.resx">
+      <DependentUpon>FrmAccesorios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAccesoriosAlta.resx">
+      <DependentUpon>FrmAccesoriosAlta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmClientesAlta.resx">
+      <DependentUpon>FrmClientesAlta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMDI.resx">
       <DependentUpon>frmMDI.cs</DependentUpon>
     </EmbeddedResource>
@@ -72,6 +117,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmVehiculosAlta.resx">
       <DependentUpon>frmVehiculosAlta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVendedores.resx">
+      <DependentUpon>FrmVendedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVendedoresAlta.resx">
+      <DependentUpon>FrmVendedoresAlta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
