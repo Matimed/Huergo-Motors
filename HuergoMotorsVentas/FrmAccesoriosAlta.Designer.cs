@@ -29,6 +29,7 @@ namespace HuergoMotorsVentas
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccesoriosAlta));
             this.btAceptar = new System.Windows.Forms.Button();
             this.btCancelar = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -37,14 +38,18 @@ namespace HuergoMotorsVentas
             this.txtModelo = new System.Windows.Forms.TextBox();
             this.txtTipo = new System.Windows.Forms.TextBox();
             this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // btAceptar
             // 
             this.btAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btAceptar.Location = new System.Drawing.Point(296, 151);
+            this.btAceptar.Location = new System.Drawing.Point(291, 262);
             this.btAceptar.Name = "btAceptar";
-            this.btAceptar.Size = new System.Drawing.Size(75, 23);
+            this.btAceptar.Size = new System.Drawing.Size(75, 35);
             this.btAceptar.TabIndex = 15;
             this.btAceptar.Text = "Aceptar";
             this.btAceptar.UseVisualStyleBackColor = true;
@@ -53,9 +58,9 @@ namespace HuergoMotorsVentas
             // 
             this.btCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btCancelar.Location = new System.Drawing.Point(119, 151);
+            this.btCancelar.Location = new System.Drawing.Point(119, 262);
             this.btCancelar.Name = "btCancelar";
-            this.btCancelar.Size = new System.Drawing.Size(75, 23);
+            this.btCancelar.Size = new System.Drawing.Size(75, 35);
             this.btCancelar.TabIndex = 14;
             this.btCancelar.Text = "Cancelar";
             this.btCancelar.UseVisualStyleBackColor = true;
@@ -63,7 +68,7 @@ namespace HuergoMotorsVentas
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 82);
+            this.label3.Location = new System.Drawing.Point(12, 132);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(103, 13);
             this.label3.TabIndex = 13;
@@ -73,7 +78,7 @@ namespace HuergoMotorsVentas
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 56);
+            this.label2.Location = new System.Drawing.Point(12, 106);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(28, 13);
             this.label2.TabIndex = 12;
@@ -82,7 +87,7 @@ namespace HuergoMotorsVentas
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 108);
+            this.label1.Location = new System.Drawing.Point(12, 158);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 11;
@@ -92,34 +97,56 @@ namespace HuergoMotorsVentas
             // 
             this.txtModelo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtModelo.Location = new System.Drawing.Point(119, 79);
+            this.txtModelo.Location = new System.Drawing.Point(119, 129);
             this.txtModelo.Name = "txtModelo";
-            this.txtModelo.Size = new System.Drawing.Size(252, 20);
+            this.txtModelo.Size = new System.Drawing.Size(247, 20);
             this.txtModelo.TabIndex = 10;
             // 
             // txtTipo
             // 
             this.txtTipo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTipo.Location = new System.Drawing.Point(119, 53);
+            this.txtTipo.Location = new System.Drawing.Point(119, 103);
             this.txtTipo.Name = "txtTipo";
-            this.txtTipo.Size = new System.Drawing.Size(252, 20);
+            this.txtTipo.Size = new System.Drawing.Size(247, 20);
             this.txtTipo.TabIndex = 9;
             // 
             // txtPrecio
             // 
             this.txtPrecio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPrecio.Location = new System.Drawing.Point(119, 105);
+            this.txtPrecio.Location = new System.Drawing.Point(119, 155);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(252, 20);
+            this.txtPrecio.Size = new System.Drawing.Size(247, 20);
             this.txtPrecio.TabIndex = 8;
             // 
-            // FrmAccesoriosAlta
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::HuergoMotorsVentas.Properties.Resources.CapturaHuergoMotors;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(103, 75);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::HuergoMotorsVentas.Properties.Resources.lineas_rojas_png_5;
+            this.pictureBox2.Location = new System.Drawing.Point(-9, 335);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(400, 30);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 17;
+            this.pictureBox2.TabStop = false;
+            // 
+            // frmAccesoriosAlta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(389, 231);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(384, 361);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btAceptar);
             this.Controls.Add(this.btCancelar);
             this.Controls.Add(this.label3);
@@ -128,8 +155,12 @@ namespace HuergoMotorsVentas
             this.Controls.Add(this.txtModelo);
             this.Controls.Add(this.txtTipo);
             this.Controls.Add(this.txtPrecio);
-            this.Name = "FrmAccesoriosAlta";
-            this.Text = "FrmAccesoriosAlta";
+            this.Controls.Add(this.pictureBox2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "frmAccesoriosAlta";
+            this.Text = "Accesorios - Alta / Modificación";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -145,5 +176,7 @@ namespace HuergoMotorsVentas
         private System.Windows.Forms.TextBox txtModelo;
         private System.Windows.Forms.TextBox txtTipo;
         private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

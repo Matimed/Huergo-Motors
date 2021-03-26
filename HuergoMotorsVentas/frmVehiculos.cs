@@ -165,5 +165,10 @@ namespace HuergoMotorsVentas
             txFiltro.Text = "";
             this.mifiltro.RowFilter = salida_datos;
         }
+
+        private void gv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

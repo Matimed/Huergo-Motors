@@ -106,6 +106,9 @@
     <EmbeddedResource Include="frmAccesoriosAlta.resx">
       <DependentUpon>frmAccesoriosAlta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmClientes.resx">
+      <DependentUpon>frmClientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmClientesAlta.resx">
       <DependentUpon>frmClientesAlta.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +135,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -142,6 +146,21 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\rombos rojos.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\CapturaHuergoMotors.PNG" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\rombo rojo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\lineas-rojas-png-5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\fondo rojo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
