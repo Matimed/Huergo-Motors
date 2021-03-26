@@ -47,7 +47,7 @@
             this.txtPrecio.Location = new System.Drawing.Point(113, 75);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(252, 20);
-            this.txtPrecio.TabIndex = 0;
+            this.txtPrecio.TabIndex = 3;
             // 
             // txtTipo
             // 
@@ -73,7 +73,7 @@
             this.label1.Location = new System.Drawing.Point(24, 78);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 13);
-            this.label1.TabIndex = 3;
+            this.label1.TabIndex = 9;
             this.label1.Text = "Precio de Venta";
             // 
             // label2
@@ -82,7 +82,7 @@
             this.label2.Location = new System.Drawing.Point(24, 26);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(28, 13);
-            this.label2.TabIndex = 4;
+            this.label2.TabIndex = 9;
             this.label2.Text = "Tipo";
             // 
             // label3
@@ -91,7 +91,7 @@
             this.label3.Location = new System.Drawing.Point(24, 52);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 13);
-            this.label3.TabIndex = 5;
+            this.label3.TabIndex = 9;
             this.label3.Text = "Modelo";
             // 
             // btCancelar
@@ -112,7 +112,7 @@
             this.btAceptar.Location = new System.Drawing.Point(96, 142);
             this.btAceptar.Name = "btAceptar";
             this.btAceptar.Size = new System.Drawing.Size(82, 28);
-            this.btAceptar.TabIndex = 7;
+            this.btAceptar.TabIndex = 5;
             this.btAceptar.Text = "Aceptar";
             this.btAceptar.UseVisualStyleBackColor = true;
             this.btAceptar.Click += new System.EventHandler(this.btAceptar_Click);
@@ -124,7 +124,7 @@
             this.txtStock.Location = new System.Drawing.Point(113, 101);
             this.txtStock.Name = "txtStock";
             this.txtStock.Size = new System.Drawing.Size(252, 20);
-            this.txtStock.TabIndex = 8;
+            this.txtStock.TabIndex = 4;
             // 
             // label4
             // 

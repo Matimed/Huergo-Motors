@@ -85,7 +85,7 @@ namespace HuergoMotorsVentas
         
             if (Modo == "modificar")
             {
-                var resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
+                DialogResult resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
                                  "Sobresctibir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (resp == DialogResult.Yes)
                 {
@@ -101,7 +101,7 @@ namespace HuergoMotorsVentas
                             SqlCommand cmd = new SqlCommand(update, conn);
                             int result = cmd.ExecuteNonQuery();
                             MessageBox.Show($"{result} registro/s actualizados correctamente",
-                            "Actualización correcta", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            "Actualización completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         };
                         //Al setear el DialogResult se cierra el formulario.
                         this.DialogResult = DialogResult.OK;
@@ -143,5 +143,7 @@ namespace HuergoMotorsVentas
 
 
         }
+
+     
     }
 }
