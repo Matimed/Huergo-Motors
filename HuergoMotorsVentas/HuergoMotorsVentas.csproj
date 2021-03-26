@@ -44,29 +44,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmAccesorios.cs">
+    <Compile Include="frmAccesorios.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmAccesorios.Designer.cs">
-      <DependentUpon>FrmAccesorios.cs</DependentUpon>
+    <Compile Include="frmAccesorios.Designer.cs">
+      <DependentUpon>frmAccesorios.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmAccesoriosAlta.cs">
+    <Compile Include="frmAccesoriosAlta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmAccesoriosAlta.Designer.cs">
-      <DependentUpon>FrmAccesoriosAlta.cs</DependentUpon>
+    <Compile Include="frmAccesoriosAlta.Designer.cs">
+      <DependentUpon>frmAccesoriosAlta.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmClientes.cs">
+    <Compile Include="frmClientes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmClientes.Designer.cs">
-      <DependentUpon>FrmClientes.cs</DependentUpon>
+    <Compile Include="frmClientes.Designer.cs">
+      <DependentUpon>frmClientes.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmClientesAlta.cs">
+    <Compile Include="frmClientesAlta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmClientesAlta.Designer.cs">
-      <DependentUpon>FrmClientesAlta.cs</DependentUpon>
+    <Compile Include="frmClientesAlta.Designer.cs">
+      <DependentUpon>frmClientesAlta.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMDI.cs">
       <SubType>Form</SubType>
@@ -86,28 +86,28 @@
     <Compile Include="frmVehiculosAlta.Designer.cs">
       <DependentUpon>frmVehiculosAlta.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmVendedores.cs">
+    <Compile Include="frmVendedores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmVendedores.Designer.cs">
-      <DependentUpon>FrmVendedores.cs</DependentUpon>
+    <Compile Include="frmVendedores.Designer.cs">
+      <DependentUpon>frmVendedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmVendedoresAlta.cs">
+    <Compile Include="frmVendedoresAlta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmVendedoresAlta.Designer.cs">
-      <DependentUpon>FrmVendedoresAlta.cs</DependentUpon>
+    <Compile Include="frmVendedoresAlta.Designer.cs">
+      <DependentUpon>frmVendedoresAlta.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmAccesorios.resx">
-      <DependentUpon>FrmAccesorios.cs</DependentUpon>
+    <EmbeddedResource Include="frmAccesorios.resx">
+      <DependentUpon>frmAccesorios.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmAccesoriosAlta.resx">
-      <DependentUpon>FrmAccesoriosAlta.cs</DependentUpon>
+    <EmbeddedResource Include="frmAccesoriosAlta.resx">
+      <DependentUpon>frmAccesoriosAlta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmClientesAlta.resx">
-      <DependentUpon>FrmClientesAlta.cs</DependentUpon>
+    <EmbeddedResource Include="frmClientesAlta.resx">
+      <DependentUpon>frmClientesAlta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMDI.resx">
       <DependentUpon>frmMDI.cs</DependentUpon>
@@ -118,11 +118,11 @@
     <EmbeddedResource Include="frmVehiculosAlta.resx">
       <DependentUpon>frmVehiculosAlta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmVendedores.resx">
-      <DependentUpon>FrmVendedores.cs</DependentUpon>
+    <EmbeddedResource Include="frmVendedores.resx">
+      <DependentUpon>frmVendedores.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmVendedoresAlta.resx">
-      <DependentUpon>FrmVendedoresAlta.cs</DependentUpon>
+    <EmbeddedResource Include="frmVendedoresAlta.resx">
+      <DependentUpon>frmVendedoresAlta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

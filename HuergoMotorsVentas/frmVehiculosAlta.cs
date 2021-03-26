@@ -24,9 +24,7 @@ namespace HuergoMotorsVentas
 
         private void frmVehiculosAlta_Load(object sender, EventArgs e)
         {
-            txtModelo.Text = "";
-            txtTipo.Text = "";
-            txtPrecio.Text="0.00";
+            
             //Saca el focus del textbox y lo pone en el label por estetica
             this.ActiveControl = label1;
         }
@@ -47,11 +45,13 @@ namespace HuergoMotorsVentas
                 string tipo = string.Empty;
                 string modelo = string.Empty;
                 decimal precioVenta = 0;
+                int stock = 0;
 
                 if (!dt.Rows[0].IsNull("Tipo")) tipo = (string)dt.Rows[0]["Tipo"];
                 if (!dt.Rows[0].IsNull("Modelo")) modelo = (string)dt.Rows[0]["Modelo"];
                 if (!dt.Rows[0].IsNull("PrecioVenta")) precioVenta = (decimal)dt.Rows[0]["PrecioVenta"];
-                
+                if (!dt.Rows[0].IsNull("PrecioVenta")) stock = (int)dt.Rows[0]["Stock"];
+
                 //Escribe el número con puntos en lugar de comas para no dar error en la DB
                 NumberFormatInfo nfi = new NumberFormatInfo();
                 nfi.NumberDecimalSeparator = ".";
@@ -59,6 +59,7 @@ namespace HuergoMotorsVentas
                 txtPrecio.Text = precioVenta.ToString(nfi);
                 txtModelo.Text = modelo;
                 txtTipo.Text = tipo;
+                txtStock.Text = stock.ToString();
             }
             catch (Exception ex)
             {
@@ -82,7 +83,8 @@ namespace HuergoMotorsVentas
                 {
                     try
                     {
-                        string update = $"UPDATE Vehiculos SET Tipo='{txtTipo.Text}', Modelo='{txtModelo.Text}', PrecioVenta='{txtPrecio.Text}' WHERE Id={Id}";
+                        string update = $"UPDATE Vehiculos SET Tipo='{txtTipo.Text}', Modelo='{txtModelo.Text}', PrecioVenta='{txtPrecio.Text}'," +
+                            $" Stock='{txtStock.Text}' WHERE Id={Id}";
 
                         //ToDo: Utilizar bloques 'using' =)
                         using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))

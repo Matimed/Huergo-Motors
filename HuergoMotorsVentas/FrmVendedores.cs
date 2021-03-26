@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace HuergoMotorsVentas
 {
-    public partial class FrmVendedores : Form
+    public partial class frmVendedores : Form
     {
-        public FrmVendedores()
+        public frmVendedores()
         {
             InitializeComponent();
         }

@@ -53,8 +53,7 @@
             this.ventasToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(984, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(656, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -67,7 +66,7 @@
             this.accesoriosToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.ShowShortcutKeys = false;
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(142, 19);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(142, 20);
             this.toolStripMenuItem1.Text = "Alta/Baja/Modificación";
             // 
             // vendedoresToolStripMenuItem
@@ -102,7 +101,7 @@
             this.consultaDeVentasToolStripMenuItem,
             this.reporteDeVentasToolStripMenuItem});
             this.ventasToolStripMenuItem.Name = "ventasToolStripMenuItem";
-            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(53, 19);
+            this.ventasToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ventasToolStripMenuItem.Text = "Ventas";
             // 
             // altaDeVentasToolStripMenuItem
@@ -125,10 +124,9 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 694);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 396);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(984, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(656, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -137,10 +135,9 @@
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Left;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btVehiculos});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 25);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(95, 669);
+            this.toolStrip1.Size = new System.Drawing.Size(94, 372);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -150,21 +147,20 @@
             this.btVehiculos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btVehiculos.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btVehiculos.Name = "btVehiculos";
-            this.btVehiculos.Size = new System.Drawing.Size(90, 36);
+            this.btVehiculos.Size = new System.Drawing.Size(91, 36);
             this.btVehiculos.Text = "Vehículos";
             this.btVehiculos.Click += new System.EventHandler(this.btVehiculos_Click);
             // 
             // frmMDI
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 716);
+            this.ClientSize = new System.Drawing.Size(656, 418);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmMDI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Huergo Motors - Ventas";

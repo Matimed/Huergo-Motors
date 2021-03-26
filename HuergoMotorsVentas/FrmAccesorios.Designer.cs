@@ -1,7 +1,7 @@
 ﻿
 namespace HuergoMotorsVentas
 {
-    partial class FrmAccesorios
+    partial class frmAccesorios
     {
         /// <summary>
         /// Required designer variable.
