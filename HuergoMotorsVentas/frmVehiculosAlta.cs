@@ -27,6 +27,13 @@ namespace HuergoMotorsVentas
             
             //Saca el focus del textbox y lo pone en el label por estetica
             this.ActiveControl = label1;
+            if (Modo == "agregar")
+            {
+                txtModelo.Text = string.Empty;
+                txtTipo.Text = string.Empty;
+                txtPrecio.Text = "0.00";
+                txtStock.Text = "0";
+            }
         }
      
         internal void CargarDatos(int id)
@@ -75,6 +82,7 @@ namespace HuergoMotorsVentas
 
         private void btAceptar_Click(object sender, EventArgs e)
         {
+        
             if (Modo == "modificar")
             {
                 var resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
@@ -108,7 +116,29 @@ namespace HuergoMotorsVentas
             }
             else if (Modo == "agregar")
             {
-                //ToDo: Agregar el insert
+                try
+                {
+                    string insert = $"INSERT INTO Vehiculos (Tipo, Modelo, PrecioVenta, Stock) VALUES" +
+                        $" ('{txtTipo.Text}', '{txtModelo.Text}', {txtPrecio.Text}, {txtStock.Text})";
+
+                    //ToDo: Utilizar bloques 'using' =)
+                    using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))
+                    {
+                        
+                        conn.Open();
+                        SqlCommand cmd = new SqlCommand(insert, conn);
+                        int result = cmd.ExecuteNonQuery();
+                        MessageBox.Show($"{result} registro/s agregados correctamente",
+                        "Los registros fueron agregados exitosamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    };
+                    //Al setear el DialogResult se cierra el formulario.
+                    this.DialogResult = DialogResult.OK;
+                }
+                catch (Exception ex)
+                {
+                    //El bloque Try-Catch me permite capturar errores (excepciones) en el código, y en este caso mostrar un mensaje.
+                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
 
