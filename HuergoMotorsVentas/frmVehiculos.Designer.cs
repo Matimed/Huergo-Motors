@@ -39,11 +39,14 @@
             this.PrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btModificar = new System.Windows.Forms.Button();
-            this.btBuscar = new System.Windows.Forms.Button();
             this.btNuevo = new System.Windows.Forms.Button();
             this.btEliminar = new System.Windows.Forms.Button();
             this.btCerrar = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // txFiltro
@@ -86,7 +89,6 @@
             this.gv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gv.Size = new System.Drawing.Size(560, 375);
             this.gv.TabIndex = 3;
-            this.gv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_CellContentClick);
             // 
             // Id
             // 
@@ -141,17 +143,6 @@
             this.btModificar.UseVisualStyleBackColor = false;
             this.btModificar.Click += new System.EventHandler(this.btModificar_Click);
             // 
-            // btBuscar
-            // 
-            this.btBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btBuscar.Location = new System.Drawing.Point(498, 16);
-            this.btBuscar.Name = "btBuscar";
-            this.btBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btBuscar.TabIndex = 5;
-            this.btBuscar.Text = "Buscar";
-            this.btBuscar.UseVisualStyleBackColor = true;
-            this.btBuscar.Click += new System.EventHandler(this.btBuscar_Click);
-            // 
             // btNuevo
             // 
             this.btNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -191,6 +182,28 @@
             this.btCerrar.UseVisualStyleBackColor = true;
             this.btCerrar.Click += new System.EventHandler(this.btCerrar_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::HuergoMotorsVentas.Properties.Resources.lupa;
+            this.pictureBox1.Location = new System.Drawing.Point(498, 14);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = global::HuergoMotorsVentas.Properties.Resources.reload;
+            this.pictureBox2.Location = new System.Drawing.Point(536, 14);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(25, 25);
+            this.pictureBox2.TabIndex = 10;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
             // frmVehiculos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,10 +211,11 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::HuergoMotorsVentas.Properties.Resources.fondo_rojo;
             this.ClientSize = new System.Drawing.Size(584, 461);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btCerrar);
             this.Controls.Add(this.btEliminar);
             this.Controls.Add(this.btNuevo);
-            this.Controls.Add(this.btBuscar);
             this.Controls.Add(this.btModificar);
             this.Controls.Add(this.gv);
             this.Controls.Add(this.label1);
@@ -212,6 +226,8 @@
             this.Text = "Vehículos - Busqueda";
             this.Load += new System.EventHandler(this.frmVehiculos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,7 +239,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView gv;
         private System.Windows.Forms.Button btModificar;
-        private System.Windows.Forms.Button btBuscar;
         private System.Windows.Forms.Button btNuevo;
         private System.Windows.Forms.Button btEliminar;
         private System.Windows.Forms.Button btCerrar;
@@ -232,5 +247,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }

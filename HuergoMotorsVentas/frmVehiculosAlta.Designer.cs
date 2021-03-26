@@ -145,7 +145,7 @@
             this.pictureBox1.Image = global::HuergoMotorsVentas.Properties.Resources.CapturaHuergoMotors;
             this.pictureBox1.Location = new System.Drawing.Point(29, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(103, 75);
+            this.pictureBox1.Size = new System.Drawing.Size(99, 74);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
@@ -153,7 +153,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::HuergoMotorsVentas.Properties.Resources.lineas_rojas_png_5;
-            this.pictureBox2.Location = new System.Drawing.Point(-6, 339);
+            this.pictureBox2.Location = new System.Drawing.Point(-9, 336);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(400, 30);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

@@ -8,6 +8,7 @@ namespace HuergoMotorsVentas
 
     public partial class frmVehiculos : Form
     {
+        const string Select = "SELECT * FROM Vehiculos";
         public frmVehiculos()
         {
             InitializeComponent();
@@ -18,17 +19,16 @@ namespace HuergoMotorsVentas
         private void frmVehiculos_Load(object sender, EventArgs e)
         {
             gv.AutoGenerateColumns = false;
-            RecargarDatos();
-            this.leer_datos("SELECT * FROM Vehiculos ", ref resultados, "Vehiculos");
-            this.mifiltro = ((DataTable)resultados.Tables["Vehiculos"]).DefaultView;
-            this.gv.DataSource = mifiltro;
+            RecargarDatos(Select);
 
         }
 
-        private void RecargarDatos()
+        private void RecargarDatos(string query)
         {
-            string query = "SELECT * FROM Vehiculos";
-            DataTable dt = new DataTable();
+            
+            
+           
+             DataTable dt = new DataTable();
 
             using (SqlDataAdapter da = new SqlDataAdapter(query, frmMDI.ConnectionString))
             {
@@ -65,7 +65,7 @@ namespace HuergoMotorsVentas
             //Solo recargo datos si se cerró con un OK.
             if (f.DialogResult == DialogResult.OK)
             {
-                RecargarDatos();
+                RecargarDatos(Select);
             }
         }
         private void btNuevo_Click(object sender, EventArgs e)
@@ -94,7 +94,7 @@ namespace HuergoMotorsVentas
                             conn.Open();
                             SqlCommand cmd = new SqlCommand(delete, conn);
                             int result = cmd.ExecuteNonQuery();
-                            RecargarDatos();
+                            RecargarDatos("SELECT * FROM Vehiculos");
                             MessageBox.Show($"{result} registro/s eliminados correctamente",
                             "Eliminacion completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         };
@@ -118,57 +118,23 @@ namespace HuergoMotorsVentas
         {
             this.Close();
         }
-        DataSet resultados = new DataSet();
-        DataView mifiltro;
-        
-        
-        //lee los datos de las tablas de sql,tipo se conecta entre el sql y la gv
-        public void leer_datos (string query ,ref DataSet dstprincipal, string tabla)
+        //DataSet resultados = new DataSet(); q hace??
+       
+
+      
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string cadena = "Server=sql5078.site4now.net;Database=DB_9CF8B6_HuergoMotors2021;User Id=DB_9CF8B6_HuergoMotors2021_admin;Password=huergo2021";
-                SqlConnection cn = new SqlConnection(cadena);
-                SqlCommand cmd = new SqlCommand(query, cn);
-                cn.Open();
-                SqlDataAdapter da  = new SqlDataAdapter(cmd);
-                da.Fill(dstprincipal, tabla);
-                da.Dispose();
-                cn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        
-        }
-
-
-        //Este seria el code del filtro y al terminar de escribir el filtro, se borra la palabra escrita
-        private void btBuscar_Click(object sender, EventArgs e)
-        {
-            string salida_datos = "";
-            string[] palabras_busqueda = this.txFiltro.Text.Split(' ');
-            foreach (string palabra in palabras_busqueda)
-            {
-                if (salida_datos.Length == 0)
-                {
-                    salida_datos = "(Tipo LIKE '%" + palabra + "%' OR Modelo LIKE '%" + palabra + "%' )";
-
-                }
-                else 
-                {
-                  salida_datos += "AND (Tipo LIKE '%" + palabra + "%' OR Modelo LIKE '%" + palabra + "%' )";
-                }
-
-            }
+            string filtro = $"SELECT * FROM Vehiculos WHERE Tipo LIKE '%{txFiltro.Text}%' or Modelo LIKE '%{txFiltro.Text}%' or PrecioVenta LIKE '%{txFiltro.Text}%'";
+            
+            RecargarDatos(filtro);
             txFiltro.Text = "";
-            this.mifiltro.RowFilter = salida_datos;
         }
 
-        private void gv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
-
+            RecargarDatos(Select);
+            txFiltro.Text = "";
         }
     }
 }
