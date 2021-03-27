@@ -15,5 +15,10 @@ namespace HuergoMotorsVentas
         {
             InitializeComponent();
         }
+
+        private void btModificar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

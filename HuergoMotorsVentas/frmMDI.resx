@@ -130,8 +130,8 @@
   <data name="btVehiculos.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQzSURBVFhH7ZNtUJRVFMcXTB0iQWSX5f1Nxw81vUwy1Jdm
-        sppq7EPlxxpQjC1TicZsyl20KaRQViBAQsxplCBh5TVXCJBXEUxcHAV2lWHYfRaGl0BXUEKB+XfOXWUU
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQzSURBVFhH7ZNtUJRVFMcXTB0iQWSX5f1Nxw81vUwy1Jea
+        sZpq7EPlxxpQjC1TicZsyl20KaRQViBAQsxplCBh5TVXCJBXEUxcHAV2lWHYfRaGl0BXUEKB+XfOXWUU
         Nbdy+rT/md/c+5x7zv/c+zz3kTnllFNOOSCXT/N9wjUViv1qvde5hCoPqCvdkVjrj6S6p6CpdINa7zGw
         vdz7M8p1tZc8GrmqS5Xrd1Z5TSXW+kJv3ImukVZMz0qYL/P4AI5fiseuOnd8WarYxrV2i3+pdV95Lk3Q
         yy/sqV+JswNHRBPbNNA5Dpy0rkGhFcjrm0GRNI1CaQZnr9jXJ2evocS4BupjXqVk85jd7Z/JJS5HsTyh
@@ -148,7 +148,7 @@
         BXIN4UiqD8V3DWH3wPEf2h/usb8jHLso9/OioEbuzRvwIJ7POB2CrUW+iI3eAl3RURQUUDHB89h1W7BV
         54usMyH4MCcMG3OJA3dAzxzndc77O49MyonJCLhKPZ8jxCfgi+BHRBJvRL2v6t2dvAc6nU7Ac47xGvGq
         AzzM4xUiglASc7/jIsKLCCFejImJsahUKjA859itNR8HcMRjKTH3G94pDvoSq4jVt+A5x+5bcB/9Zw9O
-        8iT4gjA8d7T5bT0KD6eccur/kEz2FwHzi5Xwm3ZPAAAAAElFTkSuQmCC
+        8iT4gjA8d7T5bT0KD6eccur/kEz2F/HQi5MX26C3AAAAAElFTkSuQmCC
 </value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
