@@ -24,9 +24,11 @@ namespace HuergoMotorsVentas
 
         private void frmVehiculosAlta_Load(object sender, EventArgs e)
         {
+            picLogo.Image = Image.FromFile("CapturaHuergoMotors.png");
             
             //Saca el focus del textbox y lo pone en el label por estetica
             this.ActiveControl = label1;
+
             if (Modo == "agregar")
             {
                 txtModelo.Text = string.Empty;
@@ -35,7 +37,7 @@ namespace HuergoMotorsVentas
                 txtStock.Text = "0";
             }
         }
-     
+
         internal void CargarDatos(int id)
         {
             try
@@ -75,6 +77,34 @@ namespace HuergoMotorsVentas
             }
         }
 
+        private void Conexion(string query)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    int result = cmd.ExecuteNonQuery();
+                    if (Modo == "agregar")
+                    {
+                        MessageBox.Show($"{result} registro/s agregados correctamente",
+                        "Los registros fueron agregados exitosamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else if (Modo == "modificar")
+                    {
+                        MessageBox.Show($"{result} registro/s actualizados correctamente",
+                        "Actualización completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                };
+                this.DialogResult = DialogResult.OK;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
@@ -82,68 +112,23 @@ namespace HuergoMotorsVentas
 
         private void btAceptar_Click(object sender, EventArgs e)
         {
-        
+
             if (Modo == "modificar")
             {
                 DialogResult resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
                                  "Sobresctibir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (resp == DialogResult.Yes)
                 {
-                    try
-                    {
-                        string update = $"UPDATE Vehiculos SET Tipo='{txtTipo.Text}', Modelo='{txtModelo.Text}', PrecioVenta='{txtPrecio.Text}'," +
-                            $" Stock='{txtStock.Text}' WHERE Id={Id}";
-
-                        //ToDo: Utilizar bloques 'using' =)
-                        using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))
-                        {
-                            conn.Open();
-                            SqlCommand cmd = new SqlCommand(update, conn);
-                            int result = cmd.ExecuteNonQuery();
-                            MessageBox.Show($"{result} registro/s actualizados correctamente",
-                            "Actualización completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        };
-                        //Al setear el DialogResult se cierra el formulario.
-                        this.DialogResult = DialogResult.OK;
-                    }
-                    catch (Exception ex)
-                    {
-                        //El bloque Try-Catch me permite capturar errores (excepciones) en el código, y en este caso mostrar un mensaje.
-                        MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    Conexion($"UPDATE Vehiculos SET Tipo='{txtTipo.Text}', Modelo='{txtModelo.Text}', PrecioVenta='{txtPrecio.Text}'," +
+                            $" Stock='{txtStock.Text}' WHERE Id={Id}");
                 }
 
             }
             else if (Modo == "agregar")
             {
-                try
-                {
-                    string insert = $"INSERT INTO Vehiculos (Tipo, Modelo, PrecioVenta, Stock) VALUES" +
-                        $" ('{txtTipo.Text}', '{txtModelo.Text}', {txtPrecio.Text}, {txtStock.Text})";
-
-                    //ToDo: Utilizar bloques 'using' =)
-                    using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))
-                    {
-                        
-                        conn.Open();
-                        SqlCommand cmd = new SqlCommand(insert, conn);
-                        int result = cmd.ExecuteNonQuery();
-                        MessageBox.Show($"{result} registro/s agregados correctamente",
-                        "Los registros fueron agregados exitosamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    };
-                    //Al setear el DialogResult se cierra el formulario.
-                    this.DialogResult = DialogResult.OK;
-                }
-                catch (Exception ex)
-                {
-                    //El bloque Try-Catch me permite capturar errores (excepciones) en el código, y en este caso mostrar un mensaje.
-                    MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                Conexion($"INSERT INTO Vehiculos (Tipo, Modelo, PrecioVenta, Stock) VALUES" +
+                        $" ('{txtTipo.Text}', '{txtModelo.Text}', {txtPrecio.Text}, {txtStock.Text})");
             }
-
-
         }
-
-     
     }
 }

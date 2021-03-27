@@ -42,20 +42,21 @@
             this.btNuevo = new System.Windows.Forms.Button();
             this.btEliminar = new System.Windows.Forms.Button();
             this.btCerrar = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.picBusqueda = new System.Windows.Forms.PictureBox();
+            this.picReload = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBusqueda)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picReload)).BeginInit();
             this.SuspendLayout();
             // 
             // txFiltro
             // 
             this.txFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txFiltro.Location = new System.Drawing.Point(47, 19);
+            this.txFiltro.Location = new System.Drawing.Point(70, 29);
+            this.txFiltro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txFiltro.Name = "txFiltro";
-            this.txFiltro.Size = new System.Drawing.Size(444, 20);
+            this.txFiltro.Size = new System.Drawing.Size(693, 26);
             this.txFiltro.TabIndex = 0;
             // 
             // label1
@@ -63,7 +64,8 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 22);
+            this.label1.Location = new System.Drawing.Point(18, 34);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 15);
             this.label1.TabIndex = 1;
@@ -83,11 +85,12 @@
             this.Modelo,
             this.PrecioVenta,
             this.Stock});
-            this.gv.Location = new System.Drawing.Point(12, 45);
+            this.gv.Location = new System.Drawing.Point(18, 69);
+            this.gv.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gv.Name = "gv";
             this.gv.ReadOnly = true;
             this.gv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gv.Size = new System.Drawing.Size(560, 375);
+            this.gv.Size = new System.Drawing.Size(840, 577);
             this.gv.TabIndex = 3;
             // 
             // Id
@@ -135,9 +138,10 @@
             this.btModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btModificar.BackColor = System.Drawing.Color.Gold;
             this.btModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btModificar.Location = new System.Drawing.Point(417, 426);
+            this.btModificar.Location = new System.Drawing.Point(626, 655);
+            this.btModificar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btModificar.Name = "btModificar";
-            this.btModificar.Size = new System.Drawing.Size(75, 23);
+            this.btModificar.Size = new System.Drawing.Size(112, 35);
             this.btModificar.TabIndex = 4;
             this.btModificar.Text = "Modificar";
             this.btModificar.UseVisualStyleBackColor = false;
@@ -149,9 +153,10 @@
             this.btNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btNuevo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btNuevo.Location = new System.Drawing.Point(336, 426);
+            this.btNuevo.Location = new System.Drawing.Point(504, 655);
+            this.btNuevo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btNuevo.Name = "btNuevo";
-            this.btNuevo.Size = new System.Drawing.Size(75, 23);
+            this.btNuevo.Size = new System.Drawing.Size(112, 35);
             this.btNuevo.TabIndex = 6;
             this.btNuevo.Text = "Nuevo";
             this.btNuevo.UseVisualStyleBackColor = false;
@@ -163,9 +168,10 @@
             this.btEliminar.BackColor = System.Drawing.Color.Red;
             this.btEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btEliminar.ForeColor = System.Drawing.Color.White;
-            this.btEliminar.Location = new System.Drawing.Point(498, 426);
+            this.btEliminar.Location = new System.Drawing.Point(747, 655);
+            this.btEliminar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btEliminar.Name = "btEliminar";
-            this.btEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btEliminar.Size = new System.Drawing.Size(112, 35);
             this.btEliminar.TabIndex = 7;
             this.btEliminar.Text = "Eliminar";
             this.btEliminar.UseVisualStyleBackColor = false;
@@ -174,45 +180,50 @@
             // btCerrar
             // 
             this.btCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btCerrar.Location = new System.Drawing.Point(12, 426);
+            this.btCerrar.Location = new System.Drawing.Point(18, 655);
+            this.btCerrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btCerrar.Name = "btCerrar";
-            this.btCerrar.Size = new System.Drawing.Size(75, 23);
+            this.btCerrar.Size = new System.Drawing.Size(112, 35);
             this.btCerrar.TabIndex = 8;
             this.btCerrar.Text = "Cerrar";
             this.btCerrar.UseVisualStyleBackColor = true;
             this.btCerrar.Click += new System.EventHandler(this.btCerrar_Click);
             // 
-            // pictureBox1
+            // picBusqueda
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::HuergoMotorsVentas.Properties.Resources.lupa;
-            this.pictureBox1.Location = new System.Drawing.Point(498, 14);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.picBusqueda.BackColor = System.Drawing.Color.Transparent;
+            this.picBusqueda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picBusqueda.Location = new System.Drawing.Point(777, 23);
+            this.picBusqueda.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.picBusqueda.Name = "picBusqueda";
+            this.picBusqueda.Size = new System.Drawing.Size(32, 32);
+            this.picBusqueda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBusqueda.TabIndex = 9;
+            this.picBusqueda.TabStop = false;
+            this.picBusqueda.Click += new System.EventHandler(this.picBusqueda_Click);
             // 
-            // pictureBox2
+            // picReload
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::HuergoMotorsVentas.Properties.Resources.reload;
-            this.pictureBox2.Location = new System.Drawing.Point(536, 14);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(25, 25);
-            this.pictureBox2.TabIndex = 10;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.picReload.BackColor = System.Drawing.Color.Transparent;
+            this.picReload.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picReload.Location = new System.Drawing.Point(825, 23);
+            this.picReload.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.picReload.Name = "picReload";
+            this.picReload.Size = new System.Drawing.Size(32, 32);
+            this.picReload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picReload.TabIndex = 10;
+            this.picReload.TabStop = false;
+            this.picReload.Click += new System.EventHandler(this.picReload_Click);
             // 
             // frmVehiculos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::HuergoMotorsVentas.Properties.Resources.fondo_rojo;
-            this.ClientSize = new System.Drawing.Size(584, 461);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(876, 709);
+            this.Controls.Add(this.picReload);
+            this.Controls.Add(this.picBusqueda);
             this.Controls.Add(this.btCerrar);
             this.Controls.Add(this.btEliminar);
             this.Controls.Add(this.btNuevo);
@@ -221,13 +232,14 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txFiltro);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmVehiculos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Vehículos - Busqueda";
             this.Load += new System.EventHandler(this.frmVehiculos_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gv)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBusqueda)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picReload)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -247,7 +259,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
         private System.Windows.Forms.DataGridViewTextBoxColumn PrecioVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox picBusqueda;
+        private System.Windows.Forms.PictureBox picReload;
     }
 }
