@@ -15,14 +15,14 @@ namespace HuergoMotorsVentas
         }
 
 
-        //se le aplica el filtro al gv, es decir agarra lo del filtro y se lo aplica al gv.
+        
         private void frmVehiculos_Load(object sender, EventArgs e)
         {
             gv.AutoGenerateColumns = false;
             RecargarDatos(Select);
 
         }
-
+        //este es la parte que se recarga la tabla
         private void RecargarDatos(string query)
         {
             
@@ -122,7 +122,7 @@ namespace HuergoMotorsVentas
        
 
       
-
+        //aca esta el filtro del GV
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             string filtro = $"SELECT * FROM Vehiculos WHERE Tipo LIKE '%{txFiltro.Text}%' or Modelo LIKE '%{txFiltro.Text}%' or PrecioVenta LIKE '%{txFiltro.Text}%'";
@@ -130,7 +130,7 @@ namespace HuergoMotorsVentas
             RecargarDatos(filtro);
             txFiltro.Text = "";
         }
-
+        //este es para el reload de las tablas de la base de datos
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             RecargarDatos(Select);
