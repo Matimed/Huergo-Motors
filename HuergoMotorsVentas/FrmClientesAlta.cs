@@ -33,7 +33,7 @@ namespace HuergoMotorsVentas
                 txtNombre.Text = string.Empty;
                 txtDireccion.Text = string.Empty;
                 txtEmail.Text = string.Empty;
-                txtTelefono.Text = "0";-
+                txtTelefono.Text = "0";
             }
 
         }
