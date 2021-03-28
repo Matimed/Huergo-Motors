@@ -31,6 +31,7 @@ namespace HuergoMotorsVentas
 
             if (Modo == "agregar")
             {
+                // Vaciar todos los txtbox
                 txtModelo.Text = string.Empty;
                 txtTipo.Text = string.Empty;
                 txtPrecio.Text = "0.00";
@@ -61,7 +62,7 @@ namespace HuergoMotorsVentas
                 if (!dt.Rows[0].IsNull("PrecioVenta")) precioVenta = (decimal)dt.Rows[0]["PrecioVenta"];
                 if (!dt.Rows[0].IsNull("Stock")) stock = (int)dt.Rows[0]["Stock"];
 
-                //Escribe el número con puntos en lugar de comas para no dar error en la DB
+                //Escribe el número con puntos en lugar de comas para no dar error en la DB en los decimal
                 NumberFormatInfo nfi = new NumberFormatInfo();
                 nfi.NumberDecimalSeparator = ".";
 

@@ -112,7 +112,6 @@ namespace HuergoMotorsVentas
                     "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         private void btCerrar_Click(object sender, EventArgs e)
         {
             this.Close();

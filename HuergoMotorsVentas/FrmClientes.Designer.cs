@@ -109,9 +109,6 @@ namespace HuergoMotorsVentas
             // 
             this.gv.AllowUserToAddRows = false;
             this.gv.AllowUserToDeleteRows = false;
-            this.gv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.gv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
