@@ -58,13 +58,27 @@ namespace HuergoMotorsVentas
         {
             gv.AutoGenerateColumns = false;
             RecargarDatos(ClientesSelect);
-            //picBusqueda.Image = Image.FromFile("lupa.png");
-            //picReload.Image = Image.FromFile("reload.png");
+            picBoxlupa.Image = Image.FromFile("lupa.png");
+            picboxReload.Image = Image.FromFile("reload.png");
         }
 
         private void btCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void picBoxlupa_Click(object sender, EventArgs e)
+        {
+            string filtro = $"SELECT * FROM Clientes WHERE Nombre LIKE '%{txFiltro.Text}%'" +
+                 $" or Direccion LIKE '%{txFiltro.Text}%' or Telefono LIKE '%{txFiltro.Text}%' or Email LIKE '%{txFiltro.Text}%'";
+            RecargarDatos(filtro);
+            txFiltro.Text = "";
+        }
+
+        private void picboxReload_Click(object sender, EventArgs e)
+        {
+            RecargarDatos(ClientesSelect);
+            txFiltro.Text = "";
         }
     }
 }

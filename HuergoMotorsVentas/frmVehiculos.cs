@@ -121,7 +121,7 @@ namespace HuergoMotorsVentas
         private void picBusqueda_Click(object sender, EventArgs e)
         {
             string filtro = $"SELECT * FROM Vehiculos WHERE Tipo LIKE '%{txFiltro.Text}%'" +
-                 $" or Modelo LIKE '%{txFiltro.Text}%' or PrecioVenta LIKE '%{txFiltro.Text}%'";
+                 $" or Modelo LIKE '%{txFiltro.Text}%' or PrecioVenta LIKE '%{txFiltro.Text}%' ";
             RecargarDatos(filtro);
             txFiltro.Text = "";
         }

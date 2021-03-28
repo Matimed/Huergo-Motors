@@ -34,7 +34,6 @@ namespace HuergoMotorsVentas
             this.btCerrar = new System.Windows.Forms.Button();
             this.btEliminar = new System.Windows.Forms.Button();
             this.btNuevo = new System.Windows.Forms.Button();
-            this.btBuscar = new System.Windows.Forms.Button();
             this.btModificar = new System.Windows.Forms.Button();
             this.gv = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,15 +42,20 @@ namespace HuergoMotorsVentas
             this.Sucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txFiltro = new System.Windows.Forms.TextBox();
+            this.picBusqueda = new System.Windows.Forms.PictureBox();
+            this.picReload = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBusqueda)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picReload)).BeginInit();
             this.SuspendLayout();
             // 
             // btCerrar
             // 
             this.btCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btCerrar.Location = new System.Drawing.Point(12, 424);
+            this.btCerrar.Location = new System.Drawing.Point(18, 652);
+            this.btCerrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btCerrar.Name = "btCerrar";
-            this.btCerrar.Size = new System.Drawing.Size(75, 23);
+            this.btCerrar.Size = new System.Drawing.Size(112, 35);
             this.btCerrar.TabIndex = 16;
             this.btCerrar.Text = "Cerrar";
             this.btCerrar.UseVisualStyleBackColor = true;
@@ -63,9 +67,10 @@ namespace HuergoMotorsVentas
             this.btEliminar.BackColor = System.Drawing.Color.Firebrick;
             this.btEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btEliminar.ForeColor = System.Drawing.Color.White;
-            this.btEliminar.Location = new System.Drawing.Point(498, 424);
+            this.btEliminar.Location = new System.Drawing.Point(747, 652);
+            this.btEliminar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btEliminar.Name = "btEliminar";
-            this.btEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btEliminar.Size = new System.Drawing.Size(112, 35);
             this.btEliminar.TabIndex = 15;
             this.btEliminar.Text = "Eliminar";
             this.btEliminar.UseVisualStyleBackColor = false;
@@ -77,32 +82,24 @@ namespace HuergoMotorsVentas
             this.btNuevo.BackColor = System.Drawing.Color.OliveDrab;
             this.btNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btNuevo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btNuevo.Location = new System.Drawing.Point(336, 424);
+            this.btNuevo.Location = new System.Drawing.Point(504, 652);
+            this.btNuevo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btNuevo.Name = "btNuevo";
-            this.btNuevo.Size = new System.Drawing.Size(75, 23);
+            this.btNuevo.Size = new System.Drawing.Size(112, 35);
             this.btNuevo.TabIndex = 14;
             this.btNuevo.Text = "Nuevo";
             this.btNuevo.UseVisualStyleBackColor = false;
             this.btNuevo.Click += new System.EventHandler(this.btNuevo_Click);
-            // 
-            // btBuscar
-            // 
-            this.btBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btBuscar.Location = new System.Drawing.Point(498, 14);
-            this.btBuscar.Name = "btBuscar";
-            this.btBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btBuscar.TabIndex = 13;
-            this.btBuscar.Text = "Buscar";
-            this.btBuscar.UseVisualStyleBackColor = true;
             // 
             // btModificar
             // 
             this.btModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btModificar.BackColor = System.Drawing.Color.Goldenrod;
             this.btModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btModificar.Location = new System.Drawing.Point(417, 424);
+            this.btModificar.Location = new System.Drawing.Point(626, 652);
+            this.btModificar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btModificar.Name = "btModificar";
-            this.btModificar.Size = new System.Drawing.Size(75, 23);
+            this.btModificar.Size = new System.Drawing.Size(112, 35);
             this.btModificar.TabIndex = 12;
             this.btModificar.Text = "Modificar";
             this.btModificar.UseVisualStyleBackColor = false;
@@ -121,11 +118,12 @@ namespace HuergoMotorsVentas
             this.Nombre,
             this.Apellido,
             this.Sucursal});
-            this.gv.Location = new System.Drawing.Point(12, 43);
+            this.gv.Location = new System.Drawing.Point(18, 66);
+            this.gv.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.gv.Name = "gv";
             this.gv.ReadOnly = true;
             this.gv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gv.Size = new System.Drawing.Size(560, 375);
+            this.gv.Size = new System.Drawing.Size(840, 577);
             this.gv.TabIndex = 11;
             // 
             // Id
@@ -165,7 +163,8 @@ namespace HuergoMotorsVentas
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 20);
+            this.label1.Location = new System.Drawing.Point(18, 31);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(34, 15);
             this.label1.TabIndex = 10;
@@ -175,32 +174,63 @@ namespace HuergoMotorsVentas
             // 
             this.txFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txFiltro.Location = new System.Drawing.Point(47, 17);
+            this.txFiltro.Location = new System.Drawing.Point(70, 26);
+            this.txFiltro.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txFiltro.Name = "txFiltro";
-            this.txFiltro.Size = new System.Drawing.Size(444, 20);
+            this.txFiltro.Size = new System.Drawing.Size(664, 26);
             this.txFiltro.TabIndex = 9;
+            // 
+            // picBusqueda
+            // 
+            this.picBusqueda.BackColor = System.Drawing.Color.Transparent;
+            this.picBusqueda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picBusqueda.Location = new System.Drawing.Point(747, 26);
+            this.picBusqueda.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.picBusqueda.Name = "picBusqueda";
+            this.picBusqueda.Size = new System.Drawing.Size(32, 32);
+            this.picBusqueda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picBusqueda.TabIndex = 17;
+            this.picBusqueda.TabStop = false;
+            this.picBusqueda.Click += new System.EventHandler(this.picBusqueda_Click);
+            // 
+            // picReload
+            // 
+            this.picReload.BackColor = System.Drawing.Color.Transparent;
+            this.picReload.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picReload.Location = new System.Drawing.Point(801, 26);
+            this.picReload.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.picReload.Name = "picReload";
+            this.picReload.Size = new System.Drawing.Size(32, 32);
+            this.picReload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picReload.TabIndex = 18;
+            this.picReload.TabStop = false;
+            this.picReload.Click += new System.EventHandler(this.picReload_Click_1);
             // 
             // frmVendedores
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::HuergoMotorsVentas.Properties.Resources.fondo_rojo;
-            this.ClientSize = new System.Drawing.Size(584, 461);
+            this.ClientSize = new System.Drawing.Size(876, 709);
+            this.Controls.Add(this.picReload);
+            this.Controls.Add(this.picBusqueda);
             this.Controls.Add(this.btCerrar);
             this.Controls.Add(this.btEliminar);
             this.Controls.Add(this.btNuevo);
-            this.Controls.Add(this.btBuscar);
             this.Controls.Add(this.btModificar);
             this.Controls.Add(this.gv);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txFiltro);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmVendedores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vendedores - Busqueda";
             this.Load += new System.EventHandler(this.frmVendedores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picBusqueda)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picReload)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,7 +241,6 @@ namespace HuergoMotorsVentas
         private System.Windows.Forms.Button btCerrar;
         private System.Windows.Forms.Button btEliminar;
         private System.Windows.Forms.Button btNuevo;
-        private System.Windows.Forms.Button btBuscar;
         private System.Windows.Forms.Button btModificar;
         private System.Windows.Forms.DataGridView gv;
         private System.Windows.Forms.Label label1;
@@ -220,5 +249,7 @@ namespace HuergoMotorsVentas
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sucursal;
+        private System.Windows.Forms.PictureBox picBusqueda;
+        private System.Windows.Forms.PictureBox picReload;
     }
 }

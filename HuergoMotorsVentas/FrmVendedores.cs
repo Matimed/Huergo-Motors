@@ -105,13 +105,6 @@ namespace HuergoMotorsVentas
         {
             this.Close();
         }
-        private void picBusqueda_Click(object sender, EventArgs e)
-        {
-            string filtro = $"SELECT * FROM Vendedores WHERE Nombre LIKE '%{txFiltro.Text}%'" +
-                 $" or Apellido LIKE '%{txFiltro.Text}%' or Sucursal LIKE '%{txFiltro.Text}%'";
-            RecargarDatos(filtro);
-            txFiltro.Text = "";
-        }
 
         private void picReload_Click(object sender, EventArgs e)
         {
@@ -123,8 +116,22 @@ namespace HuergoMotorsVentas
         {
             gv.AutoGenerateColumns = false;
             RecargarDatos(VendedoresSelect);
-            //picBusqueda.Image = Image.FromFile("lupa.png");
-            //picReload.Image = Image.FromFile("reload.png");
+            picBusqueda.Image = Image.FromFile("lupa.png");
+            picReload.Image = Image.FromFile("reload.png");
+        }
+
+        private void picBusqueda_Click(object sender, EventArgs e)
+        {
+            string filtro = $"SELECT * FROM Vendedores WHERE Apellido LIKE '%{txFiltro.Text}%'" +
+                $" or Nombre LIKE '%{txFiltro.Text}%' or Sucursal LIKE '%{txFiltro.Text}%'";
+            RecargarDatos(filtro);
+            txFiltro.Text = "";
+        }
+
+        private void picReload_Click_1(object sender, EventArgs e)
+        {
+            RecargarDatos(VendedoresSelect);
+            txFiltro.Text = "";
         }
     }
 }

@@ -111,22 +111,26 @@ namespace HuergoMotorsVentas
         }
 
 
-        private void btBuscar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gv_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void frmAccesorios_Load(object sender, EventArgs e)
         {
             gv.AutoGenerateColumns = false;
             RecargarDatos(AccesoriosSelect);
-            //picBusqueda.Image = Image.FromFile("lupa.png");
-            //picReload.Image = Image.FromFile("reload.png");
+            //picboxB.Image = Image.FromFile("lupa.png");
+            //picboxR.Image = Image.FromFile("reload.png");
+        }
+
+        private void picBusqueda_Click(object sender, EventArgs e)
+        {
+            string filtro = $"SELECT * FROM Accesorios WHERE Tipo LIKE '%{txFiltro.Text}%'" +
+                $" or Nombre LIKE '%{txFiltro.Text}%' or Precio LIKE '%{txFiltro.Text}%' or idVehiculos LIKE '%{txFiltro.Text}%'";
+            RecargarDatos(filtro);
+            txFiltro.Text = "";
+        }
+
+        private void picReload_Click(object sender, EventArgs e)
+        {
+            RecargarDatos(AccesoriosSelect);
+            txFiltro.Text = "";
         }
     }
 }
