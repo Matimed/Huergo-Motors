@@ -42,6 +42,10 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btVehiculos = new System.Windows.Forms.ToolStripButton();
+            this.btAccesorios = new System.Windows.Forms.ToolStripButton();
+            this.btClientes = new System.Windows.Forms.ToolStripButton();
+            this.btVendedores = new System.Windows.Forms.ToolStripButton();
+            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -50,7 +54,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.ventasToolStripMenuItem});
+            this.ventasToolStripMenuItem,
+            this.ayudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(734, 24);
@@ -60,9 +65,9 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.vehiculosToolStripMenuItem,
             this.accesoriosToolStripMenuItem,
             this.clientesToolStripMenuItem,
-            this.vehiculosToolStripMenuItem,
             this.vendedoresToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.ShowShortcutKeys = false;
@@ -134,22 +139,66 @@
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Left;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btVehiculos});
+            this.btVehiculos,
+            this.btAccesorios,
+            this.btClientes,
+            this.btVendedores});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(94, 525);
+            this.toolStrip1.Size = new System.Drawing.Size(105, 525);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // btVehiculos
             // 
             this.btVehiculos.Image = ((System.Drawing.Image)(resources.GetObject("btVehiculos.Image")));
+            this.btVehiculos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btVehiculos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btVehiculos.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btVehiculos.Name = "btVehiculos";
-            this.btVehiculos.Size = new System.Drawing.Size(91, 36);
+            this.btVehiculos.Size = new System.Drawing.Size(102, 36);
             this.btVehiculos.Text = "Vehículos";
+            this.btVehiculos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btVehiculos.Click += new System.EventHandler(this.btVehiculos_Click);
+            // 
+            // btAccesorios
+            // 
+            this.btAccesorios.Image = ((System.Drawing.Image)(resources.GetObject("btAccesorios.Image")));
+            this.btAccesorios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btAccesorios.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btAccesorios.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btAccesorios.Name = "btAccesorios";
+            this.btAccesorios.Size = new System.Drawing.Size(102, 36);
+            this.btAccesorios.Text = "Accesorios";
+            this.btAccesorios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btClientes
+            // 
+            this.btClientes.Image = ((System.Drawing.Image)(resources.GetObject("btClientes.Image")));
+            this.btClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btClientes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btClientes.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btClientes.Name = "btClientes";
+            this.btClientes.Size = new System.Drawing.Size(102, 36);
+            this.btClientes.Text = "Clientes";
+            this.btClientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btVendedores
+            // 
+            this.btVendedores.Image = ((System.Drawing.Image)(resources.GetObject("btVendedores.Image")));
+            this.btVendedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btVendedores.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btVendedores.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btVendedores.Name = "btVendedores";
+            this.btVendedores.Size = new System.Drawing.Size(102, 36);
+            this.btVendedores.Text = "Vendedores";
+            this.btVendedores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ayudaToolStripMenuItem
+            // 
+            this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.ayudaToolStripMenuItem.Text = "Ayuda";
             // 
             // frmMDI
             // 
@@ -191,6 +240,10 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btVehiculos;
+        private System.Windows.Forms.ToolStripButton btAccesorios;
+        private System.Windows.Forms.ToolStripButton btClientes;
+        private System.Windows.Forms.ToolStripButton btVendedores;
+        private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
     }
 }
 
