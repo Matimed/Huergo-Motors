@@ -55,6 +55,7 @@ namespace HuergoMotorsVentas
             this.btAceptar.TabIndex = 15;
             this.btAceptar.Text = "Aceptar";
             this.btAceptar.UseVisualStyleBackColor = true;
+            this.btAceptar.Click += new System.EventHandler(this.btAceptar_Click);
             // 
             // btCancelar
             // 
@@ -66,6 +67,7 @@ namespace HuergoMotorsVentas
             this.btCancelar.TabIndex = 14;
             this.btCancelar.Text = "Cancelar";
             this.btCancelar.UseVisualStyleBackColor = true;
+            this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
             // 
             // LabelApellido
             // 
@@ -174,6 +176,7 @@ namespace HuergoMotorsVentas
             this.Name = "frmVendedoresAlta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vendedores - Alta / Modificación";
+            this.Load += new System.EventHandler(this.frmVendedoresAlta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

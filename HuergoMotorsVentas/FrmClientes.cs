@@ -13,13 +13,7 @@ namespace HuergoMotorsVentas
         {
             InitializeComponent();
         }
-        private void frmClientes_Load(object sender, EventArgs e)
-        {
-            gv.AutoGenerateColumns = false;
-            RecargarDatos(ClientesSelect);
-            picBusqueda.Image = Image.FromFile("lupa.png");
-            picReload.Image = Image.FromFile("reload.png");
-        }
+       
         private void RecargarDatos(string query)
         {
             DataTable dt = new DataTable();
@@ -60,5 +54,12 @@ namespace HuergoMotorsVentas
             }
         }
 
+        private void frmClientes_Load(object sender, EventArgs e)
+        {
+            gv.AutoGenerateColumns = false;
+            RecargarDatos(ClientesSelect);
+            picBusqueda.Image = Image.FromFile("lupa.png");
+            picReload.Image = Image.FromFile("reload.png");
+        }
     }
 }

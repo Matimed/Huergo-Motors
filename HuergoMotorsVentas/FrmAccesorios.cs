@@ -18,7 +18,7 @@ namespace HuergoMotorsVentas
             InitializeComponent();
         }
 
-        private void frmAccesorios_Load(object sender, EventArgs e)
+        private void frmAccesorios_Load1(object sender, EventArgs e)
         {
             gv.AutoGenerateColumns = false;
             RecargarDatos(AccesoriosSelect);
@@ -125,6 +125,14 @@ namespace HuergoMotorsVentas
         private void gv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void frmAccesorios_Load(object sender, EventArgs e)
+        {
+            gv.AutoGenerateColumns = false;
+            RecargarDatos(AccesoriosSelect);
+            picBusqueda.Image = Image.FromFile("lupa.png");
+            picReload.Image = Image.FromFile("reload.png");
         }
     }
 }

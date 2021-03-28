@@ -210,6 +210,7 @@ namespace HuergoMotorsVentas
             this.Name = "frmAccesorios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Accesorios - Busqueda";
+            this.Load += new System.EventHandler(this.frmAccesorios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

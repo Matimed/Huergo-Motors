@@ -189,6 +189,7 @@ namespace HuergoMotorsVentas
             this.Name = "frmAccesoriosAlta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Accesorios - Alta / Modificación";
+            this.Load += new System.EventHandler(this.frmVehiculosAlta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();

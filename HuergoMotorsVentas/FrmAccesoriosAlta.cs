@@ -15,7 +15,22 @@ namespace HuergoMotorsVentas
     {
         public int Id { get; set; } //Esto es una 'propiedad'.
         public string Modo { get; private set; }
-        
+        private void frmVehiculosAlta_Load(object sender, EventArgs e)
+        {
+            picLogo.Image = Image.FromFile("CapturaHuergoMotors.png");
+
+            //Saca el focus del textbox y lo pone en el label por estetica
+            this.ActiveControl = label1;
+
+            if (Modo == "agregar")
+            {
+                txtNombre.Text = string.Empty;
+                txtTipo.Text = string.Empty;
+                txtPrecio.Text = "0.00";
+                
+            }
+        }
+
         public frmAccesoriosAlta(string modo)
         {
             InitializeComponent(); 
@@ -26,22 +41,7 @@ namespace HuergoMotorsVentas
         {
 
         }
-        private void frmAccesoriosAlta_Load(object sender, EventArgs e)
-        {
-            picLogo.Image = Image.FromFile("CapturaHuergoMotors.png");
-
-            //Saca el focus del textbox y lo pone en el label por estetica
-            this.ActiveControl = label1;
-
-            if (Modo == "agregar")
-            {
-                txtTipo.Text = string.Empty;
-                txtNombre.Text = string.Empty;
-                txtPrecio.Text = "0.00";
-                
-
-            }
-        }
+      
         internal void CargarDatos(int id)
         {
             try
@@ -137,5 +137,7 @@ namespace HuergoMotorsVentas
         {
 
         }
+
+       
     }
 }
