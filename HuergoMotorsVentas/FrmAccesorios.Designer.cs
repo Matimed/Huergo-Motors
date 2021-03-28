@@ -56,6 +56,7 @@ namespace HuergoMotorsVentas
             this.btCerrar.TabIndex = 16;
             this.btCerrar.Text = "Cerrar";
             this.btCerrar.UseVisualStyleBackColor = true;
+            this.btCerrar.Click += new System.EventHandler(this.btCerrar_Click);
             // 
             // btEliminar
             // 

@@ -15,5 +15,10 @@ namespace HuergoMotorsVentas
         {
             InitializeComponent();
         }
+
+        private void btCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
