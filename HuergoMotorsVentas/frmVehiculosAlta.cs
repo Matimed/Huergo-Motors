@@ -130,5 +130,10 @@ namespace HuergoMotorsVentas
                         $" ('{txtTipo.Text}', '{txtModelo.Text}', {txtPrecio.Text}, {txtStock.Text})");
             }
         }
+
+        private void txtTipo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

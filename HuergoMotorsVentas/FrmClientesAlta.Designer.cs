@@ -36,7 +36,7 @@ namespace HuergoMotorsVentas
             this.labelNombre = new System.Windows.Forms.Label();
             this.labelTelefono = new System.Windows.Forms.Label();
             this.txtDireccion = new System.Windows.Forms.TextBox();
-            this.txtTipo = new System.Windows.Forms.TextBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.labelEmail = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -59,6 +59,7 @@ namespace HuergoMotorsVentas
             this.btAceptar.TabIndex = 15;
             this.btAceptar.Text = "Aceptar";
             this.btAceptar.UseVisualStyleBackColor = true;
+            this.btAceptar.Click += new System.EventHandler(this.btAceptar_Click);
             // 
             // btCancelar
             // 
@@ -70,6 +71,7 @@ namespace HuergoMotorsVentas
             this.btCancelar.TabIndex = 14;
             this.btCancelar.Text = "Cancelar";
             this.btCancelar.UseVisualStyleBackColor = true;
+            this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
             // 
             // labelDireccion
             // 
@@ -107,14 +109,14 @@ namespace HuergoMotorsVentas
             this.txtDireccion.Size = new System.Drawing.Size(234, 20);
             this.txtDireccion.TabIndex = 10;
             // 
-            // txtTipo
+            // txtNombre
             // 
-            this.txtTipo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtNombre.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTipo.Location = new System.Drawing.Point(138, 129);
-            this.txtTipo.Name = "txtTipo";
-            this.txtTipo.Size = new System.Drawing.Size(234, 20);
-            this.txtTipo.TabIndex = 9;
+            this.txtNombre.Location = new System.Drawing.Point(138, 129);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(234, 20);
+            this.txtNombre.TabIndex = 9;
             // 
             // txtTelefono
             // 
@@ -201,7 +203,7 @@ namespace HuergoMotorsVentas
             this.Controls.Add(this.labelNombre);
             this.Controls.Add(this.labelTelefono);
             this.Controls.Add(this.txtDireccion);
-            this.Controls.Add(this.txtTipo);
+            this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.txtTelefono);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmClientesAlta";
@@ -225,7 +227,7 @@ namespace HuergoMotorsVentas
         private System.Windows.Forms.Label labelNombre;
         private System.Windows.Forms.Label labelTelefono;
         private System.Windows.Forms.TextBox txtDireccion;
-        private System.Windows.Forms.TextBox txtTipo;
+        private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label labelEmail;
         private System.Windows.Forms.TextBox txtEmail;
