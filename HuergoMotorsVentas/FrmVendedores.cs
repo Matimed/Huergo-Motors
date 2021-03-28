@@ -123,8 +123,8 @@ namespace HuergoMotorsVentas
         {
             gv.AutoGenerateColumns = false;
             RecargarDatos(VendedoresSelect);
-            picBusqueda.Image = Image.FromFile("lupa.png");
-            picReload.Image = Image.FromFile("reload.png");
+            //picBusqueda.Image = Image.FromFile("lupa.png");
+            //picReload.Image = Image.FromFile("reload.png");
         }
     }
 }

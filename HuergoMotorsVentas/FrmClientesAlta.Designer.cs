@@ -40,11 +40,11 @@ namespace HuergoMotorsVentas
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.labelEmail = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picLogo = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -145,15 +145,15 @@ namespace HuergoMotorsVentas
             this.txtEmail.Size = new System.Drawing.Size(234, 20);
             this.txtEmail.TabIndex = 16;
             // 
-            // pictureBox1
+            // picLogo
             // 
-            this.pictureBox1.Image = global::HuergoMotorsVentas.Properties.Resources.CapturaHuergoMotors;
-            this.pictureBox1.Location = new System.Drawing.Point(23, 44);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(103, 75);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
+            this.picLogo.Image = global::HuergoMotorsVentas.Properties.Resources.CapturaHuergoMotors;
+            this.picLogo.Location = new System.Drawing.Point(23, 44);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(103, 75);
+            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picLogo.TabIndex = 18;
+            this.picLogo.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -194,7 +194,7 @@ namespace HuergoMotorsVentas
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.picLogo);
             this.Controls.Add(this.labelEmail);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.btAceptar);
@@ -210,7 +210,7 @@ namespace HuergoMotorsVentas
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clientes - Alta / Modificación";
             this.Load += new System.EventHandler(this.FrmClientesAlta_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -231,7 +231,7 @@ namespace HuergoMotorsVentas
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.Label labelEmail;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picLogo;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
