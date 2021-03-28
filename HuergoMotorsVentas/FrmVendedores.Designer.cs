@@ -37,13 +37,12 @@ namespace HuergoMotorsVentas
             this.btBuscar = new System.Windows.Forms.Button();
             this.btModificar = new System.Windows.Forms.Button();
             this.gv = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PrecioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txFiltro = new System.Windows.Forms.TextBox();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,6 +55,7 @@ namespace HuergoMotorsVentas
             this.btCerrar.TabIndex = 16;
             this.btCerrar.Text = "Cerrar";
             this.btCerrar.UseVisualStyleBackColor = true;
+            this.btCerrar.Click += new System.EventHandler(this.btCerrar_Click);
             // 
             // btEliminar
             // 
@@ -69,6 +69,7 @@ namespace HuergoMotorsVentas
             this.btEliminar.TabIndex = 15;
             this.btEliminar.Text = "Eliminar";
             this.btEliminar.UseVisualStyleBackColor = false;
+            this.btEliminar.Click += new System.EventHandler(this.btEliminar_Click);
             // 
             // btNuevo
             // 
@@ -82,6 +83,7 @@ namespace HuergoMotorsVentas
             this.btNuevo.TabIndex = 14;
             this.btNuevo.Text = "Nuevo";
             this.btNuevo.UseVisualStyleBackColor = false;
+            this.btNuevo.Click += new System.EventHandler(this.btNuevo_Click);
             // 
             // btBuscar
             // 
@@ -104,6 +106,7 @@ namespace HuergoMotorsVentas
             this.btModificar.TabIndex = 12;
             this.btModificar.Text = "Modificar";
             this.btModificar.UseVisualStyleBackColor = false;
+            this.btModificar.Click += new System.EventHandler(this.btModificar_Click);
             // 
             // gv
             // 
@@ -115,56 +118,15 @@ namespace HuergoMotorsVentas
             this.gv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
-            this.Tipo,
-            this.Modelo,
-            this.PrecioVenta,
-            this.Stock});
+            this.Nombre,
+            this.Apellido,
+            this.Sucursal});
             this.gv.Location = new System.Drawing.Point(12, 43);
             this.gv.Name = "gv";
             this.gv.ReadOnly = true;
             this.gv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gv.Size = new System.Drawing.Size(560, 375);
             this.gv.TabIndex = 11;
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // Tipo
-            // 
-            this.Tipo.DataPropertyName = "Tipo";
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
-            // 
-            // Modelo
-            // 
-            this.Modelo.DataPropertyName = "Modelo";
-            this.Modelo.HeaderText = "Modelo";
-            this.Modelo.Name = "Modelo";
-            this.Modelo.ReadOnly = true;
-            // 
-            // PrecioVenta
-            // 
-            this.PrecioVenta.DataPropertyName = "PrecioVenta";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.NullValue = "0";
-            this.PrecioVenta.DefaultCellStyle = dataGridViewCellStyle1;
-            this.PrecioVenta.HeaderText = "$ Venta";
-            this.PrecioVenta.Name = "PrecioVenta";
-            this.PrecioVenta.ReadOnly = true;
-            // 
-            // Stock
-            // 
-            this.Stock.DataPropertyName = "Stock";
-            this.Stock.HeaderText = "Stock";
-            this.Stock.Name = "Stock";
-            this.Stock.ReadOnly = true;
-            this.Stock.Width = 75;
             // 
             // label1
             // 
@@ -185,6 +147,38 @@ namespace HuergoMotorsVentas
             this.txFiltro.Name = "txFiltro";
             this.txFiltro.Size = new System.Drawing.Size(444, 20);
             this.txFiltro.TabIndex = 9;
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Apellido
+            // 
+            this.Apellido.DataPropertyName = "Apellido";
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            // 
+            // Sucursal
+            // 
+            this.Sucursal.DataPropertyName = "Sucursal";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.NullValue = "0";
+            this.Sucursal.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Sucursal.HeaderText = "Sucursal";
+            this.Sucursal.Name = "Sucursal";
+            this.Sucursal.ReadOnly = true;
             // 
             // frmVendedores
             // 
@@ -219,12 +213,11 @@ namespace HuergoMotorsVentas
         private System.Windows.Forms.Button btBuscar;
         private System.Windows.Forms.Button btModificar;
         private System.Windows.Forms.DataGridView gv;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txFiltro;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Sucursal;
     }
 }

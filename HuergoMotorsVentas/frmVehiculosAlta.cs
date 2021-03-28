@@ -59,7 +59,7 @@ namespace HuergoMotorsVentas
                 if (!dt.Rows[0].IsNull("Tipo")) tipo = (string)dt.Rows[0]["Tipo"];
                 if (!dt.Rows[0].IsNull("Modelo")) modelo = (string)dt.Rows[0]["Modelo"];
                 if (!dt.Rows[0].IsNull("PrecioVenta")) precioVenta = (decimal)dt.Rows[0]["PrecioVenta"];
-                if (!dt.Rows[0].IsNull("PrecioVenta")) stock = (int)dt.Rows[0]["Stock"];
+                if (!dt.Rows[0].IsNull("Stock")) stock = (int)dt.Rows[0]["Stock"];
 
                 //Escribe el número con puntos en lugar de comas para no dar error en la DB
                 NumberFormatInfo nfi = new NumberFormatInfo();
