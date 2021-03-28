@@ -19,20 +19,66 @@ namespace HuergoMotorsVentas
             InitializeComponent();
         }
 
+
+       //To do: CUando se abra un formulario el boton se ponga en otro color para marcar que esta seleccionado
+       //y cuando se cierre el formulario se desmarque.
         private void vehiculosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Vehiculos();
         }
+        private void accesoriosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Accesorios();
+        }
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Clientes();
+        }
+        private void vendedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Vendedores();
+        }
+
 
         private void btVehiculos_Click(object sender, EventArgs e)
         {
             Vehiculos();
         }
+        private void btAccesorios_Click(object sender, EventArgs e)
+        {
+            Accesorios();
+        }
+        private void btClientes_Click(object sender, EventArgs e)
+        {
+            Clientes();
+        }
+        private void btVendedores_Click(object sender, EventArgs e)
+        {
+            Vendedores();
+        }
+
 
         private void Vehiculos()
         {
-            //Abro un formulario como 'hijo' del MDI.
             frmVehiculos f = new frmVehiculos();
+            f.MdiParent = this;
+            f.Show();
+        }
+        private void Accesorios()
+        {
+            frmAccesorios f = new frmAccesorios();
+            f.MdiParent = this;
+            f.Show();
+        }
+        private void Clientes()
+        {
+            frmClientes f = new frmClientes();
+            f.MdiParent = this;
+            f.Show();
+        }
+        private void Vendedores()
+        {
+            frmVendedores f = new frmVendedores();
             f.MdiParent = this;
             f.Show();
         }

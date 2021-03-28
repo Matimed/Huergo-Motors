@@ -6,10 +6,12 @@ using System.Drawing;
 
 namespace HuergoMotorsVentas
 {
-
+    
     public partial class frmVehiculos : Form
     {
-        new const string Select = "SELECT * FROM Vehiculos";
+        private static string VehiculosSelect = "SELECT * FROM Vehiculos";
+        
+
 
         public frmVehiculos()
         {
@@ -19,7 +21,7 @@ namespace HuergoMotorsVentas
         private void frmVehiculos_Load(object sender, EventArgs e)
         {
             gv.AutoGenerateColumns = false;
-            RecargarDatos(Select);
+            RecargarDatos(VehiculosSelect);
             picBusqueda.Image = Image.FromFile("lupa.png");
             picReload.Image = Image.FromFile("reload.png");
         }
@@ -61,7 +63,7 @@ namespace HuergoMotorsVentas
             //Solo recargo datos si se cerró con un OK.
             if (f.DialogResult == DialogResult.OK)
             {
-                RecargarDatos(Select);
+                RecargarDatos(VehiculosSelect);
             }
         }
 
@@ -91,7 +93,7 @@ namespace HuergoMotorsVentas
                             conn.Open();
                             SqlCommand cmd = new SqlCommand(delete, conn);
                             int result = cmd.ExecuteNonQuery();
-                            RecargarDatos(Select);
+                            RecargarDatos(VehiculosSelect);
                             MessageBox.Show($"{result} registro/s eliminados correctamente",
                             "Eliminacion completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         };
@@ -127,7 +129,7 @@ namespace HuergoMotorsVentas
 
         private void picReload_Click(object sender, EventArgs e)
         {
-            RecargarDatos(Select);
+            RecargarDatos(VehiculosSelect);
             txFiltro.Text = "";
         }
     }

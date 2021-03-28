@@ -77,14 +77,16 @@
             // accesoriosToolStripMenuItem
             // 
             this.accesoriosToolStripMenuItem.Name = "accesoriosToolStripMenuItem";
-            this.accesoriosToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.accesoriosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.accesoriosToolStripMenuItem.Text = "Accesorios";
+            this.accesoriosToolStripMenuItem.Click += new System.EventHandler(this.accesoriosToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
+            this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // vehiculosToolStripMenuItem
             // 
@@ -96,8 +98,9 @@
             // vendedoresToolStripMenuItem
             // 
             this.vendedoresToolStripMenuItem.Name = "vendedoresToolStripMenuItem";
-            this.vendedoresToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.vendedoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.vendedoresToolStripMenuItem.Text = "Vendedores";
+            this.vendedoresToolStripMenuItem.Click += new System.EventHandler(this.vendedoresToolStripMenuItem_Click);
             // 
             // ventasToolStripMenuItem
             // 
@@ -171,6 +174,7 @@
             this.btAccesorios.Size = new System.Drawing.Size(102, 36);
             this.btAccesorios.Text = "Accesorios";
             this.btAccesorios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btAccesorios.Click += new System.EventHandler(this.btAccesorios_Click);
             // 
             // btClientes
             // 
@@ -182,6 +186,7 @@
             this.btClientes.Size = new System.Drawing.Size(102, 36);
             this.btClientes.Text = "Clientes";
             this.btClientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btClientes.Click += new System.EventHandler(this.btClientes_Click);
             // 
             // btVendedores
             // 
@@ -193,6 +198,7 @@
             this.btVendedores.Size = new System.Drawing.Size(102, 36);
             this.btVendedores.Text = "Vendedores";
             this.btVendedores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btVendedores.Click += new System.EventHandler(this.btVendedores_Click);
             // 
             // ayudaToolStripMenuItem
             // 
