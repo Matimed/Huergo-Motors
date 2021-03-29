@@ -15,6 +15,7 @@ namespace HuergoMotorsVentas
     {
         public int Id { get; set; } //Esto es una 'propiedad'.
         public string Modo { get; private set; }
+
         private void frmVehiculosAlta_Load(object sender, EventArgs e)
         {
             picLogo.Image = Image.FromFile("CapturaHuergoMotors.png");
@@ -22,9 +23,8 @@ namespace HuergoMotorsVentas
             //Saca el focus del textbox y lo pone en el label por estetica
             this.ActiveControl = label1;
 
-            //for i= 1 to 
-            //lstModelo.Items.Add()
-
+            //Cargar el ComboBox
+           
 
             if (Modo == "agregar")
             {
@@ -34,6 +34,17 @@ namespace HuergoMotorsVentas
                 
             }
         }
+        private void CargarCombo()
+        {
+            DataTable dt = new DataTable();
+            using (SqlDataAdapter da = new SqlDataAdapter("SELECT Id, Modelo FROM Vehiculos", frmMDI.ConnectionString))
+            {
+                da.Fill(dt);
+            }
+            cboModelos.DataSource = dt;
+            cboModelos.DisplayMember = "Modelo";
+            cboModelos.ValueMember = "Id";
+        }
 
         public frmAccesoriosAlta(string modo)
         {
@@ -41,17 +52,16 @@ namespace HuergoMotorsVentas
             Modo = modo;
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
+       
       
         internal void CargarDatos(int id)
         {
+            CargarCombo();
             try
             {
                 Id = id;
-                string query = $"SELECT * FROM Accesorios WHERE Id={id}";
+                string query = $"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
+                    $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id WHERE a.Id={id}";
 
                 DataTable dt = new DataTable();
                 using (SqlDataAdapter da = new SqlDataAdapter(query, frmMDI.ConnectionString))
@@ -62,11 +72,13 @@ namespace HuergoMotorsVentas
                 string tipo = string.Empty;
                 string nombre = string.Empty;
                 decimal precio = 0;
-
+                string modelo = string.Empty ;
+                
 
                 if (!dt.Rows[0].IsNull("Tipo")) tipo = (string)dt.Rows[0]["Tipo"];
                 if (!dt.Rows[0].IsNull("Nombre")) nombre = (string)dt.Rows[0]["Nombre"];
                 if (!dt.Rows[0].IsNull("Precio")) precio = (decimal)dt.Rows[0]["Precio"];
+                if (!dt.Rows[0].IsNull("Modelo")) modelo = (string)dt.Rows[0]["Modelo"];
 
 
                 //Escribe el número con puntos en lugar de comas para no dar error en la DB
@@ -76,7 +88,8 @@ namespace HuergoMotorsVentas
                 txtPrecio.Text = precio.ToString(nfi);
                 txtTipo.Text = tipo;
                 txtNombre.Text = nombre;
-                
+                int index = cboModelos.FindString(modelo);
+                cboModelos.SelectedIndex = index;
             }
             catch (Exception ex)
             {
@@ -119,13 +132,14 @@ namespace HuergoMotorsVentas
 
         private void btAceptar_Click(object sender, EventArgs e)
         {
+            int idVehiculo = (int)(cboModelos.SelectedValue);
             if (Modo == "modificar")
             {
                 DialogResult resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
                                  "Sobrescribir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (resp == DialogResult.Yes)
                 {
-                    Conexion($"UPDATE Accesorios SET Nombre='{txtNombre.Text}', Tipo='{txtTipo.Text}', Precio='{txtPrecio.Text}' WHERE Id={Id}");
+                    Conexion($"UPDATE Accesorios SET Nombre='{txtNombre.Text}', Tipo='{txtTipo.Text}', Precio='{txtPrecio.Text}', IdVehiculo= '{idVehiculo}' WHERE Id={Id}");
                 }
 
             }
@@ -136,10 +150,7 @@ namespace HuergoMotorsVentas
             }
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
+    
 
        
     }
