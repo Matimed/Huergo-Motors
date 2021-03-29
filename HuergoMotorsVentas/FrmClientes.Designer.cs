@@ -72,7 +72,6 @@ namespace HuergoMotorsVentas
             this.btEliminar.TabIndex = 15;
             this.btEliminar.Text = "Eliminar";
             this.btEliminar.UseVisualStyleBackColor = false;
-            this.btEliminar.Click += new System.EventHandler(this.btEliminar_Click);
             // 
             // btNuevo
             // 
@@ -86,7 +85,6 @@ namespace HuergoMotorsVentas
             this.btNuevo.TabIndex = 14;
             this.btNuevo.Text = "Nuevo";
             this.btNuevo.UseVisualStyleBackColor = false;
-            this.btNuevo.Click += new System.EventHandler(this.btNuevo_Click);
             // 
             // btModificar
             // 
@@ -157,6 +155,7 @@ namespace HuergoMotorsVentas
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -168,8 +167,7 @@ namespace HuergoMotorsVentas
             // 
             // txFiltro
             // 
-            this.txFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txFiltro.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txFiltro.Location = new System.Drawing.Point(47, 17);
             this.txFiltro.Name = "txFiltro";
             this.txFiltro.Size = new System.Drawing.Size(444, 20);
@@ -177,11 +175,12 @@ namespace HuergoMotorsVentas
             // 
             // picBoxlupa
             // 
+            this.picBoxlupa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picBoxlupa.BackColor = System.Drawing.Color.Transparent;
-            this.picBoxlupa.Location = new System.Drawing.Point(505, 16);
+            this.picBoxlupa.Location = new System.Drawing.Point(524, 17);
             this.picBoxlupa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.picBoxlupa.Name = "picBoxlupa";
-            this.picBoxlupa.Size = new System.Drawing.Size(23, 18);
+            this.picBoxlupa.Size = new System.Drawing.Size(21, 21);
             this.picBoxlupa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBoxlupa.TabIndex = 17;
             this.picBoxlupa.TabStop = false;
@@ -189,11 +188,12 @@ namespace HuergoMotorsVentas
             // 
             // picboxReload
             // 
+            this.picboxReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picboxReload.BackColor = System.Drawing.Color.Transparent;
-            this.picboxReload.Location = new System.Drawing.Point(541, 17);
+            this.picboxReload.Location = new System.Drawing.Point(549, 17);
             this.picboxReload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.picboxReload.Name = "picboxReload";
-            this.picboxReload.Size = new System.Drawing.Size(23, 18);
+            this.picboxReload.Size = new System.Drawing.Size(21, 21);
             this.picboxReload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picboxReload.TabIndex = 18;
             this.picboxReload.TabStop = false;
