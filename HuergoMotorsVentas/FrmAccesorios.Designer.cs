@@ -110,6 +110,7 @@ namespace HuergoMotorsVentas
             this.gv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -219,7 +220,6 @@ namespace HuergoMotorsVentas
             this.ModeloVehiculo.HeaderText = "Modelo";
             this.ModeloVehiculo.Name = "ModeloVehiculo";
             this.ModeloVehiculo.ReadOnly = true;
-            this.ModeloVehiculo.Width = 200;
             // 
             // frmAccesorios
             // 

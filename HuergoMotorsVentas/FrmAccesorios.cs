@@ -120,8 +120,10 @@ namespace HuergoMotorsVentas
 
         private void picBusqueda_Click(object sender, EventArgs e)
         {
-            string filtro = $"SELECT * FROM Accesorios WHERE Tipo LIKE '%{txFiltro.Text}%'" +
-                $" or Nombre LIKE '%{txFiltro.Text}%' or Precio LIKE '%{txFiltro.Text}%' or idVehiculos LIKE '%{txFiltro.Text}%'";
+            string filtro = $"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
+                    $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id " +
+                    $"WHERE a.Tipo LIKE '%{txFiltro.Text}%' or a.Nombre LIKE '%{txFiltro.Text}%' or a.Precio " +
+                    $"LIKE '%{txFiltro.Text}%' or b.Modelo LIKE '%{txFiltro.Text}%'";
             RecargarDatos(filtro);
             txFiltro.Text = "";
         }
