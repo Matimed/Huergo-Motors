@@ -106,6 +106,7 @@ namespace HuergoMotorsVentas
             this.gv.AllowUserToAddRows = false;
             this.gv.AllowUserToDeleteRows = false;
             this.gv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.gv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -168,7 +169,7 @@ namespace HuergoMotorsVentas
             this.txFiltro.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txFiltro.Location = new System.Drawing.Point(47, 17);
             this.txFiltro.Name = "txFiltro";
-            this.txFiltro.Size = new System.Drawing.Size(444, 20);
+            this.txFiltro.Size = new System.Drawing.Size(471, 20);
             this.txFiltro.TabIndex = 9;
             // 
             // picBusqueda

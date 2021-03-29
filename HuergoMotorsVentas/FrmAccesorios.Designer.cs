@@ -143,7 +143,7 @@ namespace HuergoMotorsVentas
             this.txFiltro.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txFiltro.Location = new System.Drawing.Point(48, 17);
             this.txFiltro.Name = "txFiltro";
-            this.txFiltro.Size = new System.Drawing.Size(444, 20);
+            this.txFiltro.Size = new System.Drawing.Size(466, 20);
             this.txFiltro.TabIndex = 9;
             // 
             // picboxB
