@@ -31,7 +31,7 @@ namespace HuergoMotorsVentas
                 txtNombre.Text = string.Empty;
                 txtTipo.Text = string.Empty;
                 txtPrecio.Text = "0.00";
-                
+                CargarCombo();
             }
         }
         private void CargarCombo()
@@ -145,8 +145,8 @@ namespace HuergoMotorsVentas
             }
             else if (Modo == "agregar")
             {
-                //Conexion($"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
-                //    $" VALUES ('{txtNombre.Text}', '{txtTipo.Text}', '{txtPrecio.Text}', '{txtIdVehiculo.Text}')");
+                Conexion($"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
+                    $" VALUES ('{txtNombre.Text}', '{txtTipo.Text}', '{txtPrecio.Text}', '{idVehiculo}')");
             }
         }
 

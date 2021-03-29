@@ -178,12 +178,12 @@ namespace HuergoMotorsVentas
             // 
             // cboModelos
             // 
+            this.cboModelos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboModelos.FormattingEnabled = true;
             this.cboModelos.Location = new System.Drawing.Point(125, 218);
             this.cboModelos.Name = "cboModelos";
             this.cboModelos.Size = new System.Drawing.Size(262, 21);
             this.cboModelos.TabIndex = 27;
-            this.cboModelos.Text = "Modelos de vehiculo";
             // 
             // frmAccesoriosAlta
             // 

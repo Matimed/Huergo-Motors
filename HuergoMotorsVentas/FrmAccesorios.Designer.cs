@@ -219,6 +219,7 @@ namespace HuergoMotorsVentas
             this.ModeloVehiculo.HeaderText = "Modelo";
             this.ModeloVehiculo.Name = "ModeloVehiculo";
             this.ModeloVehiculo.ReadOnly = true;
+            this.ModeloVehiculo.Width = 200;
             // 
             // frmAccesorios
             // 
