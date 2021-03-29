@@ -43,7 +43,7 @@ namespace HuergoMotorsVentas
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtIdVehiculo = new System.Windows.Forms.TextBox();
+            this.lstModelo = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -172,20 +172,19 @@ namespace HuergoMotorsVentas
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 220);
+            this.label4.Location = new System.Drawing.Point(18, 218);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 13);
             this.label4.TabIndex = 24;
             this.label4.Text = "Modelo de auto";
             // 
-            // txtIdVehiculo
+            // lstModelo
             // 
-            this.txtIdVehiculo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtIdVehiculo.Location = new System.Drawing.Point(125, 217);
-            this.txtIdVehiculo.Name = "txtIdVehiculo";
-            this.txtIdVehiculo.Size = new System.Drawing.Size(262, 20);
-            this.txtIdVehiculo.TabIndex = 25;
+            this.lstModelo.FormattingEnabled = true;
+            this.lstModelo.Location = new System.Drawing.Point(125, 215);
+            this.lstModelo.Name = "lstModelo";
+            this.lstModelo.Size = new System.Drawing.Size(262, 17);
+            this.lstModelo.TabIndex = 26;
             // 
             // frmAccesoriosAlta
             // 
@@ -193,7 +192,7 @@ namespace HuergoMotorsVentas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(399, 333);
-            this.Controls.Add(this.txtIdVehiculo);
+            this.Controls.Add(this.lstModelo);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
@@ -236,6 +235,6 @@ namespace HuergoMotorsVentas
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtIdVehiculo;
+        private System.Windows.Forms.ListBox lstModelo;
     }
 }

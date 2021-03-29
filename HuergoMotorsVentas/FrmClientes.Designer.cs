@@ -72,6 +72,7 @@ namespace HuergoMotorsVentas
             this.btEliminar.TabIndex = 15;
             this.btEliminar.Text = "Eliminar";
             this.btEliminar.UseVisualStyleBackColor = false;
+            this.btEliminar.Click += new System.EventHandler(this.btEliminar_Click);
             // 
             // btNuevo
             // 
@@ -85,6 +86,7 @@ namespace HuergoMotorsVentas
             this.btNuevo.TabIndex = 14;
             this.btNuevo.Text = "Nuevo";
             this.btNuevo.UseVisualStyleBackColor = false;
+            this.btNuevo.Click += new System.EventHandler(this.btNuevo_Click);
             // 
             // btModificar
             // 
@@ -178,7 +180,7 @@ namespace HuergoMotorsVentas
             this.picBoxlupa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picBoxlupa.BackColor = System.Drawing.Color.Transparent;
             this.picBoxlupa.Location = new System.Drawing.Point(524, 17);
-            this.picBoxlupa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picBoxlupa.Margin = new System.Windows.Forms.Padding(2);
             this.picBoxlupa.Name = "picBoxlupa";
             this.picBoxlupa.Size = new System.Drawing.Size(21, 21);
             this.picBoxlupa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -191,7 +193,7 @@ namespace HuergoMotorsVentas
             this.picboxReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picboxReload.BackColor = System.Drawing.Color.Transparent;
             this.picboxReload.Location = new System.Drawing.Point(549, 17);
-            this.picboxReload.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picboxReload.Margin = new System.Windows.Forms.Padding(2);
             this.picboxReload.Name = "picboxReload";
             this.picboxReload.Size = new System.Drawing.Size(21, 21);
             this.picboxReload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

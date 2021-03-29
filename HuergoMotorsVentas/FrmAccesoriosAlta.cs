@@ -22,6 +22,10 @@ namespace HuergoMotorsVentas
             //Saca el focus del textbox y lo pone en el label por estetica
             this.ActiveControl = label1;
 
+            //for i= 1 to 
+            //lstModelo.Items.Add()
+
+
             if (Modo == "agregar")
             {
                 txtNombre.Text = string.Empty;
@@ -127,8 +131,8 @@ namespace HuergoMotorsVentas
             }
             else if (Modo == "agregar")
             {
-                Conexion($"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
-                    $" VALUES ('{txtNombre.Text}', '{txtTipo.Text}', '{txtPrecio.Text}', '{txtIdVehiculo.Text}')");
+                //Conexion($"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
+                //    $" VALUES ('{txtNombre.Text}', '{txtTipo.Text}', '{txtPrecio.Text}', '{txtIdVehiculo.Text}')");
             }
         }
 
