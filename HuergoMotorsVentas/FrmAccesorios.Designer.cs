@@ -36,15 +36,16 @@ namespace HuergoMotorsVentas
             this.btNuevo = new System.Windows.Forms.Button();
             this.btModificar = new System.Windows.Forms.Button();
             this.gv = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idVehiculos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txFiltro = new System.Windows.Forms.TextBox();
             this.picboxB = new System.Windows.Forms.PictureBox();
             this.picboxR = new System.Windows.Forms.PictureBox();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idVehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ModeloVehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxR)).BeginInit();
@@ -115,52 +116,14 @@ namespace HuergoMotorsVentas
             this.Nombre,
             this.Tipo,
             this.Precio,
-            this.idVehiculos});
+            this.idVehiculo,
+            this.ModeloVehiculo});
             this.gv.Location = new System.Drawing.Point(12, 43);
             this.gv.Name = "gv";
             this.gv.ReadOnly = true;
             this.gv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gv.Size = new System.Drawing.Size(560, 375);
             this.gv.TabIndex = 11;
-            // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // Nombre
-            // 
-            this.Nombre.DataPropertyName = "Nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            this.Nombre.ReadOnly = true;
-            // 
-            // Tipo
-            // 
-            this.Tipo.DataPropertyName = "Tipo";
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            this.Tipo.ReadOnly = true;
-            // 
-            // Precio
-            // 
-            this.Precio.DataPropertyName = "Precio";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.NullValue = "0";
-            this.Precio.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
-            // 
-            // idVehiculos
-            // 
-            this.idVehiculos.DataPropertyName = "idVehiculos";
-            this.idVehiculos.HeaderText = "idVehiculos";
-            this.idVehiculos.Name = "idVehiculos";
-            this.idVehiculos.ReadOnly = true;
             // 
             // label1
             // 
@@ -210,6 +173,53 @@ namespace HuergoMotorsVentas
             this.picboxR.TabStop = false;
             this.picboxR.Click += new System.EventHandler(this.picReload_Click);
             // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Tipo
+            // 
+            this.Tipo.DataPropertyName = "Tipo";
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            // 
+            // Precio
+            // 
+            this.Precio.DataPropertyName = "Precio";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.NullValue = "0";
+            this.Precio.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            // 
+            // idVehiculo
+            // 
+            this.idVehiculo.DataPropertyName = "idVehiculo";
+            this.idVehiculo.HeaderText = "idVehiculo";
+            this.idVehiculo.Name = "idVehiculo";
+            this.idVehiculo.ReadOnly = true;
+            this.idVehiculo.Visible = false;
+            // 
+            // ModeloVehiculo
+            // 
+            this.ModeloVehiculo.DataPropertyName = "Modelo";
+            this.ModeloVehiculo.HeaderText = "Modelo";
+            this.ModeloVehiculo.Name = "ModeloVehiculo";
+            this.ModeloVehiculo.ReadOnly = true;
+            // 
             // frmAccesorios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -230,6 +240,7 @@ namespace HuergoMotorsVentas
             this.Name = "frmAccesorios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Accesorios - Busqueda";
+            this.Load += new System.EventHandler(this.frmAccesorios_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxR)).EndInit();
@@ -247,12 +258,13 @@ namespace HuergoMotorsVentas
         private System.Windows.Forms.DataGridView gv;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txFiltro;
+        private System.Windows.Forms.PictureBox picboxB;
+        private System.Windows.Forms.PictureBox picboxR;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idVehiculos;
-        private System.Windows.Forms.PictureBox picboxB;
-        private System.Windows.Forms.PictureBox picboxR;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idVehiculo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ModeloVehiculo;
     }
 }

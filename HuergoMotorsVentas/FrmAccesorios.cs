@@ -11,7 +11,8 @@ namespace HuergoMotorsVentas
 
     public partial class frmAccesorios : Form
     {
-        private static string AccesoriosSelect = "SELECT * FROM Accesorios";
+        private static string AccesoriosSelect = "SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
+            "FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id;";
 
         public frmAccesorios()
         {
