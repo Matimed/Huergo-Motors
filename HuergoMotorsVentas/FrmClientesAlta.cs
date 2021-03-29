@@ -123,8 +123,8 @@ namespace HuergoMotorsVentas
             }
             else if (Modo == "agregar")
             {
-                Conexion($"INSERT INTO Clientes (Nombre, Direccion, Email, Telefono) VALUES" +
-                        $" ('{txtNombre.Text}', '{txtDireccion.Text}', {txtEmail.Text}, {txtTelefono.Text})");
+                Conexion($"INSERT INTO Clientes (Nombre, Direccion, Email, Telefono) " +
+                    $"VALUES ('{txtNombre.Text}', '{txtDireccion.Text}', '{txtEmail.Text}', '{txtTelefono.Text}')");
             }
         }
     }

@@ -121,15 +121,14 @@ namespace HuergoMotorsVentas
                                  "Sobresctibir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (resp == DialogResult.Yes)
                 {
-                    Conexion($"UPDATE Vendedores SET Nombre='{txtNombre.Text}', Apellido='{txtApellido.Text}', Sucursal='{txtSucursal.Text}'," +
-                            $" WHERE Id={Id}");
+                    Conexion($"UPDATE Vendedores SET Nombre='{txtNombre.Text}', Apellido='{txtApellido.Text}', Sucursal='{txtSucursal.Text}' WHERE Id={Id}");
                 }
 
             }
             else if (Modo == "agregar")
             {
                 Conexion($"INSERT INTO Vendedores (Nombre, Apellido, Sucursal) VALUES" +
-                        $" ('{txtNombre.Text}', '{txtApellido.Text}', {txtSucursal.Text})");
+                        $" ('{txtNombre.Text}', '{txtApellido.Text}', '{txtSucursal.Text}')");
             }
         }
     }

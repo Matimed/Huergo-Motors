@@ -66,8 +66,9 @@ namespace HuergoMotorsVentas
             {
                 object item = gv.SelectedRows[0].DataBoundItem;
                 int id = (int)((DataRowView)item)["Id"];
-                string tipo = (string)((DataRowView)item)["Tipo"];
-                DialogResult resp = MessageBox.Show("Seguro que desea borrar el " + tipo + "? Esta operacion no se puede revertir",
+                string nombre = (string)((DataRowView)item)["Nombre"];
+                string apellido = (string)((DataRowView)item)["Apellido"];
+                DialogResult resp = MessageBox.Show("Seguro que desea borrar a " + nombre + " "+ apellido + "? Esta operacion no se puede revertir",
                     "Eliminar permanentemente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (resp == DialogResult.Yes)
                 {

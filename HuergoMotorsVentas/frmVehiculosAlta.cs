@@ -127,8 +127,8 @@ namespace HuergoMotorsVentas
             }
             else if (Modo == "agregar")
             {
-                Conexion($"INSERT INTO Vehiculos (Tipo, Modelo, PrecioVenta, Stock) VALUES" +
-                        $" ('{txtTipo.Text}', '{txtModelo.Text}', {txtPrecio.Text}, {txtStock.Text})");
+                Conexion($"INSERT INTO Vehiculos (Tipo, Modelo, PrecioVenta, Stock) " +
+                    $"VALUES ('{txtTipo.Text}', '{txtModelo.Text}', {txtPrecio.Text}, {txtStock.Text})");
             }
         }
 

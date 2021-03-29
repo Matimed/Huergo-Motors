@@ -70,8 +70,8 @@ namespace HuergoMotorsVentas
                 nfi.NumberDecimalSeparator = ".";
 
                 txtPrecio.Text = precio.ToString(nfi);
-                txtTipo.Text = nombre;
-                txtNombre.Text = tipo;
+                txtTipo.Text = tipo;
+                txtNombre.Text = nombre;
                 
             }
             catch (Exception ex)
@@ -118,18 +118,17 @@ namespace HuergoMotorsVentas
             if (Modo == "modificar")
             {
                 DialogResult resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
-                                 "Sobresctibir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                 "Sobrescribir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (resp == DialogResult.Yes)
                 {
-                    Conexion($"UPDATE Accesorios SET Tipo='{txtNombre.Text}', Nombre='{txtTipo.Text}', Precio='{txtPrecio.Text}'," +
-                            $" WHERE Id={Id}");
+                    Conexion($"UPDATE Accesorios SET Nombre='{txtNombre.Text}', Tipo='{txtTipo.Text}', Precio='{txtPrecio.Text}' WHERE Id={Id}");
                 }
 
             }
             else if (Modo == "agregar")
             {
-                Conexion($"INSERT INTO Accesorios (Tipo, Nombre, Precio) VALUES" +
-                        $" ('{txtNombre.Text}', '{txtTipo.Text}', {txtPrecio.Text}");
+                Conexion($"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
+                    $" VALUES ('{txtNombre.Text}', '{txtTipo.Text}', '{txtPrecio.Text}', '{txtIdVehiculo.Text}')");
             }
         }
 

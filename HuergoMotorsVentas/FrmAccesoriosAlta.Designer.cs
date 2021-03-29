@@ -42,6 +42,8 @@ namespace HuergoMotorsVentas
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtIdVehiculo = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -51,7 +53,7 @@ namespace HuergoMotorsVentas
             // btAceptar
             // 
             this.btAceptar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btAceptar.Location = new System.Drawing.Point(222, 244);
+            this.btAceptar.Location = new System.Drawing.Point(222, 268);
             this.btAceptar.Name = "btAceptar";
             this.btAceptar.Size = new System.Drawing.Size(75, 25);
             this.btAceptar.TabIndex = 15;
@@ -63,7 +65,7 @@ namespace HuergoMotorsVentas
             // 
             this.btCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btCancelar.Location = new System.Drawing.Point(312, 244);
+            this.btCancelar.Location = new System.Drawing.Point(312, 268);
             this.btCancelar.Name = "btCancelar";
             this.btCancelar.Size = new System.Drawing.Size(75, 25);
             this.btCancelar.TabIndex = 14;
@@ -160,19 +162,39 @@ namespace HuergoMotorsVentas
             // pictureBox4
             // 
             this.pictureBox4.Image = global::HuergoMotorsVentas.Properties.Resources.lineas_rojas_png_5;
-            this.pictureBox4.Location = new System.Drawing.Point(-5, 277);
+            this.pictureBox4.Location = new System.Drawing.Point(-5, 299);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(400, 30);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 23;
             this.pictureBox4.TabStop = false;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(18, 220);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(81, 13);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Modelo de auto";
+            // 
+            // txtIdVehiculo
+            // 
+            this.txtIdVehiculo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtIdVehiculo.Location = new System.Drawing.Point(125, 217);
+            this.txtIdVehiculo.Name = "txtIdVehiculo";
+            this.txtIdVehiculo.Size = new System.Drawing.Size(262, 20);
+            this.txtIdVehiculo.TabIndex = 25;
+            // 
             // frmAccesoriosAlta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(399, 309);
+            this.ClientSize = new System.Drawing.Size(399, 333);
+            this.Controls.Add(this.txtIdVehiculo);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.picLogo);
@@ -213,5 +235,7 @@ namespace HuergoMotorsVentas
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtIdVehiculo;
     }
 }
