@@ -168,5 +168,26 @@
   <ItemGroup>
     <None Include="bin\Debug\reload.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\rueda.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\auto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\clientes logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\empleado.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\car.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\client.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Debug\vendedor.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

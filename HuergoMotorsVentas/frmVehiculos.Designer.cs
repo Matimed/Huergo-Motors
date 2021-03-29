@@ -51,8 +51,7 @@
             // 
             // txFiltro
             // 
-            this.txFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txFiltro.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txFiltro.Location = new System.Drawing.Point(47, 19);
             this.txFiltro.Name = "txFiltro";
             this.txFiltro.Size = new System.Drawing.Size(463, 20);
@@ -60,6 +59,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -184,9 +184,10 @@
             // 
             // picBusqueda
             // 
+            this.picBusqueda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picBusqueda.BackColor = System.Drawing.Color.Transparent;
             this.picBusqueda.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picBusqueda.Location = new System.Drawing.Point(518, 15);
+            this.picBusqueda.Location = new System.Drawing.Point(521, 19);
             this.picBusqueda.Name = "picBusqueda";
             this.picBusqueda.Size = new System.Drawing.Size(21, 21);
             this.picBusqueda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -196,9 +197,10 @@
             // 
             // picReload
             // 
+            this.picReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picReload.BackColor = System.Drawing.Color.Transparent;
             this.picReload.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picReload.Location = new System.Drawing.Point(550, 15);
+            this.picReload.Location = new System.Drawing.Point(551, 19);
             this.picReload.Name = "picReload";
             this.picReload.Size = new System.Drawing.Size(21, 21);
             this.picReload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
