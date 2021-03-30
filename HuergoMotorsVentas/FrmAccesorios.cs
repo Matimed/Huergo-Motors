@@ -53,7 +53,7 @@ namespace HuergoMotorsVentas
                 f.CargarDatos(id);
             }
             f.ShowDialog();
-            //Solo recargo datos si se cerró con un OK.
+
             if (f.DialogResult == DialogResult.OK)
             {
                 RecargarDatos(AccesoriosSelect);
@@ -79,22 +79,20 @@ namespace HuergoMotorsVentas
                     try
                     {
                         string delete = $"DELETE FROM Accesorios Where Id={id} ";
-
-                        //Recordar: Utilizar bloques 'using'
                         using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))
                         {
                             conn.Open();
-                            SqlCommand cmd = new SqlCommand(delete, conn);
-                            int result = cmd.ExecuteNonQuery();
-                            RecargarDatos(AccesoriosSelect);
-                            MessageBox.Show($"{result} registro/s eliminados correctamente",
-                            "Eliminacion completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        };
-
+                            using (SqlCommand cmd = new SqlCommand(delete, conn))
+                            {
+                                int result = cmd.ExecuteNonQuery();
+                                RecargarDatos(AccesoriosSelect);
+                                MessageBox.Show($"{result} registro/s eliminados correctamente",
+                                "Eliminacion completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
                     }
                     catch (Exception ex)
                     {
-                        //El bloque Try-Catch me permite capturar errores (excepciones) en el código, y en este caso mostrar un mensaje.
                         MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }

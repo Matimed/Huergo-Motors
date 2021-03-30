@@ -31,20 +31,10 @@ namespace HuergoMotorsVentas
                 txtNombre.Text = string.Empty;
                 txtTipo.Text = string.Empty;
                 txtPrecio.Text = "0.00";
-                CargarCombo();
+                FormsHelper.CargarCombo(cboModelos ,"SELECT Id, Modelo FROM Vehiculos", "Modelo" , "Id");
             }
         }
-        private void CargarCombo()
-        {
-            DataTable dt = new DataTable();
-            using (SqlDataAdapter da = new SqlDataAdapter("SELECT Id, Modelo FROM Vehiculos", frmMDI.ConnectionString))
-            {
-                da.Fill(dt);
-            }
-            cboModelos.DataSource = dt;
-            cboModelos.DisplayMember = "Modelo";
-            cboModelos.ValueMember = "Id";
-        }
+        
 
         public frmAccesoriosAlta(string modo)
         {
@@ -56,7 +46,7 @@ namespace HuergoMotorsVentas
       
         internal void CargarDatos(int id)
         {
-            CargarCombo();
+            FormsHelper.CargarCombo(cboModelos, "SELECT Id, Modelo FROM Vehiculos", "Modelo", "Id");
             try
             {
                 Id = id;
