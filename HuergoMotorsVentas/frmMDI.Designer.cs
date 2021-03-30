@@ -77,28 +77,28 @@
             // vehiculosToolStripMenuItem
             // 
             this.vehiculosToolStripMenuItem.Name = "vehiculosToolStripMenuItem";
-            this.vehiculosToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.vehiculosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.vehiculosToolStripMenuItem.Text = "Vehículos";
             this.vehiculosToolStripMenuItem.Click += new System.EventHandler(this.vehiculosToolStripMenuItem_Click);
             // 
             // accesoriosToolStripMenuItem
             // 
             this.accesoriosToolStripMenuItem.Name = "accesoriosToolStripMenuItem";
-            this.accesoriosToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.accesoriosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.accesoriosToolStripMenuItem.Text = "Accesorios";
             this.accesoriosToolStripMenuItem.Click += new System.EventHandler(this.accesoriosToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // vendedoresToolStripMenuItem
             // 
             this.vendedoresToolStripMenuItem.Name = "vendedoresToolStripMenuItem";
-            this.vendedoresToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.vendedoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.vendedoresToolStripMenuItem.Text = "Vendedores";
             this.vendedoresToolStripMenuItem.Click += new System.EventHandler(this.vendedoresToolStripMenuItem_Click);
             // 
@@ -170,7 +170,7 @@
             this.btVehiculos.Size = new System.Drawing.Size(102, 36);
             this.btVehiculos.Text = "Vehículos";
             this.btVehiculos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btVehiculos.Click += new System.EventHandler(this.btVehiculos_Click);
+            this.btVehiculos.Click += new System.EventHandler(this.vehiculosToolStripMenuItem_Click);
             // 
             // btAccesorios
             // 
@@ -182,7 +182,7 @@
             this.btAccesorios.Size = new System.Drawing.Size(102, 36);
             this.btAccesorios.Text = "Accesorios";
             this.btAccesorios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btAccesorios.Click += new System.EventHandler(this.btAccesorios_Click);
+            this.btAccesorios.Click += new System.EventHandler(this.accesoriosToolStripMenuItem_Click);
             // 
             // btClientes
             // 
@@ -194,7 +194,7 @@
             this.btClientes.Size = new System.Drawing.Size(102, 36);
             this.btClientes.Text = "Clientes";
             this.btClientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btClientes.Click += new System.EventHandler(this.btClientes_Click);
+            this.btClientes.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // btVendedores
             // 
@@ -206,7 +206,7 @@
             this.btVendedores.Size = new System.Drawing.Size(102, 36);
             this.btVendedores.Text = "Vendedores";
             this.btVendedores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btVendedores.Click += new System.EventHandler(this.btVendedores_Click);
+            this.btVendedores.Click += new System.EventHandler(this.vendedoresToolStripMenuItem_Click);
             // 
             // frmMDI
             // 

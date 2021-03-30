@@ -10,9 +10,6 @@ namespace HuergoMotorsVentas
     public partial class frmVehiculos : Form
     {
         private static string VehiculosSelect = "SELECT * FROM Vehiculos";
-        
-
-
         public frmVehiculos()
         {
             InitializeComponent();
