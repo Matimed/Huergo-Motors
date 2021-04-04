@@ -15,6 +15,21 @@ namespace HuergoMotorsVentas
             agregar,
             modificar
         }
+        public static void OperacionExitosa(Modo modo, int result)
+        {
+            switch (modo)
+            {
+                case FormsHelper.Modo.agregar:
+                    MessageBox.Show($"{result} registro/s agregados correctamente",
+                    "Los registros fueron agregados exitosamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case FormsHelper.Modo.modificar:
+                    MessageBox.Show($"{result} registro/s actualizados correctamente",
+                    "Actualización completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+            }
+        }
+        // Agregar funcion para carteles de confirmacion de modificacion y agregar
         public static void CargarCombo(ComboBox combo, string query, string displaymember, string valuemember)
         {
             DataTable dt = new DataTable();
