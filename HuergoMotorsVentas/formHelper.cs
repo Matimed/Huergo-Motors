@@ -10,6 +10,11 @@ namespace HuergoMotorsVentas
 {
     public static class FormsHelper
     {
+        public enum Modo
+        {
+            agregar,
+            modificar
+        }
         public static void CargarCombo(ComboBox combo, string query, string displaymember, string valuemember)
         {
             DataTable dt = new DataTable();

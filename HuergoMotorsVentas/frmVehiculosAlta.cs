@@ -14,12 +14,13 @@ namespace HuergoMotorsVentas
     public partial class frmVehiculosAlta : Form
     {
         public int Id { get; set; } //Esto es una 'propiedad'.
-        public string Modo { get; private set; }
+        public FormsHelper.Modo Modo { get; private set; }
 
-        public frmVehiculosAlta(string modo)
+        public frmVehiculosAlta(FormsHelper.Modo modo)
         {
             InitializeComponent();
             Modo = modo;
+
         }
 
         private void frmVehiculosAlta_Load(object sender, EventArgs e)
@@ -29,7 +30,7 @@ namespace HuergoMotorsVentas
             //Saca el focus del textbox y lo pone en el label por estetica
             this.ActiveControl = label1;
 
-            if (Modo == "agregar")
+            if (Modo == FormsHelper.Modo.agregar)
             {
                 // Vaciar todos los txtbox
                 txtModelo.Text = string.Empty;
@@ -87,12 +88,12 @@ namespace HuergoMotorsVentas
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(query, conn);
                     int result = cmd.ExecuteNonQuery();
-                    if (Modo == "agregar")
+                    if (Modo == FormsHelper.Modo.agregar)
                     {
                         MessageBox.Show($"{result} registro/s agregados correctamente",
                         "Los registros fueron agregados exitosamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    else if (Modo == "modificar")
+                    else if (Modo == FormsHelper.Modo.modificar)
                     {
                         MessageBox.Show($"{result} registro/s actualizados correctamente",
                         "Actualización completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -114,7 +115,7 @@ namespace HuergoMotorsVentas
         private void btAceptar_Click(object sender, EventArgs e)
         {
 
-            if (Modo == "modificar")
+            if (Modo == FormsHelper.Modo.modificar)
             {
                 DialogResult resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
                                  "Sobresctibir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -125,16 +126,12 @@ namespace HuergoMotorsVentas
                 }
 
             }
-            else if (Modo == "agregar")
+            else if (Modo == FormsHelper.Modo.agregar)
             {
                 Conexion($"INSERT INTO Vehiculos (Tipo, Modelo, PrecioVenta, Stock) " +
                     $"VALUES ('{txtTipo.Text}', '{txtModelo.Text}', {txtPrecio.Text}, {txtStock.Text})");
             }
         }
-
-        private void txtTipo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
+

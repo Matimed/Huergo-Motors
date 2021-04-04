@@ -37,7 +37,8 @@ namespace HuergoMotorsVentas
         {
             if (gv.SelectedRows.Count == 1)
             {
-                CargarABM("modificar");
+                 FormsHelper.Modo modo = FormsHelper.Modo.modificar; 
+                CargarABM(modo);
             }
             else
             {
@@ -46,11 +47,11 @@ namespace HuergoMotorsVentas
             }
         }
 
-        private void CargarABM(string modo)
+        private void CargarABM(FormsHelper.Modo modo)
         {
 
             frmVehiculosAlta f = new frmVehiculosAlta(modo);
-            if (modo == "modificar")
+            if (modo == FormsHelper.Modo.modificar)
             {
                 object item = gv.SelectedRows[0].DataBoundItem;
                 int id = (int)((DataRowView)item)["Id"];
@@ -66,7 +67,7 @@ namespace HuergoMotorsVentas
 
         private void btNuevo_Click(object sender, EventArgs e)
         {
-            CargarABM("agregar");
+            CargarABM(FormsHelper.Modo.agregar);
         }
 
         private void btEliminar_Click(object sender, EventArgs e)

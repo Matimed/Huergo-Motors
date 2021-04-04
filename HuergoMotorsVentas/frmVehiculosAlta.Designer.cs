@@ -66,7 +66,6 @@
             this.txtTipo.Name = "txtTipo";
             this.txtTipo.Size = new System.Drawing.Size(240, 20);
             this.txtTipo.TabIndex = 1;
-            this.txtTipo.TextChanged += new System.EventHandler(this.txtTipo_TextChanged);
             // 
             // txtModelo
             // 
