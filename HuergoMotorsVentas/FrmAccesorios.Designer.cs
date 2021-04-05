@@ -151,7 +151,7 @@ namespace HuergoMotorsVentas
             this.picboxB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picboxB.BackColor = System.Drawing.Color.Transparent;
             this.picboxB.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picboxB.Image = global::HuergoMotorsVentas.Properties.Resources.lupa;
+            this.picboxB.Image = global::HuergoMotorsVentas.Properties.Resources.Busqueda;
             this.picboxB.Location = new System.Drawing.Point(520, 16);
             this.picboxB.Name = "picboxB";
             this.picboxB.Size = new System.Drawing.Size(21, 21);
@@ -165,7 +165,7 @@ namespace HuergoMotorsVentas
             this.picboxR.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picboxR.BackColor = System.Drawing.Color.Transparent;
             this.picboxR.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picboxR.Image = global::HuergoMotorsVentas.Properties.Resources.reload;
+            this.picboxR.Image = global::HuergoMotorsVentas.Properties.Resources.Reload;
             this.picboxR.Location = new System.Drawing.Point(553, 16);
             this.picboxR.Name = "picboxR";
             this.picboxR.Size = new System.Drawing.Size(21, 21);
@@ -226,7 +226,7 @@ namespace HuergoMotorsVentas
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::HuergoMotorsVentas.Properties.Resources.fondo_rojo;
+            this.BackgroundImage = global::HuergoMotorsVentas.Properties.Resources.Fondo_blanco;
             this.ClientSize = new System.Drawing.Size(584, 461);
             this.Controls.Add(this.picboxR);
             this.Controls.Add(this.picboxB);

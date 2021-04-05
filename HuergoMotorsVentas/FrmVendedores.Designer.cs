@@ -177,6 +177,7 @@ namespace HuergoMotorsVentas
             this.picBusqueda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picBusqueda.BackColor = System.Drawing.Color.Transparent;
             this.picBusqueda.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picBusqueda.Image = global::HuergoMotorsVentas.Properties.Resources.Busqueda;
             this.picBusqueda.Location = new System.Drawing.Point(524, 17);
             this.picBusqueda.Name = "picBusqueda";
             this.picBusqueda.Size = new System.Drawing.Size(21, 21);
@@ -190,6 +191,7 @@ namespace HuergoMotorsVentas
             this.picReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picReload.BackColor = System.Drawing.Color.Transparent;
             this.picReload.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picReload.Image = global::HuergoMotorsVentas.Properties.Resources.Reload;
             this.picReload.Location = new System.Drawing.Point(551, 17);
             this.picReload.Name = "picReload";
             this.picReload.Size = new System.Drawing.Size(21, 21);
@@ -203,7 +205,7 @@ namespace HuergoMotorsVentas
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::HuergoMotorsVentas.Properties.Resources.fondo_rojo;
+            this.BackgroundImage = global::HuergoMotorsVentas.Properties.Resources.Fondo_blanco;
             this.ClientSize = new System.Drawing.Size(584, 461);
             this.Controls.Add(this.picReload);
             this.Controls.Add(this.picBusqueda);

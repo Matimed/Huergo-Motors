@@ -24,8 +24,6 @@ namespace HuergoMotorsVentas
  
         private void frmVendedoresAlta_Load(object sender, EventArgs e)
         {
-            picLogo.Image = Image.FromFile("CapturaHuergoMotors.png");
-
             //Saca el focus del textbox y lo pone en el label por estetica
             this.ActiveControl = LabelApellido;
 

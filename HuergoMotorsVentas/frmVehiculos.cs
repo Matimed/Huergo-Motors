@@ -19,8 +19,6 @@ namespace HuergoMotorsVentas
         {
             gv.AutoGenerateColumns = false;
             RecargarDatos(VehiculosSelect);
-            picBusqueda.Image = Image.FromFile("lupa.png");
-            picReload.Image = Image.FromFile("reload.png");
         }
 
         private void RecargarDatos(string query)

@@ -63,9 +63,9 @@ namespace HuergoMotorsVentas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap auto {
+        internal static System.Drawing.Bitmap Accesorios {
             get {
-                object obj = ResourceManager.GetObject("auto", resourceCulture);
+                object obj = ResourceManager.GetObject("Accesorios", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace HuergoMotorsVentas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap CapturaHuergoMotors {
+        internal static System.Drawing.Bitmap Busqueda {
             get {
-                object obj = ResourceManager.GetObject("CapturaHuergoMotors", resourceCulture);
+                object obj = ResourceManager.GetObject("Busqueda", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace HuergoMotorsVentas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap car {
+        internal static System.Drawing.Bitmap Clientes {
             get {
-                object obj = ResourceManager.GetObject("car", resourceCulture);
+                object obj = ResourceManager.GetObject("Clientes", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace HuergoMotorsVentas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap client {
+        internal static System.Drawing.Bitmap Fondo_blanco {
             get {
-                object obj = ResourceManager.GetObject("client", resourceCulture);
+                object obj = ResourceManager.GetObject("Fondo blanco", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace HuergoMotorsVentas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap clientes_logo {
+        internal static System.Drawing.Bitmap HuergoMotors_Logo {
             get {
-                object obj = ResourceManager.GetObject("clientes logo", resourceCulture);
+                object obj = ResourceManager.GetObject("HuergoMotors Logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace HuergoMotorsVentas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap empleado {
+        internal static System.Drawing.Bitmap Linea_roja {
             get {
-                object obj = ResourceManager.GetObject("empleado", resourceCulture);
+                object obj = ResourceManager.GetObject("Linea roja", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace HuergoMotorsVentas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap fondo_rojo {
+        internal static System.Drawing.Bitmap Reload {
             get {
-                object obj = ResourceManager.GetObject("fondo rojo", resourceCulture);
+                object obj = ResourceManager.GetObject("Reload", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,9 @@ namespace HuergoMotorsVentas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap lineas_rojas_png_5 {
+        internal static System.Drawing.Bitmap Vehiculos {
             get {
-                object obj = ResourceManager.GetObject("lineas-rojas-png-5", resourceCulture);
+                object obj = ResourceManager.GetObject("Vehiculos", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,79 +143,9 @@ namespace HuergoMotorsVentas.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap lupa {
+        internal static System.Drawing.Bitmap Vendedores {
             get {
-                object obj = ResourceManager.GetObject("lupa", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap reload {
-            get {
-                object obj = ResourceManager.GetObject("reload", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap rombo_rojo {
-            get {
-                object obj = ResourceManager.GetObject("rombo rojo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap rombos_rojos {
-            get {
-                object obj = ResourceManager.GetObject("rombos rojos", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap rombos_rojos1 {
-            get {
-                object obj = ResourceManager.GetObject("rombos rojos1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap rueda {
-            get {
-                object obj = ResourceManager.GetObject("rueda", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap rueda1 {
-            get {
-                object obj = ResourceManager.GetObject("rueda1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap vendedor {
-            get {
-                object obj = ResourceManager.GetObject("vendedor", resourceCulture);
+                object obj = ResourceManager.GetObject("Vendedores", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

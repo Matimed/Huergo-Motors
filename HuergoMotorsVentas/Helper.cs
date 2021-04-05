@@ -33,7 +33,7 @@ namespace HuergoMotorsVentas
         public static DialogResult ConfirmacionModificacion()
         {
                 DialogResult resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
-                                 "Sobresctibir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                 "Sobrescribir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 return resp;
         }
         public static void CargarCombo(ComboBox combo, string query, string displaymember, string valuemember)

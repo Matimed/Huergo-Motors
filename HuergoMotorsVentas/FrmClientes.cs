@@ -58,8 +58,6 @@ namespace HuergoMotorsVentas
         {
             gv.AutoGenerateColumns = false;
             RecargarDatos(ClientesSelect);
-            picBoxlupa.Image = Image.FromFile("lupa.png");
-            picboxReload.Image = Image.FromFile("reload.png");
         }
 
         private void btCerrar_Click(object sender, EventArgs e)
