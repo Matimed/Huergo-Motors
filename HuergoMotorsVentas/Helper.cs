@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace HuergoMotorsVentas
 {
-    public static class FormsHelper
+    public static class Helper
     {
         public enum Modo
         {
@@ -19,11 +19,11 @@ namespace HuergoMotorsVentas
         {
             switch (modo)
             {
-                case FormsHelper.Modo.agregar:
+                case Modo.agregar:
                     MessageBox.Show($"{result} registro/s agregados correctamente",
                     "Los registros fueron agregados exitosamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
-                case FormsHelper.Modo.modificar:
+                case Modo.modificar:
                     MessageBox.Show($"{result} registro/s actualizados correctamente",
                     "Actualización completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;

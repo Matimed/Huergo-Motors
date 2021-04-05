@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="formHelper.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="frmAccesorios.cs">
       <SubType>Form</SubType>
     </Compile>

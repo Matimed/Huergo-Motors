@@ -14,7 +14,7 @@ namespace HuergoMotorsVentas
     public partial class frmAccesoriosAlta : Form
     {
         public int Id { get; set; } //Esto es una 'propiedad'.
-        public FormsHelper.Modo Modo { get; private set; }
+        public Helper.Modo Modo { get; private set; }
 
         private void frmVehiculosAlta_Load(object sender, EventArgs e)
         {
@@ -26,17 +26,17 @@ namespace HuergoMotorsVentas
             //Cargar el ComboBox
            
 
-            if (Modo == FormsHelper.Modo.agregar)
+            if (Modo == Helper.Modo.agregar)
             {
                 txtNombre.Text = string.Empty;
                 txtTipo.Text = string.Empty;
                 txtPrecio.Text = "0.00";
-                FormsHelper.CargarCombo(cboModelos ,"SELECT Id, Modelo FROM Vehiculos", "Modelo" , "Id");
+                Helper.CargarCombo(cboModelos ,"SELECT Id, Modelo FROM Vehiculos", "Modelo" , "Id");
             }
         }
         
 
-        public frmAccesoriosAlta(FormsHelper.Modo modo)
+        public frmAccesoriosAlta(Helper.Modo modo)
         {
             InitializeComponent(); 
             Modo = modo;
@@ -46,7 +46,7 @@ namespace HuergoMotorsVentas
       
         internal void CargarDatos(int id)
         {
-            FormsHelper.CargarCombo(cboModelos, "SELECT Id, Modelo FROM Vehiculos", "Modelo", "Id");
+            Helper.CargarCombo(cboModelos, "SELECT Id, Modelo FROM Vehiculos", "Modelo", "Id");
             try
             {
                 Id = id;
@@ -96,7 +96,7 @@ namespace HuergoMotorsVentas
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(query, conn);
                     int result = cmd.ExecuteNonQuery();
-                    FormsHelper.OperacionExitosa(Modo, result);
+                    Helper.OperacionExitosa(Modo, result);
                 };
                 this.DialogResult = DialogResult.OK;
             }
@@ -114,7 +114,7 @@ namespace HuergoMotorsVentas
         private void btAceptar_Click(object sender, EventArgs e)
         {
             int idVehiculo = (int)(cboModelos.SelectedValue);
-            if (Modo == FormsHelper.Modo.modificar)
+            if (Modo == Helper.Modo.modificar)
             {
                 DialogResult resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
                                  "Sobrescribir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -124,7 +124,7 @@ namespace HuergoMotorsVentas
                 }
 
             }
-            else if (Modo == FormsHelper.Modo.agregar)
+            else if (Modo == Helper.Modo.agregar)
             {
                 Conexion($"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
                     $" VALUES ('{txtNombre.Text}', '{txtTipo.Text}', '{txtPrecio.Text}', '{idVehiculo}')");
