@@ -19,22 +19,11 @@ namespace HuergoMotorsVentas
             InitializeComponent();
         }
 
-       
-        private void RecargarDatos(string query)
-        {
-            DataTable dt = new DataTable();
-            using (SqlDataAdapter da = new SqlDataAdapter(query, frmMDI.ConnectionString))
-            {
-                da.Fill(dt);
-            }
-            gv.DataSource = dt;
-        }
-
         private void btModificar_Click(object sender, EventArgs e)
         {
             if (gv.SelectedRows.Count == 1)
             {
-                CargarABM(Helper.Modo.modificar);
+                CargarABM(Helper.Modo.Modificar);
             }
             else
             {
@@ -46,7 +35,7 @@ namespace HuergoMotorsVentas
         {
 
             frmAccesoriosAlta f = new frmAccesoriosAlta(modo);
-            if (modo == Helper.Modo.modificar)
+            if (modo == Helper.Modo.Modificar)
             {
                 object item = gv.SelectedRows[0].DataBoundItem;
                 int id = (int)((DataRowView)item)["Id"];
@@ -56,13 +45,13 @@ namespace HuergoMotorsVentas
 
             if (f.DialogResult == DialogResult.OK)
             {
-                RecargarDatos(AccesoriosSelect);
+                gv.DataSource = Helper.CargarDataTable(AccesoriosSelect);
             }
         }
 
         private void btNuevo_Click(object sender, EventArgs e)
         {
-            CargarABM(Helper.Modo.agregar);
+            CargarABM(Helper.Modo.Agregar);
         }
 
         private void btEliminar_Click(object sender, EventArgs e)
@@ -85,7 +74,7 @@ namespace HuergoMotorsVentas
                             using (SqlCommand cmd = new SqlCommand(delete, conn))
                             {
                                 int result = cmd.ExecuteNonQuery();
-                                RecargarDatos(AccesoriosSelect);
+                                gv.DataSource = Helper.CargarDataTable(AccesoriosSelect);
                                 MessageBox.Show($"{result} registro/s eliminados correctamente",
                                 "Eliminacion completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
@@ -113,7 +102,7 @@ namespace HuergoMotorsVentas
         private void frmAccesorios_Load(object sender, EventArgs e)
         {
             gv.AutoGenerateColumns = false;
-            RecargarDatos(AccesoriosSelect);
+            gv.DataSource = Helper.CargarDataTable(AccesoriosSelect);
         }
 
         private void picBusqueda_Click(object sender, EventArgs e)
@@ -122,13 +111,13 @@ namespace HuergoMotorsVentas
                     $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id " +
                     $"WHERE a.Tipo LIKE '%{txFiltro.Text}%' or a.Nombre LIKE '%{txFiltro.Text}%' or a.Precio " +
                     $"LIKE '%{txFiltro.Text}%' or b.Modelo LIKE '%{txFiltro.Text}%'";
-            RecargarDatos(filtro);
+            gv.DataSource = Helper.CargarDataTable(filtro);
             txFiltro.Text = "";
         }
 
         private void picReload_Click(object sender, EventArgs e)
         {
-            RecargarDatos(AccesoriosSelect);
+            gv.DataSource = Helper.CargarDataTable(AccesoriosSelect);
             txFiltro.Text = "";
         }
     }

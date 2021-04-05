@@ -27,7 +27,7 @@ namespace HuergoMotorsVentas
             //Saca el focus del textbox y lo pone en el label por estetica
             this.ActiveControl = labelTelefono;
 
-            if (Modo == Helper.Modo.agregar)
+            if (Modo == Helper.Modo.Agregar)
             {
                 txtNombre.Text = string.Empty;
                 txtDireccion.Text = string.Empty;
@@ -38,61 +38,31 @@ namespace HuergoMotorsVentas
         }
         internal void CargarDatos(int id)
         {
-            try
-            {
-                Id = id;
-                string query = $"SELECT * FROM Clientes WHERE Id={id}";
+            Id = id;
+            string query = $"SELECT * FROM Clientes WHERE Id={id}";
 
-                DataTable dt = new DataTable();
-                using (SqlDataAdapter da = new SqlDataAdapter(query, frmMDI.ConnectionString))
-                {
-                    da.Fill(dt);
-                }
+            DataTable dt = Helper.CargarDataTable(query);
 
-                string nombre = string.Empty;
-                string direccion = string.Empty;
-                string email = string.Empty;
-                string telefono = string.Empty;
+            string nombre = string.Empty;
+            string direccion = string.Empty;
+            string email = string.Empty;
+            string telefono = string.Empty;
 
-                if (!dt.Rows[0].IsNull("Nombre")) nombre = (string)dt.Rows[0]["Nombre"];
-                if (!dt.Rows[0].IsNull("Direccion")) direccion = (string)dt.Rows[0]["Direccion"];
-                if (!dt.Rows[0].IsNull("Email")) email = (string)dt.Rows[0]["Email"];
-                if (!dt.Rows[0].IsNull("Telefono")) telefono = (string)dt.Rows[0]["Telefono"];
+            if (!dt.Rows[0].IsNull("Nombre")) nombre = (string)dt.Rows[0]["Nombre"];
+            if (!dt.Rows[0].IsNull("Direccion")) direccion = (string)dt.Rows[0]["Direccion"];
+            if (!dt.Rows[0].IsNull("Email")) email = (string)dt.Rows[0]["Email"];
+            if (!dt.Rows[0].IsNull("Telefono")) telefono = (string)dt.Rows[0]["Telefono"];
 
-                //Escribe el número con puntos en lugar de comas para no dar error en la DB
-                NumberFormatInfo nfi = new NumberFormatInfo();
-                nfi.NumberDecimalSeparator = ".";
+            //Escribe el número con puntos en lugar de comas para no dar error en la DB
+            NumberFormatInfo nfi = new NumberFormatInfo();
+            nfi.NumberDecimalSeparator = ".";
 
-                txtEmail.Text = email;
-                txtNombre.Text = nombre;
-                txtDireccion.Text = direccion;
-                txtTelefono.Text = telefono;
-            }
-            catch (Exception ex)
-            {
-                //El bloque Try-Catch me permite capturar errores (excepciones) en el código, y en este caso mostrar un mensaje.
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            txtEmail.Text = email;
+            txtNombre.Text = nombre;
+            txtDireccion.Text = direccion;
+            txtTelefono.Text = telefono;
         }
-        private void Conexion(string query)
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    int result = cmd.ExecuteNonQuery();
-                    Helper.OperacionExitosa(Modo, result);
-                };
-                this.DialogResult = DialogResult.OK;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+       
         private void btCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
@@ -102,15 +72,15 @@ namespace HuergoMotorsVentas
         {
             switch (Modo)
             {
-                case Helper.Modo.modificar:
+                case Helper.Modo.Modificar:
                     if (Helper.ConfirmacionModificacion() == DialogResult.Yes)
                     {
-                        Conexion($"UPDATE Clientes SET Nombre='{txtNombre.Text}', Direccion='{txtDireccion.Text}', " +
+                        Helper.Conexion(this, Modo, $"UPDATE Clientes SET Nombre='{txtNombre.Text}', Direccion='{txtDireccion.Text}', " +
                             $"Email='{txtEmail.Text}', Telefono='{txtTelefono.Text}' WHERE Id={Id}");
                     }
                     break;
-                case Helper.Modo.agregar:
-                    Conexion($"INSERT INTO Clientes (Nombre, Direccion, Email, Telefono) " +
+                case Helper.Modo.Agregar:
+                    Helper.Conexion(this, Modo, $"INSERT INTO Clientes (Nombre, Direccion, Email, Telefono) " +
                     $"VALUES ('{txtNombre.Text}', '{txtDireccion.Text}', '{txtEmail.Text}', '{txtTelefono.Text}')");
                     break;
             }

@@ -27,7 +27,7 @@ namespace HuergoMotorsVentas
             //Saca el focus del textbox y lo pone en el label por estetica
             this.ActiveControl = LabelApellido;
 
-            if (Modo == Helper.Modo.agregar)
+            if (Modo == Helper.Modo.Agregar)
             {
                 txtNombre.Text = string.Empty;
                 txtApellido.Text = string.Empty;
@@ -37,79 +37,46 @@ namespace HuergoMotorsVentas
         }
         internal void CargarDatos(int id)
         {
-            try
-            {
-                Id = id;
-                string query = $"SELECT * FROM Vendedores WHERE Id={id}";
+            Id = id;
+            string query = $"SELECT * FROM Vendedores WHERE Id={id}";
 
-                DataTable dt = new DataTable();
-                using (SqlDataAdapter da = new SqlDataAdapter(query, frmMDI.ConnectionString))
-                {
-                    da.Fill(dt);
-                }
+            DataTable dt = Helper.CargarDataTable(query);
 
-                string nombre = string.Empty;
-                string apellido = string.Empty;
-                string sucursal = string.Empty;
+            string nombre = string.Empty;
+            string apellido = string.Empty;
+            string sucursal = string.Empty;
 
+            if (!dt.Rows[0].IsNull("Nombre")) nombre = (string)dt.Rows[0]["Nombre"];
+            if (!dt.Rows[0].IsNull("Apellido")) apellido = (string)dt.Rows[0]["Apellido"];
+            if (!dt.Rows[0].IsNull("Sucursal")) sucursal = (string)dt.Rows[0]["Sucursal"];
 
-                if (!dt.Rows[0].IsNull("Nombre")) nombre = (string)dt.Rows[0]["Nombre"];
-                if (!dt.Rows[0].IsNull("Apellido")) apellido = (string)dt.Rows[0]["Apellido"];
-                if (!dt.Rows[0].IsNull("Sucursal")) sucursal = (string)dt.Rows[0]["Sucursal"];
-                
+            //Escribe el número con puntos en lugar de comas para no dar error en la DB
+            NumberFormatInfo nfi = new NumberFormatInfo();
+            nfi.NumberDecimalSeparator = ".";
 
-                //Escribe el número con puntos en lugar de comas para no dar error en la DB
-                NumberFormatInfo nfi = new NumberFormatInfo();
-                nfi.NumberDecimalSeparator = ".";
-
-                txtSucursal.Text = sucursal;
-                txtNombre.Text = nombre;
-                txtApellido.Text = apellido;
-              
-            }
-            catch (Exception ex)
-            {
-                //El bloque Try-Catch me permite capturar errores (excepciones) en el código, y en este caso mostrar un mensaje.
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            txtSucursal.Text = sucursal;
+            txtNombre.Text = nombre;
+            txtApellido.Text = apellido;
         }
-        private void Conexion(string query)
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    int result = cmd.ExecuteNonQuery();
-                    Helper.OperacionExitosa(Modo, result);
-                };
-                this.DialogResult = DialogResult.OK;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
+     
         private void btCancelar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
         }
 
         private void btAceptar_Click(object sender, EventArgs e)
         {
             switch (Modo)
             {
-                case Helper.Modo.modificar:
+                case Helper.Modo.Modificar:
                     if (Helper.ConfirmacionModificacion() == DialogResult.Yes)
                     {
-                        Conexion($"UPDATE Vendedores SET Nombre='{txtNombre.Text}', " +
+                        Helper.Conexion(this, Modo, $"UPDATE Vendedores SET Nombre='{txtNombre.Text}', " +
                             $"Apellido='{txtApellido.Text}', Sucursal='{txtSucursal.Text}' WHERE Id={Id}");
                     }
                     break;
-                case Helper.Modo.agregar:
-                    Conexion($"INSERT INTO Vendedores (Nombre, Apellido, Sucursal) VALUES" +
+                case Helper.Modo.Agregar:
+                    Helper.Conexion(this, Modo, $"INSERT INTO Vendedores (Nombre, Apellido, Sucursal) VALUES" +
                         $" ('{txtNombre.Text}', '{txtApellido.Text}', '{txtSucursal.Text}')");
                     break;
             }

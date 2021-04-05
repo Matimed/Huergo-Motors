@@ -24,7 +24,7 @@ namespace HuergoMotorsVentas
             //Cargar el ComboBox
            
 
-            if (Modo == Helper.Modo.agregar)
+            if (Modo == Helper.Modo.Agregar)
             {
                 txtNombre.Text = string.Empty;
                 txtTipo.Text = string.Empty;
@@ -40,68 +40,40 @@ namespace HuergoMotorsVentas
             Modo = modo;
         }
 
-       
-      
+
+
         internal void CargarDatos(int id)
         {
             Helper.CargarCombo(cboModelos, "SELECT Id, Modelo FROM Vehiculos", "Modelo", "Id");
-            try
-            {
-                Id = id;
-                string query = $"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
-                    $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id WHERE a.Id={id}";
 
-                DataTable dt = new DataTable();
-                using (SqlDataAdapter da = new SqlDataAdapter(query, frmMDI.ConnectionString))
-                {
-                    da.Fill(dt);
-                }
+            Id = id;
+            string query = $"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
+                $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id WHERE a.Id={id}";
 
-                string tipo = string.Empty;
-                string nombre = string.Empty;
-                decimal precio = 0;
-                string modelo = string.Empty ;
-                
+            DataTable dt = Helper.CargarDataTable(query);
 
-                if (!dt.Rows[0].IsNull("Tipo")) tipo = (string)dt.Rows[0]["Tipo"];
-                if (!dt.Rows[0].IsNull("Nombre")) nombre = (string)dt.Rows[0]["Nombre"];
-                if (!dt.Rows[0].IsNull("Precio")) precio = (decimal)dt.Rows[0]["Precio"];
-                if (!dt.Rows[0].IsNull("Modelo")) modelo = (string)dt.Rows[0]["Modelo"];
+            string tipo = string.Empty;
+            string nombre = string.Empty;
+            decimal precio = 0;
+            string modelo = string.Empty;
 
 
-                //Escribe el número con puntos en lugar de comas para no dar error en la DB
-                NumberFormatInfo nfi = new NumberFormatInfo();
-                nfi.NumberDecimalSeparator = ".";
+            if (!dt.Rows[0].IsNull("Tipo")) tipo = (string)dt.Rows[0]["Tipo"];
+            if (!dt.Rows[0].IsNull("Nombre")) nombre = (string)dt.Rows[0]["Nombre"];
+            if (!dt.Rows[0].IsNull("Precio")) precio = (decimal)dt.Rows[0]["Precio"];
+            if (!dt.Rows[0].IsNull("Modelo")) modelo = (string)dt.Rows[0]["Modelo"];
 
-                txtPrecio.Text = precio.ToString(nfi);
-                txtTipo.Text = tipo;
-                txtNombre.Text = nombre;
-                int index = cboModelos.FindString(modelo);
-                cboModelos.SelectedIndex = index;
-            }
-            catch (Exception ex)
-            {
-                //El bloque Try-Catch me permite capturar errores (excepciones) en el código, y en este caso mostrar un mensaje.
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void Conexion(string query)
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    int result = cmd.ExecuteNonQuery();
-                    Helper.OperacionExitosa(Modo, result);
-                };
-                this.DialogResult = DialogResult.OK;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
+            //Escribe el número con puntos en lugar de comas para no dar error en la DB
+            NumberFormatInfo nfi = new NumberFormatInfo();
+            nfi.NumberDecimalSeparator = ".";
+
+            txtPrecio.Text = precio.ToString(nfi);
+            txtTipo.Text = tipo;
+            txtNombre.Text = nombre;
+            int index = cboModelos.FindString(modelo);
+            cboModelos.SelectedIndex = index;
+        
         }
 
         private void btCancelar_Click(object sender, EventArgs e)
@@ -114,15 +86,15 @@ namespace HuergoMotorsVentas
             int idVehiculo = (int)(cboModelos.SelectedValue);
             switch (Modo)
             {
-                case Helper.Modo.modificar:
+                case Helper.Modo.Modificar:
                     if (Helper.ConfirmacionModificacion() == DialogResult.Yes)
                     {
-                        Conexion($"UPDATE Accesorios SET Nombre='{txtNombre.Text}', Tipo='{txtTipo.Text}'," +
+                        Helper.Conexion(this, Modo, $"UPDATE Accesorios SET Nombre='{txtNombre.Text}', Tipo='{txtTipo.Text}'," +
                             $" Precio='{txtPrecio.Text}', IdVehiculo= '{idVehiculo}' WHERE Id={Id}");
                     }
                     break;
-                case Helper.Modo.agregar:
-                    Conexion($"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
+                case Helper.Modo.Agregar:
+                    Helper.Conexion(this, Modo, $"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
                     $" VALUES ('{txtNombre.Text}', '{txtTipo.Text}', '{txtPrecio.Text}', '{idVehiculo}')");
                     break;
             }
