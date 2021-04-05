@@ -123,7 +123,6 @@ namespace HuergoMotorsVentas
             this.txtSucursal.Name = "txtSucursal";
             this.txtSucursal.Size = new System.Drawing.Size(239, 20);
             this.txtSucursal.TabIndex = 8;
-            this.txtSucursal.TextChanged += new System.EventHandler(this.txPrecio_TextChanged);
             // 
             // picLogo
             // 

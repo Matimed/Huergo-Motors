@@ -14,18 +14,14 @@ namespace HuergoMotorsVentas
     public partial class frmVendedoresAlta : Form
     {
         public int Id { get; set; } //Esto es una 'propiedad'.
-        public string Modo { get; private set; }
-        public frmVendedoresAlta(string modo)
+        public Helper.Modo Modo { get; private set; }
+        public frmVendedoresAlta(Helper.Modo modo)
         {
             InitializeComponent();
             Modo = modo;
         }
 
-        private void txPrecio_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+ 
         private void frmVendedoresAlta_Load(object sender, EventArgs e)
         {
             picLogo.Image = Image.FromFile("CapturaHuergoMotors.png");
@@ -33,7 +29,7 @@ namespace HuergoMotorsVentas
             //Saca el focus del textbox y lo pone en el label por estetica
             this.ActiveControl = LabelApellido;
 
-            if (Modo == "agregar")
+            if (Modo == Helper.Modo.agregar)
             {
                 txtNombre.Text = string.Empty;
                 txtApellido.Text = string.Empty;
@@ -88,16 +84,7 @@ namespace HuergoMotorsVentas
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(query, conn);
                     int result = cmd.ExecuteNonQuery();
-                    if (Modo == "agregar")
-                    {
-                        MessageBox.Show($"{result} registro/s agregados correctamente",
-                        "Los registros fueron agregados exitosamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else if (Modo == "modificar")
-                    {
-                        MessageBox.Show($"{result} registro/s actualizados correctamente",
-                        "Actualización completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    Helper.OperacionExitosa(Modo, result);
                 };
                 this.DialogResult = DialogResult.OK;
             }
@@ -115,7 +102,7 @@ namespace HuergoMotorsVentas
         private void btAceptar_Click(object sender, EventArgs e)
         {
 
-            if (Modo == "modificar")
+            if (Modo == Helper.Modo.modificar)
             {
                 DialogResult resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
                                  "Sobresctibir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -125,7 +112,7 @@ namespace HuergoMotorsVentas
                 }
 
             }
-            else if (Modo == "agregar")
+            else if (Modo == Helper.Modo.agregar)
             {
                 Conexion($"INSERT INTO Vendedores (Nombre, Apellido, Sucursal) VALUES" +
                         $" ('{txtNombre.Text}', '{txtApellido.Text}', '{txtSucursal.Text}')");
