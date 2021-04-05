@@ -62,27 +62,9 @@ namespace HuergoMotorsVentas
                     "Eliminar permanentemente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (resp == DialogResult.Yes)
                 {
-                    try
-                    {
-                        string delete = $"DELETE FROM Vendedores Where Id={id} ";
 
-                        //Recordar: Utilizar bloques 'using'
-                        using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))
-                        {
-                            conn.Open();
-                            SqlCommand cmd = new SqlCommand(delete, conn);
-                            int result = cmd.ExecuteNonQuery();
-                            gv.DataSource = Helper.CargarDataTable(VendedoresSelect);
-                            MessageBox.Show($"{result} registro/s eliminados correctamente",
-                            "Eliminacion completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        };
-
-                    }
-                    catch (Exception ex)
-                    {
-                        //El bloque Try-Catch me permite capturar errores (excepciones) en el código, y en este caso mostrar un mensaje.
-                        MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    Helper.Conexion(this, Helper.Modo.Eliminar, $"DELETE FROM Vendedores Where Id={id} ");
+                    gv.DataSource = Helper.CargarDataTable(VendedoresSelect);
                 }
             }
             else

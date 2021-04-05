@@ -65,25 +65,8 @@ namespace HuergoMotorsVentas
                     "Eliminar permanentemente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (resp == DialogResult.Yes)
                 {
-                    try
-                    {
-                        string delete = $"DELETE FROM Accesorios Where Id={id} ";
-                        using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))
-                        {
-                            conn.Open();
-                            using (SqlCommand cmd = new SqlCommand(delete, conn))
-                            {
-                                int result = cmd.ExecuteNonQuery();
-                                gv.DataSource = Helper.CargarDataTable(AccesoriosSelect);
-                                MessageBox.Show($"{result} registro/s eliminados correctamente",
-                                "Eliminacion completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    Helper.Conexion(this, Helper.Modo.Eliminar, $"DELETE FROM Accesorios Where Id={id} ");
+                    gv.DataSource = Helper.CargarDataTable(AccesoriosSelect);
                 }
             }
             else

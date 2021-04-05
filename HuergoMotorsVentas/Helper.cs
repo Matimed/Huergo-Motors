@@ -13,7 +13,8 @@ namespace HuergoMotorsVentas
         public enum Modo
         {
             Agregar,
-            Modificar
+            Modificar,
+            Eliminar
         }
 
         public static void OperacionExitosa(Modo modo, int result)
@@ -24,9 +25,15 @@ namespace HuergoMotorsVentas
                     MessageBox.Show($"{result} registro/s agregados correctamente",
                     "Los registros fueron agregados exitosamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
+
                 case Modo.Modificar:
                     MessageBox.Show($"{result} registro/s actualizados correctamente",
                     "Actualización completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+
+                case Modo.Eliminar:
+                    MessageBox.Show($"{result} registro/s eliminados correctamente",
+                    "Eliminacion completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
             }
         }
@@ -45,7 +52,7 @@ namespace HuergoMotorsVentas
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al intentar realizar la conexión con la base de datos", ex);
+                throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
             }
         }
         public static DataTable CargarDataTable(string query)
