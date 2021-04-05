@@ -77,6 +77,32 @@ namespace HuergoMotorsVentas
                                  "Sobrescribir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 return resp;
         }
+        public static DialogResult ConfirmacionEliminación(string nombre, string apellido)
+        {
+            DialogResult resp = MessageBox.Show("Seguro que desea borrar a " + nombre +" " + apellido + "? Esta operacion no se puede revertir",
+                     "Eliminar permanentemente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            return resp;
+        }
+
+        //Funcion CargarABM en desarrollo(con errores) :
+
+
+        //public static void CargarABM(Form form, DataGridView gv, Modo modo, string select)
+        //{
+        //    Form f = new frmAccesoriosAlta(modo);
+        //    if (modo == Modo.Modificar)
+        //    {
+        //        object item = gv.SelectedRows[0].DataBoundItem;
+        //        int id = (int)((DataRowView)item)["Id"];
+        //        f.CargarDatos(id);
+        //    }
+        //    form.ShowDialog();
+
+        //    if (form.DialogResult == DialogResult.OK)
+        //    {
+        //        gv.DataSource = CargarDataTable(select);
+        //    }
+        //}
 
         public static void CargarCombo(ComboBox combo, string query, string displaymember, string valuemember)
         {

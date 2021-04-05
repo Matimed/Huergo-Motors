@@ -49,6 +49,7 @@ namespace HuergoMotorsVentas
             }
         }
 
+
         private void btNuevo_Click(object sender, EventArgs e)
         {
             CargarABM(Helper.Modo.Agregar);
