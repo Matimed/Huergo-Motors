@@ -37,6 +37,7 @@ namespace HuergoMotorsVentas
                     break;
             }
         }
+
         public static void Conexion(Form form, Modo modo, string query)
         {
             try
@@ -55,6 +56,7 @@ namespace HuergoMotorsVentas
                 throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
             }
         }
+
         public static DataTable CargarDataTable(string query)
         {
             try
@@ -71,12 +73,15 @@ namespace HuergoMotorsVentas
                 throw new Exception("Error al cargar los datos desde la base de datos", ex);
             }
         }
+
+       
         public static DialogResult ConfirmacionModificacion()
         {
                 DialogResult resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
                                  "Sobrescribir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 return resp;
         }
+
         public static DialogResult ConfirmacionEliminación(string nombre, string apellido)
         {
             DialogResult resp = MessageBox.Show("Seguro que desea borrar a " + nombre +" " + apellido + "? Esta operacion no se puede revertir",
@@ -84,6 +89,7 @@ namespace HuergoMotorsVentas
             return resp;
         }
 
+       
         //Funcion CargarABM en desarrollo(con errores) :
 
 

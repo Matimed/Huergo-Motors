@@ -58,11 +58,8 @@ namespace HuergoMotorsVentas
                 int id = (int)((DataRowView)item)["Id"];
                 string nombre = (string)((DataRowView)item)["Nombre"];
                 string apellido = (string)((DataRowView)item)["Apellido"];
-                DialogResult resp = MessageBox.Show("Seguro que desea borrar a " + nombre + " "+ apellido + "? Esta operacion no se puede revertir",
-                    "Eliminar permanentemente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (resp == DialogResult.Yes)
+                if (Helper.ConfirmacionEliminación(nombre, apellido) == DialogResult.Yes)
                 {
-
                     Helper.Conexion(this, Helper.Modo.Eliminar, $"DELETE FROM Vendedores Where Id={id} ");
                     gv.DataSource = Helper.CargarDataTable(VendedoresSelect);
                 }
