@@ -114,25 +114,20 @@ namespace HuergoMotorsVentas
         private void btAceptar_Click(object sender, EventArgs e)
         {
             int idVehiculo = (int)(cboModelos.SelectedValue);
-            if (Modo == Helper.Modo.modificar)
+            switch (Modo)
             {
-                DialogResult resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
-                                 "Sobrescribir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (resp == DialogResult.Yes)
-                {
-                    Conexion($"UPDATE Accesorios SET Nombre='{txtNombre.Text}', Tipo='{txtTipo.Text}', Precio='{txtPrecio.Text}', IdVehiculo= '{idVehiculo}' WHERE Id={Id}");
-                }
-
-            }
-            else if (Modo == Helper.Modo.agregar)
-            {
-                Conexion($"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
+                case Helper.Modo.modificar:
+                    if (Helper.ConfirmacionModificacion() == DialogResult.Yes)
+                    {
+                        Conexion($"UPDATE Accesorios SET Nombre='{txtNombre.Text}', Tipo='{txtTipo.Text}'," +
+                            $" Precio='{txtPrecio.Text}', IdVehiculo= '{idVehiculo}' WHERE Id={Id}");
+                    }
+                    break;
+                case Helper.Modo.agregar:
+                    Conexion($"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
                     $" VALUES ('{txtNombre.Text}', '{txtTipo.Text}', '{txtPrecio.Text}', '{idVehiculo}')");
+                    break;
             }
-        }
-
-    
-
-       
+        }  
     }
 }

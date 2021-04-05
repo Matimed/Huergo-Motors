@@ -105,22 +105,20 @@ namespace HuergoMotorsVentas
 
         private void btAceptar_Click(object sender, EventArgs e)
         {
-
-            if (Modo == Helper.Modo.modificar)
+            switch (Modo)
             {
-                DialogResult resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
-                                 "Sobresctibir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (resp == DialogResult.Yes)
-                {
-                    Conexion($"UPDATE Vehiculos SET Tipo='{txtTipo.Text}', Modelo='{txtModelo.Text}', PrecioVenta='{txtPrecio.Text}'," +
-                            $" Stock='{txtStock.Text}' WHERE Id={Id}");
-                }
-
-            }
-            else if (Modo == Helper.Modo.agregar)
-            {
-                Conexion($"INSERT INTO Vehiculos (Tipo, Modelo, PrecioVenta, Stock) " +
+                case Helper.Modo.modificar:
+                    if (Helper.ConfirmacionModificacion() == DialogResult.Yes)
+                    {
+                        Conexion($"UPDATE Vehiculos SET Tipo='{txtTipo.Text}', Modelo='{txtModelo.Text}', PrecioVenta='{txtPrecio.Text}'," +
+                                $" Stock='{txtStock.Text}' WHERE Id={Id}");
+                    }
+                    break;
+                case Helper.Modo.agregar:
+                    Conexion($"INSERT INTO Vehiculos (Tipo, Modelo, PrecioVenta, Stock) " +
                     $"VALUES ('{txtTipo.Text}', '{txtModelo.Text}', {txtPrecio.Text}, {txtStock.Text})");
+                    break;
+
             }
         }
     }

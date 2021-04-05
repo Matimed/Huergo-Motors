@@ -101,21 +101,19 @@ namespace HuergoMotorsVentas
 
         private void btAceptar_Click(object sender, EventArgs e)
         {
-            if (Modo == Helper.Modo.modificar)
+            switch (Modo)
             {
-                DialogResult resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
-                                 "Sobresctibir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (resp == DialogResult.Yes)
-                {
-                    Conexion($"UPDATE Clientes SET Nombre='{txtNombre.Text}', Direccion='{txtDireccion.Text}', Email='{txtEmail.Text}'," +
-                            $" Telefono='{txtTelefono.Text}' WHERE Id={Id}");
-                }
-
-            }
-            else if (Modo == Helper.Modo.agregar)
-            {
-                Conexion($"INSERT INTO Clientes (Nombre, Direccion, Email, Telefono) " +
+                case Helper.Modo.modificar:
+                    if (Helper.ConfirmacionModificacion() == DialogResult.Yes)
+                    {
+                        Conexion($"UPDATE Clientes SET Nombre='{txtNombre.Text}', Direccion='{txtDireccion.Text}', " +
+                            $"Email='{txtEmail.Text}', Telefono='{txtTelefono.Text}' WHERE Id={Id}");
+                    }
+                    break;
+                case Helper.Modo.agregar:
+                    Conexion($"INSERT INTO Clientes (Nombre, Direccion, Email, Telefono) " +
                     $"VALUES ('{txtNombre.Text}', '{txtDireccion.Text}', '{txtEmail.Text}', '{txtTelefono.Text}')");
+                    break;
             }
         }
     }
