@@ -8,7 +8,7 @@ namespace HuergoMotorsVentas
 {
     public partial class frmClientes : Form
     {
-        private static string ClientesSelect = "SELECT * FROM Clientes";
+        private new const string Select = "SELECT * FROM Clientes";
         public frmClientes()
         {
             InitializeComponent();
@@ -40,14 +40,14 @@ namespace HuergoMotorsVentas
             //Solo recargo datos si se cerró con un OK.
             if (f.DialogResult == DialogResult.OK)
             {
-                gv.DataSource = Helper.CargarDataTable(ClientesSelect);
+                gv.DataSource = Helper.CargarDataTable(Select);
             }
         }
 
         private void frmClientes_Load(object sender, EventArgs e)
         {
             gv.AutoGenerateColumns = false;
-            gv.DataSource = Helper.CargarDataTable(ClientesSelect);
+            gv.DataSource = Helper.CargarDataTable(Select);
         }
 
         private void btCerrar_Click(object sender, EventArgs e)
@@ -65,7 +65,7 @@ namespace HuergoMotorsVentas
 
         private void picboxReload_Click(object sender, EventArgs e)
         {
-            gv.DataSource = Helper.CargarDataTable(ClientesSelect);
+            gv.DataSource = Helper.CargarDataTable(Select);
             txFiltro.Text = "";
         }
 
@@ -84,7 +84,7 @@ namespace HuergoMotorsVentas
                 if (Helper.ConfirmacionEliminación(nombre, string.Empty) == DialogResult.Yes)
                 {
                     Helper.Conexion(this, Helper.Modo.Eliminar, $"DELETE FROM Clientes Where Id={id} ");
-                    gv.DataSource = Helper.CargarDataTable(ClientesSelect);
+                    gv.DataSource = Helper.CargarDataTable(Select);
                 }
             }
             else

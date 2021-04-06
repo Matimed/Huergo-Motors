@@ -10,6 +10,8 @@ namespace HuergoMotorsVentas
 {
     public static class Helper
     {
+        public static string ConnectionString = "Server=sql5078.site4now.net;Database=DB_9CF8B6_HuergoMotors2021;User Id=DB_9CF8B6_HuergoMotors2021_admin;Password=huergo2021;";
+
         public enum Modo
         {
             Agregar,
@@ -42,12 +44,14 @@ namespace HuergoMotorsVentas
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))
+                using (SqlConnection conexion = new SqlConnection(ConnectionString))
                 {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    int result = cmd.ExecuteNonQuery();
-                    OperacionExitosa(modo, result);
+                    conexion.Open();
+                    using (SqlCommand comando = new SqlCommand(query, conexion))
+                    {
+                        int resultados = comando.ExecuteNonQuery();
+                        OperacionExitosa(modo, resultados);
+                    }
                 }
                 form.DialogResult = DialogResult.OK;
             }
@@ -61,12 +65,14 @@ namespace HuergoMotorsVentas
         {
             try
             {
-                DataTable dt = new DataTable();
-                using (SqlDataAdapter da = new SqlDataAdapter(query, frmMDI.ConnectionString))
+                using (DataTable dataTable = new DataTable())
                 {
-                    da.Fill(dt);
+                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(query, ConnectionString))
+                    {
+                        dataAdapter.Fill(dataTable);
+                    }
+                    return dataTable;
                 }
-                return dt;
             }
             catch (Exception ex)
             {
@@ -74,7 +80,8 @@ namespace HuergoMotorsVentas
             }
         }
 
-       
+       //ToDo: Funcion para validar todos los registros. Validar stock antes y despues de confirmar venta
+       //ToDo: Sacar algunos throw porque si no hay un try-catch afuera va a dar el mismo error 2 veces.
         public static DialogResult ConfirmacionModificacion()
         {
                 DialogResult resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
@@ -88,27 +95,6 @@ namespace HuergoMotorsVentas
                      "Eliminar permanentemente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             return resp;
         }
-
-       
-        //Funcion CargarABM en desarrollo(con errores) :
-
-
-        //public static void CargarABM(Form form, DataGridView gv, Modo modo, string select)
-        //{
-        //    Form f = new frmAccesoriosAlta(modo);
-        //    if (modo == Modo.Modificar)
-        //    {
-        //        object item = gv.SelectedRows[0].DataBoundItem;
-        //        int id = (int)((DataRowView)item)["Id"];
-        //        f.CargarDatos(id);
-        //    }
-        //    form.ShowDialog();
-
-        //    if (form.DialogResult == DialogResult.OK)
-        //    {
-        //        gv.DataSource = CargarDataTable(select);
-        //    }
-        //}
 
         public static void CargarCombo(ComboBox combo, string query, string displaymember, string valuemember)
         {

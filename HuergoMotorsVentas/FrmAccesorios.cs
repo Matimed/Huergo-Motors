@@ -11,14 +11,14 @@ namespace HuergoMotorsVentas
 
     public partial class frmAccesorios : Form
     {
-        private static string AccesoriosSelect = "SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
+        private new const string Select = "SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
             "FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id;";
 
         public frmAccesorios()
         {
             InitializeComponent();
         }
-
+        
         private void btModificar_Click(object sender, EventArgs e)
         {
             if (gv.SelectedRows.Count == 1)
@@ -45,7 +45,7 @@ namespace HuergoMotorsVentas
 
             if (f.DialogResult == DialogResult.OK)
             {
-                gv.DataSource = Helper.CargarDataTable(AccesoriosSelect);
+                gv.DataSource = Helper.CargarDataTable(Select);
             }
         }
 
@@ -66,7 +66,7 @@ namespace HuergoMotorsVentas
                 if (Helper.ConfirmacionEliminación(nombre, tipo) == DialogResult.Yes)
                 {
                     Helper.Conexion(this, Helper.Modo.Eliminar, $"DELETE FROM Accesorios Where Id={id} ");
-                    gv.DataSource = Helper.CargarDataTable(AccesoriosSelect);
+                    gv.DataSource = Helper.CargarDataTable(Select);
                 }
             }
             else
@@ -85,7 +85,7 @@ namespace HuergoMotorsVentas
         private void frmAccesorios_Load(object sender, EventArgs e)
         {
             gv.AutoGenerateColumns = false;
-            gv.DataSource = Helper.CargarDataTable(AccesoriosSelect);
+            gv.DataSource = Helper.CargarDataTable(Select);
         }
 
         private void picBusqueda_Click(object sender, EventArgs e)
@@ -100,7 +100,7 @@ namespace HuergoMotorsVentas
 
         private void picReload_Click(object sender, EventArgs e)
         {
-            gv.DataSource = Helper.CargarDataTable(AccesoriosSelect);
+            gv.DataSource = Helper.CargarDataTable(Select);
             txFiltro.Text = "";
         }
     }

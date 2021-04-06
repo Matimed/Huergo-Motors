@@ -9,7 +9,7 @@ namespace HuergoMotorsVentas
 {
     public partial class frmVendedores : Form
     {
-        private static string VendedoresSelect = "SELECT * FROM Vendedores";
+        private new const string Select = "SELECT * FROM Vendedores";
         public frmVendedores()
         {
             InitializeComponent();
@@ -41,7 +41,7 @@ namespace HuergoMotorsVentas
             //Solo recargo datos si se cerró con un OK.
             if (f.DialogResult == DialogResult.OK)
             {
-                gv.DataSource = Helper.CargarDataTable(VendedoresSelect);
+                gv.DataSource = Helper.CargarDataTable(Select);
             }
         }
 
@@ -61,7 +61,7 @@ namespace HuergoMotorsVentas
                 if (Helper.ConfirmacionEliminación(nombre, apellido) == DialogResult.Yes)
                 {
                     Helper.Conexion(this, Helper.Modo.Eliminar, $"DELETE FROM Vendedores Where Id={id} ");
-                    gv.DataSource = Helper.CargarDataTable(VendedoresSelect);
+                    gv.DataSource = Helper.CargarDataTable(Select);
                 }
             }
             else
@@ -78,14 +78,14 @@ namespace HuergoMotorsVentas
 
         private void picReload_Click(object sender, EventArgs e)
         {
-            gv.DataSource = Helper.CargarDataTable(VendedoresSelect);
+            gv.DataSource = Helper.CargarDataTable(Select);
             txFiltro.Text = "";
         }
 
         private void frmVendedores_Load(object sender, EventArgs e)
         {
             gv.AutoGenerateColumns = false;
-            gv.DataSource = Helper.CargarDataTable(VendedoresSelect);
+            gv.DataSource = Helper.CargarDataTable(Select);
         }
 
         private void picBusqueda_Click(object sender, EventArgs e)
@@ -98,7 +98,7 @@ namespace HuergoMotorsVentas
 
         private void picReload_Click_1(object sender, EventArgs e)
         {
-            gv.DataSource = Helper.CargarDataTable(VendedoresSelect);
+            gv.DataSource = Helper.CargarDataTable(Select);
             txFiltro.Text = "";
         }
     }
