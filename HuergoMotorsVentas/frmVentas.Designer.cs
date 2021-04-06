@@ -392,7 +392,6 @@ namespace HuergoMotorsVentas
             // 
             // picLogo
             // 
-            this.picLogo.Image = global::HuergoMotorsVentas.Properties.Resources.CapturaHuergoMotors;
             this.picLogo.Location = new System.Drawing.Point(330, 25);
             this.picLogo.Name = "picLogo";
             this.picLogo.Size = new System.Drawing.Size(127, 113);
