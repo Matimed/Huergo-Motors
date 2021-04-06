@@ -57,7 +57,7 @@ namespace HuergoMotorsVentas
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
+               throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
             }
         }
 
@@ -80,8 +80,7 @@ namespace HuergoMotorsVentas
             }
         }
 
-       //ToDo: Funcion para validar todos los registros. Validar stock antes y despues de confirmar venta
-       //ToDo: Sacar algunos throw porque si no hay un try-catch afuera va a dar el mismo error 2 veces.
+        
         public static DialogResult ConfirmacionModificacion()
         {
                 DialogResult resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
@@ -95,6 +94,13 @@ namespace HuergoMotorsVentas
                      "Eliminar permanentemente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             return resp;
         }
+        public static DialogResult ConfirmacionEliminación(string nombre)
+        {
+            DialogResult resp = MessageBox.Show("Seguro que desea borrar a " + nombre +"? Esta operacion no se puede revertir",
+                     "Eliminar permanentemente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            return resp;
+        }
+
 
         public static void CargarCombo(ComboBox combo, string query, string displaymember, string valuemember)
         {
@@ -102,6 +108,69 @@ namespace HuergoMotorsVentas
             combo.DisplayMember = displaymember;
             combo.ValueMember = valuemember;
             combo.DataSource = CargarDataTable(query);
+        }
+
+
+        //ToDo:  Validar stock antes y despues de confirmar venta
+        public static void ValidarNumerosNaturales(TextBox textbox1)
+        {
+            try
+            {
+                int numero;
+                if (!int.TryParse(textbox1.Text, out numero) | numero<0)
+                {
+                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero entero en {textbox1.Text}");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void ValidarNumerosRacionales(TextBox textbox1)
+        {
+            try
+            {
+                double numero;
+                if (!double.TryParse(textbox1.Text, out numero) | numero<0)
+                {
+                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero racional en {textbox1.Text}");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static void ValidarTextosVacios(TextBox textbox1, TextBox textbox2, TextBox textbox3)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(textbox1.Text) | string.IsNullOrEmpty(textbox2.Text) | string.IsNullOrEmpty(textbox3.Text))
+                {
+                    throw new Exception("No se pueden dejar campos sin completar");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void ValidarTextosVacios(TextBox textbox1, TextBox textbox2, TextBox textbox3, TextBox textbox4)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(textbox1.Text) | string.IsNullOrEmpty(textbox2.Text) | string.IsNullOrEmpty(textbox3.Text) | string.IsNullOrEmpty(textbox4.Text))
+                {
+                    throw new Exception("No se pueden dejar campos sin completar");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

@@ -70,20 +70,29 @@ namespace HuergoMotorsVentas
 
         private void btAceptar_Click(object sender, EventArgs e)
         {
-            switch (Modo)
+            try
             {
-                case Helper.Modo.Modificar:
-                    if (Helper.ConfirmacionModificacion() == DialogResult.Yes)
-                    {
-                        Helper.Conexion(this, Modo, $"UPDATE Clientes SET Nombre='{txtNombre.Text}', Direccion='{txtDireccion.Text}', " +
-                            $"Email='{txtEmail.Text}', Telefono='{txtTelefono.Text}' WHERE Id={Id}");
-                    }
-                    break;
-                case Helper.Modo.Agregar:
-                    Helper.Conexion(this, Modo, $"INSERT INTO Clientes (Nombre, Direccion, Email, Telefono) " +
-                    $"VALUES ('{txtNombre.Text}', '{txtDireccion.Text}', '{txtEmail.Text}', '{txtTelefono.Text}')");
-                    break;
+                Helper.ValidarTextosVacios(txtDireccion, txtEmail, txtNombre, txtTelefono);
+                switch (Modo)
+                {
+                    case Helper.Modo.Modificar:
+                        if (Helper.ConfirmacionModificacion() == DialogResult.Yes)
+                        {
+                            Helper.Conexion(this, Modo, $"UPDATE Clientes SET Nombre='{txtNombre.Text}', Direccion='{txtDireccion.Text}', " +
+                                $"Email='{txtEmail.Text}', Telefono='{txtTelefono.Text}' WHERE Id={Id}");
+                        }
+                        break;
+                    case Helper.Modo.Agregar:
+                        Helper.Conexion(this, Modo, $"INSERT INTO Clientes (Nombre, Direccion, Email, Telefono) " +
+                        $"VALUES ('{txtNombre.Text}', '{txtDireccion.Text}', '{txtEmail.Text}', '{txtTelefono.Text}')");
+                        break;
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
+        
         }
     }
 }

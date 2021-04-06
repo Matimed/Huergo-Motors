@@ -81,7 +81,7 @@ namespace HuergoMotorsVentas
                 object item = gv.SelectedRows[0].DataBoundItem;
                 int id = (int)((DataRowView)item)["Id"];
                 string nombre = (string)((DataRowView)item)["Nombre"];
-                if (Helper.ConfirmacionEliminación(nombre, string.Empty) == DialogResult.Yes)
+                if (Helper.ConfirmacionEliminación(nombre) == DialogResult.Yes)
                 {
                     Helper.Conexion(this, Helper.Modo.Eliminar, $"DELETE FROM Clientes Where Id={id} ");
                     gv.DataSource = Helper.CargarDataTable(Select);

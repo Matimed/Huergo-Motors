@@ -68,22 +68,32 @@ namespace HuergoMotorsVentas
             this.DialogResult = DialogResult.Cancel;
         }
 
+       
         private void btAceptar_Click(object sender, EventArgs e)
         {
-            switch (Modo)
+            try
             {
-                case Helper.Modo.Modificar:
-                    if (Helper.ConfirmacionModificacion() == DialogResult.Yes)
-                    {
-                        Helper.Conexion(this, Modo, $"UPDATE Vehiculos SET Tipo='{txtTipo.Text}', Modelo='{txtModelo.Text}', PrecioVenta='{txtPrecio.Text}'," +
-                                $" Stock='{txtStock.Text}' WHERE Id={Id}");
-                    }
-                    break;
-                case Helper.Modo.Agregar:
-                    Helper.Conexion(this, Modo, $"INSERT INTO Vehiculos (Tipo, Modelo, PrecioVenta, Stock) " +
-                    $"VALUES ('{txtTipo.Text}', '{txtModelo.Text}', {txtPrecio.Text}, {txtStock.Text})");
-                    break;
-
+                Helper.ValidarTextosVacios(txtModelo, txtPrecio, txtStock, txtTipo);
+                Helper.ValidarNumerosNaturales(txtStock);
+                Helper.ValidarNumerosRacionales(txtPrecio);
+                switch (Modo)
+                {
+                    case Helper.Modo.Modificar:
+                        if (Helper.ConfirmacionModificacion() == DialogResult.Yes)
+                        {
+                            Helper.Conexion(this, Modo, $"UPDATE Vehiculos SET Tipo='{txtTipo.Text}', Modelo='{txtModelo.Text}', PrecioVenta='{txtPrecio.Text}'," +
+                                    $" Stock='{txtStock.Text}' WHERE Id={Id}");
+                        }
+                        break;
+                    case Helper.Modo.Agregar:
+                        Helper.Conexion(this, Modo, $"INSERT INTO Vehiculos (Tipo, Modelo, PrecioVenta, Stock) " +
+                        $"VALUES ('{txtTipo.Text}', '{txtModelo.Text}', {txtPrecio.Text}, {txtStock.Text})");
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
             }
         }
     }
