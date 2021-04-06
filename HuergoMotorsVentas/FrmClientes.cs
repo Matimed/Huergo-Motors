@@ -8,27 +8,17 @@ namespace HuergoMotorsVentas
 {
     public partial class frmClientes : Form
     {
-        private static string ClientesSelect = "SELECT * FROM Clientes";
+        private new const string Select = "SELECT * FROM Clientes";
         public frmClientes()
         {
             InitializeComponent();
-        }
-       
-        private void RecargarDatos(string query)
-        {
-            DataTable dt = new DataTable();
-            using (SqlDataAdapter da = new SqlDataAdapter(query, frmMDI.ConnectionString))
-            {
-                da.Fill(dt);
-            }
-            gv.DataSource = dt;
         }
 
         private void btModificar_Click(object sender, EventArgs e)
         {
             if (gv.SelectedRows.Count == 1)
             {
-                CargarABM("modificar");
+                CargarABM(Helper.Modo.Modificar);
             }
             else
             {
@@ -36,11 +26,11 @@ namespace HuergoMotorsVentas
                     "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void CargarABM(string modo)
+        private void CargarABM(Helper.Modo modo)
         {
 
             frmClientesAlta f = new frmClientesAlta(modo);
-            if (modo == "modificar")
+            if (modo == Helper.Modo.Modificar)
             {
                 object item = gv.SelectedRows[0].DataBoundItem;
                 int id = (int)((DataRowView)item)["Id"];
@@ -50,16 +40,14 @@ namespace HuergoMotorsVentas
             //Solo recargo datos si se cerró con un OK.
             if (f.DialogResult == DialogResult.OK)
             {
-                RecargarDatos(ClientesSelect);
+                gv.DataSource = Helper.CargarDataTable(Select);
             }
         }
 
         private void frmClientes_Load(object sender, EventArgs e)
         {
             gv.AutoGenerateColumns = false;
-            RecargarDatos(ClientesSelect);
-            picBoxlupa.Image = Image.FromFile("lupa.png");
-            picboxReload.Image = Image.FromFile("reload.png");
+            gv.DataSource = Helper.CargarDataTable(Select);
         }
 
         private void btCerrar_Click(object sender, EventArgs e)
@@ -71,19 +59,19 @@ namespace HuergoMotorsVentas
         {
             string filtro = $"SELECT * FROM Clientes WHERE Nombre LIKE '%{txFiltro.Text}%'" +
                  $" or Direccion LIKE '%{txFiltro.Text}%' or Telefono LIKE '%{txFiltro.Text}%' or Email LIKE '%{txFiltro.Text}%'";
-            RecargarDatos(filtro);
+            gv.DataSource = Helper.CargarDataTable(filtro);
             txFiltro.Text = "";
         }
 
         private void picboxReload_Click(object sender, EventArgs e)
         {
-            RecargarDatos(ClientesSelect);
+            gv.DataSource = Helper.CargarDataTable(Select);
             txFiltro.Text = "";
         }
 
         private void btNuevo_Click(object sender, EventArgs e)
         {
-            CargarABM("agregar");
+            CargarABM(Helper.Modo.Agregar);
         }
 
         private void btEliminar_Click(object sender, EventArgs e)
@@ -93,31 +81,10 @@ namespace HuergoMotorsVentas
                 object item = gv.SelectedRows[0].DataBoundItem;
                 int id = (int)((DataRowView)item)["Id"];
                 string nombre = (string)((DataRowView)item)["Nombre"];
-                DialogResult resp = MessageBox.Show("Seguro que desea borrar a " + nombre + "? Esta operacion no se puede revertir",
-                    "Eliminar permanentemente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (resp == DialogResult.Yes)
+                if (Helper.ConfirmacionEliminación(nombre) == DialogResult.Yes)
                 {
-                    try
-                    {
-                        string delete = $"DELETE FROM Clientes Where Id={id} ";
-
-                        //Recordar: Utilizar bloques 'using'
-                        using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))
-                        {
-                            conn.Open();
-                            SqlCommand cmd = new SqlCommand(delete, conn);
-                            int result = cmd.ExecuteNonQuery();
-                            RecargarDatos(ClientesSelect);
-                            MessageBox.Show($"{result} registro/s eliminados correctamente",
-                            "Eliminacion completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        };
-
-                    }
-                    catch (Exception ex)
-                    {
-                        //El bloque Try-Catch me permite capturar errores (excepciones) en el código, y en este caso mostrar un mensaje.
-                        MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    Helper.Conexion(this, Helper.Modo.Eliminar, $"DELETE FROM Clientes Where Id={id} ");
+                    gv.DataSource = Helper.CargarDataTable(Select);
                 }
             }
             else

@@ -12,75 +12,36 @@ namespace HuergoMotorsVentas
     public partial class frmMDI : Form
     {
         //Los atributos static (estáticos) se pueden acceder sin utilizar una instancia de la clase.
-        public static string ConnectionString = "Server=sql5078.site4now.net;Database=DB_9CF8B6_HuergoMotors2021;User Id=DB_9CF8B6_HuergoMotors2021_admin;Password=huergo2021;";
 
         public frmMDI()
         {
-            InitializeComponent();
+            InitializeComponent();  
         }
 
-
-       //To do: CUando se abra un formulario el boton se ponga en otro color para marcar que esta seleccionado
-       //y cuando se cierre el formulario se desmarque.
+        private void AbrirForm(Form formulario)
+        {
+            formulario.MdiParent = this;
+            formulario.Show();
+        }
+        //To do: CUando se abra un formulario el boton se ponga en otro color para marcar que esta seleccionado
+        //y cuando se cierre el formulario se desmarque.
         private void vehiculosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Vehiculos();
+            AbrirForm(new frmVehiculos());
         }
         private void accesoriosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Accesorios();
+            AbrirForm(new frmAccesorios());
         }
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Clientes();
+            AbrirForm(new frmClientes());
         }
         private void vendedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Vendedores();
+            AbrirForm(new frmVendedores());
         }
 
-
-        private void btVehiculos_Click(object sender, EventArgs e)
-        {
-            Vehiculos();
-        }
-        private void btAccesorios_Click(object sender, EventArgs e)
-        {
-            Accesorios();
-        }
-        private void btClientes_Click(object sender, EventArgs e)
-        {
-            Clientes();
-        }
-        private void btVendedores_Click(object sender, EventArgs e)
-        {
-            Vendedores();
-        }
-
-
-        private void Vehiculos()
-        {
-            frmVehiculos f = new frmVehiculos();
-            f.MdiParent = this;
-            f.Show();
-        }
-        private void Accesorios()
-        {
-            frmAccesorios f = new frmAccesorios();
-            f.MdiParent = this;
-            f.Show();
-        }
-        private void Clientes()
-        {
-            frmClientes f = new frmClientes();
-            f.MdiParent = this;
-            f.Show();
-        }
-        private void Vendedores()
-        {
-            frmVendedores f = new frmVendedores();
-            f.MdiParent = this;
-            f.Show();
-        }
+        
     }
 }

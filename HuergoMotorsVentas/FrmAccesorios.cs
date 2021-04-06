@@ -11,30 +11,19 @@ namespace HuergoMotorsVentas
 
     public partial class frmAccesorios : Form
     {
-        private static string AccesoriosSelect = "SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
+        private new const string Select = "SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
             "FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id;";
 
         public frmAccesorios()
         {
             InitializeComponent();
         }
-
-       
-        private void RecargarDatos(string query)
-        {
-            DataTable dt = new DataTable();
-            using (SqlDataAdapter da = new SqlDataAdapter(query, frmMDI.ConnectionString))
-            {
-                da.Fill(dt);
-            }
-            gv.DataSource = dt;
-        }
-
+        
         private void btModificar_Click(object sender, EventArgs e)
         {
             if (gv.SelectedRows.Count == 1)
             {
-                CargarABM("modificar");
+                CargarABM(Helper.Modo.Modificar);
             }
             else
             {
@@ -42,27 +31,28 @@ namespace HuergoMotorsVentas
                     "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void CargarABM(string modo)
+        private void CargarABM(Helper.Modo modo)
         {
 
             frmAccesoriosAlta f = new frmAccesoriosAlta(modo);
-            if (modo == "modificar")
+            if (modo == Helper.Modo.Modificar)
             {
                 object item = gv.SelectedRows[0].DataBoundItem;
                 int id = (int)((DataRowView)item)["Id"];
                 f.CargarDatos(id);
             }
             f.ShowDialog();
-            //Solo recargo datos si se cerró con un OK.
+
             if (f.DialogResult == DialogResult.OK)
             {
-                RecargarDatos(AccesoriosSelect);
+                gv.DataSource = Helper.CargarDataTable(Select);
             }
         }
 
+
         private void btNuevo_Click(object sender, EventArgs e)
         {
-            CargarABM("agregar");
+            CargarABM(Helper.Modo.Agregar);
         }
 
         private void btEliminar_Click(object sender, EventArgs e)
@@ -72,31 +62,11 @@ namespace HuergoMotorsVentas
                 object item = gv.SelectedRows[0].DataBoundItem;
                 int id = (int)((DataRowView)item)["Id"];
                 string tipo = (string)((DataRowView)item)["Tipo"];
-                DialogResult resp = MessageBox.Show("Seguro que desea borrar el " + tipo + "? Esta operacion no se puede revertir",
-                    "Eliminar permanentemente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (resp == DialogResult.Yes)
+                string nombre = (string)((DataRowView)item)["Nombre"];
+                if (Helper.ConfirmacionEliminación(nombre, tipo) == DialogResult.Yes)
                 {
-                    try
-                    {
-                        string delete = $"DELETE FROM Accesorios Where Id={id} ";
-
-                        //Recordar: Utilizar bloques 'using'
-                        using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))
-                        {
-                            conn.Open();
-                            SqlCommand cmd = new SqlCommand(delete, conn);
-                            int result = cmd.ExecuteNonQuery();
-                            RecargarDatos(AccesoriosSelect);
-                            MessageBox.Show($"{result} registro/s eliminados correctamente",
-                            "Eliminacion completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        };
-
-                    }
-                    catch (Exception ex)
-                    {
-                        //El bloque Try-Catch me permite capturar errores (excepciones) en el código, y en este caso mostrar un mensaje.
-                        MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    Helper.Conexion(this, Helper.Modo.Eliminar, $"DELETE FROM Accesorios Where Id={id} ");
+                    gv.DataSource = Helper.CargarDataTable(Select);
                 }
             }
             else
@@ -115,20 +85,22 @@ namespace HuergoMotorsVentas
         private void frmAccesorios_Load(object sender, EventArgs e)
         {
             gv.AutoGenerateColumns = false;
-            RecargarDatos(AccesoriosSelect);
+            gv.DataSource = Helper.CargarDataTable(Select);
         }
 
         private void picBusqueda_Click(object sender, EventArgs e)
         {
-            string filtro = $"SELECT * FROM Accesorios WHERE Tipo LIKE '%{txFiltro.Text}%'" +
-                $" or Nombre LIKE '%{txFiltro.Text}%' or Precio LIKE '%{txFiltro.Text}%' or idVehiculos LIKE '%{txFiltro.Text}%'";
-            RecargarDatos(filtro);
+            string filtro = $"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
+                    $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id " +
+                    $"WHERE a.Tipo LIKE '%{txFiltro.Text}%' or a.Nombre LIKE '%{txFiltro.Text}%' or a.Precio " +
+                    $"LIKE '%{txFiltro.Text}%' or b.Modelo LIKE '%{txFiltro.Text}%'";
+            gv.DataSource = Helper.CargarDataTable(filtro);
             txFiltro.Text = "";
         }
 
         private void picReload_Click(object sender, EventArgs e)
         {
-            RecargarDatos(AccesoriosSelect);
+            gv.DataSource = Helper.CargarDataTable(Select);
             txFiltro.Text = "";
         }
     }

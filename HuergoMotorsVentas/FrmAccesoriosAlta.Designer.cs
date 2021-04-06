@@ -43,7 +43,7 @@ namespace HuergoMotorsVentas
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.lstModelo = new System.Windows.Forms.ListBox();
+            this.cboModelos = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -81,7 +81,6 @@ namespace HuergoMotorsVentas
             this.label3.Size = new System.Drawing.Size(28, 13);
             this.label3.TabIndex = 13;
             this.label3.Text = "Tipo";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -91,7 +90,6 @@ namespace HuergoMotorsVentas
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 12;
             this.label2.Text = "Nombre";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -131,7 +129,7 @@ namespace HuergoMotorsVentas
             // 
             // picLogo
             // 
-            this.picLogo.Image = global::HuergoMotorsVentas.Properties.Resources.CapturaHuergoMotors;
+            this.picLogo.Image = global::HuergoMotorsVentas.Properties.Resources.HuergoMotors_Logo;
             this.picLogo.Location = new System.Drawing.Point(18, 46);
             this.picLogo.Name = "picLogo";
             this.picLogo.Size = new System.Drawing.Size(103, 75);
@@ -141,7 +139,7 @@ namespace HuergoMotorsVentas
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::HuergoMotorsVentas.Properties.Resources.lineas_rojas_png_5;
+            this.pictureBox2.Image = global::HuergoMotorsVentas.Properties.Resources.Linea_roja;
             this.pictureBox2.Location = new System.Drawing.Point(-9, 335);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(400, 30);
@@ -151,7 +149,7 @@ namespace HuergoMotorsVentas
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::HuergoMotorsVentas.Properties.Resources.lineas_rojas_png_5;
+            this.pictureBox3.Image = global::HuergoMotorsVentas.Properties.Resources.Linea_roja;
             this.pictureBox3.Location = new System.Drawing.Point(-5, -1);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(400, 30);
@@ -161,7 +159,7 @@ namespace HuergoMotorsVentas
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::HuergoMotorsVentas.Properties.Resources.lineas_rojas_png_5;
+            this.pictureBox4.Image = global::HuergoMotorsVentas.Properties.Resources.Linea_roja;
             this.pictureBox4.Location = new System.Drawing.Point(-5, 299);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(400, 30);
@@ -178,13 +176,14 @@ namespace HuergoMotorsVentas
             this.label4.TabIndex = 24;
             this.label4.Text = "Modelo de auto";
             // 
-            // lstModelo
+            // cboModelos
             // 
-            this.lstModelo.FormattingEnabled = true;
-            this.lstModelo.Location = new System.Drawing.Point(125, 215);
-            this.lstModelo.Name = "lstModelo";
-            this.lstModelo.Size = new System.Drawing.Size(262, 17);
-            this.lstModelo.TabIndex = 26;
+            this.cboModelos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboModelos.FormattingEnabled = true;
+            this.cboModelos.Location = new System.Drawing.Point(125, 218);
+            this.cboModelos.Name = "cboModelos";
+            this.cboModelos.Size = new System.Drawing.Size(262, 21);
+            this.cboModelos.TabIndex = 27;
             // 
             // frmAccesoriosAlta
             // 
@@ -192,7 +191,7 @@ namespace HuergoMotorsVentas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(399, 333);
-            this.Controls.Add(this.lstModelo);
+            this.Controls.Add(this.cboModelos);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
@@ -235,6 +234,6 @@ namespace HuergoMotorsVentas
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ListBox lstModelo;
+        private System.Windows.Forms.ComboBox cboModelos;
     }
 }

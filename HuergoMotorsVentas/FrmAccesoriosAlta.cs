@@ -14,102 +14,66 @@ namespace HuergoMotorsVentas
     public partial class frmAccesoriosAlta : Form
     {
         public int Id { get; set; } //Esto es una 'propiedad'.
-        public string Modo { get; private set; }
+        public Helper.Modo Modo { get; private set; }
+
         private void frmVehiculosAlta_Load(object sender, EventArgs e)
         {
-            picLogo.Image = Image.FromFile("CapturaHuergoMotors.png");
-
             //Saca el focus del textbox y lo pone en el label por estetica
             this.ActiveControl = label1;
 
-            //for i= 1 to 
-            //lstModelo.Items.Add()
+            //Cargar el ComboBox
+           
 
-
-            if (Modo == "agregar")
+            if (Modo == Helper.Modo.Agregar)
             {
                 txtNombre.Text = string.Empty;
                 txtTipo.Text = string.Empty;
                 txtPrecio.Text = "0.00";
-                
+                Helper.CargarCombo(cboModelos ,"SELECT Id, Modelo FROM Vehiculos", "Modelo" , "Id");
             }
         }
+        
 
-        public frmAccesoriosAlta(string modo)
+        public frmAccesoriosAlta(Helper.Modo modo)
         {
             InitializeComponent(); 
             Modo = modo;
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
 
-        }
-      
+
         internal void CargarDatos(int id)
         {
-            try
-            {
-                Id = id;
-                string query = $"SELECT * FROM Accesorios WHERE Id={id}";
+            Helper.CargarCombo(cboModelos, "SELECT Id, Modelo FROM Vehiculos", "Modelo", "Id");
 
-                DataTable dt = new DataTable();
-                using (SqlDataAdapter da = new SqlDataAdapter(query, frmMDI.ConnectionString))
-                {
-                    da.Fill(dt);
-                }
+            Id = id;
+            string query = $"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
+                $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id WHERE a.Id={id}";
 
-                string tipo = string.Empty;
-                string nombre = string.Empty;
-                decimal precio = 0;
+            DataTable dt = Helper.CargarDataTable(query);
+
+            string tipo = string.Empty;
+            string nombre = string.Empty;
+            decimal precio = 0;
+            string modelo = string.Empty;
 
 
-                if (!dt.Rows[0].IsNull("Tipo")) tipo = (string)dt.Rows[0]["Tipo"];
-                if (!dt.Rows[0].IsNull("Nombre")) nombre = (string)dt.Rows[0]["Nombre"];
-                if (!dt.Rows[0].IsNull("Precio")) precio = (decimal)dt.Rows[0]["Precio"];
+            if (!dt.Rows[0].IsNull("Tipo")) tipo = (string)dt.Rows[0]["Tipo"];
+            if (!dt.Rows[0].IsNull("Nombre")) nombre = (string)dt.Rows[0]["Nombre"];
+            if (!dt.Rows[0].IsNull("Precio")) precio = (decimal)dt.Rows[0]["Precio"];
+            if (!dt.Rows[0].IsNull("Modelo")) modelo = (string)dt.Rows[0]["Modelo"];
 
 
-                //Escribe el número con puntos en lugar de comas para no dar error en la DB
-                NumberFormatInfo nfi = new NumberFormatInfo();
-                nfi.NumberDecimalSeparator = ".";
+            //Escribe el número con puntos en lugar de comas para no dar error en la DB
+            NumberFormatInfo nfi = new NumberFormatInfo();
+            nfi.NumberDecimalSeparator = ".";
 
-                txtPrecio.Text = precio.ToString(nfi);
-                txtTipo.Text = tipo;
-                txtNombre.Text = nombre;
-                
-            }
-            catch (Exception ex)
-            {
-                //El bloque Try-Catch me permite capturar errores (excepciones) en el código, y en este caso mostrar un mensaje.
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void Conexion(string query)
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(frmMDI.ConnectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(query, conn);
-                    int result = cmd.ExecuteNonQuery();
-                    if (Modo == "agregar")
-                    {
-                        MessageBox.Show($"{result} registro/s agregados correctamente",
-                        "Los registros fueron agregados exitosamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else if (Modo == "modificar")
-                    {
-                        MessageBox.Show($"{result} registro/s actualizados correctamente",
-                        "Actualización completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                };
-                this.DialogResult = DialogResult.OK;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            txtPrecio.Text = precio.ToString(nfi);
+            txtTipo.Text = tipo;
+            txtNombre.Text = nombre;
+            int index = cboModelos.FindString(modelo);
+            cboModelos.SelectedIndex = index;
+        
         }
 
         private void btCancelar_Click(object sender, EventArgs e)
@@ -119,28 +83,30 @@ namespace HuergoMotorsVentas
 
         private void btAceptar_Click(object sender, EventArgs e)
         {
-            if (Modo == "modificar")
+            try
             {
-                DialogResult resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
-                                 "Sobrescribir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (resp == DialogResult.Yes)
+                Helper.ValidarTextosVacios(txtNombre,txtPrecio,txtTipo);
+                Helper.ValidarNumerosRacionales(txtPrecio);
+                int idVehiculo = (int)(cboModelos.SelectedValue);
+                switch (Modo)
                 {
-                    Conexion($"UPDATE Accesorios SET Nombre='{txtNombre.Text}', Tipo='{txtTipo.Text}', Precio='{txtPrecio.Text}' WHERE Id={Id}");
+                    case Helper.Modo.Modificar:
+                        if (Helper.ConfirmacionModificacion() == DialogResult.Yes)
+                        {
+                            Helper.Conexion(this, Modo, $"UPDATE Accesorios SET Nombre='{txtNombre.Text}', Tipo='{txtTipo.Text}'," +
+                                $" Precio='{txtPrecio.Text}', IdVehiculo= '{idVehiculo}' WHERE Id={Id}");
+                        }
+                        break;
+                    case Helper.Modo.Agregar:
+                        Helper.Conexion(this, Modo, $"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
+                        $" VALUES ('{txtNombre.Text}', '{txtTipo.Text}', '{txtPrecio.Text}', '{idVehiculo}')");
+                        break;
                 }
-
             }
-            else if (Modo == "agregar")
+            catch (Exception ex)
             {
-                //Conexion($"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
-                //    $" VALUES ('{txtNombre.Text}', '{txtTipo.Text}', '{txtPrecio.Text}', '{txtIdVehiculo.Text}')");
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
             }
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-       
+        }  
     }
 }

@@ -77,28 +77,28 @@
             // vehiculosToolStripMenuItem
             // 
             this.vehiculosToolStripMenuItem.Name = "vehiculosToolStripMenuItem";
-            this.vehiculosToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.vehiculosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.vehiculosToolStripMenuItem.Text = "Vehículos";
             this.vehiculosToolStripMenuItem.Click += new System.EventHandler(this.vehiculosToolStripMenuItem_Click);
             // 
             // accesoriosToolStripMenuItem
             // 
             this.accesoriosToolStripMenuItem.Name = "accesoriosToolStripMenuItem";
-            this.accesoriosToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.accesoriosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.accesoriosToolStripMenuItem.Text = "Accesorios";
             this.accesoriosToolStripMenuItem.Click += new System.EventHandler(this.accesoriosToolStripMenuItem_Click);
             // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // vendedoresToolStripMenuItem
             // 
             this.vendedoresToolStripMenuItem.Name = "vendedoresToolStripMenuItem";
-            this.vendedoresToolStripMenuItem.Size = new System.Drawing.Size(135, 22);
+            this.vendedoresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.vendedoresToolStripMenuItem.Text = "Vendedores";
             this.vendedoresToolStripMenuItem.Click += new System.EventHandler(this.vendedoresToolStripMenuItem_Click);
             // 
@@ -162,7 +162,7 @@
             // 
             // btVehiculos
             // 
-            this.btVehiculos.Image = global::HuergoMotorsVentas.Properties.Resources.car;
+            this.btVehiculos.Image = global::HuergoMotorsVentas.Properties.Resources.Vehiculos;
             this.btVehiculos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btVehiculos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btVehiculos.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -170,11 +170,11 @@
             this.btVehiculos.Size = new System.Drawing.Size(102, 36);
             this.btVehiculos.Text = "Vehículos";
             this.btVehiculos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btVehiculos.Click += new System.EventHandler(this.btVehiculos_Click);
+            this.btVehiculos.Click += new System.EventHandler(this.vehiculosToolStripMenuItem_Click);
             // 
             // btAccesorios
             // 
-            this.btAccesorios.Image = global::HuergoMotorsVentas.Properties.Resources.rueda1;
+            this.btAccesorios.Image = global::HuergoMotorsVentas.Properties.Resources.Accesorios;
             this.btAccesorios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btAccesorios.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btAccesorios.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -182,11 +182,11 @@
             this.btAccesorios.Size = new System.Drawing.Size(102, 36);
             this.btAccesorios.Text = "Accesorios";
             this.btAccesorios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btAccesorios.Click += new System.EventHandler(this.btAccesorios_Click);
+            this.btAccesorios.Click += new System.EventHandler(this.accesoriosToolStripMenuItem_Click);
             // 
             // btClientes
             // 
-            this.btClientes.Image = global::HuergoMotorsVentas.Properties.Resources.client;
+            this.btClientes.Image = global::HuergoMotorsVentas.Properties.Resources.Clientes;
             this.btClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btClientes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btClientes.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -194,11 +194,11 @@
             this.btClientes.Size = new System.Drawing.Size(102, 36);
             this.btClientes.Text = "Clientes";
             this.btClientes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btClientes.Click += new System.EventHandler(this.btClientes_Click);
+            this.btClientes.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // btVendedores
             // 
-            this.btVendedores.Image = global::HuergoMotorsVentas.Properties.Resources.vendedor;
+            this.btVendedores.Image = global::HuergoMotorsVentas.Properties.Resources.Vendedores;
             this.btVendedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btVendedores.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btVendedores.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -206,14 +206,14 @@
             this.btVendedores.Size = new System.Drawing.Size(102, 36);
             this.btVendedores.Text = "Vendedores";
             this.btVendedores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btVendedores.Click += new System.EventHandler(this.btVendedores_Click);
+            this.btVendedores.Click += new System.EventHandler(this.vendedoresToolStripMenuItem_Click);
             // 
             // frmMDI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::HuergoMotorsVentas.Properties.Resources.fondo_rojo;
+            this.BackgroundImage = global::HuergoMotorsVentas.Properties.Resources.Fondo_blanco;
             this.ClientSize = new System.Drawing.Size(734, 571);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
