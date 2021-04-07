@@ -88,15 +88,15 @@ namespace HuergoMotorsVentas
                 return resp;
         }
 
-        public static DialogResult ConfirmacionEliminación(string nombre, string apellido)
-        {
-            DialogResult resp = MessageBox.Show("Seguro que desea borrar a " + nombre +" " + apellido + "? Esta operacion no se puede revertir",
-                     "Eliminar permanentemente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            return resp;
-        }
         public static DialogResult ConfirmacionEliminación(string nombre)
         {
             DialogResult resp = MessageBox.Show("Seguro que desea borrar a " + nombre +"? Esta operacion no se puede revertir",
+                     "Eliminar permanentemente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            return resp;
+        }
+        public static DialogResult ConfirmacionEliminación(string nombre, string apellido)
+        {
+            DialogResult resp = MessageBox.Show("Seguro que desea borrar a " + nombre + " " + apellido + "? Esta operacion no se puede revertir",
                      "Eliminar permanentemente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             return resp;
         }
