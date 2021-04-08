@@ -45,7 +45,15 @@ namespace HuergoMotorsVentas
 
             if (f.DialogResult == DialogResult.OK)
             {
-                gv.DataSource = Helper.CargarDataTable(Select);
+                try
+                {
+                    gv.DataSource = Helper.CargarDataTable(Select);
+                }
+                 
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+                }
             }
         }
 
@@ -65,8 +73,15 @@ namespace HuergoMotorsVentas
                 string nombre = (string)((DataRowView)item)["Nombre"];
                 if (Helper.ConfirmacionEliminación(nombre, tipo) == DialogResult.Yes)
                 {
-                    Helper.Conexion(this, Helper.Modo.Eliminar, $"DELETE FROM Accesorios Where Id={id} ");
-                    gv.DataSource = Helper.CargarDataTable(Select);
+                    try
+                    {
+                        Helper.Conexion(this, Helper.Modo.Eliminar, $"DELETE FROM Accesorios Where Id={id} ");
+                        gv.DataSource = Helper.CargarDataTable(Select);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+                    }
                 }
             }
             else
@@ -84,8 +99,15 @@ namespace HuergoMotorsVentas
 
         private void frmAccesorios_Load(object sender, EventArgs e)
         {
-            gv.AutoGenerateColumns = false;
-            gv.DataSource = Helper.CargarDataTable(Select);
+            try
+            {
+                gv.AutoGenerateColumns = false;
+                gv.DataSource = Helper.CargarDataTable(Select);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void picBusqueda_Click(object sender, EventArgs e)

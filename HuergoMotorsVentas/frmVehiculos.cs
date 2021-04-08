@@ -37,7 +37,6 @@ namespace HuergoMotorsVentas
 
         private void CargarABM(Helper.Modo modo)
         {
-
             frmVehiculosAlta f = new frmVehiculosAlta(modo);
             if (modo == Helper.Modo.Modificar)
             {
@@ -49,7 +48,14 @@ namespace HuergoMotorsVentas
             //Solo recargo datos si se cerró con un OK.
             if (f.DialogResult == DialogResult.OK)
             {
-                gv.DataSource = Helper.CargarDataTable(Select);
+                try
+                {
+                    gv.DataSource = Helper.CargarDataTable(Select);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+                }
             }
         }
 
