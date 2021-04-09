@@ -41,27 +41,32 @@ namespace HuergoMotorsVentas
         {
             Id = id;
             string query = $"SELECT * FROM Vehiculos WHERE Id={id}";
+            try
+            {
+                DataTable dt = Helper.CargarDataTable(query);
+                string tipo = string.Empty;
+                string modelo = string.Empty;
+                decimal precioVenta = 0;
+                int stock = 0;
+                //ToDo: throw exeption isNull
+                if (!dt.Rows[0].IsNull("Tipo")) tipo = (string)dt.Rows[0]["Tipo"];
+                if (!dt.Rows[0].IsNull("Modelo")) modelo = (string)dt.Rows[0]["Modelo"];
+                if (!dt.Rows[0].IsNull("PrecioVenta")) precioVenta = (decimal)dt.Rows[0]["PrecioVenta"];
+                if (!dt.Rows[0].IsNull("Stock")) stock = (int)dt.Rows[0]["Stock"];
 
-            DataTable dt = Helper.CargarDataTable(query);
+                //Escribe el número con puntos en lugar de comas para no dar error en la DB en los decimal
+                NumberFormatInfo nfi = new NumberFormatInfo();
+                nfi.NumberDecimalSeparator = ".";
 
-            string tipo = string.Empty;
-            string modelo = string.Empty;
-            decimal precioVenta = 0;
-            int stock = 0;
-
-            if (!dt.Rows[0].IsNull("Tipo")) tipo = (string)dt.Rows[0]["Tipo"];
-            if (!dt.Rows[0].IsNull("Modelo")) modelo = (string)dt.Rows[0]["Modelo"];
-            if (!dt.Rows[0].IsNull("PrecioVenta")) precioVenta = (decimal)dt.Rows[0]["PrecioVenta"];
-            if (!dt.Rows[0].IsNull("Stock")) stock = (int)dt.Rows[0]["Stock"];
-
-            //Escribe el número con puntos en lugar de comas para no dar error en la DB en los decimal
-            NumberFormatInfo nfi = new NumberFormatInfo();
-            nfi.NumberDecimalSeparator = ".";
-
-            txtPrecio.Text = precioVenta.ToString(nfi);
-            txtModelo.Text = modelo;
-            txtTipo.Text = tipo;
-            txtStock.Text = stock.ToString();
+                txtPrecio.Text = precioVenta.ToString(nfi);
+                txtModelo.Text = modelo;
+                txtTipo.Text = tipo;
+                txtStock.Text = stock.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
         }
         private void btCancelar_Click(object sender, EventArgs e)
         {

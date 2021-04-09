@@ -79,7 +79,6 @@ namespace HuergoMotorsVentas
                 throw new Exception("Error al cargar los datos desde la base de datos", ex);
             }
         }
-
         
         public static DialogResult ConfirmacionModificacion()
         {
@@ -104,7 +103,6 @@ namespace HuergoMotorsVentas
 
         public static void CargarCombo(ComboBox combo, string query, string displaymember, string valuemember)
         {
-            CargarDataTable(query);
             combo.DisplayMember = displaymember;
             combo.ValueMember = valuemember;
             combo.DataSource = CargarDataTable(query);

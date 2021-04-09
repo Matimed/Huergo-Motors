@@ -20,23 +20,19 @@ namespace HuergoMotorsVentas
         {
             //Saca el focus del textbox y lo pone en el label por estetica
             this.ActiveControl = label1;
-
-            //Cargar el ComboBox
-           
-
+            Helper.CargarCombo(cboModelos, "SELECT Id, Modelo FROM Vehiculos", "Modelo", "Id");
             if (Modo == Helper.Modo.Agregar)
             {
                 txtNombre.Text = string.Empty;
                 txtTipo.Text = string.Empty;
                 txtPrecio.Text = "0.00";
-                Helper.CargarCombo(cboModelos ,"SELECT Id, Modelo FROM Vehiculos", "Modelo" , "Id");
             }
         }
-        
+
 
         public frmAccesoriosAlta(Helper.Modo modo)
         {
-            InitializeComponent(); 
+            InitializeComponent();
             Modo = modo;
         }
 
@@ -44,37 +40,42 @@ namespace HuergoMotorsVentas
 
         internal void CargarDatos(int id)
         {
-            Helper.CargarCombo(cboModelos, "SELECT Id, Modelo FROM Vehiculos", "Modelo", "Id");
+            try
+            {
+                Id = id;
+                string query = $"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
+                    $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id WHERE a.Id={id}";
 
-            Id = id;
-            string query = $"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
-                $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id WHERE a.Id={id}";
+                DataTable dt = Helper.CargarDataTable(query);
 
-            DataTable dt = Helper.CargarDataTable(query);
-
-            string tipo = string.Empty;
-            string nombre = string.Empty;
-            decimal precio = 0;
-            string modelo = string.Empty;
-
-
-            if (!dt.Rows[0].IsNull("Tipo")) tipo = (string)dt.Rows[0]["Tipo"];
-            if (!dt.Rows[0].IsNull("Nombre")) nombre = (string)dt.Rows[0]["Nombre"];
-            if (!dt.Rows[0].IsNull("Precio")) precio = (decimal)dt.Rows[0]["Precio"];
-            if (!dt.Rows[0].IsNull("Modelo")) modelo = (string)dt.Rows[0]["Modelo"];
+                string tipo = string.Empty;
+                string nombre = string.Empty;
+                decimal precio = 0;
+                string modelo = string.Empty;
 
 
-            //Escribe el número con puntos en lugar de comas para no dar error en la DB
-            NumberFormatInfo nfi = new NumberFormatInfo();
-            nfi.NumberDecimalSeparator = ".";
+                if (!dt.Rows[0].IsNull("Tipo")) tipo = (string)dt.Rows[0]["Tipo"];
+                if (!dt.Rows[0].IsNull("Nombre")) nombre = (string)dt.Rows[0]["Nombre"];
+                if (!dt.Rows[0].IsNull("Precio")) precio = (decimal)dt.Rows[0]["Precio"];
+                if (!dt.Rows[0].IsNull("Modelo")) modelo = (string)dt.Rows[0]["Modelo"];
 
-            txtPrecio.Text = precio.ToString(nfi);
-            txtTipo.Text = tipo;
-            txtNombre.Text = nombre;
-            int index = cboModelos.FindString(modelo);
-            cboModelos.SelectedIndex = index;
-        
-        }
+
+                //Escribe el número con puntos en lugar de comas para no dar error en la DB
+                NumberFormatInfo nfi = new NumberFormatInfo();
+                nfi.NumberDecimalSeparator = ".";
+
+                txtPrecio.Text = precio.ToString(nfi);
+                txtTipo.Text = tipo;
+                txtNombre.Text = nombre;
+                int index = cboModelos.FindString(modelo);
+                cboModelos.SelectedIndex = index;
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
+        } 
 
         private void btCancelar_Click(object sender, EventArgs e)
         {
