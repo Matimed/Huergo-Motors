@@ -29,7 +29,7 @@ namespace HuergoMotorsVentas
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -356,9 +356,9 @@ namespace HuergoMotorsVentas
             // 
             // bEliminarAccesorio
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.NullValue = "Eliminar";
-            this.bEliminarAccesorio.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = "Eliminar";
+            this.bEliminarAccesorio.DefaultCellStyle = dataGridViewCellStyle2;
             this.bEliminarAccesorio.HeaderText = "Eliminar";
             this.bEliminarAccesorio.Name = "bEliminarAccesorio";
             // 
