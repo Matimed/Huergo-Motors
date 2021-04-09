@@ -1,0 +1,14 @@
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.csprojAssemblyReference.cache
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.frmAccesorios.resources
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.frmAccesoriosAlta.resources
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.frmClientes.resources
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.frmClientesAlta.resources
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.frmMDI.resources
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.frmVehiculos.resources
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.frmVehiculosAlta.resources
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.frmVendedores.resources
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.frmVendedoresAlta.resources
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.frmVentas.resources
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.Properties.Resources.resources
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.csproj.GenerateResource.cache
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.csproj.CoreCompileInputs.cache

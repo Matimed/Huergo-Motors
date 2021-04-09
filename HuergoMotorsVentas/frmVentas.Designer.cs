@@ -38,20 +38,19 @@ namespace HuergoMotorsVentas
             this.txtId = new System.Windows.Forms.TextBox();
             this.DtFecha = new System.Windows.Forms.DateTimePicker();
             this.cbVendedor = new System.Windows.Forms.ComboBox();
-            this.txtSucursal = new System.Windows.Forms.TextBox();
+            this.txSucursal = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lbPrecio = new System.Windows.Forms.Label();
-            this.lbModelo = new System.Windows.Forms.Label();
             this.cbTipo = new System.Windows.Forms.ComboBox();
             this.btnSeleccionar = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.lbEmail = new System.Windows.Forms.Label();
-            this.lbTelefono = new System.Windows.Forms.Label();
-            this.lbNombreApellido = new System.Windows.Forms.Label();
+            this.LBEmail = new System.Windows.Forms.Label();
+            this.LBTelefono = new System.Windows.Forms.Label();
+            this.LBNombre = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
@@ -67,6 +66,7 @@ namespace HuergoMotorsVentas
             this.label15 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.cbModelo = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.gvAccesorios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
@@ -144,14 +144,16 @@ namespace HuergoMotorsVentas
             this.cbVendedor.Name = "cbVendedor";
             this.cbVendedor.Size = new System.Drawing.Size(121, 21);
             this.cbVendedor.TabIndex = 7;
+            this.cbVendedor.SelectedIndexChanged += new System.EventHandler(this.cbVendedor_SelectedIndexChanged);
             // 
-            // txtSucursal
+            // txSucursal
             // 
-            this.txtSucursal.Location = new System.Drawing.Point(109, 128);
-            this.txtSucursal.Name = "txtSucursal";
-            this.txtSucursal.ReadOnly = true;
-            this.txtSucursal.Size = new System.Drawing.Size(121, 20);
-            this.txtSucursal.TabIndex = 8;
+            this.txSucursal.Location = new System.Drawing.Point(109, 128);
+            this.txSucursal.Name = "txSucursal";
+            this.txSucursal.ReadOnly = true;
+            this.txSucursal.Size = new System.Drawing.Size(121, 20);
+            this.txSucursal.TabIndex = 8;
+            this.txSucursal.TextChanged += new System.EventHandler(this.txtSucursal_TextChanged);
             // 
             // label6
             // 
@@ -189,15 +191,6 @@ namespace HuergoMotorsVentas
             this.lbPrecio.TabIndex = 15;
             this.lbPrecio.Text = "...";
             // 
-            // lbModelo
-            // 
-            this.lbModelo.AutoSize = true;
-            this.lbModelo.Location = new System.Drawing.Point(128, 226);
-            this.lbModelo.Name = "lbModelo";
-            this.lbModelo.Size = new System.Drawing.Size(16, 13);
-            this.lbModelo.TabIndex = 14;
-            this.lbModelo.Text = "...";
-            // 
             // cbTipo
             // 
             this.cbTipo.FormattingEnabled = true;
@@ -205,6 +198,7 @@ namespace HuergoMotorsVentas
             this.cbTipo.Name = "cbTipo";
             this.cbTipo.Size = new System.Drawing.Size(102, 21);
             this.cbTipo.TabIndex = 16;
+            this.cbTipo.SelectedIndexChanged += new System.EventHandler(this.cbTipo_SelectedIndexChanged);
             // 
             // btnSeleccionar
             // 
@@ -214,6 +208,7 @@ namespace HuergoMotorsVentas
             this.btnSeleccionar.TabIndex = 18;
             this.btnSeleccionar.Text = "Seleccionar";
             this.btnSeleccionar.UseVisualStyleBackColor = true;
+            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
             // label13
             // 
@@ -242,32 +237,32 @@ namespace HuergoMotorsVentas
             this.label19.TabIndex = 19;
             this.label19.Text = "Nombre Y Apellido";
             // 
-            // lbEmail
+            // LBEmail
             // 
-            this.lbEmail.AutoSize = true;
-            this.lbEmail.Location = new System.Drawing.Point(396, 250);
-            this.lbEmail.Name = "lbEmail";
-            this.lbEmail.Size = new System.Drawing.Size(16, 13);
-            this.lbEmail.TabIndex = 24;
-            this.lbEmail.Text = "...";
+            this.LBEmail.AutoSize = true;
+            this.LBEmail.Location = new System.Drawing.Point(396, 250);
+            this.LBEmail.Name = "LBEmail";
+            this.LBEmail.Size = new System.Drawing.Size(16, 13);
+            this.LBEmail.TabIndex = 24;
+            this.LBEmail.Text = "...";
             // 
-            // lbTelefono
+            // LBTelefono
             // 
-            this.lbTelefono.AutoSize = true;
-            this.lbTelefono.Location = new System.Drawing.Point(396, 226);
-            this.lbTelefono.Name = "lbTelefono";
-            this.lbTelefono.Size = new System.Drawing.Size(16, 13);
-            this.lbTelefono.TabIndex = 23;
-            this.lbTelefono.Text = "...";
+            this.LBTelefono.AutoSize = true;
+            this.LBTelefono.Location = new System.Drawing.Point(396, 226);
+            this.LBTelefono.Name = "LBTelefono";
+            this.LBTelefono.Size = new System.Drawing.Size(16, 13);
+            this.LBTelefono.TabIndex = 23;
+            this.LBTelefono.Text = "...";
             // 
-            // lbNombreApellido
+            // LBNombre
             // 
-            this.lbNombreApellido.AutoSize = true;
-            this.lbNombreApellido.Location = new System.Drawing.Point(396, 202);
-            this.lbNombreApellido.Name = "lbNombreApellido";
-            this.lbNombreApellido.Size = new System.Drawing.Size(16, 13);
-            this.lbNombreApellido.TabIndex = 22;
-            this.lbNombreApellido.Text = "...";
+            this.LBNombre.AutoSize = true;
+            this.LBNombre.Location = new System.Drawing.Point(396, 202);
+            this.LBNombre.Name = "LBNombre";
+            this.LBNombre.Size = new System.Drawing.Size(16, 13);
+            this.LBNombre.TabIndex = 22;
+            this.LBNombre.Text = "...";
             // 
             // comboBox1
             // 
@@ -286,6 +281,7 @@ namespace HuergoMotorsVentas
             this.btnAgregar.TabIndex = 27;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // label18
             // 
@@ -315,6 +311,7 @@ namespace HuergoMotorsVentas
             this.btnConfirmarVenta.TabIndex = 30;
             this.btnConfirmarVenta.Text = "Confirmar Venta";
             this.btnConfirmarVenta.UseVisualStyleBackColor = true;
+            this.btnConfirmarVenta.Click += new System.EventHandler(this.btnConfirmarVenta_Click);
             // 
             // textBox1
             // 
@@ -408,11 +405,20 @@ namespace HuergoMotorsVentas
             this.label10.TabIndex = 36;
             this.label10.Text = "Accesorios";
             // 
+            // cbModelo
+            // 
+            this.cbModelo.FormattingEnabled = true;
+            this.cbModelo.Location = new System.Drawing.Point(109, 223);
+            this.cbModelo.Name = "cbModelo";
+            this.cbModelo.Size = new System.Drawing.Size(102, 21);
+            this.cbModelo.TabIndex = 37;
+            // 
             // frmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(547, 552);
+            this.Controls.Add(this.cbModelo);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label15);
@@ -424,20 +430,19 @@ namespace HuergoMotorsVentas
             this.Controls.Add(this.label18);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.lbEmail);
-            this.Controls.Add(this.lbTelefono);
-            this.Controls.Add(this.lbNombreApellido);
+            this.Controls.Add(this.LBEmail);
+            this.Controls.Add(this.LBTelefono);
+            this.Controls.Add(this.LBNombre);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.btnSeleccionar);
             this.Controls.Add(this.cbTipo);
             this.Controls.Add(this.lbPrecio);
-            this.Controls.Add(this.lbModelo);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.txtSucursal);
+            this.Controls.Add(this.txSucursal);
             this.Controls.Add(this.cbVendedor);
             this.Controls.Add(this.DtFecha);
             this.Controls.Add(this.txtId);
@@ -448,6 +453,7 @@ namespace HuergoMotorsVentas
             this.Controls.Add(this.label1);
             this.Name = "frmVentas";
             this.Text = "frmVentas";
+            this.Load += new System.EventHandler(this.frmVentas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvAccesorios)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.ResumeLayout(false);
@@ -465,20 +471,19 @@ namespace HuergoMotorsVentas
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.DateTimePicker DtFecha;
         private System.Windows.Forms.ComboBox cbVendedor;
-        private System.Windows.Forms.TextBox txtSucursal;
+        private System.Windows.Forms.TextBox txSucursal;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lbPrecio;
-        private System.Windows.Forms.Label lbModelo;
         private System.Windows.Forms.ComboBox cbTipo;
         private System.Windows.Forms.Button btnSeleccionar;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label lbEmail;
-        private System.Windows.Forms.Label lbTelefono;
-        private System.Windows.Forms.Label lbNombreApellido;
+        private System.Windows.Forms.Label LBEmail;
+        private System.Windows.Forms.Label LBTelefono;
+        private System.Windows.Forms.Label LBNombre;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Label label18;
@@ -494,5 +499,6 @@ namespace HuergoMotorsVentas
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox cbModelo;
     }
 }

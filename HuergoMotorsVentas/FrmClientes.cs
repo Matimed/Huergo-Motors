@@ -94,6 +94,9 @@ namespace HuergoMotorsVentas
             }
         }
 
-       
+        private void gv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

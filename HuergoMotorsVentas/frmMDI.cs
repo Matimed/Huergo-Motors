@@ -42,6 +42,9 @@ namespace HuergoMotorsVentas
             AbrirForm(new frmVendedores());
         }
 
-        
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -73,6 +73,7 @@
             this.toolStripMenuItem1.ShowShortcutKeys = false;
             this.toolStripMenuItem1.Size = new System.Drawing.Size(142, 20);
             this.toolStripMenuItem1.Text = "Alta/Baja/Modificación";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // vehiculosToolStripMenuItem
             // 
