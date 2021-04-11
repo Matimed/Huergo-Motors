@@ -107,9 +107,29 @@ namespace HuergoMotorsVentas
 
         public static void CargarCombo(ComboBox combo, string query, string displaymember)
         {
-            combo.DisplayMember = displaymember;
-            combo.ValueMember = "Id";
-            combo.DataSource = CargarDataTable(query);
+            try
+            {
+                combo.DisplayMember = displaymember;
+                combo.ValueMember = "Id";
+                combo.DataSource = CargarDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al cargar un ComboBox", ex);
+            }
+        }
+        public static DataTable LeerCombo(ComboBox combo, string campo, string tabla)
+        {
+            try
+            {
+                int id = (int)combo.SelectedValue;
+                DataTable dt = CargarDataTable($"SELECT {campo} FROM {tabla} WHERE ID = {id}");
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al leer un ComboBox", ex);
+            }
         }
 
         //ToDo:  Validar stock antes y despues de confirmar venta
@@ -146,18 +166,22 @@ namespace HuergoMotorsVentas
         }
 
 
-        public static void ValidarCombosVacios(ComboBox combo1, ComboBox combo2, ComboBox combo3)
+        public static bool VerificarCombosCargados(ComboBox combo)
         {
             try
             {
-                if (string.IsNullOrEmpty(combo1.Text) | string.IsNullOrEmpty(combo2.Text) | string.IsNullOrEmpty(combo3.Text))
+                if (string.IsNullOrEmpty(combo.Text))
                 {
-                    throw new Exception("No se pueden dejar campos sin completar");
+                    return false;
+                }
+                else
+                {
+                    return true;
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception("Error al cargar los combos", ex);
             }
         }
         public static void ValidarTextosVacios(TextBox textbox1, TextBox textbox2, TextBox textbox3)

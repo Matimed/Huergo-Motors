@@ -29,7 +29,7 @@ namespace HuergoMotorsVentas
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -40,15 +40,14 @@ namespace HuergoMotorsVentas
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.lbPrecio = new System.Windows.Forms.Label();
-            this.cboTipo = new System.Windows.Forms.ComboBox();
+            this.lblPrecio = new System.Windows.Forms.Label();
             this.btnSeleccionar = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.LBEmail = new System.Windows.Forms.Label();
-            this.LBTelefono = new System.Windows.Forms.Label();
-            this.LBNombre = new System.Windows.Forms.Label();
+            this.LblEmail = new System.Windows.Forms.Label();
+            this.LblTelefono = new System.Windows.Forms.Label();
+            this.LblNombre = new System.Windows.Forms.Label();
             this.cboAccesorios = new System.Windows.Forms.ComboBox();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
@@ -56,15 +55,18 @@ namespace HuergoMotorsVentas
             this.btnConfirmarVenta = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.gvAccesorios = new System.Windows.Forms.DataGridView();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bEliminarAccesorio = new System.Windows.Forms.DataGridViewButtonColumn();
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cboModelo = new System.Windows.Forms.ComboBox();
+            this.lblTipo = new System.Windows.Forms.Label();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdVehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminarAccesorio = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvAccesorios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
@@ -124,7 +126,7 @@ namespace HuergoMotorsVentas
             this.cboVendedor.Name = "cboVendedor";
             this.cboVendedor.Size = new System.Drawing.Size(121, 21);
             this.cboVendedor.TabIndex = 7;
-            this.cboVendedor.SelectedIndexChanged += new System.EventHandler(this.cbVendedor_SelectedIndexChanged);
+            this.cboVendedor.SelectedIndexChanged += new System.EventHandler(this.cboVendedor_SelectedIndexChanged);
             // 
             // txtSucursal
             // 
@@ -146,7 +148,7 @@ namespace HuergoMotorsVentas
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(45, 226);
+            this.label7.Location = new System.Drawing.Point(46, 199);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(42, 13);
             this.label7.TabIndex = 11;
@@ -155,29 +157,20 @@ namespace HuergoMotorsVentas
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(45, 198);
+            this.label8.Location = new System.Drawing.Point(46, 226);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(28, 13);
             this.label8.TabIndex = 10;
             this.label8.Text = "Tipo";
             // 
-            // lbPrecio
+            // lblPrecio
             // 
-            this.lbPrecio.AutoSize = true;
-            this.lbPrecio.Location = new System.Drawing.Point(149, 253);
-            this.lbPrecio.Name = "lbPrecio";
-            this.lbPrecio.Size = new System.Drawing.Size(16, 13);
-            this.lbPrecio.TabIndex = 15;
-            this.lbPrecio.Text = "...";
-            // 
-            // cboTipo
-            // 
-            this.cboTipo.FormattingEnabled = true;
-            this.cboTipo.Location = new System.Drawing.Point(109, 194);
-            this.cboTipo.Name = "cboTipo";
-            this.cboTipo.Size = new System.Drawing.Size(102, 21);
-            this.cboTipo.TabIndex = 16;
-            this.cboTipo.SelectedIndexChanged += new System.EventHandler(this.cboTipo_SelectedIndexChanged);
+            this.lblPrecio.AutoSize = true;
+            this.lblPrecio.Location = new System.Drawing.Point(149, 253);
+            this.lblPrecio.Name = "lblPrecio";
+            this.lblPrecio.Size = new System.Drawing.Size(16, 13);
+            this.lblPrecio.TabIndex = 15;
+            this.lblPrecio.Text = "...";
             // 
             // btnSeleccionar
             // 
@@ -216,32 +209,32 @@ namespace HuergoMotorsVentas
             this.label19.TabIndex = 19;
             this.label19.Text = "Nombre Y Apellido";
             // 
-            // LBEmail
+            // LblEmail
             // 
-            this.LBEmail.AutoSize = true;
-            this.LBEmail.Location = new System.Drawing.Point(396, 250);
-            this.LBEmail.Name = "LBEmail";
-            this.LBEmail.Size = new System.Drawing.Size(16, 13);
-            this.LBEmail.TabIndex = 24;
-            this.LBEmail.Text = "...";
+            this.LblEmail.AutoSize = true;
+            this.LblEmail.Location = new System.Drawing.Point(396, 250);
+            this.LblEmail.Name = "LblEmail";
+            this.LblEmail.Size = new System.Drawing.Size(16, 13);
+            this.LblEmail.TabIndex = 24;
+            this.LblEmail.Text = "...";
             // 
-            // LBTelefono
+            // LblTelefono
             // 
-            this.LBTelefono.AutoSize = true;
-            this.LBTelefono.Location = new System.Drawing.Point(396, 226);
-            this.LBTelefono.Name = "LBTelefono";
-            this.LBTelefono.Size = new System.Drawing.Size(16, 13);
-            this.LBTelefono.TabIndex = 23;
-            this.LBTelefono.Text = "...";
+            this.LblTelefono.AutoSize = true;
+            this.LblTelefono.Location = new System.Drawing.Point(396, 226);
+            this.LblTelefono.Name = "LblTelefono";
+            this.LblTelefono.Size = new System.Drawing.Size(16, 13);
+            this.LblTelefono.TabIndex = 23;
+            this.LblTelefono.Text = "...";
             // 
-            // LBNombre
+            // LblNombre
             // 
-            this.LBNombre.AutoSize = true;
-            this.LBNombre.Location = new System.Drawing.Point(396, 202);
-            this.LBNombre.Name = "LBNombre";
-            this.LBNombre.Size = new System.Drawing.Size(16, 13);
-            this.LBNombre.TabIndex = 22;
-            this.LBNombre.Text = "...";
+            this.LblNombre.AutoSize = true;
+            this.LblNombre.Location = new System.Drawing.Point(396, 202);
+            this.LblNombre.Name = "LblNombre";
+            this.LblNombre.Size = new System.Drawing.Size(16, 13);
+            this.LblNombre.TabIndex = 22;
+            this.LblNombre.Text = "...";
             // 
             // cboAccesorios
             // 
@@ -266,7 +259,7 @@ namespace HuergoMotorsVentas
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(45, 530);
+            this.label18.Location = new System.Drawing.Point(45, 537);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(216, 16);
             this.label18.TabIndex = 28;
@@ -276,7 +269,7 @@ namespace HuergoMotorsVentas
             // 
             this.lbTotal.AutoSize = true;
             this.lbTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTotal.Location = new System.Drawing.Point(267, 530);
+            this.lbTotal.Location = new System.Drawing.Point(267, 537);
             this.lbTotal.Name = "lbTotal";
             this.lbTotal.Size = new System.Drawing.Size(48, 16);
             this.lbTotal.TabIndex = 29;
@@ -284,7 +277,7 @@ namespace HuergoMotorsVentas
             // 
             // btnConfirmarVenta
             // 
-            this.btnConfirmarVenta.Location = new System.Drawing.Point(330, 526);
+            this.btnConfirmarVenta.Location = new System.Drawing.Point(330, 533);
             this.btnConfirmarVenta.Name = "btnConfirmarVenta";
             this.btnConfirmarVenta.Size = new System.Drawing.Size(164, 24);
             this.btnConfirmarVenta.TabIndex = 30;
@@ -307,39 +300,15 @@ namespace HuergoMotorsVentas
             this.gvAccesorios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvAccesorios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nombre,
+            this.Id,
+            this.IdVehiculo,
             this.Tipo,
             this.Precio,
-            this.bEliminarAccesorio});
+            this.btnEliminarAccesorio});
             this.gvAccesorios.Location = new System.Drawing.Point(48, 329);
             this.gvAccesorios.Name = "gvAccesorios";
             this.gvAccesorios.Size = new System.Drawing.Size(446, 120);
             this.gvAccesorios.TabIndex = 32;
-            // 
-            // Nombre
-            // 
-            this.Nombre.DataPropertyName = "Nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            // 
-            // Tipo
-            // 
-            this.Tipo.DataPropertyName = "Tipo";
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            // 
-            // Precio
-            // 
-            this.Precio.DataPropertyName = "Precio";
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            // 
-            // bEliminarAccesorio
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.NullValue = "Eliminar";
-            this.bEliminarAccesorio.DefaultCellStyle = dataGridViewCellStyle4;
-            this.bEliminarAccesorio.HeaderText = "Eliminar";
-            this.bEliminarAccesorio.Name = "bEliminarAccesorio";
             // 
             // picLogo
             // 
@@ -387,17 +356,66 @@ namespace HuergoMotorsVentas
             // cboModelo
             // 
             this.cboModelo.FormattingEnabled = true;
-            this.cboModelo.Location = new System.Drawing.Point(109, 223);
+            this.cboModelo.Location = new System.Drawing.Point(109, 194);
             this.cboModelo.Name = "cboModelo";
             this.cboModelo.Size = new System.Drawing.Size(102, 21);
             this.cboModelo.TabIndex = 37;
+            this.cboModelo.SelectedIndexChanged += new System.EventHandler(this.cboModelo_SelectedIndexChanged);
+            // 
+            // lblTipo
+            // 
+            this.lblTipo.AutoSize = true;
+            this.lblTipo.Location = new System.Drawing.Point(149, 226);
+            this.lblTipo.Name = "lblTipo";
+            this.lblTipo.Size = new System.Drawing.Size(16, 13);
+            this.lblTipo.TabIndex = 38;
+            this.lblTipo.Text = "...";
+            // 
+            // Nombre
+            // 
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
+            // 
+            // IdVehiculo
+            // 
+            this.IdVehiculo.HeaderText = "IdVehiculo";
+            this.IdVehiculo.Name = "IdVehiculo";
+            this.IdVehiculo.Visible = false;
+            // 
+            // Tipo
+            // 
+            this.Tipo.DataPropertyName = "Tipo";
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            // 
+            // Precio
+            // 
+            this.Precio.DataPropertyName = "Precio";
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            // 
+            // btnEliminarAccesorio
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.NullValue = "Eliminar";
+            this.btnEliminarAccesorio.DefaultCellStyle = dataGridViewCellStyle1;
+            this.btnEliminarAccesorio.HeaderText = "Eliminar";
+            this.btnEliminarAccesorio.Name = "btnEliminarAccesorio";
             // 
             // frmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(547, 552);
+            this.ClientSize = new System.Drawing.Size(547, 575);
+            this.Controls.Add(this.lblTipo);
             this.Controls.Add(this.cboModelo);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -410,15 +428,14 @@ namespace HuergoMotorsVentas
             this.Controls.Add(this.label18);
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.cboAccesorios);
-            this.Controls.Add(this.LBEmail);
-            this.Controls.Add(this.LBTelefono);
-            this.Controls.Add(this.LBNombre);
+            this.Controls.Add(this.LblEmail);
+            this.Controls.Add(this.LblTelefono);
+            this.Controls.Add(this.LblNombre);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.btnSeleccionar);
-            this.Controls.Add(this.cboTipo);
-            this.Controls.Add(this.lbPrecio);
+            this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label8);
@@ -430,6 +447,7 @@ namespace HuergoMotorsVentas
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Name = "frmVentas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmVentas";
             this.Load += new System.EventHandler(this.frmVentas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gvAccesorios)).EndInit();
@@ -451,15 +469,14 @@ namespace HuergoMotorsVentas
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label lbPrecio;
-        private System.Windows.Forms.ComboBox cboTipo;
+        private System.Windows.Forms.Label lblPrecio;
         private System.Windows.Forms.Button btnSeleccionar;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label LBEmail;
-        private System.Windows.Forms.Label LBTelefono;
-        private System.Windows.Forms.Label LBNombre;
+        private System.Windows.Forms.Label LblEmail;
+        private System.Windows.Forms.Label LblTelefono;
+        private System.Windows.Forms.Label LblNombre;
         private System.Windows.Forms.ComboBox cboAccesorios;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Label label18;
@@ -467,14 +484,17 @@ namespace HuergoMotorsVentas
         private System.Windows.Forms.Button btnConfirmarVenta;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView gvAccesorios;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
-        private System.Windows.Forms.DataGridViewButtonColumn bEliminarAccesorio;
         private System.Windows.Forms.PictureBox picLogo;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox cboModelo;
+        private System.Windows.Forms.Label lblTipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdVehiculo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.DataGridViewButtonColumn btnEliminarAccesorio;
     }
 }
