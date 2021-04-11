@@ -8,6 +8,7 @@ namespace HuergoMotorsVentas
 {
     public partial class frmClientes : Form
     {
+        public Clientes ClienteSeleccionado { get; set; }
         private new const string Select = "SELECT * FROM Clientes";
         public frmClientes()
         {
@@ -49,11 +50,20 @@ namespace HuergoMotorsVentas
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
             }
         }
-
+        public void Seleccionar()
+        {
+            btnSeleccionar.Visible = true;
+            btEliminar.Visible = false;
+        }
+        public void Modificar()
+        {
+            btnSeleccionar.Visible = false;
+            btEliminar.Visible = true;
+        }
         private void frmClientes_Load(object sender, EventArgs e)
         {
             try
-            {
+            {            
                 gv.AutoGenerateColumns = false;
                 gv.DataSource = Helper.CargarDataTable(Select);
             }
@@ -65,7 +75,8 @@ namespace HuergoMotorsVentas
 
         private void btCerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
 
         private void picBoxlupa_Click(object sender, EventArgs e)
@@ -130,6 +141,23 @@ namespace HuergoMotorsVentas
         private void gv_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            if (gv.SelectedRows.Count == 1)
+            {
+                Clientes cliente = new Clientes();
+                cliente.Id = (int)gv.SelectedRows[0].Cells["Id"].Value;
+                cliente.Nombre = (string)gv.SelectedRows[0].Cells["Nombre"].Value;
+                cliente.Direccion = (string)gv.SelectedRows[0].Cells["Direccion"].Value;
+                cliente.Telefono = (string)gv.SelectedRows[0].Cells["Telefono"].Value;
+                cliente.Email = (string)gv.SelectedRows[0].Cells["Email"].Value;
+
+                ClienteSeleccionado = cliente;
+
+                DialogResult = DialogResult.OK;
+            }
         }
     }
 }

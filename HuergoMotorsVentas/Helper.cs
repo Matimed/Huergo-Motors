@@ -13,7 +13,8 @@ namespace HuergoMotorsVentas
         //ToDo: Cargar imagenes de forma dinamica
         //ToDo: Comprimir imagenes
         //ToDo: Boton Cancelar Venta
-        //ToDo:Seleccion de clientes
+        //ToDo: Validar stock antes y despues de confirmar venta
+        //ToDo: Totales y acreditar compra
 
         public static string ConnectionString = "Server=sql5078.site4now.net;Database=DB_9CF8B6_HuergoMotors2021;User Id=DB_9CF8B6_HuergoMotors2021_admin;Password=huergo2021;";
 
@@ -23,7 +24,7 @@ namespace HuergoMotorsVentas
             Modificar,
             Eliminar
         }
-
+    
         public static void OperacionExitosa(Modo modo, int result)
         {
             switch (modo)
@@ -66,7 +67,6 @@ namespace HuergoMotorsVentas
             }
         }
 
-        //ToDo: Agregar Try-Catch faltantes
         public static DataTable CargarDataTable(string query)
         {
             try
@@ -135,7 +135,6 @@ namespace HuergoMotorsVentas
         }
        
 
-        //ToDo:  Validar stock antes y despues de confirmar venta
         public static void ValidarNumerosNaturales(TextBox textbox1)
         {
             try

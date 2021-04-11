@@ -102,10 +102,26 @@ namespace HuergoMotorsVentas
             }
         
         } 
+
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            frmClientes formulario = new frmClientes();
-            formulario.ShowDialog(); 
+            using (frmClientes f = new frmClientes())
+            {
+                f.Seleccionar();
+
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    txtNombreCliente.Text = f.ClienteSeleccionado.Nombre;
+                    txtEmail.Text = f.ClienteSeleccionado.Email;
+                    txtTelefono.Text = f.ClienteSeleccionado.Telefono;
+                }
+                else
+                {
+                    txtNombreCliente.Text = string.Empty;
+                    txtEmail.Text = string.Empty;
+                    txtTelefono.Text = string.Empty;
+                }
+            }
         }
 
         private void btnConfirmarVenta_Click(object sender, EventArgs e)

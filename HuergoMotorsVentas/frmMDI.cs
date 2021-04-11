@@ -35,7 +35,9 @@ namespace HuergoMotorsVentas
         }
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AbrirForm(new frmClientes());
+            frmClientes f = new frmClientes();
+            f.Modificar();
+            AbrirForm(f);
         }
         private void vendedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {

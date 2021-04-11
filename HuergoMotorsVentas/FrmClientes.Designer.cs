@@ -67,7 +67,7 @@ namespace HuergoMotorsVentas
             this.btEliminar.BackColor = System.Drawing.Color.Firebrick;
             this.btEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btEliminar.ForeColor = System.Drawing.Color.White;
-            this.btEliminar.Location = new System.Drawing.Point(498, 424);
+            this.btEliminar.Location = new System.Drawing.Point(336, 426);
             this.btEliminar.Name = "btEliminar";
             this.btEliminar.Size = new System.Drawing.Size(75, 23);
             this.btEliminar.TabIndex = 15;
@@ -81,7 +81,7 @@ namespace HuergoMotorsVentas
             this.btNuevo.BackColor = System.Drawing.Color.OliveDrab;
             this.btNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btNuevo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btNuevo.Location = new System.Drawing.Point(336, 424);
+            this.btNuevo.Location = new System.Drawing.Point(497, 426);
             this.btNuevo.Name = "btNuevo";
             this.btNuevo.Size = new System.Drawing.Size(75, 23);
             this.btNuevo.TabIndex = 14;
@@ -94,7 +94,7 @@ namespace HuergoMotorsVentas
             this.btModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btModificar.BackColor = System.Drawing.Color.Goldenrod;
             this.btModificar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btModificar.Location = new System.Drawing.Point(417, 424);
+            this.btModificar.Location = new System.Drawing.Point(417, 426);
             this.btModificar.Name = "btModificar";
             this.btModificar.Size = new System.Drawing.Size(75, 23);
             this.btModificar.TabIndex = 12;
@@ -209,14 +209,15 @@ namespace HuergoMotorsVentas
             // btnSeleccionar
             // 
             this.btnSeleccionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSeleccionar.BackColor = System.Drawing.Color.Goldenrod;
+            this.btnSeleccionar.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnSeleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSeleccionar.Location = new System.Drawing.Point(214, 424);
+            this.btnSeleccionar.Location = new System.Drawing.Point(318, 426);
             this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
+            this.btnSeleccionar.Size = new System.Drawing.Size(93, 23);
             this.btnSeleccionar.TabIndex = 19;
-            this.btnSeleccionar.Text = "Modificar";
+            this.btnSeleccionar.Text = "Seleccionar";
             this.btnSeleccionar.UseVisualStyleBackColor = false;
+            this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
             // 
             // frmClientes
             // 

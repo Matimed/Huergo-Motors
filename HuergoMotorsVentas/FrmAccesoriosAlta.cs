@@ -15,6 +15,7 @@ namespace HuergoMotorsVentas
     {
         public int Id { get; set; } //Esto es una 'propiedad'.
         public Helper.Modo Modo { get; private set; }
+        
 
         private void frmVehiculosAlta_Load(object sender, EventArgs e)
         {
