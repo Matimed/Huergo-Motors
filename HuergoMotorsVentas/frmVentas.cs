@@ -13,43 +13,21 @@ namespace HuergoMotorsVentas
     public partial class frmVentas : Form
   
     {
-        private new const string Select = "SELECT * FROM Ventas";
         public frmVentas()
         {
             InitializeComponent();
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtSucursal_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void cbVendedor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //ToDo: Probablemente sería bueno tener un "helper" para hacer querys...
 
-            int id = (int)cbVendedor.SelectedValue;
+            int id = (int)cboVendedor.SelectedValue;
 
-            DataTable dt = new DataTable();
-
-            using (SqlDataAdapter da = new SqlDataAdapter("SELECT Sucursal FROM Vendedores WHERE ID=" + id, Helper.ConnectionString))
-            {
-                da.Fill(dt);
-            }
-
+            DataTable dt = Helper.CargarDataTable("SELECT Sucursal FROM Vendedores WHERE ID=" + id);
+            
             string sucursal = (string)dt.Rows[0]["Sucursal"];
 
-            txSucursal.Text = sucursal;
-        }
-
-        private void cbTipo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-               
+            txtSucursal.Text = sucursal;
         }
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
@@ -66,30 +44,51 @@ namespace HuergoMotorsVentas
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Nombre");
-            dt.Columns.Add("Tipo");
-            dt.Columns.Add("Precio", typeof(decimal));
+            //DataTable dt = new DataTable();
+            //dt.Columns.Add("Nombre");
+            //dt.Columns.Add("Tipo");
+            //dt.Columns.Add("Precio", typeof(decimal));
 
-            dt.Rows.Add("Accesorio 1", "Llantas", 3962.23m);
-            dt.Rows.Add("Accesorio 2", "Llantas", 353.16m);
+            //dt.Rows.Add("Accesorio 1", "Llantas", 3962.23m);
+            //dt.Rows.Add("Accesorio 2", "Llantas", 353.16m);
 
-            gvAccesorios.DataSource = dt;
+            //gvAccesorios.DataSource = dt;
+            string nombre = "Accesorio 1";
+            string tipo = "Llantas";
+            decimal precio = 56;
+
+            gvAccesorios.Rows.Add(nombre, tipo, precio);
         }
 
         private void frmVentas_Load(object sender, EventArgs e)
         {
             try
             {
-                Helper.CargarCombo(cbVendedor, "SELECT Id, Nombre + ' ' + Apellido AS Vendedor FROM Vendedores", "Vendedor", "Id");
-                Helper.CargarCombo(cbModelo, "SELECT Id, Modelo FROM Vehiculos", "Modelo", "Id");
+                Helper.CargarCombo(cboVendedor, "SELECT Id, Nombre + ' ' + Apellido AS Vendedor FROM Vendedores", "Vendedor");
+                Helper.CargarCombo(cboTipo, "SELECT DISTINCT Id, Tipo FROM Vehiculos", "Tipo");
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //Aca es donde continua la ejecucion en caso de un error (Excepcion)
-                throw;
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
             }
+        }
+
+        private void cboTipo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+            //if (cboTipo.SelectedIndex != 0)
+            //{
+            //    string dato = cboTipo.SelectedItem.ToString();
+            //    try
+            //    {
+            //        Helper.CargarCombo(cboModelo, $"SELECT Modelo FROM Vehiculos WHERE Tipo = {dato}", "Modelo");
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            //    }
+            //}
         }
     }
 }

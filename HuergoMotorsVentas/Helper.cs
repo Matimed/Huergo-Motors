@@ -10,6 +10,9 @@ namespace HuergoMotorsVentas
 {
     public static class Helper
     {
+        //ToDo: Cargar imagenes de forma dinamica
+        //ToDo: Comprimir imagenes
+
         public static string ConnectionString = "Server=sql5078.site4now.net;Database=DB_9CF8B6_HuergoMotors2021;User Id=DB_9CF8B6_HuergoMotors2021_admin;Password=huergo2021;";
 
         public enum Modo
@@ -57,10 +60,11 @@ namespace HuergoMotorsVentas
             }
             catch (Exception ex)
             {
-               throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
+                throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
             }
         }
 
+        //ToDo: Agregar Try-Catch faltantes
         public static DataTable CargarDataTable(string query)
         {
             try
@@ -79,17 +83,17 @@ namespace HuergoMotorsVentas
                 throw new Exception("Error al cargar los datos desde la base de datos", ex);
             }
         }
-        
+
         public static DialogResult ConfirmacionModificacion()
         {
-                DialogResult resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
-                                 "Sobrescribir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                return resp;
+            DialogResult resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
+                             "Sobrescribir los datos", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            return resp;
         }
 
         public static DialogResult ConfirmacionEliminación(string nombre)
         {
-            DialogResult resp = MessageBox.Show("Seguro que desea borrar a " + nombre +"? Esta operacion no se puede revertir",
+            DialogResult resp = MessageBox.Show("Seguro que desea borrar a " + nombre + "? Esta operacion no se puede revertir",
                      "Eliminar permanentemente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             return resp;
         }
@@ -101,13 +105,12 @@ namespace HuergoMotorsVentas
         }
 
 
-        public static void CargarCombo(ComboBox combo, string query, string displaymember, string valuemember)
+        public static void CargarCombo(ComboBox combo, string query, string displaymember)
         {
             combo.DisplayMember = displaymember;
-            combo.ValueMember = valuemember;
+            combo.ValueMember = "Id";
             combo.DataSource = CargarDataTable(query);
         }
-
 
         //ToDo:  Validar stock antes y despues de confirmar venta
         public static void ValidarNumerosNaturales(TextBox textbox1)
@@ -142,6 +145,21 @@ namespace HuergoMotorsVentas
             }
         }
 
+
+        public static void ValidarCombosVacios(ComboBox combo1, ComboBox combo2, ComboBox combo3)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(combo1.Text) | string.IsNullOrEmpty(combo2.Text) | string.IsNullOrEmpty(combo3.Text))
+                {
+                    throw new Exception("No se pueden dejar campos sin completar");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
         public static void ValidarTextosVacios(TextBox textbox1, TextBox textbox2, TextBox textbox3)
         {
             try

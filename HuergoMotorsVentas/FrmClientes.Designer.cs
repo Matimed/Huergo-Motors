@@ -44,6 +44,7 @@ namespace HuergoMotorsVentas
             this.txFiltro = new System.Windows.Forms.TextBox();
             this.picBoxlupa = new System.Windows.Forms.PictureBox();
             this.picboxReload = new System.Windows.Forms.PictureBox();
+            this.btnSeleccionar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxlupa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxReload)).BeginInit();
@@ -205,6 +206,18 @@ namespace HuergoMotorsVentas
             this.picboxReload.TabStop = false;
             this.picboxReload.Click += new System.EventHandler(this.picboxReload_Click);
             // 
+            // btnSeleccionar
+            // 
+            this.btnSeleccionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSeleccionar.BackColor = System.Drawing.Color.Goldenrod;
+            this.btnSeleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSeleccionar.Location = new System.Drawing.Point(214, 424);
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.Size = new System.Drawing.Size(75, 23);
+            this.btnSeleccionar.TabIndex = 19;
+            this.btnSeleccionar.Text = "Modificar";
+            this.btnSeleccionar.UseVisualStyleBackColor = false;
+            // 
             // frmClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,6 +225,7 @@ namespace HuergoMotorsVentas
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = global::HuergoMotorsVentas.Properties.Resources.Fondo_blanco;
             this.ClientSize = new System.Drawing.Size(584, 461);
+            this.Controls.Add(this.btnSeleccionar);
             this.Controls.Add(this.picboxReload);
             this.Controls.Add(this.picBoxlupa);
             this.Controls.Add(this.btCerrar);
@@ -250,5 +264,6 @@ namespace HuergoMotorsVentas
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.PictureBox picBoxlupa;
         private System.Windows.Forms.PictureBox picboxReload;
+        private System.Windows.Forms.Button btnSeleccionar;
     }
 }

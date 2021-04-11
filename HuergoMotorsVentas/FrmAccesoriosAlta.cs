@@ -20,7 +20,7 @@ namespace HuergoMotorsVentas
         {
             //Saca el focus del textbox y lo pone en el label por estetica
             this.ActiveControl = label1;
-            Helper.CargarCombo(cboModelos, "SELECT Id, Modelo FROM Vehiculos", "Modelo", "Id");
+            Helper.CargarCombo(cboModelos, "SELECT Id, Modelo FROM Vehiculos", "Modelo");
             if (Modo == Helper.Modo.Agregar)
             {
                 txtNombre.Text = string.Empty;
