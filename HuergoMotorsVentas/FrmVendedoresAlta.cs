@@ -81,12 +81,12 @@ namespace HuergoMotorsVentas
                     case Helper.Modo.Modificar:
                         if (Helper.ConfirmacionModificacion() == DialogResult.Yes)
                         {
-                            Helper.Conexion(this, Modo, $"UPDATE Vendedores SET Nombre='{txtNombre.Text}', " +
+                            Helper.EditarDB(this, Modo, $"UPDATE Vendedores SET Nombre='{txtNombre.Text}', " +
                                 $"Apellido='{txtApellido.Text}', Sucursal='{txtSucursal.Text}' WHERE Id={Id}");
                         }
                         break;
                     case Helper.Modo.Agregar:
-                        Helper.Conexion(this, Modo, $"INSERT INTO Vendedores (Nombre, Apellido, Sucursal) VALUES" +
+                        Helper.EditarDB(this, Modo, $"INSERT INTO Vendedores (Nombre, Apellido, Sucursal) VALUES" +
                             $" ('{txtNombre.Text}', '{txtApellido.Text}', '{txtSucursal.Text}')");
                         break;
                 }

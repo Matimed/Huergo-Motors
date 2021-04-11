@@ -82,7 +82,7 @@ namespace HuergoMotorsVentas
                     string tipo = (string)((DataRowView)item)["Tipo"];
                     if (Helper.ConfirmacionEliminación(tipo) == DialogResult.Yes)
                     {
-                        Helper.Conexion(this, Helper.Modo.Eliminar, $"DELETE FROM Vehiculos Where Id={id} ");
+                        Helper.EditarDB(this, Helper.Modo.Eliminar, $"DELETE FROM Vehiculos Where Id={id} ");
                         gv.DataSource = Helper.CargarDataTable(Select);
                     }
                 }

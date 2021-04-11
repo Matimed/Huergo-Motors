@@ -95,12 +95,12 @@ namespace HuergoMotorsVentas
                     case Helper.Modo.Modificar:
                         if (Helper.ConfirmacionModificacion() == DialogResult.Yes)
                         {
-                            Helper.Conexion(this, Modo, $"UPDATE Accesorios SET Nombre='{txtNombre.Text}', Tipo='{txtTipo.Text}'," +
+                            Helper.EditarDB(this, Modo, $"UPDATE Accesorios SET Nombre='{txtNombre.Text}', Tipo='{txtTipo.Text}'," +
                                 $" Precio='{txtPrecio.Text}', IdVehiculo= '{idVehiculo}' WHERE Id={Id}");
                         }
                         break;
                     case Helper.Modo.Agregar:
-                        Helper.Conexion(this, Modo, $"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
+                        Helper.EditarDB(this, Modo, $"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
                         $" VALUES ('{txtNombre.Text}', '{txtTipo.Text}', '{txtPrecio.Text}', '{idVehiculo}')");
                         break;
                 }

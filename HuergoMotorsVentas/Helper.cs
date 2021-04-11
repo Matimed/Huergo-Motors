@@ -42,8 +42,26 @@ namespace HuergoMotorsVentas
                     break;
             }
         }
-
-        public static void Conexion(Form form, Modo modo, string query)
+        public static void EditarDB(string query, SqlTransaction transaction)
+        {
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(ConnectionString))
+                {
+                    conexion.Open();
+                    using (SqlCommand comando = new SqlCommand(query, conexion))
+                    {
+                        comando.Transaction = transaction;
+                        comando.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar la siguiente operacion:" + query, ex);
+            }
+        }
+        public static void EditarDB(Form form, Modo modo, string query)
         {
             try
             {
@@ -63,6 +81,7 @@ namespace HuergoMotorsVentas
                 throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
             }
         }
+       
 
         public static DataTable CargarDataTable(string query)
         {

@@ -29,13 +29,13 @@ namespace HuergoMotorsVentas
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVentasAlta));
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.DtFecha = new System.Windows.Forms.DateTimePicker();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.cboVendedor = new System.Windows.Forms.ComboBox();
             this.txtSucursal = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -111,14 +111,14 @@ namespace HuergoMotorsVentas
             this.label5.TabIndex = 4;
             this.label5.Text = "Sucursal:";
             // 
-            // DtFecha
+            // dtpFecha
             // 
-            this.DtFecha.CustomFormat = "dd/MM/yyyy";
-            this.DtFecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DtFecha.Location = new System.Drawing.Point(109, 61);
-            this.DtFecha.Name = "DtFecha";
-            this.DtFecha.Size = new System.Drawing.Size(121, 20);
-            this.DtFecha.TabIndex = 6;
+            this.dtpFecha.CustomFormat = "dd/MM/yyyy";
+            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFecha.Location = new System.Drawing.Point(109, 61);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(121, 20);
+            this.dtpFecha.TabIndex = 6;
             // 
             // cboVendedor
             // 
@@ -312,9 +312,9 @@ namespace HuergoMotorsVentas
             // 
             // btnEliminarAccesorio
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.NullValue = "Eliminar";
-            this.btnEliminarAccesorio.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.NullValue = "Eliminar";
+            this.btnEliminarAccesorio.DefaultCellStyle = dataGridViewCellStyle2;
             this.btnEliminarAccesorio.HeaderText = "Eliminar";
             this.btnEliminarAccesorio.Name = "btnEliminarAccesorio";
             // 
@@ -453,7 +453,7 @@ namespace HuergoMotorsVentas
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtSucursal);
             this.Controls.Add(this.cboVendedor);
-            this.Controls.Add(this.DtFecha);
+            this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -475,7 +475,7 @@ namespace HuergoMotorsVentas
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DateTimePicker DtFecha;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.ComboBox cboVendedor;
         private System.Windows.Forms.TextBox txtSucursal;
         private System.Windows.Forms.Label label6;

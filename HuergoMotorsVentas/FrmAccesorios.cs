@@ -75,7 +75,7 @@ namespace HuergoMotorsVentas
                 {
                     try
                     {
-                        Helper.Conexion(this, Helper.Modo.Eliminar, $"DELETE FROM Accesorios Where Id={id} ");
+                        Helper.EditarDB(this, Helper.Modo.Eliminar, $"DELETE FROM Accesorios Where Id={id} ");
                         gv.DataSource = Helper.CargarDataTable(Select);
                     }
                     catch (Exception ex)

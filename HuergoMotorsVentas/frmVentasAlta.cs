@@ -14,6 +14,9 @@ namespace HuergoMotorsVentas
 
     {
         private DataTable dtAccesorios;
+        private int idCliente;
+        private decimal precioVehiculo;
+        private decimal precioAccesorios;
         public frmVentasAlta()
         {
             InitializeComponent();
@@ -57,12 +60,14 @@ namespace HuergoMotorsVentas
                 {
                     if (dtAccesorios != null)
                     {
+                        precioAccesorios = 0;
                         dtAccesorios.Clear();
                         gvAccesorios.DataSource= dtAccesorios;
                     }
                     DataTable dtModelo = Helper.LeerCombo(cboModelo, "*", "Vehiculos");
                     txtTipo.Text = (string)dtModelo.Rows[0]["Tipo"];
-                    txtPrecio.Text = Convert.ToString((decimal)dtModelo.Rows[0]["PrecioVenta"]);
+                    precioVehiculo = (decimal)dtModelo.Rows[0]["PrecioVenta"];
+                    txtPrecio.Text = Convert.ToString(Precio);
                     int idVehiculo = (int)dtModelo.Rows[0]["Id"];
                     Helper.CargarCombo(cboAccesorios, $"SELECT Nombre, Id FROM Accesorios WHERE idVehiculo = {idVehiculo}", "Nombre");
                 }
@@ -86,9 +91,11 @@ namespace HuergoMotorsVentas
                     }
                     else
                     {
+                        precioAccesorios = 0;
                         dtAccesorios = dtNuevosDatos;
                     }
                     gvAccesorios.DataSource = dtAccesorios;
+                    precioAccesorios = precioAccesorios + (decimal)dtNuevosDatos.Rows[0]["Precio"];
                 }
                 else
                 {
@@ -113,6 +120,7 @@ namespace HuergoMotorsVentas
                     txtNombreCliente.Text = f.ClienteSeleccionado.Nombre;
                     txtEmail.Text = f.ClienteSeleccionado.Email;
                     txtTelefono.Text = f.ClienteSeleccionado.Telefono;
+                    idCliente = f.ClienteSeleccionado.Id;
                 }
                 else
                 {
@@ -125,17 +133,44 @@ namespace HuergoMotorsVentas
 
         private void btnConfirmarVenta_Click(object sender, EventArgs e)
         {
-      try
+            try
             {
                 Helper.ValidarTextosVacios(txtEmail, txtNombreCliente, txtTelefono, txtSucursal, txtTipo, txtPrecio);
                 if (!Helper.VerificarCombosCargados(cboModelo, cboVendedor))
                 {
                     throw new Exception("Es necesario que todos los ComboBox esten cargados");
                 }
-                if(Helper.LeerNumeroCombo(cboModelo, "Stock", "Vehiculos") < 1)
+                if (Helper.LeerNumeroCombo(cboModelo, "Stock", "Vehiculos") < 1)
                 {
                     throw new Exception("No hay stock del vehiculo seleccionado");
                 }
+                DateTime fecha = dtpFecha.Value;
+                int idVehiculo = (int)cboModelo.SelectedValue;
+                int idVendedor = (int)cboVendedor.SelectedValue;
+                string observaciones = string.Empty;
+                if (!string.IsNullOrEmpty(txtObservaciones.Text) &
+                    (txtObservaciones.Text!= "Observaciones:"| txtObservaciones.Text != "Observaciones"))
+                {
+                    observaciones = txtObservaciones.Text;
+                }
+                try
+                {
+                    using (SqlConnection conexion = new SqlConnection(Helper.ConnectionString))
+                    {
+                        conexion.Open();
+                        using (SqlTransaction transaction = conexion.BeginTransaction())
+                        {
+                            Helper.EditarDB($"INSERT INTO Ventas(Fecha, IdVehiculo, IdCliente, IdVendedor, Observaciones, Total) " +
+                            $"VALUES ('{fecha}', '{idVehiculo}', '{idCliente}', '{idVendedor}', '{observaciones}','{precioVehiculo}')", transaction);
+                            //Falta restar el stock y hacer la venta de los accesorios
+                            transaction.Commit;
+                        }
+                    }
+                }
+                catch
+                { 
+                }
+                DialogResult = DialogResult.OK;
 
             }
             catch (Exception ex)

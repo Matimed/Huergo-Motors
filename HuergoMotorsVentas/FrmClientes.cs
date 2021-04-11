@@ -123,7 +123,7 @@ namespace HuergoMotorsVentas
                     string nombre = (string)((DataRowView)item)["Nombre"];
                     if (Helper.ConfirmacionEliminación(nombre) == DialogResult.Yes)
                     {
-                        Helper.Conexion(this, Helper.Modo.Eliminar, $"DELETE FROM Clientes Where Id={id} ");
+                        Helper.EditarDB(this, Helper.Modo.Eliminar, $"DELETE FROM Clientes Where Id={id} ");
                         gv.DataSource = Helper.CargarDataTable(Select);
                     }
                 }
