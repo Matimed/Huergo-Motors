@@ -147,7 +147,7 @@ namespace HuergoMotorsVentas
             // 
             // picLogo
             // 
-            this.picLogo.Image = global::HuergoMotorsVentas.Properties.Resources.HuergoMotors_Logo;
+            this.picLogo.Image = ((System.Drawing.Image)(resources.GetObject("picLogo.Image")));
             this.picLogo.Location = new System.Drawing.Point(23, 44);
             this.picLogo.Name = "picLogo";
             this.picLogo.Size = new System.Drawing.Size(103, 75);
@@ -157,7 +157,6 @@ namespace HuergoMotorsVentas
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::HuergoMotorsVentas.Properties.Resources.Linea_roja;
             this.pictureBox2.Location = new System.Drawing.Point(-9, 336);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(400, 30);
@@ -167,7 +166,7 @@ namespace HuergoMotorsVentas
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::HuergoMotorsVentas.Properties.Resources.Linea_roja;
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
             this.pictureBox3.Location = new System.Drawing.Point(-5, 1);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(400, 30);
@@ -177,7 +176,7 @@ namespace HuergoMotorsVentas
             // 
             // pictureBox4
             // 
-            this.pictureBox4.Image = global::HuergoMotorsVentas.Properties.Resources.Linea_roja;
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
             this.pictureBox4.Location = new System.Drawing.Point(-5, 280);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(400, 30);

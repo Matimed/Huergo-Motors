@@ -78,7 +78,7 @@
             // 
             // btVehiculos
             // 
-            this.btVehiculos.Image = global::HuergoMotorsVentas.Properties.Resources.Vehiculos;
+            this.btVehiculos.Image = ((System.Drawing.Image)(resources.GetObject("btVehiculos.Image")));
             this.btVehiculos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btVehiculos.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btVehiculos.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -90,7 +90,7 @@
             // 
             // btAccesorios
             // 
-            this.btAccesorios.Image = global::HuergoMotorsVentas.Properties.Resources.Accesorios;
+            this.btAccesorios.Image = ((System.Drawing.Image)(resources.GetObject("btAccesorios.Image")));
             this.btAccesorios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btAccesorios.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btAccesorios.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -102,7 +102,7 @@
             // 
             // btClientes
             // 
-            this.btClientes.Image = global::HuergoMotorsVentas.Properties.Resources.Clientes;
+            this.btClientes.Image = ((System.Drawing.Image)(resources.GetObject("btClientes.Image")));
             this.btClientes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btClientes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btClientes.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -114,7 +114,7 @@
             // 
             // btVendedores
             // 
-            this.btVendedores.Image = global::HuergoMotorsVentas.Properties.Resources.Vendedores;
+            this.btVendedores.Image = ((System.Drawing.Image)(resources.GetObject("btVendedores.Image")));
             this.btVendedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btVendedores.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btVendedores.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -126,7 +126,7 @@
             // 
             // btNuevaVenta
             // 
-            this.btNuevaVenta.Image = global::HuergoMotorsVentas.Properties.Resources.Vendedores;
+            this.btNuevaVenta.Image = ((System.Drawing.Image)(resources.GetObject("btNuevaVenta.Image")));
             this.btNuevaVenta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btNuevaVenta.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.btNuevaVenta.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -228,7 +228,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::HuergoMotorsVentas.Properties.Resources.Fondo_blanco;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(734, 571);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);

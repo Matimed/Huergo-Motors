@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVehiculos));
             this.txFiltro = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -116,9 +116,9 @@
             // PrecioVenta
             // 
             this.PrecioVenta.DataPropertyName = "PrecioVenta";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.NullValue = "0";
-            this.PrecioVenta.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.NullValue = "0";
+            this.PrecioVenta.DefaultCellStyle = dataGridViewCellStyle2;
             this.PrecioVenta.HeaderText = "$ Venta";
             this.PrecioVenta.Name = "PrecioVenta";
             this.PrecioVenta.ReadOnly = true;
@@ -187,7 +187,7 @@
             this.picBusqueda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picBusqueda.BackColor = System.Drawing.Color.Transparent;
             this.picBusqueda.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picBusqueda.Image = global::HuergoMotorsVentas.Properties.Resources.Busqueda;
+            this.picBusqueda.Image = ((System.Drawing.Image)(resources.GetObject("picBusqueda.Image")));
             this.picBusqueda.Location = new System.Drawing.Point(521, 19);
             this.picBusqueda.Name = "picBusqueda";
             this.picBusqueda.Size = new System.Drawing.Size(21, 21);
@@ -201,7 +201,7 @@
             this.picReload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picReload.BackColor = System.Drawing.Color.Transparent;
             this.picReload.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picReload.Image = global::HuergoMotorsVentas.Properties.Resources.Reload;
+            this.picReload.Image = ((System.Drawing.Image)(resources.GetObject("picReload.Image")));
             this.picReload.Location = new System.Drawing.Point(551, 19);
             this.picReload.Name = "picReload";
             this.picReload.Size = new System.Drawing.Size(21, 21);
@@ -215,7 +215,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = global::HuergoMotorsVentas.Properties.Resources.Fondo_blanco;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(584, 461);
             this.Controls.Add(this.picReload);
             this.Controls.Add(this.picBusqueda);
