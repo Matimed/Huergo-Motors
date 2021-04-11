@@ -25,6 +25,7 @@ namespace HuergoMotorsVentas
             {
                 Helper.CargarCombo(cboVendedor, "SELECT Id, Nombre + ' ' + Apellido AS Vendedor FROM Vendedores", "Vendedor");
                 Helper.CargarCombo(cboModelo, "SELECT  Id, Modelo FROM Vehiculos", "Modelo");
+                gvAccesorios.AutoGenerateColumns = false;
 
             }
             catch (Exception ex)
@@ -61,8 +62,8 @@ namespace HuergoMotorsVentas
                         gvAccesorios.DataSource= dtAccesorios;
                     }
                     DataTable dtModelo = Helper.LeerCombo(cboModelo, "*", "Vehiculos");
-                    lblTipo.Text = (string)dtModelo.Rows[0]["Tipo"];
-                    lblPrecio.Text = Convert.ToString((decimal)dtModelo.Rows[0]["PrecioVenta"]);
+                    txtTipo.Text = (string)dtModelo.Rows[0]["Tipo"];
+                    txtPrecio.Text = Convert.ToString((decimal)dtModelo.Rows[0]["PrecioVenta"]);
                     int idVehiculo = (int)dtModelo.Rows[0]["Id"];
                     Helper.CargarCombo(cboAccesorios, $"SELECT Nombre, Id FROM Accesorios WHERE idVehiculo = {idVehiculo}", "Nombre");
                 }
@@ -113,10 +114,23 @@ namespace HuergoMotorsVentas
 
         }
 
-   
+        private void txtObservaciones_Enter(object sender, EventArgs e)
+        {
+            txtObservaciones.Text = "";
+        }
 
-  
+        private void txtObservaciones_Validated(object sender, EventArgs e)
+        {
+            if (txtObservaciones.Text == "") txtObservaciones.Text = "Observaciones:"; 
+        }
 
-
+        private void gvAccesorios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 5) //El index 5 es el del boton eliminar
+            {
+                dtAccesorios.Rows.RemoveAt(gvAccesorios.CurrentRow.Index);
+                gvAccesorios.DataSource = dtAccesorios;
+            }
+        }
     }
 }
