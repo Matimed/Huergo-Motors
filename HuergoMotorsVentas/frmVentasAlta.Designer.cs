@@ -1,7 +1,7 @@
 ﻿
 namespace HuergoMotorsVentas
 {
-    partial class frmVentas
+    partial class frmVentasAlta
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,8 @@ namespace HuergoMotorsVentas
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVentas));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVentasAlta));
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -68,6 +68,7 @@ namespace HuergoMotorsVentas
             this.txtNombreCliente = new System.Windows.Forms.TextBox();
             this.txtTelefono = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gvAccesorios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
@@ -226,15 +227,15 @@ namespace HuergoMotorsVentas
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(45, 537);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(216, 16);
+            this.label18.Size = new System.Drawing.Size(48, 16);
             this.label18.TabIndex = 28;
-            this.label18.Text = "Total (Vehículo + Accesorios):";
+            this.label18.Text = "Total:";
             // 
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotal.Location = new System.Drawing.Point(267, 537);
+            this.lblTotal.Location = new System.Drawing.Point(106, 537);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(48, 16);
             this.lblTotal.TabIndex = 29;
@@ -311,9 +312,9 @@ namespace HuergoMotorsVentas
             // 
             // btnEliminarAccesorio
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.NullValue = "Eliminar";
-            this.btnEliminarAccesorio.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = "Eliminar";
+            this.btnEliminarAccesorio.DefaultCellStyle = dataGridViewCellStyle3;
             this.btnEliminarAccesorio.HeaderText = "Eliminar";
             this.btnEliminarAccesorio.Name = "btnEliminarAccesorio";
             // 
@@ -409,12 +410,23 @@ namespace HuergoMotorsVentas
             this.txtEmail.Size = new System.Drawing.Size(121, 20);
             this.txtEmail.TabIndex = 42;
             // 
-            // frmVentas
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(242, 533);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(82, 24);
+            this.btnCancelar.TabIndex = 43;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // frmVentasAlta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(547, 575);
+            this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.txtNombreCliente);
@@ -446,7 +458,7 @@ namespace HuergoMotorsVentas
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Name = "frmVentas";
+            this.Name = "frmVentasAlta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmVentas";
             this.Load += new System.EventHandler(this.frmVentas_Load);
@@ -496,5 +508,6 @@ namespace HuergoMotorsVentas
         private System.Windows.Forms.TextBox txtNombreCliente;
         private System.Windows.Forms.TextBox txtTelefono;
         private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

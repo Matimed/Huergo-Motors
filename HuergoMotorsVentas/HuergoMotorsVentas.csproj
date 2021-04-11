@@ -100,11 +100,11 @@
     <Compile Include="frmVendedoresAlta.Designer.cs">
       <DependentUpon>frmVendedoresAlta.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmVentas.cs">
+    <Compile Include="frmVentasAlta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmVentas.Designer.cs">
-      <DependentUpon>frmVentas.cs</DependentUpon>
+    <Compile Include="frmVentasAlta.Designer.cs">
+      <DependentUpon>frmVentasAlta.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -135,8 +135,8 @@
     <EmbeddedResource Include="frmVendedoresAlta.resx">
       <DependentUpon>frmVendedoresAlta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmVentas.resx">
-      <DependentUpon>frmVentas.cs</DependentUpon>
+    <EmbeddedResource Include="frmVentasAlta.resx">
+      <DependentUpon>frmVentasAlta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

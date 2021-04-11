@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace HuergoMotorsVentas
 {
-    public partial class frmVentas : Form
+    public partial class frmVentasAlta : Form
 
     {
         private DataTable dtAccesorios;
-        public frmVentas()
+        public frmVentasAlta()
         {
             InitializeComponent();
         }
@@ -40,8 +40,7 @@ namespace HuergoMotorsVentas
             {
                 if (Helper.VerificarCombosCargados(cboVendedor))
                 {
-                    DataTable dtVendedor = Helper.LeerCombo(cboVendedor, "Sucursal", "Vendedores");
-                    txtSucursal.Text = (string)dtVendedor.Rows[0]["Sucursal"];
+                    txtSucursal.Text = Helper.LeerDatoCombo(cboVendedor, "Sucursal", "Vendedores");
                 }
             }
             catch (Exception ex)
@@ -126,8 +125,23 @@ namespace HuergoMotorsVentas
 
         private void btnConfirmarVenta_Click(object sender, EventArgs e)
         {
-      
+      try
+            {
+                Helper.ValidarTextosVacios(txtEmail, txtNombreCliente, txtTelefono, txtSucursal, txtTipo, txtPrecio);
+                if (!Helper.VerificarCombosCargados(cboModelo, cboVendedor))
+                {
+                    throw new Exception("Es necesario que todos los ComboBox esten cargados");
+                }
+                if(Helper.LeerNumeroCombo(cboModelo, "Stock", "Vehiculos") < 1)
+                {
+                    throw new Exception("No hay stock del vehiculo seleccionado");
+                }
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void txtObservaciones_Enter(object sender, EventArgs e)
@@ -147,6 +161,11 @@ namespace HuergoMotorsVentas
                 dtAccesorios.Rows.RemoveAt(gvAccesorios.CurrentRow.Index);
                 gvAccesorios.DataSource = dtAccesorios;
             }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

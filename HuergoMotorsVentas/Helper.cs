@@ -9,10 +9,7 @@ using System.Windows.Forms;
 namespace HuergoMotorsVentas
 {
     public static class Helper
-    {
-        //ToDo: Cargar imagenes de forma dinamica
-        //ToDo: Comprimir imagenes
-        //ToDo: Boton Cancelar Venta
+    {   //ToDo: Boton Cancelar Venta
         //ToDo: Validar stock antes y despues de confirmar venta
         //ToDo: Totales y acreditar compra
 
@@ -133,7 +130,33 @@ namespace HuergoMotorsVentas
                 throw new Exception("Error al leer un ComboBox", ex);
             }
         }
-       
+        public static string LeerDatoCombo(ComboBox combo, string campo, string tabla)
+        {
+            try
+            {
+                DataTable dt = LeerCombo(combo, campo, tabla);
+                string result= (string)dt.Rows[0][campo];
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al leer un dato del ComboBox", ex);
+            }
+        }
+
+        public static int LeerNumeroCombo(ComboBox combo, string campo, string tabla)
+        {
+            try
+            {
+                DataTable dt = LeerCombo(combo, campo, tabla);
+                int result = (int)dt.Rows[0][campo];
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al leer un numero del ComboBox", ex);
+            }
+        }
 
         public static void ValidarNumerosNaturales(TextBox textbox1)
         {
@@ -167,12 +190,29 @@ namespace HuergoMotorsVentas
             }
         }
 
-
         public static bool VerificarCombosCargados(ComboBox combo)
         {
             try
             {
                 if (string.IsNullOrEmpty(combo.Text))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al cargar los combos", ex);
+            }
+        }
+        public static bool VerificarCombosCargados(ComboBox combo1, ComboBox combo2)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(combo1.Text) | string.IsNullOrEmpty(combo2.Text))
                 {
                     return false;
                 }
@@ -214,5 +254,22 @@ namespace HuergoMotorsVentas
                 throw ex;
             }
         }
+        public static void ValidarTextosVacios(TextBox textbox1, TextBox textbox2,
+            TextBox textbox3, TextBox textbox4,TextBox textbox5, TextBox textbox6)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(textbox1.Text) | string.IsNullOrEmpty(textbox2.Text) | string.IsNullOrEmpty(textbox3.Text) |
+                    string.IsNullOrEmpty(textbox4.Text) | string.IsNullOrEmpty(textbox5.Text) | string.IsNullOrEmpty(textbox6.Text))
+                {
+                    throw new Exception("No se pueden dejar campos sin completar");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

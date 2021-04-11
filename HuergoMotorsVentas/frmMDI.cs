@@ -46,7 +46,7 @@ namespace HuergoMotorsVentas
 
         private void altaDeVentasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmVentas form = new frmVentas();
+            frmVentasAlta form = new frmVentasAlta();
             form.ShowDialog();
         }
     }
