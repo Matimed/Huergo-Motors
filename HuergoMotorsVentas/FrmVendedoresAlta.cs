@@ -21,7 +21,7 @@ namespace HuergoMotorsVentas
             Modo = modo;
         }
 
- 
+
         private void frmVendedoresAlta_Load(object sender, EventArgs e)
         {
             //Saca el focus del textbox y lo pone en el label por estetica
@@ -37,27 +37,34 @@ namespace HuergoMotorsVentas
         }
         internal void CargarDatos(int id)
         {
-            Id = id;
-            string query = $"SELECT * FROM Vendedores WHERE Id={id}";
+            try
+            {
+                Id = id;
+                string query = $"SELECT * FROM Vendedores WHERE Id={id}";
 
-            DataTable dt = Helper.CargarDataTable(query);
+                DataTable dt = Helper.CargarDataTable(query);
 
-            string nombre = string.Empty;
-            string apellido = string.Empty;
-            string sucursal = string.Empty;
+                string nombre = string.Empty;
+                string apellido = string.Empty;
+                string sucursal = string.Empty;
 
-            if (!dt.Rows[0].IsNull("Nombre")) nombre = (string)dt.Rows[0]["Nombre"];
-            if (!dt.Rows[0].IsNull("Apellido")) apellido = (string)dt.Rows[0]["Apellido"];
-            if (!dt.Rows[0].IsNull("Sucursal")) sucursal = (string)dt.Rows[0]["Sucursal"];
+                if (!dt.Rows[0].IsNull("Nombre")) nombre = (string)dt.Rows[0]["Nombre"];
+                if (!dt.Rows[0].IsNull("Apellido")) apellido = (string)dt.Rows[0]["Apellido"];
+                if (!dt.Rows[0].IsNull("Sucursal")) sucursal = (string)dt.Rows[0]["Sucursal"];
 
-            //Escribe el número con puntos en lugar de comas para no dar error en la DB
-            NumberFormatInfo nfi = new NumberFormatInfo();
-            nfi.NumberDecimalSeparator = ".";
+                //Escribe el número con puntos en lugar de comas para no dar error en la DB
+                NumberFormatInfo nfi = new NumberFormatInfo();
+                nfi.NumberDecimalSeparator = ".";
 
-            txtSucursal.Text = sucursal;
-            txtNombre.Text = nombre;
-            txtApellido.Text = apellido;
-        }
+                txtSucursal.Text = sucursal;
+                txtNombre.Text = nombre;
+                txtApellido.Text = apellido;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
+        } 
      
         private void btCancelar_Click(object sender, EventArgs e)
         {

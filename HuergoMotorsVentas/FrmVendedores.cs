@@ -14,7 +14,7 @@ namespace HuergoMotorsVentas
         {
             InitializeComponent();
         }
-        
+
         private void btModificar_Click(object sender, EventArgs e)
         {
             if (gv.SelectedRows.Count == 1)
@@ -29,19 +29,25 @@ namespace HuergoMotorsVentas
         }
         private void CargarABM(Helper.Modo modo)
         {
-
-            frmVendedoresAlta f = new frmVendedoresAlta(modo);
-            if (modo == Helper.Modo.Modificar)
+            try
             {
-                object item = gv.SelectedRows[0].DataBoundItem;
-                int id = (int)((DataRowView)item)["Id"];
-                f.CargarDatos(id);
+                frmVendedoresAlta f = new frmVendedoresAlta(modo);
+                if (modo == Helper.Modo.Modificar)
+                {
+                    object item = gv.SelectedRows[0].DataBoundItem;
+                    int id = (int)((DataRowView)item)["Id"];
+                    f.CargarDatos(id);
+                }
+                f.ShowDialog();
+                //Solo recargo datos si se cerró con un OK.
+                if (f.DialogResult == DialogResult.OK)
+                {
+                    gv.DataSource = Helper.CargarDataTable(Select);
+                }
             }
-            f.ShowDialog();
-            //Solo recargo datos si se cerró con un OK.
-            if (f.DialogResult == DialogResult.OK)
+            catch (Exception ex)
             {
-                gv.DataSource = Helper.CargarDataTable(Select);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
             }
         }
 
@@ -52,22 +58,28 @@ namespace HuergoMotorsVentas
 
         private void btEliminar_Click(object sender, EventArgs e)
         {
-            if (gv.SelectedRows.Count == 1)
+            try
             {
-                object item = gv.SelectedRows[0].DataBoundItem;
-                int id = (int)((DataRowView)item)["Id"];
-                string nombre = (string)((DataRowView)item)["Nombre"];
-                string apellido = (string)((DataRowView)item)["Apellido"];
-                if (Helper.ConfirmacionEliminación(nombre, apellido) == DialogResult.Yes)
+                if (gv.SelectedRows.Count == 1)
                 {
-                    Helper.Conexion(this, Helper.Modo.Eliminar, $"DELETE FROM Vendedores Where Id={id} ");
-                    gv.DataSource = Helper.CargarDataTable(Select);
+                    object item = gv.SelectedRows[0].DataBoundItem;
+                    int id = (int)((DataRowView)item)["Id"];
+                    string nombre = (string)((DataRowView)item)["Nombre"];
+                    string apellido = (string)((DataRowView)item)["Apellido"];
+                    if (Helper.ConfirmacionEliminación(nombre, apellido) == DialogResult.Yes)
+                    {
+                        Helper.Conexion(this, Helper.Modo.Eliminar, $"DELETE FROM Vendedores Where Id={id} ");
+                        gv.DataSource = Helper.CargarDataTable(Select);
+                    }
+                }
+                else
+                {
+                    throw new Exception("Debe seleccionar un elemento para eliminar");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Debe seleccionar un elemento para eliminar",
-                    "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
             }
         }
 
@@ -78,28 +90,56 @@ namespace HuergoMotorsVentas
 
         private void picReload_Click(object sender, EventArgs e)
         {
-            gv.DataSource = Helper.CargarDataTable(Select);
-            txFiltro.Text = "";
+            try
+            {
+                gv.DataSource = Helper.CargarDataTable(Select);
+                txFiltro.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void frmVendedores_Load(object sender, EventArgs e)
         {
-            gv.AutoGenerateColumns = false;
-            gv.DataSource = Helper.CargarDataTable(Select);
+            try
+            {
+                gv.AutoGenerateColumns = false;
+                gv.DataSource = Helper.CargarDataTable(Select);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void picBusqueda_Click(object sender, EventArgs e)
         {
-            string filtro = $"SELECT * FROM Vendedores WHERE Apellido LIKE '%{txFiltro.Text}%'" +
-                $" or Nombre LIKE '%{txFiltro.Text}%' or Sucursal LIKE '%{txFiltro.Text}%'";
-            gv.DataSource = Helper.CargarDataTable(filtro);
-            txFiltro.Text = "";
+            try
+            {
+                string filtro = $"SELECT * FROM Vendedores WHERE Apellido LIKE '%{txFiltro.Text}%'" +
+                    $" or Nombre LIKE '%{txFiltro.Text}%' or Sucursal LIKE '%{txFiltro.Text}%'";
+                gv.DataSource = Helper.CargarDataTable(filtro);
+                txFiltro.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void picReload_Click_1(object sender, EventArgs e)
         {
-            gv.DataSource = Helper.CargarDataTable(Select);
-            txFiltro.Text = "";
-        }
+            try
+            {
+                gv.DataSource = Helper.CargarDataTable(Select);
+                txFiltro.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
+        } 
     }
 }

@@ -131,6 +131,7 @@ namespace HuergoMotorsVentas
                 throw new Exception("Error al leer un ComboBox", ex);
             }
         }
+       
 
         //ToDo:  Validar stock antes y despues de confirmar venta
         public static void ValidarNumerosNaturales(TextBox textbox1)

@@ -14,7 +14,7 @@ namespace HuergoMotorsVentas
     {
         public int Id { get; set; } //Esto es una 'propiedad'.
         public Helper.Modo Modo { get; private set; }
-        
+
         public frmClientesAlta(Helper.Modo modo)
         {
             InitializeComponent();
@@ -38,30 +38,37 @@ namespace HuergoMotorsVentas
         }
         internal void CargarDatos(int id)
         {
-            Id = id;
-            string query = $"SELECT * FROM Clientes WHERE Id={id}";
+            try
+            {
+                Id = id;
+                string query = $"SELECT * FROM Clientes WHERE Id={id}";
 
-            DataTable dt = Helper.CargarDataTable(query);
+                DataTable dt = Helper.CargarDataTable(query);
 
-            string nombre = string.Empty;
-            string direccion = string.Empty;
-            string email = string.Empty;
-            string telefono = string.Empty;
+                string nombre = string.Empty;
+                string direccion = string.Empty;
+                string email = string.Empty;
+                string telefono = string.Empty;
 
-            if (!dt.Rows[0].IsNull("Nombre")) nombre = (string)dt.Rows[0]["Nombre"];
-            if (!dt.Rows[0].IsNull("Direccion")) direccion = (string)dt.Rows[0]["Direccion"];
-            if (!dt.Rows[0].IsNull("Email")) email = (string)dt.Rows[0]["Email"];
-            if (!dt.Rows[0].IsNull("Telefono")) telefono = (string)dt.Rows[0]["Telefono"];
+                if (!dt.Rows[0].IsNull("Nombre")) nombre = (string)dt.Rows[0]["Nombre"];
+                if (!dt.Rows[0].IsNull("Direccion")) direccion = (string)dt.Rows[0]["Direccion"];
+                if (!dt.Rows[0].IsNull("Email")) email = (string)dt.Rows[0]["Email"];
+                if (!dt.Rows[0].IsNull("Telefono")) telefono = (string)dt.Rows[0]["Telefono"];
 
-            //Escribe el número con puntos en lugar de comas para no dar error en la DB
-            NumberFormatInfo nfi = new NumberFormatInfo();
-            nfi.NumberDecimalSeparator = ".";
+                //Escribe el número con puntos en lugar de comas para no dar error en la DB
+                NumberFormatInfo nfi = new NumberFormatInfo();
+                nfi.NumberDecimalSeparator = ".";
 
-            txtEmail.Text = email;
-            txtNombre.Text = nombre;
-            txtDireccion.Text = direccion;
-            txtTelefono.Text = telefono;
-        }
+                txtEmail.Text = email;
+                txtNombre.Text = nombre;
+                txtDireccion.Text = direccion;
+                txtTelefono.Text = telefono;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
+        } 
        
         private void btCancelar_Click(object sender, EventArgs e)
         {

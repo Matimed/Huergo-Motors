@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace HuergoMotorsVentas
 {
-    
+
     public partial class frmVehiculos : Form
     {
         private new const string Select = "SELECT * FROM Vehiculos";
@@ -17,15 +17,22 @@ namespace HuergoMotorsVentas
 
         private void frmVehiculos_Load(object sender, EventArgs e)
         {
-            gv.AutoGenerateColumns = false;
-            gv.DataSource =  Helper.CargarDataTable(Select);
+            try
+            {
+                gv.AutoGenerateColumns = false;
+                gv.DataSource = Helper.CargarDataTable(Select);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void btModificar_Click(object sender, EventArgs e)
         {
             if (gv.SelectedRows.Count == 1)
             {
-                 Helper.Modo modo = Helper.Modo.Modificar; 
+                Helper.Modo modo = Helper.Modo.Modificar;
                 CargarABM(modo);
             }
             else
@@ -66,21 +73,27 @@ namespace HuergoMotorsVentas
 
         private void btEliminar_Click(object sender, EventArgs e)
         {
-            if (gv.SelectedRows.Count == 1)
+            try
             {
-                object item = gv.SelectedRows[0].DataBoundItem;
-                int id = (int)((DataRowView)item)["Id"];
-                string tipo = (string)((DataRowView)item)["Tipo"];
-                if (Helper.ConfirmacionEliminación(tipo) == DialogResult.Yes)
+                if (gv.SelectedRows.Count == 1)
                 {
-                    Helper.Conexion(this, Helper.Modo.Eliminar, $"DELETE FROM Vehiculos Where Id={id} ");
-                    gv.DataSource = Helper.CargarDataTable(Select);
+                    object item = gv.SelectedRows[0].DataBoundItem;
+                    int id = (int)((DataRowView)item)["Id"];
+                    string tipo = (string)((DataRowView)item)["Tipo"];
+                    if (Helper.ConfirmacionEliminación(tipo) == DialogResult.Yes)
+                    {
+                        Helper.Conexion(this, Helper.Modo.Eliminar, $"DELETE FROM Vehiculos Where Id={id} ");
+                        gv.DataSource = Helper.CargarDataTable(Select);
+                    }
+                }
+                else
+                {
+                    throw new Exception("Debe seleccionar un elemento para eliminar");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Debe seleccionar un elemento para eliminar",
-                    "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
             }
         }
         private void btCerrar_Click(object sender, EventArgs e)
@@ -91,16 +104,30 @@ namespace HuergoMotorsVentas
         //Filtro
         private void picBusqueda_Click(object sender, EventArgs e)
         {
-            string filtro = $"SELECT * FROM Vehiculos WHERE Tipo LIKE '%{txFiltro.Text}%'" +
-                 $" or Modelo LIKE '%{txFiltro.Text}%' or PrecioVenta LIKE '%{txFiltro.Text}%' ";
-            gv.DataSource = Helper.CargarDataTable(filtro);
-            txFiltro.Text = "";
+            try
+            {
+                string filtro = $"SELECT * FROM Vehiculos WHERE Tipo LIKE '%{txFiltro.Text}%'" +
+                     $" or Modelo LIKE '%{txFiltro.Text}%' or PrecioVenta LIKE '%{txFiltro.Text}%' ";
+                gv.DataSource = Helper.CargarDataTable(filtro);
+                txFiltro.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void picReload_Click(object sender, EventArgs e)
         {
-            gv.DataSource = Helper.CargarDataTable(Select);
-            txFiltro.Text = "";
-        }
+            try
+            {
+                gv.DataSource = Helper.CargarDataTable(Select);
+                txFiltro.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
+        } 
     }
 }

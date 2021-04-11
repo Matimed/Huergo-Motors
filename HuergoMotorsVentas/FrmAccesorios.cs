@@ -112,18 +112,32 @@ namespace HuergoMotorsVentas
 
         private void picBusqueda_Click(object sender, EventArgs e)
         {
+            try 
+            { 
             string filtro = $"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
                     $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id " +
                     $"WHERE a.Tipo LIKE '%{txFiltro.Text}%' or a.Nombre LIKE '%{txFiltro.Text}%' or a.Precio " +
                     $"LIKE '%{txFiltro.Text}%' or b.Modelo LIKE '%{txFiltro.Text}%'";
             gv.DataSource = Helper.CargarDataTable(filtro);
             txFiltro.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            }
         }
 
         private void picReload_Click(object sender, EventArgs e)
         {
-            gv.DataSource = Helper.CargarDataTable(Select);
-            txFiltro.Text = "";
+            try
+            {
+                gv.DataSource = Helper.CargarDataTable(Select);
+                txFiltro.Text = "";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            } 
         }
     }
 }
