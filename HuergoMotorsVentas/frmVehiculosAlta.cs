@@ -48,7 +48,6 @@ namespace HuergoMotorsVentas
                 string modelo = string.Empty;
                 decimal precioVenta = 0;
                 int stock = 0;
-                //ToDo: throw exeption isNull
                 if (!dt.Rows[0].IsNull("Tipo")) tipo = (string)dt.Rows[0]["Tipo"];
                 if (!dt.Rows[0].IsNull("Modelo")) modelo = (string)dt.Rows[0]["Modelo"];
                 if (!dt.Rows[0].IsNull("PrecioVenta")) precioVenta = (decimal)dt.Rows[0]["PrecioVenta"];
