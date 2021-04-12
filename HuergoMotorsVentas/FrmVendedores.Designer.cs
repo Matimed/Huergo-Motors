@@ -29,7 +29,7 @@ namespace HuergoMotorsVentas
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVendedores));
             this.btCerrar = new System.Windows.Forms.Button();
             this.btEliminar = new System.Windows.Forms.Button();
@@ -145,9 +145,9 @@ namespace HuergoMotorsVentas
             // Sucursal
             // 
             this.Sucursal.DataPropertyName = "Sucursal";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.NullValue = "0";
-            this.Sucursal.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.NullValue = "0";
+            this.Sucursal.DefaultCellStyle = dataGridViewCellStyle2;
             this.Sucursal.HeaderText = "Sucursal";
             this.Sucursal.Name = "Sucursal";
             this.Sucursal.ReadOnly = true;

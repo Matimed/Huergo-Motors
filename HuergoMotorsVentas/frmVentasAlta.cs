@@ -84,26 +84,21 @@ namespace HuergoMotorsVentas
         {
             try
             {
-                if (cboAccesorios.Items.Count > 0)
+                if (cboAccesorios.Items.Count <= 0) throw new Exception("No puede agregar un accesorio inexistente");
+                DataTable dtNuevosDatos = Helper.LeerCombo(cboAccesorios, "*", "Accesorios");
+                if (dtAccesorios != null && dtAccesorios.Rows.Count > 0)
                 {
-                    DataTable dtNuevosDatos = Helper.LeerCombo(cboAccesorios, "*", "Accesorios");
-                    if (dtAccesorios != null && dtAccesorios.Rows.Count > 0)
-                    {
-                        dtAccesorios.Merge(dtNuevosDatos);
-                    }
-                    else
-                    {
-                        precioAccesorios = 0;
-                        dtAccesorios = dtNuevosDatos;
-                    }
-                    gvAccesorios.DataSource = dtAccesorios;
-                    precioAccesorios = precioAccesorios + (decimal)dtNuevosDatos.Rows[0]["Precio"];
-                    lblTotal.Text = "$ " + Convert.ToString(precioAccesorios + precioVehiculo);
+                    dtAccesorios.Merge(dtNuevosDatos);
                 }
                 else
                 {
-                    throw new Exception("No puede agregar un accesorio inexistente");
+                    precioAccesorios = 0;
+                    dtAccesorios = dtNuevosDatos;
                 }
+                gvAccesorios.DataSource = dtAccesorios;
+                precioAccesorios = precioAccesorios + (decimal)dtNuevosDatos.Rows[0]["Precio"];
+                lblTotal.Text = "$ " + Convert.ToString(precioAccesorios + precioVehiculo);
+            
             }
             catch (Exception ex)
             {
@@ -169,8 +164,6 @@ namespace HuergoMotorsVentas
                     {
                         try
                         {
-                            //Helper.EditarDB($"INSERT INTO Ventas(Fecha, IdVehiculo, IdCliente, IdVendedor, Observaciones, Total) " +
-                            //$"VALUES ('11/04/2021', '1', '2021', '3', '', '300.00')",conexion, transaction);
                             Helper.EditarDB($"INSERT INTO Ventas(Fecha, IdVehiculo, IdCliente, IdVendedor, Observaciones, Total) " +
                             $"VALUES ('{fecha}', '{idVehiculo}', '{idCliente}', '{idVendedor}', '{observaciones}', '{precioVehiculo.ToString(Helper.nfi())}')", conexion, transaction);
 

@@ -29,7 +29,7 @@ namespace HuergoMotorsVentas
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccesorios));
             this.btCerrar = new System.Windows.Forms.Button();
             this.btEliminar = new System.Windows.Forms.Button();
@@ -151,9 +151,9 @@ namespace HuergoMotorsVentas
             // Precio
             // 
             this.Precio.DataPropertyName = "Precio";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.NullValue = "0";
-            this.Precio.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.NullValue = "0";
+            this.Precio.DefaultCellStyle = dataGridViewCellStyle2;
             this.Precio.HeaderText = "Precio";
             this.Precio.Name = "Precio";
             this.Precio.ReadOnly = true;
