@@ -191,6 +191,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btCancelar;
             this.ClientSize = new System.Drawing.Size(384, 301);
+            this.ControlBox = false;
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);

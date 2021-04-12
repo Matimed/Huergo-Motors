@@ -17,7 +17,6 @@ namespace HuergoMotorsVentas
         private int idCliente;
         private decimal precioVehiculo;
         private decimal precioAccesorios;
-        private int idVenta;
         public frmVentasAlta()
         {
             InitializeComponent();
@@ -30,6 +29,7 @@ namespace HuergoMotorsVentas
                 Helper.CargarCombo(cboVendedor, "SELECT Id, Nombre + ' ' + Apellido AS Vendedor FROM Vendedores", "Vendedor");
                 Helper.CargarCombo(cboModelo, "SELECT  Id, Modelo FROM Vehiculos", "Modelo");
                 gvAccesorios.AutoGenerateColumns = false;
+                ActiveControl = label1;
 
             }
             catch (Exception ex)
@@ -69,6 +69,7 @@ namespace HuergoMotorsVentas
                     txtTipo.Text = (string)dtModelo.Rows[0]["Tipo"];
                     precioVehiculo = (decimal)dtModelo.Rows[0]["PrecioVenta"];
                     txtPrecio.Text = precioVehiculo.ToString(Helper.nfi());
+                    lblTotal.Text = "$ "+ precioVehiculo.ToString(Helper.nfi());
                     int idVehiculo = (int)dtModelo.Rows[0]["Id"];
                     Helper.CargarCombo(cboAccesorios, $"SELECT Nombre, Id FROM Accesorios WHERE idVehiculo = {idVehiculo}", "Nombre");
                 }
@@ -97,6 +98,7 @@ namespace HuergoMotorsVentas
                     }
                     gvAccesorios.DataSource = dtAccesorios;
                     precioAccesorios = precioAccesorios + (decimal)dtNuevosDatos.Rows[0]["Precio"];
+                    lblTotal.Text = "$ " + Convert.ToString(precioAccesorios + precioVehiculo);
                 }
                 else
                 {
@@ -137,26 +139,25 @@ namespace HuergoMotorsVentas
             try
             {
                 Helper.ValidarTextosVacios(txtEmail, txtNombreCliente, txtTelefono, txtSucursal, txtTipo, txtPrecio);
-                if (!Helper.VerificarCombosCargados(cboModelo, cboVendedor))
-                {
-                    throw new Exception("Es necesario que todos los ComboBox esten cargados");
-                }
+                if (!Helper.VerificarCombosCargados(cboModelo, cboVendedor)) throw new Exception
+                        ("Es necesario que todos los ComboBox esten cargados");
+                
                 int stock = Helper.LeerNumeroCombo(cboModelo, "Stock", "Vehiculos");
-                if (stock < 1)
-                {
-                    throw new Exception("No hay stock del vehiculo seleccionado");
-                }
+
+                if (stock < 1) throw new Exception("No hay stock del vehiculo seleccionado");
+                
                 DateTime dateTime = dtpFecha.Value;
-                if (dateTime.Date > DateTime.Now.Date)
-                {
-                    throw new Exception("La fecha no puede ser posterior a la actual del sistema");
-                }
+
+                if (dateTime.Date > DateTime.Now.Date) throw new Exception
+                        ("La fecha no puede ser posterior a la actual del sistema");
+                
                 string fecha = dateTime.ToString("dd/MM/yyyy");
                 int idVehiculo = (int)cboModelo.SelectedValue;
                 int idVendedor = (int)cboVendedor.SelectedValue;
                 string observaciones = string.Empty;
+
                 if (!string.IsNullOrEmpty(txtObservaciones.Text) &
-                    (txtObservaciones.Text!= "Observaciones:" & txtObservaciones.Text != "Observaciones"))
+                    (txtObservaciones.Text!= "Observaciones:" & txtObservaciones.Text != "Observaciones")) 
                 {
                     observaciones = txtObservaciones.Text;
                 }
@@ -180,10 +181,6 @@ namespace HuergoMotorsVentas
                             //Si hay accesorios los agrega y si no termina la transaction
                             if (dtAccesorios != null && dtAccesorios.Rows.Count > 0)
                             {
-                                //Detectar idVenta
-                                //DataTable dt = Helper.CargarDataTable("SELECT MAX (Id) AS IdVenta FROM Ventas");
-                                //idVenta = (int)dt.Rows[0][0];
-
                                 //Por cada accesorio en la lista se agrega una venta en VentasAccesorios
                                 foreach (DataRow dataRow in dtAccesorios.Rows)
                                 {
@@ -204,7 +201,6 @@ namespace HuergoMotorsVentas
                 }
                 
                 MessageBox.Show("Venta realizada exitosamente");
-                DialogResult = DialogResult.OK;
 
             }
             catch (Exception ex)
@@ -216,14 +212,16 @@ namespace HuergoMotorsVentas
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            Close();
         }
         private void gvAccesorios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 5) //El index 5 es el del boton eliminar
             {
+                precioAccesorios = precioAccesorios - (decimal)dtAccesorios.Rows[gvAccesorios.CurrentRow.Index]["Precio"];
                 dtAccesorios.Rows.RemoveAt(gvAccesorios.CurrentRow.Index);
                 gvAccesorios.DataSource = dtAccesorios;
+                lblTotal.Text = "$ " + Convert.ToString(precioAccesorios + precioVehiculo);
             }
         }
 

@@ -190,6 +190,7 @@ namespace HuergoMotorsVentas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(399, 333);
+            this.ControlBox = false;
             this.Controls.Add(this.cboModelos);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox4);
