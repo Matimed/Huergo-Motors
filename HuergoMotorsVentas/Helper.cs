@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -12,8 +13,16 @@ namespace HuergoMotorsVentas
     {   //ToDo: Boton Cancelar Venta
         //ToDo: Validar stock antes y despues de confirmar venta
         //ToDo: Totales y acreditar compra
+        //ToDo: Configurar anchor de frmVentasAlta
 
         public static string ConnectionString = "Server=sql5078.site4now.net;Database=DB_9CF8B6_HuergoMotors2021;User Id=DB_9CF8B6_HuergoMotors2021_admin;Password=huergo2021;";
+        public static NumberFormatInfo nfi ()
+        {
+            //Escribe el número con puntos en lugar de comas para no dar error en la DB en los decimal
+            NumberFormatInfo numberFormatInfo = new NumberFormatInfo();
+            numberFormatInfo.NumberDecimalSeparator = ".";
+            return numberFormatInfo;
+        }
 
         public enum Modo
         {
@@ -42,23 +51,19 @@ namespace HuergoMotorsVentas
                     break;
             }
         }
-        public static void EditarDB(string query, SqlTransaction transaction)
+        public static void EditarDB(string query, SqlConnection conexion,  SqlTransaction transaction)
         {
             try
             {
-                using (SqlConnection conexion = new SqlConnection(ConnectionString))
-                {
-                    conexion.Open();
                     using (SqlCommand comando = new SqlCommand(query, conexion))
                     {
                         comando.Transaction = transaction;
                         comando.ExecuteNonQuery();
                     }
-                }
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al intentar la siguiente operacion:" + query, ex);
+                throw new Exception("Error al intentar la siguiente operacion: " + query, ex);
             }
         }
         public static void EditarDB(Form form, Modo modo, string query)
@@ -91,6 +96,7 @@ namespace HuergoMotorsVentas
                 {
                     using (SqlDataAdapter dataAdapter = new SqlDataAdapter(query, ConnectionString))
                     {
+                        
                         dataAdapter.Fill(dataTable);
                     }
                     return dataTable;

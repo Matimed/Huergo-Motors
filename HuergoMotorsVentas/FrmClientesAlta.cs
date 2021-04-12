@@ -55,10 +55,6 @@ namespace HuergoMotorsVentas
                 if (!dt.Rows[0].IsNull("Email")) email = (string)dt.Rows[0]["Email"];
                 if (!dt.Rows[0].IsNull("Telefono")) telefono = (string)dt.Rows[0]["Telefono"];
 
-                //Escribe el número con puntos en lugar de comas para no dar error en la DB
-                NumberFormatInfo nfi = new NumberFormatInfo();
-                nfi.NumberDecimalSeparator = ".";
-
                 txtEmail.Text = email;
                 txtNombre.Text = nombre;
                 txtDireccion.Text = direccion;

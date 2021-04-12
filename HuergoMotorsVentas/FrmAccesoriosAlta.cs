@@ -60,12 +60,7 @@ namespace HuergoMotorsVentas
                 if (!dt.Rows[0].IsNull("Precio")) precio = (decimal)dt.Rows[0]["Precio"];
                 if (!dt.Rows[0].IsNull("Modelo")) modelo = (string)dt.Rows[0]["Modelo"];
 
-
-                //Escribe el número con puntos en lugar de comas para no dar error en la DB
-                NumberFormatInfo nfi = new NumberFormatInfo();
-                nfi.NumberDecimalSeparator = ".";
-
-                txtPrecio.Text = precio.ToString(nfi);
+                txtPrecio.Text = precio.ToString(Helper.nfi());
                 txtTipo.Text = tipo;
                 txtNombre.Text = nombre;
                 int index = cboModelos.FindString(modelo);

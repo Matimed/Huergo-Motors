@@ -17,6 +17,7 @@ namespace HuergoMotorsVentas
         private int idCliente;
         private decimal precioVehiculo;
         private decimal precioAccesorios;
+        private int idVenta;
         public frmVentasAlta()
         {
             InitializeComponent();
@@ -67,7 +68,7 @@ namespace HuergoMotorsVentas
                     DataTable dtModelo = Helper.LeerCombo(cboModelo, "*", "Vehiculos");
                     txtTipo.Text = (string)dtModelo.Rows[0]["Tipo"];
                     precioVehiculo = (decimal)dtModelo.Rows[0]["PrecioVenta"];
-                    txtPrecio.Text = Convert.ToString(Precio);
+                    txtPrecio.Text = precioVehiculo.ToString(Helper.nfi());
                     int idVehiculo = (int)dtModelo.Rows[0]["Id"];
                     Helper.CargarCombo(cboAccesorios, $"SELECT Nombre, Id FROM Accesorios WHERE idVehiculo = {idVehiculo}", "Nombre");
                 }
@@ -140,36 +141,69 @@ namespace HuergoMotorsVentas
                 {
                     throw new Exception("Es necesario que todos los ComboBox esten cargados");
                 }
-                if (Helper.LeerNumeroCombo(cboModelo, "Stock", "Vehiculos") < 1)
+                int stock = Helper.LeerNumeroCombo(cboModelo, "Stock", "Vehiculos");
+                if (stock < 1)
                 {
                     throw new Exception("No hay stock del vehiculo seleccionado");
                 }
-                DateTime fecha = dtpFecha.Value;
+                DateTime dateTime = dtpFecha.Value;
+                if (dateTime.Date > DateTime.Now.Date)
+                {
+                    throw new Exception("La fecha no puede ser posterior a la actual del sistema");
+                }
+                string fecha = dateTime.ToString("dd/MM/yyyy");
                 int idVehiculo = (int)cboModelo.SelectedValue;
                 int idVendedor = (int)cboVendedor.SelectedValue;
                 string observaciones = string.Empty;
                 if (!string.IsNullOrEmpty(txtObservaciones.Text) &
-                    (txtObservaciones.Text!= "Observaciones:"| txtObservaciones.Text != "Observaciones"))
+                    (txtObservaciones.Text!= "Observaciones:" & txtObservaciones.Text != "Observaciones"))
                 {
                     observaciones = txtObservaciones.Text;
                 }
-                try
+
+                using (SqlConnection conexion = new SqlConnection(Helper.ConnectionString))
                 {
-                    using (SqlConnection conexion = new SqlConnection(Helper.ConnectionString))
+                    conexion.Open();
+                    using (SqlTransaction transaction = conexion.BeginTransaction())
                     {
-                        conexion.Open();
-                        using (SqlTransaction transaction = conexion.BeginTransaction())
+                        try
                         {
+                            //Helper.EditarDB($"INSERT INTO Ventas(Fecha, IdVehiculo, IdCliente, IdVendedor, Observaciones, Total) " +
+                            //$"VALUES ('11/04/2021', '1', '2021', '3', '', '300.00')",conexion, transaction);
                             Helper.EditarDB($"INSERT INTO Ventas(Fecha, IdVehiculo, IdCliente, IdVendedor, Observaciones, Total) " +
-                            $"VALUES ('{fecha}', '{idVehiculo}', '{idCliente}', '{idVendedor}', '{observaciones}','{precioVehiculo}')", transaction);
-                            //Falta restar el stock y hacer la venta de los accesorios
-                            transaction.Commit;
+                            $"VALUES ('{fecha}', '{idVehiculo}', '{idCliente}', '{idVendedor}', '{observaciones}', '{precioVehiculo.ToString(Helper.nfi())}')", conexion, transaction);
+
+                            //Actualizar Stock
+                            stock = stock - 1;
+                            Helper.EditarDB($"UPDATE Vehiculos SET Stock='{stock}' WHERE Id={idVehiculo}",conexion , transaction);
+
+                            //Si hay accesorios los agrega y si no termina la transaction
+                            if (dtAccesorios != null && dtAccesorios.Rows.Count > 0)
+                            {
+                                //Detectar idVenta
+                                DataTable dt = Helper.CargarDataTable("SELECT MAX (Id) AS IdVenta FROM Ventas");
+                                idVenta = (int)dt.Rows[0][0];
+
+                                //Por cada accesorio en la lista se agrega una venta en VentasAccesorios
+                                foreach (DataRow dataRow in dtAccesorios.Rows)
+                                {
+                                    int idAccesorio = (int)dataRow["id"];
+                                    decimal precioAccesorio = (decimal)dataRow["Precio"];
+                                    Helper.EditarDB($"INSERT INTO VentasAccesorios (IdVenta, IdAccesorio, Precio) VALUES" +
+                                        $"('{idVenta}', '{idAccesorio}', '{precioAccesorio.ToString(Helper.nfi())}')",conexion, transaction);
+                                }
+                            }
+                            transaction.Commit();
                         }
-                    }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                            throw new Exception("Error al confirmar la venta", ex);
+                        }
+                    } 
                 }
-                catch
-                { 
-                }
+                
+                MessageBox.Show("Venta realizada exitosamente");
                 DialogResult = DialogResult.OK;
 
             }
@@ -179,16 +213,11 @@ namespace HuergoMotorsVentas
             }
         }
 
-        private void txtObservaciones_Enter(object sender, EventArgs e)
-        {
-            txtObservaciones.Text = "";
-        }
 
-        private void txtObservaciones_Validated(object sender, EventArgs e)
+        private void btnCancelar_Click(object sender, EventArgs e)
         {
-            if (txtObservaciones.Text == "") txtObservaciones.Text = "Observaciones:"; 
-        }
 
+        }
         private void gvAccesorios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 5) //El index 5 es el del boton eliminar
@@ -198,9 +227,14 @@ namespace HuergoMotorsVentas
             }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
 
+        private void txtObservaciones_Enter(object sender, EventArgs e)
+        {
+            txtObservaciones.Text = "";
+        }
+        private void txtObservaciones_Validated(object sender, EventArgs e)
+        {
+            if (txtObservaciones.Text == "") txtObservaciones.Text = "Observaciones:";
         }
     }
 }

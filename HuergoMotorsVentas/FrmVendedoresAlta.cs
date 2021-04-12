@@ -52,10 +52,6 @@ namespace HuergoMotorsVentas
                 if (!dt.Rows[0].IsNull("Apellido")) apellido = (string)dt.Rows[0]["Apellido"];
                 if (!dt.Rows[0].IsNull("Sucursal")) sucursal = (string)dt.Rows[0]["Sucursal"];
 
-                //Escribe el número con puntos en lugar de comas para no dar error en la DB
-                NumberFormatInfo nfi = new NumberFormatInfo();
-                nfi.NumberDecimalSeparator = ".";
-
                 txtSucursal.Text = sucursal;
                 txtNombre.Text = nombre;
                 txtApellido.Text = apellido;
