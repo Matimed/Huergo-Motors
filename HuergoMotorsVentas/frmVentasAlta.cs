@@ -181,8 +181,8 @@ namespace HuergoMotorsVentas
                             if (dtAccesorios != null && dtAccesorios.Rows.Count > 0)
                             {
                                 //Detectar idVenta
-                                DataTable dt = Helper.CargarDataTable("SELECT MAX (Id) AS IdVenta FROM Ventas");
-                                idVenta = (int)dt.Rows[0][0];
+                                //DataTable dt = Helper.CargarDataTable("SELECT MAX (Id) AS IdVenta FROM Ventas");
+                                //idVenta = (int)dt.Rows[0][0];
 
                                 //Por cada accesorio en la lista se agrega una venta en VentasAccesorios
                                 foreach (DataRow dataRow in dtAccesorios.Rows)
@@ -190,7 +190,7 @@ namespace HuergoMotorsVentas
                                     int idAccesorio = (int)dataRow["id"];
                                     decimal precioAccesorio = (decimal)dataRow["Precio"];
                                     Helper.EditarDB($"INSERT INTO VentasAccesorios (IdVenta, IdAccesorio, Precio) VALUES" +
-                                        $"('{idVenta}', '{idAccesorio}', '{precioAccesorio.ToString(Helper.nfi())}')",conexion, transaction);
+                                        $"((SELECT MAX(Id) AS IdVenta FROM Ventas), '{idAccesorio}', '{precioAccesorio.ToString(Helper.nfi())}')", conexion, transaction);
                                 }
                             }
                             transaction.Commit();
