@@ -199,8 +199,10 @@ namespace HuergoMotorsVentas
                         }
                     } 
                 }
-                
-                MessageBox.Show("Venta realizada exitosamente");
+
+                MessageBox.Show("Venta realizada exitosamente", "Operacion Completada",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult = DialogResult.OK;
 
             }
             catch (Exception ex)
