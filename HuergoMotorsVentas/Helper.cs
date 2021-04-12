@@ -10,10 +10,7 @@ using System.Windows.Forms;
 namespace HuergoMotorsVentas
 {
     public static class Helper
-    {   //ToDo: Boton Cancelar Venta
-        //ToDo: Validar stock antes y despues de confirmar venta
-        //ToDo: Totales y acreditar compra
-        //ToDo: Configurar anchor de frmVentasAlta
+    { 
 
         public static string ConnectionString = "Server=sql5078.site4now.net;Database=DB_9CF8B6_HuergoMotors2021;User Id=DB_9CF8B6_HuergoMotors2021_admin;Password=huergo2021;";
         public static NumberFormatInfo nfi ()
