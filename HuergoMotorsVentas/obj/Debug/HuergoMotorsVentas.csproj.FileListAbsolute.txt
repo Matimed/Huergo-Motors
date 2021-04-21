@@ -8,7 +8,6 @@ C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsV
 C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.frmVehiculosAlta.resources
 C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.frmVendedores.resources
 C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.frmVendedoresAlta.resources
-C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.frmVentas.resources
 C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.Properties.Resources.resources
 C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.csproj.GenerateResource.cache
 C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.csproj.CoreCompileInputs.cache
@@ -48,3 +47,8 @@ C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\H
 C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.exe
 C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.pdb
 C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.frmVentasAlta.resources
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\bin\Debug\HuergoMotorsVentas.exe
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\bin\Debug\HuergoMotorsVentas.pdb
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.frmVentasAlta.resources
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.exe
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotorsVentas\obj\Debug\HuergoMotorsVentas.pdb
