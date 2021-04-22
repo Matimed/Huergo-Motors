@@ -9,20 +9,20 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace HuergoMotorsVentas
+namespace HuergoMotorsForms
 {
     public partial class frmAccesoriosAlta : Form
     {
         public int Id { get; set; } //Esto es una 'propiedad'.
-        public Helper.Modo Modo { get; private set; }
+        public HelperForms.Modo Modo { get; private set; }
         
 
         private void frmVehiculosAlta_Load(object sender, EventArgs e)
         {
             //Saca el focus del textbox y lo pone en el label por estetica
             this.ActiveControl = label1;
-            Helper.CargarCombo(cboModelos, "SELECT Id, Modelo FROM Vehiculos", "Modelo");
-            if (Modo == Helper.Modo.Agregar)
+            HelperForms.CargarCombo(cboModelos, "SELECT Id, Modelo FROM Vehiculos", "Modelo");
+            if (Modo == HelperForms.Modo.Agregar)
             {
                 txtNombre.Text = string.Empty;
                 txtTipo.Text = string.Empty;
@@ -31,7 +31,7 @@ namespace HuergoMotorsVentas
         }
 
 
-        public frmAccesoriosAlta(Helper.Modo modo)
+        public frmAccesoriosAlta(HelperForms.Modo modo)
         {
             InitializeComponent();
             Modo = modo;
@@ -47,7 +47,7 @@ namespace HuergoMotorsVentas
                 string query = $"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
                     $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id WHERE a.Id={id}";
 
-                DataTable dt = Helper.CargarDataTable(query);
+                DataTable dt = HelperForms.CargarDataTable(query);
 
                 string tipo = string.Empty;
                 string nombre = string.Empty;
@@ -60,7 +60,7 @@ namespace HuergoMotorsVentas
                 if (!dt.Rows[0].IsNull("Precio")) precio = (decimal)dt.Rows[0]["Precio"];
                 if (!dt.Rows[0].IsNull("Modelo")) modelo = (string)dt.Rows[0]["Modelo"];
 
-                txtPrecio.Text = precio.ToString(Helper.nfi());
+                txtPrecio.Text = precio.ToString(HelperForms.nfi());
                 txtTipo.Text = tipo;
                 txtNombre.Text = nombre;
                 int index = cboModelos.FindString(modelo);
@@ -82,20 +82,20 @@ namespace HuergoMotorsVentas
         {
             try
             {
-                Helper.ValidarTextosVacios(txtNombre,txtPrecio,txtTipo);
-                Helper.ValidarNumerosRacionales(txtPrecio);
+                HelperForms.ValidarTextosVacios(txtNombre,txtPrecio,txtTipo);
+                HelperForms.ValidarNumerosRacionales(txtPrecio);
                 int idVehiculo = (int)(cboModelos.SelectedValue);
                 switch (Modo)
                 {
-                    case Helper.Modo.Modificar:
-                        if (Helper.ConfirmacionModificacion() == DialogResult.Yes)
+                    case HelperForms.Modo.Modificar:
+                        if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
-                            Helper.EditarDB(this, Modo, $"UPDATE Accesorios SET Nombre='{txtNombre.Text}', Tipo='{txtTipo.Text}'," +
+                            HelperForms.EditarDB(this, Modo, $"UPDATE Accesorios SET Nombre='{txtNombre.Text}', Tipo='{txtTipo.Text}'," +
                                 $" Precio='{txtPrecio.Text}', IdVehiculo= '{idVehiculo}' WHERE Id={Id}");
                         }
                         break;
-                    case Helper.Modo.Agregar:
-                        Helper.EditarDB(this, Modo, $"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
+                    case HelperForms.Modo.Agregar:
+                        HelperForms.EditarDB(this, Modo, $"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
                         $" VALUES ('{txtNombre.Text}', '{txtTipo.Text}', '{txtPrecio.Text}', '{idVehiculo}')");
                         break;
                 }

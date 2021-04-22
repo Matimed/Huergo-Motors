@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace HuergoMotorsVentas
+namespace HuergoMotorsForms
 {
     public partial class frmMDI : Form
     {

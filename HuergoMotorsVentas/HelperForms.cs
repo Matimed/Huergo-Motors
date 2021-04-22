@@ -6,13 +6,31 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace HuergoMotorsVentas
+namespace HuergoMotorsForms
 {
-    public static class Helper
-    { 
+    public static class HelperForms
+    {
+        public enum Modo
+        {
+            Agregar,
+            Modificar,
+            Eliminar
+        }
 
+        public static void EditarDB(Form form, Modo modo, string query)
+        {
+            try
+            {
+                int resultados = HuergoMotors.Negocio.HelperNegocio.EditarDB(query);
+                OperacionExitosa(modo, resultados);
+                form.DialogResult = DialogResult.OK;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
+            }
+        }
 
-    
         public static void OperacionExitosa(Modo modo, int result)
         {
             switch (modo)
@@ -47,6 +65,7 @@ namespace HuergoMotorsVentas
                      "Eliminar permanentemente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             return resp;
         }
+
         public static DialogResult ConfirmacionEliminación(string nombre, string apellido)
         {
             DialogResult resp = MessageBox.Show("Seguro que desea borrar a " + nombre + " " + apellido + "? Esta operacion no se puede revertir",
@@ -72,5 +91,21 @@ namespace HuergoMotorsVentas
                 throw new Exception("Error al cargar los combos", ex);
             }
         }
+
+        public static void CargarCombo(ComboBox combo, string query, string displaymember)
+        {
+            try
+            {
+                combo.DisplayMember = displaymember;
+                combo.ValueMember = "Id";
+                combo.DataSource = HuergoMotors.Negocio.HelperNegocio.CargarDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al cargar un ComboBox", ex);
+            }
+        }
+
     }
 }
+

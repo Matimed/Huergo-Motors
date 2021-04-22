@@ -8,7 +8,7 @@ using System.Text;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace HuergoMotorsVentas
+namespace HuergoMotorsForms
 {
     public partial class frmVentasAlta : Form
 
@@ -26,8 +26,8 @@ namespace HuergoMotorsVentas
         {
             try
             {
-                Helper.CargarCombo(cboVendedor, "SELECT Id, Nombre + ' ' + Apellido AS Vendedor FROM Vendedores", "Vendedor");
-                Helper.CargarCombo(cboModelo, "SELECT  Id, Modelo FROM Vehiculos", "Modelo");
+                HelperForms.CargarCombo(cboVendedor, "SELECT Id, Nombre + ' ' + Apellido AS Vendedor FROM Vendedores", "Vendedor");
+                HelperForms.CargarCombo(cboModelo, "SELECT  Id, Modelo FROM Vehiculos", "Modelo");
                 gvAccesorios.AutoGenerateColumns = false;
                 ActiveControl = label1;
 
@@ -42,9 +42,9 @@ namespace HuergoMotorsVentas
         {
             try
             {
-                if (Helper.VerificarCombosCargados(cboVendedor))
+                if (HelperForms.VerificarCombosCargados(cboVendedor))
                 {
-                    txtSucursal.Text = Helper.LeerDatoCombo(cboVendedor, "Sucursal", "Vendedores");
+                    txtSucursal.Text = HelperForms.LeerDatoCombo(cboVendedor, "Sucursal", "Vendedores");
                 }
             }
             catch (Exception ex)
@@ -57,7 +57,7 @@ namespace HuergoMotorsVentas
         {
             try
             {
-                if (Helper.VerificarCombosCargados(cboModelo))
+                if (HelperForms.VerificarCombosCargados(cboModelo))
                 {
                     if (dtAccesorios != null)
                     {
@@ -65,13 +65,13 @@ namespace HuergoMotorsVentas
                         dtAccesorios.Clear();
                         gvAccesorios.DataSource= dtAccesorios;
                     }
-                    DataTable dtModelo = Helper.LeerCombo(cboModelo, "*", "Vehiculos");
+                    DataTable dtModelo = HelperForms.LeerCombo(cboModelo, "*", "Vehiculos");
                     txtTipo.Text = (string)dtModelo.Rows[0]["Tipo"];
                     precioVehiculo = (decimal)dtModelo.Rows[0]["PrecioVenta"];
-                    txtPrecio.Text = precioVehiculo.ToString(Helper.nfi());
-                    lblTotal.Text = "$ "+ precioVehiculo.ToString(Helper.nfi());
+                    txtPrecio.Text = precioVehiculo.ToString(HelperForms.nfi());
+                    lblTotal.Text = "$ "+ precioVehiculo.ToString(HelperForms.nfi());
                     int idVehiculo = (int)dtModelo.Rows[0]["Id"];
-                    Helper.CargarCombo(cboAccesorios, $"SELECT Nombre, Id FROM Accesorios WHERE idVehiculo = {idVehiculo}", "Nombre");
+                    HelperForms.CargarCombo(cboAccesorios, $"SELECT Nombre, Id FROM Accesorios WHERE idVehiculo = {idVehiculo}", "Nombre");
                 }
             }
             catch (Exception ex)
@@ -85,7 +85,7 @@ namespace HuergoMotorsVentas
             try
             {
                 if (cboAccesorios.Items.Count <= 0) throw new Exception("No puede agregar un accesorio inexistente");
-                DataTable dtNuevosDatos = Helper.LeerCombo(cboAccesorios, "*", "Accesorios");
+                DataTable dtNuevosDatos = HelperForms.LeerCombo(cboAccesorios, "*", "Accesorios");
                 if (dtAccesorios != null && dtAccesorios.Rows.Count > 0)
                 {
                     dtAccesorios.Merge(dtNuevosDatos);
@@ -133,11 +133,11 @@ namespace HuergoMotorsVentas
         {
             try
             {
-                Helper.ValidarTextosVacios(txtEmail, txtNombreCliente, txtTelefono, txtSucursal, txtTipo, txtPrecio);
-                if (!Helper.VerificarCombosCargados(cboModelo, cboVendedor)) throw new Exception
+                HelperForms.ValidarTextosVacios(txtEmail, txtNombreCliente, txtTelefono, txtSucursal, txtTipo, txtPrecio);
+                if (!HelperForms.VerificarCombosCargados(cboModelo, cboVendedor)) throw new Exception
                         ("Es necesario que todos los ComboBox esten cargados");
                 
-                int stock = Helper.LeerNumeroCombo(cboModelo, "Stock", "Vehiculos");
+                int stock = HelperForms.LeerNumeroCombo(cboModelo, "Stock", "Vehiculos");
 
                 if (stock < 1) throw new Exception("No hay stock del vehiculo seleccionado");
                 
@@ -157,19 +157,19 @@ namespace HuergoMotorsVentas
                     observaciones = txtObservaciones.Text;
                 }
 
-                using (SqlConnection conexion = new SqlConnection(Helper.ConnectionString))
+                using (SqlConnection conexion = new SqlConnection(HelperForms.ConnectionString))
                 {
                     conexion.Open();
                     using (SqlTransaction transaction = conexion.BeginTransaction())
                     {
                         try
                         {
-                            Helper.EditarDB($"INSERT INTO Ventas(Fecha, IdVehiculo, IdCliente, IdVendedor, Observaciones, Total) " +
-                            $"VALUES ('{fecha}', '{idVehiculo}', '{idCliente}', '{idVendedor}', '{observaciones}', '{precioVehiculo.ToString(Helper.nfi())}')", conexion, transaction);
+                            HelperForms.EditarDB($"INSERT INTO Ventas(Fecha, IdVehiculo, IdCliente, IdVendedor, Observaciones, Total) " +
+                            $"VALUES ('{fecha}', '{idVehiculo}', '{idCliente}', '{idVendedor}', '{observaciones}', '{precioVehiculo.ToString(HelperForms.nfi())}')", conexion, transaction);
 
                             //Actualizar Stock
                             stock = stock - 1;
-                            Helper.EditarDB($"UPDATE Vehiculos SET Stock='{stock}' WHERE Id={idVehiculo}",conexion , transaction);
+                            HelperForms.EditarDB($"UPDATE Vehiculos SET Stock='{stock}' WHERE Id={idVehiculo}",conexion , transaction);
 
                             //Si hay accesorios los agrega y si no termina la transaction
                             if (dtAccesorios != null && dtAccesorios.Rows.Count > 0)
@@ -179,8 +179,8 @@ namespace HuergoMotorsVentas
                                 {
                                     int idAccesorio = (int)dataRow["id"];
                                     decimal precioAccesorio = (decimal)dataRow["Precio"];
-                                    Helper.EditarDB($"INSERT INTO VentasAccesorios (IdVenta, IdAccesorio, Precio) VALUES" +
-                                        $"((SELECT MAX(Id) AS IdVenta FROM Ventas), '{idAccesorio}', '{precioAccesorio.ToString(Helper.nfi())}')", conexion, transaction);
+                                    HelperForms.EditarDB($"INSERT INTO VentasAccesorios (IdVenta, IdAccesorio, Precio) VALUES" +
+                                        $"((SELECT MAX(Id) AS IdVenta FROM Ventas), '{idAccesorio}', '{precioAccesorio.ToString(HelperForms.nfi())}')", conexion, transaction);
                                 }
                             }
                             transaction.Commit();

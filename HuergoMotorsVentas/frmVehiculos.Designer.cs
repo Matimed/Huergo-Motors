@@ -1,4 +1,4 @@
-﻿namespace HuergoMotorsVentas
+﻿namespace HuergoMotorsForms
 {
     partial class frmVehiculos
     {

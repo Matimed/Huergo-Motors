@@ -9,14 +9,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace HuergoMotorsVentas
+namespace HuergoMotorsForms
 {
     public partial class frmVehiculosAlta : Form
     {
         public int Id { get; set; } //Esto es una 'propiedad'.
-        public Helper.Modo Modo { get; private set; }
+        public HelperForms.Modo Modo { get; private set; }
 
-        public frmVehiculosAlta(Helper.Modo modo)
+        public frmVehiculosAlta(HelperForms.Modo modo)
         {
             InitializeComponent();
             Modo = modo;
@@ -27,7 +27,7 @@ namespace HuergoMotorsVentas
             //Saca el focus del textbox y lo pone en el label por estetica
             this.ActiveControl = label1;
 
-            if (Modo == Helper.Modo.Agregar)
+            if (Modo == HelperForms.Modo.Agregar)
             {
                 // Vaciar todos los txtbox
                 txtModelo.Text = string.Empty;
@@ -43,7 +43,7 @@ namespace HuergoMotorsVentas
             string query = $"SELECT * FROM Vehiculos WHERE Id={id}";
             try
             {
-                DataTable dt = Helper.CargarDataTable(query);
+                DataTable dt = HelperForms.CargarDataTable(query);
                 string tipo = string.Empty;
                 string modelo = string.Empty;
                 decimal precioVenta = 0;
@@ -53,7 +53,7 @@ namespace HuergoMotorsVentas
                 if (!dt.Rows[0].IsNull("PrecioVenta")) precioVenta = (decimal)dt.Rows[0]["PrecioVenta"];
                 if (!dt.Rows[0].IsNull("Stock")) stock = (int)dt.Rows[0]["Stock"];
 
-                txtPrecio.Text = precioVenta.ToString(Helper.nfi());
+                txtPrecio.Text = precioVenta.ToString(HelperForms.nfi());
                 txtModelo.Text = modelo;
                 txtTipo.Text = tipo;
                 txtStock.Text = stock.ToString();
@@ -73,20 +73,20 @@ namespace HuergoMotorsVentas
         {
             try
             {
-                Helper.ValidarTextosVacios(txtModelo, txtPrecio, txtStock, txtTipo);
-                Helper.ValidarNumerosNaturales(txtStock);
-                Helper.ValidarNumerosRacionales(txtPrecio);
+                HelperForms.ValidarTextosVacios(txtModelo, txtPrecio, txtStock, txtTipo);
+                HelperForms.ValidarNumerosNaturales(txtStock);
+                HelperForms.ValidarNumerosRacionales(txtPrecio);
                 switch (Modo)
                 {
-                    case Helper.Modo.Modificar:
-                        if (Helper.ConfirmacionModificacion() == DialogResult.Yes)
+                    case HelperForms.Modo.Modificar:
+                        if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
-                            Helper.EditarDB(this, Modo, $"UPDATE Vehiculos SET Tipo='{txtTipo.Text}', Modelo='{txtModelo.Text}', PrecioVenta='{txtPrecio.Text}'," +
+                            HelperForms.EditarDB(this, Modo, $"UPDATE Vehiculos SET Tipo='{txtTipo.Text}', Modelo='{txtModelo.Text}', PrecioVenta='{txtPrecio.Text}'," +
                                     $" Stock='{txtStock.Text}' WHERE Id={Id}");
                         }
                         break;
-                    case Helper.Modo.Agregar:
-                        Helper.EditarDB(this, Modo, $"INSERT INTO Vehiculos (Tipo, Modelo, PrecioVenta, Stock) " +
+                    case HelperForms.Modo.Agregar:
+                        HelperForms.EditarDB(this, Modo, $"INSERT INTO Vehiculos (Tipo, Modelo, PrecioVenta, Stock) " +
                         $"VALUES ('{txtTipo.Text}', '{txtModelo.Text}', {txtPrecio.Text}, {txtStock.Text})");
                         break;
                 }

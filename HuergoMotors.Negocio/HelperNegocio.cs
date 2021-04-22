@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace HuergoMotors.Negocio
 {
-    class HelperNegocio
+    public class HelperNegocio
     {
         public static NumberFormatInfo nfi()
         {
@@ -16,11 +19,29 @@ namespace HuergoMotors.Negocio
             return numberFormatInfo;
         }
 
-        public enum Modo
+        public static int EditarDB(string query)
         {
-            Agregar,
-            Modificar,
-            Eliminar
+            try
+            {
+                return DAO.HelperDAO.EditarDB(query);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
+            }
         }
+
+        public static DataTable CargarDataTable(string query)
+        {
+            try
+            {
+                return DAO.HelperDAO.CargarDataTable(query);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al cargar los datos desde la base de datos", ex);
+            }
+        }
+
     }
 }

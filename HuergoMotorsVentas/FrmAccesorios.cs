@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 
 
-namespace HuergoMotorsVentas
+namespace HuergoMotorsForms
 {
 
 
@@ -23,7 +23,7 @@ namespace HuergoMotorsVentas
         {
             if (gv.SelectedRows.Count == 1)
             {
-                CargarABM(Helper.Modo.Modificar);
+                CargarABM(HelperForms.Modo.Modificar);
             }
             else
             {
@@ -31,11 +31,11 @@ namespace HuergoMotorsVentas
                     "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void CargarABM(Helper.Modo modo)
+        private void CargarABM(HelperForms.Modo modo)
         {
 
             frmAccesoriosAlta f = new frmAccesoriosAlta(modo);
-            if (modo == Helper.Modo.Modificar)
+            if (modo == HelperForms.Modo.Modificar)
             {
                 object item = gv.SelectedRows[0].DataBoundItem;
                 int id = (int)((DataRowView)item)["Id"];
@@ -47,7 +47,7 @@ namespace HuergoMotorsVentas
             {
                 try
                 {
-                    gv.DataSource = Helper.CargarDataTable(Select);
+                    gv.DataSource = HelperForms.CargarDataTable(Select);
                 }
                  
                 catch (Exception ex)
@@ -60,7 +60,7 @@ namespace HuergoMotorsVentas
 
         private void btNuevo_Click(object sender, EventArgs e)
         {
-            CargarABM(Helper.Modo.Agregar);
+            CargarABM(HelperForms.Modo.Agregar);
         }
 
         private void btEliminar_Click(object sender, EventArgs e)
@@ -71,12 +71,12 @@ namespace HuergoMotorsVentas
                 int id = (int)((DataRowView)item)["Id"];
                 string tipo = (string)((DataRowView)item)["Tipo"];
                 string nombre = (string)((DataRowView)item)["Nombre"];
-                if (Helper.ConfirmacionEliminación(nombre, tipo) == DialogResult.Yes)
+                if (HelperForms.ConfirmacionEliminación(nombre, tipo) == DialogResult.Yes)
                 {
                     try
                     {
-                        Helper.EditarDB(this, Helper.Modo.Eliminar, $"DELETE FROM Accesorios Where Id={id} ");
-                        gv.DataSource = Helper.CargarDataTable(Select);
+                        HelperForms.EditarDB(this, HelperForms.Modo.Eliminar, $"DELETE FROM Accesorios Where Id={id} ");
+                        gv.DataSource = HelperForms.CargarDataTable(Select);
                     }
                     catch (Exception ex)
                     {
@@ -102,7 +102,7 @@ namespace HuergoMotorsVentas
             try
             {
                 gv.AutoGenerateColumns = false;
-                gv.DataSource = Helper.CargarDataTable(Select);
+                gv.DataSource = HelperForms.CargarDataTable(Select);
             }
             catch (Exception ex)
             {
@@ -118,7 +118,7 @@ namespace HuergoMotorsVentas
                     $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id " +
                     $"WHERE a.Tipo LIKE '%{txFiltro.Text}%' or a.Nombre LIKE '%{txFiltro.Text}%' or a.Precio " +
                     $"LIKE '%{txFiltro.Text}%' or b.Modelo LIKE '%{txFiltro.Text}%'";
-            gv.DataSource = Helper.CargarDataTable(filtro);
+            gv.DataSource = HelperForms.CargarDataTable(filtro);
             txFiltro.Text = "";
             }
             catch (Exception ex)
@@ -131,7 +131,7 @@ namespace HuergoMotorsVentas
         {
             try
             {
-                gv.DataSource = Helper.CargarDataTable(Select);
+                gv.DataSource = HelperForms.CargarDataTable(Select);
                 txFiltro.Text = "";
             }
             catch (Exception ex)

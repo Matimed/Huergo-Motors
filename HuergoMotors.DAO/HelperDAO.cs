@@ -9,9 +9,12 @@ using System.Windows.Forms;
 
 namespace HuergoMotors.DAO
 {
-    public static string ConnectionString = "Server=sql5078.site4now.net;Database=DB_9CF8B6_HuergoMotors2021;User Id=DB_9CF8B6_HuergoMotors2021_admin;Password=huergo2021;";
-    class HelperDAO
+
+
+    public class HelperDAO
     {
+        public static string ConnectionString = "Server=sql5078.site4now.net;Database=DB_9CF8B6_HuergoMotors2021;User Id=DB_9CF8B6_HuergoMotors2021_admin;Password=huergo2021;";
+
         public static void EditarDB(string query, SqlConnection conexion, SqlTransaction transaction)
         {
             try
@@ -26,9 +29,9 @@ namespace HuergoMotors.DAO
             {
                 throw new Exception("Error al intentar la siguiente operacion: " + query, ex);
             }
-            // DAO
         }
-        public static void EditarDB(Form form, Modo modo, string query)
+
+        public static int EditarDB(string query)
         {
             try
             {
@@ -38,16 +41,14 @@ namespace HuergoMotors.DAO
                     using (SqlCommand comando = new SqlCommand(query, conexion))
                     {
                         int resultados = comando.ExecuteNonQuery();
-                        OperacionExitosa(modo, resultados);
+                        return resultados;
                     }
                 }
-                form.DialogResult = DialogResult.OK;
             }
             catch (Exception ex)
             {
                 throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
             }
-            // DAO
         }
 
         public static DataTable CargarDataTable(string query)
@@ -68,23 +69,6 @@ namespace HuergoMotors.DAO
             {
                 throw new Exception("Error al cargar los datos desde la base de datos", ex);
             }
-            // DAO
         }
-
-        public static void CargarCombo(ComboBox combo, string query, string displaymember)
-        {
-            try
-            {
-                combo.DisplayMember = displaymember;
-                combo.ValueMember = "Id";
-                combo.DataSource = CargarDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al cargar un ComboBox", ex);
-            }
-            // DAO
-        }
-
     }
 }

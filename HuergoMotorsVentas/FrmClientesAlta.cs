@@ -8,14 +8,14 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-namespace HuergoMotorsVentas
+namespace HuergoMotorsForms
 {
     public partial class frmClientesAlta : Form
     {
         public int Id { get; set; } //Esto es una 'propiedad'.
-        public Helper.Modo Modo { get; private set; }
+        public HelperForms.Modo Modo { get; private set; }
 
-        public frmClientesAlta(Helper.Modo modo)
+        public frmClientesAlta(HelperForms.Modo modo)
         {
             InitializeComponent();
             Modo = modo;
@@ -27,7 +27,7 @@ namespace HuergoMotorsVentas
             //Saca el focus del textbox y lo pone en el label por estetica
             this.ActiveControl = labelTelefono;
 
-            if (Modo == Helper.Modo.Agregar)
+            if (Modo == HelperForms.Modo.Agregar)
             {
                 txtNombre.Text = string.Empty;
                 txtDireccion.Text = string.Empty;
@@ -43,7 +43,7 @@ namespace HuergoMotorsVentas
                 Id = id;
                 string query = $"SELECT * FROM Clientes WHERE Id={id}";
 
-                DataTable dt = Helper.CargarDataTable(query);
+                DataTable dt = HelperForms.CargarDataTable(query);
 
                 string nombre = string.Empty;
                 string direccion = string.Empty;
@@ -75,18 +75,18 @@ namespace HuergoMotorsVentas
         {
             try
             {
-                Helper.ValidarTextosVacios(txtDireccion, txtEmail, txtNombre, txtTelefono);
+                HelperForms.ValidarTextosVacios(txtDireccion, txtEmail, txtNombre, txtTelefono);
                 switch (Modo)
                 {
-                    case Helper.Modo.Modificar:
-                        if (Helper.ConfirmacionModificacion() == DialogResult.Yes)
+                    case HelperForms.Modo.Modificar:
+                        if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
-                            Helper.EditarDB(this, Modo, $"UPDATE Clientes SET Nombre='{txtNombre.Text}', Direccion='{txtDireccion.Text}', " +
+                            HelperForms.EditarDB(this, Modo, $"UPDATE Clientes SET Nombre='{txtNombre.Text}', Direccion='{txtDireccion.Text}', " +
                                 $"Email='{txtEmail.Text}', Telefono='{txtTelefono.Text}' WHERE Id={Id}");
                         }
                         break;
-                    case Helper.Modo.Agregar:
-                        Helper.EditarDB(this, Modo, $"INSERT INTO Clientes (Nombre, Direccion, Email, Telefono) " +
+                    case HelperForms.Modo.Agregar:
+                        HelperForms.EditarDB(this, Modo, $"INSERT INTO Clientes (Nombre, Direccion, Email, Telefono) " +
                         $"VALUES ('{txtNombre.Text}', '{txtDireccion.Text}', '{txtEmail.Text}', '{txtTelefono.Text}')");
                         break;
                 }

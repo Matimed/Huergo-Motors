@@ -1,5 +1,5 @@
 ﻿
-namespace HuergoMotorsVentas
+namespace HuergoMotorsForms
 {
     partial class frmClientesAlta
     {

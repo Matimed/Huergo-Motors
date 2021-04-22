@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuergoMotorsVentas", "HuergoMotorsVentas\HuergoMotorsVentas.csproj", "{58AC622D-4DA1-482D-BEFB-750DF4E8A9D4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuergoMotors.Forms", "HuergoMotorsVentas\HuergoMotors.Forms.csproj", "{58AC622D-4DA1-482D-BEFB-750DF4E8A9D4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HuergoMotors.DAO", "HuergoMotors.DAO\HuergoMotors.DAO.csproj", "{CB4ADC3D-DD75-48AF-9909-3BFDDB5FF6BB}"
 EndProject

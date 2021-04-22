@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 
 
-namespace HuergoMotorsVentas
+namespace HuergoMotorsForms
 {
     public partial class frmVendedores : Form
     {
@@ -19,7 +19,7 @@ namespace HuergoMotorsVentas
         {
             if (gv.SelectedRows.Count == 1)
             {
-                CargarABM(Helper.Modo.Modificar);
+                CargarABM(HelperForms.Modo.Modificar);
             }
             else
             {
@@ -27,12 +27,12 @@ namespace HuergoMotorsVentas
                     "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void CargarABM(Helper.Modo modo)
+        private void CargarABM(HelperForms.Modo modo)
         {
             try
             {
                 frmVendedoresAlta f = new frmVendedoresAlta(modo);
-                if (modo == Helper.Modo.Modificar)
+                if (modo == HelperForms.Modo.Modificar)
                 {
                     object item = gv.SelectedRows[0].DataBoundItem;
                     int id = (int)((DataRowView)item)["Id"];
@@ -42,7 +42,7 @@ namespace HuergoMotorsVentas
                 //Solo recargo datos si se cerró con un OK.
                 if (f.DialogResult == DialogResult.OK)
                 {
-                    gv.DataSource = Helper.CargarDataTable(Select);
+                    gv.DataSource = HelperForms.CargarDataTable(Select);
                 }
             }
             catch (Exception ex)
@@ -53,7 +53,7 @@ namespace HuergoMotorsVentas
 
         private void btNuevo_Click(object sender, EventArgs e)
         {
-            CargarABM(Helper.Modo.Agregar);
+            CargarABM(HelperForms.Modo.Agregar);
         }
 
         private void btEliminar_Click(object sender, EventArgs e)
@@ -66,10 +66,10 @@ namespace HuergoMotorsVentas
                     int id = (int)((DataRowView)item)["Id"];
                     string nombre = (string)((DataRowView)item)["Nombre"];
                     string apellido = (string)((DataRowView)item)["Apellido"];
-                    if (Helper.ConfirmacionEliminación(nombre, apellido) == DialogResult.Yes)
+                    if (HelperForms.ConfirmacionEliminación(nombre, apellido) == DialogResult.Yes)
                     {
-                        Helper.EditarDB(this, Helper.Modo.Eliminar, $"DELETE FROM Vendedores Where Id={id} ");
-                        gv.DataSource = Helper.CargarDataTable(Select);
+                        HelperForms.EditarDB(this, HelperForms.Modo.Eliminar, $"DELETE FROM Vendedores Where Id={id} ");
+                        gv.DataSource = HelperForms.CargarDataTable(Select);
                     }
                 }
                 else
@@ -92,7 +92,7 @@ namespace HuergoMotorsVentas
         {
             try
             {
-                gv.DataSource = Helper.CargarDataTable(Select);
+                gv.DataSource = HelperForms.CargarDataTable(Select);
                 txFiltro.Text = "";
             }
             catch (Exception ex)
@@ -106,7 +106,7 @@ namespace HuergoMotorsVentas
             try
             {
                 gv.AutoGenerateColumns = false;
-                gv.DataSource = Helper.CargarDataTable(Select);
+                gv.DataSource = HelperForms.CargarDataTable(Select);
             }
             catch (Exception ex)
             {
@@ -120,7 +120,7 @@ namespace HuergoMotorsVentas
             {
                 string filtro = $"SELECT * FROM Vendedores WHERE Apellido LIKE '%{txFiltro.Text}%'" +
                     $" or Nombre LIKE '%{txFiltro.Text}%' or Sucursal LIKE '%{txFiltro.Text}%'";
-                gv.DataSource = Helper.CargarDataTable(filtro);
+                gv.DataSource = HelperForms.CargarDataTable(filtro);
                 txFiltro.Text = "";
             }
             catch (Exception ex)
@@ -133,7 +133,7 @@ namespace HuergoMotorsVentas
         {
             try
             {
-                gv.DataSource = Helper.CargarDataTable(Select);
+                gv.DataSource = HelperForms.CargarDataTable(Select);
                 txFiltro.Text = "";
             }
             catch (Exception ex)
