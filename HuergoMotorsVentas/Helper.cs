@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -12,21 +11,7 @@ namespace HuergoMotorsVentas
     public static class Helper
     { 
 
-        public static string ConnectionString = "Server=sql5078.site4now.net;Database=DB_9CF8B6_HuergoMotors2021;User Id=DB_9CF8B6_HuergoMotors2021_admin;Password=huergo2021;";
-        public static NumberFormatInfo nfi ()
-        {
-            //Escribe el número con puntos en lugar de comas para no dar error en la DB en los decimal
-            NumberFormatInfo numberFormatInfo = new NumberFormatInfo();
-            numberFormatInfo.NumberDecimalSeparator = ".";
-            return numberFormatInfo;
-        }
 
-        public enum Modo
-        {
-            Agregar,
-            Modificar,
-            Eliminar
-        }
     
         public static void OperacionExitosa(Modo modo, int result)
         {
@@ -48,63 +33,7 @@ namespace HuergoMotorsVentas
                     break;
             }
         }
-        public static void EditarDB(string query, SqlConnection conexion,  SqlTransaction transaction)
-        {
-            try
-            {
-                    using (SqlCommand comando = new SqlCommand(query, conexion))
-                    {
-                        comando.Transaction = transaction;
-                        comando.ExecuteNonQuery();
-                    }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al intentar la siguiente operacion: " + query, ex);
-            }
-        }
-        public static void EditarDB(Form form, Modo modo, string query)
-        {
-            try
-            {
-                using (SqlConnection conexion = new SqlConnection(ConnectionString))
-                {
-                    conexion.Open();
-                    using (SqlCommand comando = new SqlCommand(query, conexion))
-                    {
-                        int resultados = comando.ExecuteNonQuery();
-                        OperacionExitosa(modo, resultados);
-                    }
-                }
-                form.DialogResult = DialogResult.OK;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
-            }
-        }
-       
-
-        public static DataTable CargarDataTable(string query)
-        {
-            try
-            {
-                using (DataTable dataTable = new DataTable())
-                {
-                    using (SqlDataAdapter dataAdapter = new SqlDataAdapter(query, ConnectionString))
-                    {
-                        
-                        dataAdapter.Fill(dataTable);
-                    }
-                    return dataTable;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al cargar los datos desde la base de datos", ex);
-            }
-        }
-
+ 
         public static DialogResult ConfirmacionModificacion()
         {
             DialogResult resp = MessageBox.Show("Los datos guardados se sobrescribiran ¿Esta seguro de que quiere continuar?",
@@ -125,111 +54,6 @@ namespace HuergoMotorsVentas
             return resp;
         }
 
-
-        public static void CargarCombo(ComboBox combo, string query, string displaymember)
-        {
-            try
-            {
-                combo.DisplayMember = displaymember;
-                combo.ValueMember = "Id";
-                combo.DataSource = CargarDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al cargar un ComboBox", ex);
-            }
-        }
-        public static DataTable LeerCombo(ComboBox combo, string campo, string tabla)
-        {
-            try
-            {
-                int id = (int)combo.SelectedValue;
-                DataTable dt = CargarDataTable($"SELECT {campo} FROM {tabla} WHERE ID = {id}");
-                return dt;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al leer un ComboBox", ex);
-            }
-        }
-        public static string LeerDatoCombo(ComboBox combo, string campo, string tabla)
-        {
-            try
-            {
-                DataTable dt = LeerCombo(combo, campo, tabla);
-                string result= (string)dt.Rows[0][campo];
-                return result;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al leer un dato del ComboBox", ex);
-            }
-        }
-
-        public static int LeerNumeroCombo(ComboBox combo, string campo, string tabla)
-        {
-            try
-            {
-                DataTable dt = LeerCombo(combo, campo, tabla);
-                int result = (int)dt.Rows[0][campo];
-                return result;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al leer un numero del ComboBox", ex);
-            }
-        }
-
-        public static void ValidarNumerosNaturales(TextBox textbox1)
-        {
-            try
-            {
-                int numero;
-                if (!int.TryParse(textbox1.Text, out numero) | numero<0)
-                {
-                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero entero en {textbox1.Text}");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public static void ValidarNumerosRacionales(TextBox textbox1)
-        {
-            try
-            {
-                double numero;
-                if (!double.TryParse(textbox1.Text, out numero) | numero<0)
-                {
-                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero racional en {textbox1.Text}");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public static bool VerificarCombosCargados(ComboBox combo)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(combo.Text))
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al cargar los combos", ex);
-            }
-        }
         public static bool VerificarCombosCargados(ComboBox combo1, ComboBox combo2)
         {
             try
@@ -248,50 +72,5 @@ namespace HuergoMotorsVentas
                 throw new Exception("Error al cargar los combos", ex);
             }
         }
-        public static void ValidarTextosVacios(TextBox textbox1, TextBox textbox2, TextBox textbox3)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(textbox1.Text) | string.IsNullOrEmpty(textbox2.Text) | string.IsNullOrEmpty(textbox3.Text))
-                {
-                    throw new Exception("No se pueden dejar campos sin completar");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public static void ValidarTextosVacios(TextBox textbox1, TextBox textbox2, TextBox textbox3, TextBox textbox4)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(textbox1.Text) | string.IsNullOrEmpty(textbox2.Text) | string.IsNullOrEmpty(textbox3.Text) | string.IsNullOrEmpty(textbox4.Text))
-                {
-                    throw new Exception("No se pueden dejar campos sin completar");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public static void ValidarTextosVacios(TextBox textbox1, TextBox textbox2,
-            TextBox textbox3, TextBox textbox4,TextBox textbox5, TextBox textbox6)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(textbox1.Text) | string.IsNullOrEmpty(textbox2.Text) | string.IsNullOrEmpty(textbox3.Text) |
-                    string.IsNullOrEmpty(textbox4.Text) | string.IsNullOrEmpty(textbox5.Text) | string.IsNullOrEmpty(textbox6.Text))
-                {
-                    throw new Exception("No se pueden dejar campos sin completar");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
     }
 }

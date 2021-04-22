@@ -200,5 +200,15 @@
   <ItemGroup>
     <None Include="bin\Debug\vendedor.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HuergoMotors.DTO\HuergoMotors.DTO.csproj">
+      <Project>{bf131ab3-ba0f-4e15-82eb-c28c94aaddf1}</Project>
+      <Name>HuergoMotors.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HuergoMotors.Negocio\HuergoMotors.Negocio.csproj">
+      <Project>{e46c4a8f-d440-4eb0-a59f-36078eebc10c}</Project>
+      <Name>HuergoMotors.Negocio</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

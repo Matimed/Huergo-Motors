@@ -1,0 +1,6 @@
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotors.DTO\bin\Debug\HuergoMotors.DTO.dll
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotors.DTO\bin\Debug\HuergoMotors.DTO.pdb
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotors.DTO\obj\Debug\HuergoMotors.DTO.csprojAssemblyReference.cache
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotors.DTO\obj\Debug\HuergoMotors.DTO.csproj.CoreCompileInputs.cache
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotors.DTO\obj\Debug\HuergoMotors.DTO.dll
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotors.DTO\obj\Debug\HuergoMotors.DTO.pdb
