@@ -8,7 +8,7 @@ namespace HuergoMotorsForms
 {
     public partial class frmClientes : Form
     {
-        public Clientes ClienteSeleccionado { get; set; }
+        public ClienteForms ClienteSeleccionado { get; set; }
         private new const string Select = "SELECT * FROM Clientes";
         public frmClientes()
         {
@@ -147,7 +147,7 @@ namespace HuergoMotorsForms
         {
             if (gv.SelectedRows.Count == 1)
             {
-                Clientes cliente = new Clientes();
+                ClienteForms cliente = new ClienteForms();
                 cliente.Id = (int)gv.SelectedRows[0].Cells["Id"].Value;
                 cliente.Nombre = (string)gv.SelectedRows[0].Cells["Nombre"].Value;
                 cliente.Direccion = (string)gv.SelectedRows[0].Cells["Direccion"].Value;

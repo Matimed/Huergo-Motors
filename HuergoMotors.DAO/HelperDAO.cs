@@ -9,8 +9,6 @@ using System.Windows.Forms;
 
 namespace HuergoMotors.DAO
 {
-
-
     public class HelperDAO
     {
         public static string ConnectionString = "Server=sql5078.site4now.net;Database=DB_9CF8B6_HuergoMotors2021;User Id=DB_9CF8B6_HuergoMotors2021_admin;Password=huergo2021;";
@@ -59,7 +57,6 @@ namespace HuergoMotors.DAO
                 {
                     using (SqlDataAdapter dataAdapter = new SqlDataAdapter(query, ConnectionString))
                     {
-
                         dataAdapter.Fill(dataTable);
                     }
                     return dataTable;
@@ -70,5 +67,50 @@ namespace HuergoMotors.DAO
                 throw new Exception("Error al cargar los datos desde la base de datos", ex);
             }
         }
+
+        public static DataTable LeerCombo(ComboBox combo, string campo, string tabla)
+        {
+            try
+            {
+                int id = (int)combo.SelectedValue;
+                DataTable dt = CargarDataTable($"SELECT {campo} FROM {tabla} WHERE ID = {id}");
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al leer un ComboBox", ex);
+            }
+        }
+
+        public static string LeerDatoCombo(ComboBox combo, string campo, string tabla)
+        {
+            try
+            {
+                DataTable dt = LeerCombo(combo, campo, tabla);
+                string result = (string)dt.Rows[0][campo];
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al leer un dato del ComboBox", ex);
+            }
+        }
+
+        public static int LeerNumeroCombo(ComboBox combo, string campo, string tabla)
+        {
+            try
+            {
+                DataTable dt = LeerCombo(combo, campo, tabla);
+                int result = (int)dt.Rows[0][campo];
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al leer un numero del ComboBox", ex);
+            }
+        }
+
+
+
     }
 }

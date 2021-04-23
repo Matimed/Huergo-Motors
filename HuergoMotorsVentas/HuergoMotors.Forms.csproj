@@ -60,7 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Clientes.cs" />
+    <Compile Include="ClienteForms.cs" />
     <Compile Include="HelperForms.cs" />
     <Compile Include="frmAccesorios.cs">
       <SubType>Form</SubType>

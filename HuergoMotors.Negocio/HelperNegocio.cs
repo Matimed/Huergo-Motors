@@ -43,5 +43,45 @@ namespace HuergoMotors.Negocio
             }
         }
 
+        public static bool VerificarCombosCargados(ComboBox combo)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(combo.Text))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al cargar los combos", ex);
+            }
+        }
+
+        public static bool VerificarCombosCargados(ComboBox combo1, ComboBox combo2)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(combo1.Text) | string.IsNullOrEmpty(combo2.Text))
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al cargar los combos", ex);
+            }
+        }
+
+
+
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HuergoMotorsForms
 {
-    public class Clientes
+    public class ClienteForms
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
