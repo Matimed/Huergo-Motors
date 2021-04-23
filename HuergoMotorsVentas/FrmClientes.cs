@@ -43,6 +43,8 @@ namespace HuergoMotorsForms
                 if (f.DialogResult == DialogResult.OK)
                 {
                     gv.DataSource = HelperForms.CargarDataTable(Select);
+                    //enviar señar a negocios que haga un return del cargardatatable
+                    
                 }
             }
             catch (Exception ex)
