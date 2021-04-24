@@ -13,6 +13,8 @@ namespace HuergoMotorsForms
 {
     public partial class frmAccesoriosAlta : Form
     {
+        HuergoMotors.Negocio.AccesoriosAltaNegocio accesoriosAltaNegocio = 
+            new HuergoMotors.Negocio.AccesoriosAltaNegocio();
         public int Id { get; set; } //Esto es una 'propiedad'.
         public HelperForms.Modo Modo { get; private set; }
         
@@ -43,27 +45,15 @@ namespace HuergoMotorsForms
         {
             try
             {
-                Id = id;
-                string query = $"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
-                    $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id WHERE a.Id={id}";
-
-                DataTable dt = HelperForms.CargarDataTable(query);
-
-                string tipo = string.Empty;
-                string nombre = string.Empty;
-                decimal precio = 0;
-                string modelo = string.Empty;
-
-
-                if (!dt.Rows[0].IsNull("Tipo")) tipo = (string)dt.Rows[0]["Tipo"];
-                if (!dt.Rows[0].IsNull("Nombre")) nombre = (string)dt.Rows[0]["Nombre"];
-                if (!dt.Rows[0].IsNull("Precio")) precio = (decimal)dt.Rows[0]["Precio"];
-                if (!dt.Rows[0].IsNull("Modelo")) modelo = (string)dt.Rows[0]["Modelo"];
-
-                txtPrecio.Text = precio.ToString(HelperForms.nfi());
-                txtTipo.Text = tipo;
-                txtNombre.Text = nombre;
-                int index = cboModelos.FindString(modelo);
+                HuergoMotors.DTO.AccesorioDTO accesorioDTO = new HuergoMotors.DTO.AccesorioDTO();
+                accesorioDTO.Id = Id;
+                DataTable dt = accesoriosAltaNegocio.CaragarTabla(Id);
+                accesoriosAltaNegocio.CargarDTO(dt, accesorioDTO);
+                
+                txtPrecio.Text = accesorioDTO.Precio.ToString(HuergoMotors.Negocio.HelperNegocio.nfi());
+                txtTipo.Text = accesorioDTO.Tipo;
+                txtNombre.Text = accesorioDTO.Nombre;
+                int index = cboModelos.FindString(accesorioDTO.ModeloVehiculo);
                 cboModelos.SelectedIndex = index;
             }
 
@@ -75,7 +65,7 @@ namespace HuergoMotorsForms
 
         private void btCancelar_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
         }
 
         private void btAceptar_Click(object sender, EventArgs e)
