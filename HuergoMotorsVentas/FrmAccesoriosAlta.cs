@@ -13,26 +13,29 @@ namespace HuergoMotorsForms
 {
     public partial class frmAccesoriosAlta : Form
     {
-        HuergoMotors.DTO.AccesorioDTO accesorioDTO = 
-            new HuergoMotors.DTO.AccesorioDTO();
-
+        
         HuergoMotors.Negocio.AccesoriosAltaNegocio accesoriosAltaNegocio = 
             new HuergoMotors.Negocio.AccesoriosAltaNegocio();
 
-        public int Id { get; set; } //Esto es una 'propiedad'.
+        public HuergoMotors.DTO.AccesorioDTO AccesorioSeleccionadoDTO { get; set; }
+
+        public int Id { get; set; }
         public HelperForms.Modo Modo { get; private set; }
         
 
         private void frmVehiculosAlta_Load(object sender, EventArgs e)
         {
             //Saca el focus del textbox y lo pone en el label por estetica
-            this.ActiveControl = label1;
-            HelperForms.CargarCombo(cboModelos, "SELECT Id, Modelo FROM Vehiculos", "Modelo");
+            ActiveControl = label1;
+            cboModelos.DisplayMember = "Modelo";
+            cboModelos.ValueMember = "Id";
+            cboModelos.DataSource = accesoriosAltaNegocio.CargarCombo();
             if (Modo == HelperForms.Modo.Agregar)
             {
                 txtNombre.Text = string.Empty;
                 txtTipo.Text = string.Empty;
                 txtPrecio.Text = "0.00";
+                AccesorioSeleccionadoDTO = new HuergoMotors.DTO.AccesorioDTO();
             }
         }
 
@@ -49,14 +52,12 @@ namespace HuergoMotorsForms
         {
             try
             {
-                accesorioDTO.Id = Id;
-                DataTable dt = accesoriosAltaNegocio.CargarTabla(Id);
-                accesoriosAltaNegocio.CargarDTO(dt, accesorioDTO);
+                AccesorioSeleccionadoDTO = accesoriosAltaNegocio.BDCargarDTO(Id);
                 
-                txtPrecio.Text = accesorioDTO.Precio.ToString(HuergoMotors.Negocio.HelperNegocio.nfi());
-                txtTipo.Text = accesorioDTO.Tipo;
-                txtNombre.Text = accesorioDTO.Nombre;
-                int index = cboModelos.FindString(accesorioDTO.ModeloVehiculo);
+                txtPrecio.Text = AccesorioSeleccionadoDTO.Precio.ToString(HuergoMotors.Negocio.HelperNegocio.nfi());
+                txtTipo.Text = AccesorioSeleccionadoDTO.Tipo;
+                txtNombre.Text = AccesorioSeleccionadoDTO.Nombre;
+                int index = cboModelos.FindString(AccesorioSeleccionadoDTO.ModeloVehiculo);
                 cboModelos.SelectedIndex = index;
             }
 
@@ -75,23 +76,22 @@ namespace HuergoMotorsForms
         {
             try
             {
-                HelperForms.ValidarTextBoxVacios(txtNombre,txtPrecio,txtTipo);
-                HelperForms.ValidarNumerosRacionales(txtPrecio);
-
+                accesoriosAltaNegocio.CargarDTO(AccesorioSeleccionadoDTO, (int)cboModelos.SelectedValue, 
+                    (string)cboModelos.SelectedItem, txtPrecio.Text, txtNombre.Text, txtTipo.Text);
 
                 switch (Modo)
                 {
                     case HelperForms.Modo.Modificar:
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
-                            HelperForms.MostrarOperacionExitosa(this, Modo, accesoriosAltaNegocio.ModificarElemento
-                                (txtTipo.Text, txtNombre.Text, txtPrecio.Text, (int)cboModelos.SelectedValue, Id));
+                            HelperForms.MostrarOperacionExitosa
+                                (this, Modo, accesoriosAltaNegocio.ModificarElemento (AccesorioSeleccionadoDTO));
                         }
                         break;
                     case HelperForms.Modo.Agregar:
                        
-                        HelperForms.MostrarOperacionExitosa(this, Modo, accesoriosAltaNegocio.AgregarElemento
-                                (txtTipo.Text, txtNombre.Text, txtPrecio.Text, (int)cboModelos.SelectedValue));
+                        HelperForms.MostrarOperacionExitosa
+                            (this, Modo, accesoriosAltaNegocio.AgregarElemento(AccesorioSeleccionadoDTO));
                         break;
                 }
             }

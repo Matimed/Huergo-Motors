@@ -43,6 +43,74 @@ namespace HuergoMotors.Negocio
             }
         }
 
+        public static void ValidarTextosVacios(params string[] textosValidar)
+        {
+            try
+            {
+                foreach (string textoValidar in textosValidar)
+                {
+                    if (string.IsNullOrEmpty(textoValidar))
+                    {
+                        throw new Exception("No se pueden dejar campos sin completar");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void ValidarTextosVacios(DataTable dt, params string[] campos)
+        {
+            try
+            {
+                foreach (string campo in campos)
+                {
+                    if (dt.Rows[0].IsNull(campo))
+                    {
+                        throw new Exception("Error al Validar DataTable. Se encontraron campos vácios");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static decimal ConvertirNumeroRacional(string numeroValidar)
+        {
+            try
+            {
+                decimal numeroRacional;
+                if (!decimal.TryParse(numeroValidar, out numeroRacional) | numeroRacional < 0)
+                {
+                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero racional.");
+                }
+                return numeroRacional;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static int ConvertirNumeroNatural(string numeroValidar)
+        {
+            try
+            {
+                int numeroNatural;
+                if (!int.TryParse(numeroValidar, out numeroNatural) | numeroNatural < 0)
+                {
+                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero entero.");
+                }
+                return numeroNatural;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
         public static DataTable LeerCombo(int id, string campo, string tabla)
         {
             try

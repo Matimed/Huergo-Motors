@@ -132,6 +132,11 @@ namespace HuergoMotorsForms
             }
         }
 
+
+
+
+
+        //Funciones para borrar
         public static void CargarCombo(ComboBox combo, string query, string displaymember)
         {
             try
@@ -146,55 +151,7 @@ namespace HuergoMotorsForms
             }
         }
 
-        public static void ValidarNumerosRacionales(TextBox textbox1)
-        {
-            try
-            {
-                double numero;
-                if (!double.TryParse(textbox1.Text, out numero) | numero < 0)
-                {
-                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero racional en {textbox1.Text}");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public static void ValidarNumerosNaturales(TextBox textbox1)
-        {
-            try
-            {
-                int numero;
-                if (!int.TryParse(textbox1.Text, out numero) | numero < 0)
-                {
-                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero entero en {textbox1.Text}");
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public static void ValidarTextBoxVacios(params TextBox[] textBoxes)
-        {
-            try
-            {
-                foreach (TextBox textBox in textBoxes)
-                {
-                    if (string.IsNullOrEmpty(textBox.Text))
-                    {
-                        throw new Exception("No se pueden dejar campos sin completar");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
+    
     }
 }
 

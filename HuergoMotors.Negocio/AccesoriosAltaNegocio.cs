@@ -14,22 +14,69 @@ namespace HuergoMotors.Negocio
             return accesoriosAltaDAO.CargarTabla(id);
         }
 
-        public void CargarDTO(DataTable dt, DTO.AccesorioDTO accesorioDTO)
+        public DataTable CargarCombo ()
         {
-            if (!dt.Rows[0].IsNull("Tipo")) accesorioDTO.Tipo = (string)dt.Rows[0]["Tipo"];
-            if (!dt.Rows[0].IsNull("Nombre")) accesorioDTO.Nombre = (string)dt.Rows[0]["Nombre"];
-            if (!dt.Rows[0].IsNull("Precio")) accesorioDTO.Precio = (decimal)dt.Rows[0]["Precio"];
-            if (!dt.Rows[0].IsNull("Modelo")) accesorioDTO.ModeloVehiculo = (string)dt.Rows[0]["Modelo"];
+            return accesoriosAltaDAO.CargarCombo();
         }
 
-        public int ModificarElemento(string tipo, string nombre, string precio, int idVehiculo, int id)
+        public DTO.AccesorioDTO BDCargarDTO(int id)
         {
-            return accesoriosAltaDAO.ModificarElemento(tipo, nombre, precio, idVehiculo, id);
+            try
+            {
+                DTO.AccesorioDTO accesorioDTO = new DTO.AccesorioDTO();
+                DataTable dt = CargarTabla(id);
+                CargarDTO(accesorioDTO, dt);
+                return accesorioDTO;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void CargarDTO(DTO.AccesorioDTO accesorioDTO, DataTable dt)
+        {
+            try
+            {
+                HelperNegocio.ValidarTextosVacios(dt, "Tipo", "Nombre", "Precio", "Modelo", "Id", "IdVehiulo");
+                accesorioDTO.Precio = HelperNegocio.ConvertirNumeroRacional((string)dt.Rows[0]["Precio"]);
+                accesorioDTO.Id = (int)dt.Rows[0]["IdVehiculo"];
+                accesorioDTO.IdVehiculo = (int)dt.Rows[0]["IdVehiculo"];
+                accesorioDTO.Tipo = (string)dt.Rows[0]["Tipo"];
+                accesorioDTO.Nombre = (string)dt.Rows[0]["Nombre"];
+                accesorioDTO.ModeloVehiculo = (string)dt.Rows[0]["Modelo"];
+            }
+           catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void CargarDTO(DTO.AccesorioDTO accesorioDTO, int idVehiculo, string modeloVehiuclo, string precio, string nombre, string tipo)
+        {
+            try
+            {
+                HelperNegocio.ValidarTextosVacios(modeloVehiuclo, precio, nombre, tipo);
+                accesorioDTO.Precio = HelperNegocio.ConvertirNumeroRacional(precio);
+                accesorioDTO.IdVehiculo = idVehiculo;
+                accesorioDTO.Tipo = tipo;
+                accesorioDTO.Nombre = nombre;
+                accesorioDTO.ModeloVehiculo = modeloVehiuclo;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public int ModificarElemento(DTO.AccesorioDTO accesorioDTO)
+        {
+            return accesoriosAltaDAO.ModificarElemento(accesorioDTO);
         }
         
-        public int AgregarElemento(string tipo, string nombre, string precio, int idVehiculo)
+        public int AgregarElemento(DTO.AccesorioDTO accesorioDTO)
         {
-            return accesoriosAltaDAO.AgregarElemento(tipo, nombre, precio, idVehiculo);
+            return accesoriosAltaDAO.AgregarElemento(accesorioDTO);
         }
     }
 }

@@ -15,16 +15,21 @@ namespace HuergoMotors.DAO
                     $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id WHERE a.Id={id}");
         }
 
-        public int ModificarElemento(string tipo, string nombre, string precio, int idVehiculo, int id)
+        public DataTable CargarCombo()
         {
-            return HelperDAO.EditarDB($"UPDATE Accesorios SET Nombre='{nombre}', Tipo='{tipo}'," +
-                                $" Precio='{precio}', IdVehiculo= '{idVehiculo}' WHERE Id={id}");
+            return HelperDAO.CargarDataTable("SELECT Id, Modelo FROM Vehiculos");
         }
 
-        public int AgregarElemento(string tipo, string nombre, string precio, int idVehiculo)
+        public int ModificarElemento(DTO.AccesorioDTO accesorioDTO)
+        {
+            return HelperDAO.EditarDB($"UPDATE Accesorios SET Nombre='{accesorioDTO.Nombre}', Tipo='{accesorioDTO.Tipo}'," +
+                                $" Precio='{accesorioDTO.Precio}', IdVehiculo= '{accesorioDTO.IdVehiculo}' WHERE Id={accesorioDTO.Id}");
+        }
+
+        public int AgregarElemento(DTO.AccesorioDTO accesorioDTO)
         {
             return HelperDAO.EditarDB($"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
-                        $" VALUES ('{nombre}', '{tipo}', '{precio}', '{idVehiculo}')");
+                        $" VALUES ('{accesorioDTO.Nombre}', '{accesorioDTO.Tipo}', '{accesorioDTO.Precio}', '{accesorioDTO.IdVehiculo}')");
         }
     }
 }
