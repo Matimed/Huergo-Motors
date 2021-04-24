@@ -13,7 +13,10 @@ namespace HuergoMotors.DAO
         {
             return HelperDAO.CargarDataTable("SELECT * FROM Vendedores");
         }
-
+        public DataTable CargarTabla(int id)
+        {
+            return HelperDAO.CargarDataTable($"SELECT * FROM Clientes WHERE Id={id}");
+        }
         public int EliminarElemento(int id)
         {
             return HelperDAO.EditarDB($"DELETE FROM Vendedores Where Id={id} ");
@@ -22,6 +25,16 @@ namespace HuergoMotors.DAO
         {
             return HelperDAO.CargarDataTable($"SELECT * FROM Vendedores WHERE Apellido LIKE '%{filtro}%'" +
                     $" or Nombre LIKE '%{filtro}%' or Sucursal LIKE '%{filtro}%'");
+        }
+        public int ModificarElemento(DTO.VendedorDTO vendedorDTO)
+        {
+            return HelperDAO.EditarDB($"UPDATE Vendedores SET Nombre='{vendedorDTO.Nombre}', " +
+                $"Apellido='{vendedorDTO.Apellido}', Sucursal='{vendedorDTO.Sucursal}' WHERE Id={vendedorDTO.Id}");
+        }
+        public int AgregarElementos(DTO.VendedorDTO vendedorDTO)
+        {
+            return HelperDAO.EditarDB($"INSERT INTO Vendedores (Nombre, Apellido, Sucursal) VALUES" +
+                            $" ('{vendedorDTO.Nombre}', '{vendedorDTO.Apellido}', '{vendedorDTO.Sucursal}')");
         }
     }
 }

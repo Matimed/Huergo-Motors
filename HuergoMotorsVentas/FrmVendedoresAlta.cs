@@ -13,7 +13,9 @@ namespace HuergoMotorsForms
 {
     public partial class frmVendedoresAlta : Form
     {
-        public int Id { get; set; } //Esto es una 'propiedad'.
+        public int Id { get; set; }
+        HuergoMotors.Negocio.VendedoresNegocio vendedoresNegocio = new HuergoMotors.Negocio.VendedoresNegocio();
+        public HuergoMotors.DTO.VendedorDTO VendedorSeleccionadoDTO { get; set; }
         public HelperForms.Modo Modo { get; private set; }
         public frmVendedoresAlta(HelperForms.Modo modo)
         {
@@ -32,29 +34,17 @@ namespace HuergoMotorsForms
                 txtNombre.Text = string.Empty;
                 txtApellido.Text = string.Empty;
                 txtSucursal.Text = string.Empty;
-
+                VendedorSeleccionadoDTO = new HuergoMotors.DTO.VendedorDTO();
             }
         }
         internal void CargarDatos()
         {
             try
             {
-                Id = id;
-                string query = $"SELECT * FROM Vendedores WHERE Id={id}";
-
-                DataTable dt = HelperForms.CargarDataTable(query);
-
-                string nombre = string.Empty;
-                string apellido = string.Empty;
-                string sucursal = string.Empty;
-
-                if (!dt.Rows[0].IsNull("Nombre")) nombre = (string)dt.Rows[0]["Nombre"];
-                if (!dt.Rows[0].IsNull("Apellido")) apellido = (string)dt.Rows[0]["Apellido"];
-                if (!dt.Rows[0].IsNull("Sucursal")) sucursal = (string)dt.Rows[0]["Sucursal"];
-
-                txtSucursal.Text = sucursal;
-                txtNombre.Text = nombre;
-                txtApellido.Text = apellido;
+                VendedorSeleccionadoDTO = vendedoresNegocio.BDCargarDTO(Id);
+                txtSucursal.Text = VendedorSeleccionadoDTO.Sucursal;
+                txtNombre.Text = VendedorSeleccionadoDTO.Nombre;
+                txtApellido.Text = VendedorSeleccionadoDTO.Apellido;
             }
             catch (Exception ex)
             {
@@ -71,19 +61,18 @@ namespace HuergoMotorsForms
         {
             try
             {
-                HelperForms.ValidarTextosVacios(txtApellido,txtNombre,txtSucursal);
                 switch (Modo)
                 {
                     case HelperForms.Modo.Modificar:
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
-                            HelperForms.EditarDB(this, Modo, $"UPDATE Vendedores SET Nombre='{txtNombre.Text}', " +
-                                $"Apellido='{txtApellido.Text}', Sucursal='{txtSucursal.Text}' WHERE Id={Id}");
+                            HelperForms.MostrarOperacionExitosa(this, Modo,
+                                vendedoresNegocio.ModificarElemento(VendedorSeleccionadoDTO));
                         }
                         break;
                     case HelperForms.Modo.Agregar:
-                        HelperForms.EditarDB(this, Modo, $"INSERT INTO Vendedores (Nombre, Apellido, Sucursal) VALUES" +
-                            $" ('{txtNombre.Text}', '{txtApellido.Text}', '{txtSucursal.Text}')");
+                        HelperForms.MostrarOperacionExitosa(this, Modo, 
+                            vendedoresNegocio.AgregarElemento(VendedorSeleccionadoDTO));
                         break;
                 }
 
