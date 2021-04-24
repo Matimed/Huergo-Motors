@@ -50,7 +50,7 @@ namespace HuergoMotorsForms
             try
             {
                 accesorioDTO.Id = Id;
-                DataTable dt = accesoriosAltaNegocio.CaragarTabla(Id);
+                DataTable dt = accesoriosAltaNegocio.CargarTabla(Id);
                 accesoriosAltaNegocio.CargarDTO(dt, accesorioDTO);
                 
                 txtPrecio.Text = accesorioDTO.Precio.ToString(HuergoMotors.Negocio.HelperNegocio.nfi());

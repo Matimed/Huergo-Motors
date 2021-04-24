@@ -9,9 +9,9 @@ namespace HuergoMotors.Negocio
     public class AccesoriosAltaNegocio
     {
        DAO.AccesoriosAltaDAO accesoriosAltaDAO = new DAO.AccesoriosAltaDAO();
-        public DataTable CaragarTabla(int id)
+        public DataTable CargarTabla(int id)
         {
-            return accesoriosAltaNegocio.CaragarTabla(id);
+            return accesoriosAltaDAO.CargarTabla(id);
         }
 
         public void CargarDTO(DataTable dt, DTO.AccesorioDTO accesorioDTO)
