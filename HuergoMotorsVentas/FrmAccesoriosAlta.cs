@@ -13,8 +13,12 @@ namespace HuergoMotorsForms
 {
     public partial class frmAccesoriosAlta : Form
     {
+        HuergoMotors.DTO.AccesorioDTO accesorioDTO = 
+            new HuergoMotors.DTO.AccesorioDTO();
+
         HuergoMotors.Negocio.AccesoriosAltaNegocio accesoriosAltaNegocio = 
             new HuergoMotors.Negocio.AccesoriosAltaNegocio();
+
         public int Id { get; set; } //Esto es una 'propiedad'.
         public HelperForms.Modo Modo { get; private set; }
         
@@ -41,11 +45,10 @@ namespace HuergoMotorsForms
 
 
 
-        internal void CargarDatos(int id)
+        internal void CargarDatos()
         {
             try
             {
-                HuergoMotors.DTO.AccesorioDTO accesorioDTO = new HuergoMotors.DTO.AccesorioDTO();
                 accesorioDTO.Id = Id;
                 DataTable dt = accesoriosAltaNegocio.CaragarTabla(Id);
                 accesoriosAltaNegocio.CargarDTO(dt, accesorioDTO);
@@ -74,19 +77,21 @@ namespace HuergoMotorsForms
             {
                 HelperForms.ValidarTextBoxVacios(txtNombre,txtPrecio,txtTipo);
                 HelperForms.ValidarNumerosRacionales(txtPrecio);
-                int idVehiculo = (int)(cboModelos.SelectedValue);
+
+
                 switch (Modo)
                 {
                     case HelperForms.Modo.Modificar:
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
-                            HelperForms.EditarDB(this, Modo, $"UPDATE Accesorios SET Nombre='{txtNombre.Text}', Tipo='{txtTipo.Text}'," +
-                                $" Precio='{txtPrecio.Text}', IdVehiculo= '{idVehiculo}' WHERE Id={Id}");
+                            HelperForms.MostrarOperacionExitosa(this, Modo, accesoriosAltaNegocio.ModificarElemento
+                                (txtTipo.Text, txtNombre.Text, txtPrecio.Text, (int)cboModelos.SelectedValue, Id));
                         }
                         break;
                     case HelperForms.Modo.Agregar:
-                        HelperForms.EditarDB(this, Modo, $"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
-                        $" VALUES ('{txtNombre.Text}', '{txtTipo.Text}', '{txtPrecio.Text}', '{idVehiculo}')");
+                       
+                        HelperForms.MostrarOperacionExitosa(this, Modo, accesoriosAltaNegocio.AgregarElemento
+                                (txtTipo.Text, txtNombre.Text, txtPrecio.Text, (int)cboModelos.SelectedValue));
                         break;
                 }
             }
@@ -94,6 +99,6 @@ namespace HuergoMotorsForms
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
             }
-        }  
+        }
     }
 }

@@ -38,8 +38,7 @@ namespace HuergoMotorsForms
             if (modo == HelperForms.Modo.Modificar)
             {
                 object item = gv.SelectedRows[0].DataBoundItem;
-                int id = (int)((DataRowView)item)["Id"];
-                accesoriosAlta.CargarDatos(id);
+                accesoriosAlta.Id = (int)((DataRowView)item)["Id"]; ;
             }
             accesoriosAlta.ShowDialog();
 

@@ -23,7 +23,6 @@ namespace HuergoMotorsForms
         {
             try
             {
-                int resultados = HuergoMotors.Negocio.HelperNegocio.EditarDB(query);
                 OperacionExitosa(modo, resultados);
                 form.DialogResult = DialogResult.OK;
             }
