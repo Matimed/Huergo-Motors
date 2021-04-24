@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using HuergoMotors.Negocio;
 
 
 namespace HuergoMotorsForms
@@ -11,8 +12,7 @@ namespace HuergoMotorsForms
 
     public partial class frmAccesorios : Form
     {
-        private new const string Select = "SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
-            "FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id;";
+        AccesoriosNegocio accesoriosNegocio = new AccesoriosNegocio();
 
         public frmAccesorios()
         {
@@ -47,7 +47,7 @@ namespace HuergoMotorsForms
             {
                 try
                 {
-                    gv.DataSource = HelperForms.CargarDataTable(Select);
+                    CargarGridView(gv);
                 }
                  
                 catch (Exception ex)
@@ -75,8 +75,9 @@ namespace HuergoMotorsForms
                 {
                     try
                     {
-                        HelperForms.EditarDB(this, HelperForms.Modo.Eliminar, $"DELETE FROM Accesorios Where Id={id} ");
-                        gv.DataSource = HelperForms.CargarDataTable(Select);
+                        int resultados = accesoriosNegocio.EliminarId(id);
+                        HelperForms.MostrarOperacionExitosa(this, HelperForms.Modo.Eliminar, resultados);
+                        CargarGridView(gv);
                     }
                     catch (Exception ex)
                     {
@@ -93,7 +94,7 @@ namespace HuergoMotorsForms
 
         private void btCerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+           Close();
         }
 
 
@@ -102,7 +103,7 @@ namespace HuergoMotorsForms
             try
             {
                 gv.AutoGenerateColumns = false;
-                gv.DataSource = HelperForms.CargarDataTable(Select);
+                CargarGridView(gv);
             }
             catch (Exception ex)
             {
@@ -113,13 +114,9 @@ namespace HuergoMotorsForms
         private void picBusqueda_Click(object sender, EventArgs e)
         {
             try 
-            { 
-            string filtro = $"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
-                    $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id " +
-                    $"WHERE a.Tipo LIKE '%{txFiltro.Text}%' or a.Nombre LIKE '%{txFiltro.Text}%' or a.Precio " +
-                    $"LIKE '%{txFiltro.Text}%' or b.Modelo LIKE '%{txFiltro.Text}%'";
-            gv.DataSource = HelperForms.CargarDataTable(filtro);
-            txFiltro.Text = "";
+            {
+                gv.DataSource = accesoriosNegocio.Buscar(txFiltro.Text);
+                txFiltro.Text = "";
             }
             catch (Exception ex)
             {
@@ -131,13 +128,18 @@ namespace HuergoMotorsForms
         {
             try
             {
-                gv.DataSource = HelperForms.CargarDataTable(Select);
+                CargarGridView(gv);
                 txFiltro.Text = "";
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
             } 
+        }
+
+        public void CargarGridView(DataGridView gv)
+        {
+            gv.DataSource = accesoriosNegocio.CargarTabla();
         }
     }
 }

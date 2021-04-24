@@ -17,7 +17,9 @@ namespace HuergoMotorsForms
             Eliminar
         }
 
-        public static void EditarDB(Form form, Modo modo, string query)
+
+
+        public static void MostrarOperacionExitosa(Form form, Modo modo, int resultados)
         {
             try
             {

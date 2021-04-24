@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace HuergoMotors.Negocio
 {
-    public class HelperNegocio
+    public static class HelperNegocio
     {
         public static NumberFormatInfo nfi()
         {

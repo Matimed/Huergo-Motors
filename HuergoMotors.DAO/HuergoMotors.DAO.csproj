@@ -47,7 +47,6 @@
     <Compile Include="ClienteDAO.cs" />
     <Compile Include="ClientesAltaDAO.cs" />
     <Compile Include="HelperDAO.cs" />
-    <Compile Include="MDIDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VehiculosAltaDAO.cs" />
     <Compile Include="VehiculosDAO.cs" />

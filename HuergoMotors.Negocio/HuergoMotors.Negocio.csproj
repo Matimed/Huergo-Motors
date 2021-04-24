@@ -45,9 +45,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccesoriosAltaNegocio.cs" />
+    <Compile Include="AccesoriosNegocio.cs" />
     <Compile Include="ClienteNegocio.cs" />
+    <Compile Include="ClientesAltaNegocio.cs" />
     <Compile Include="HelperNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VehiculosAltaNegocio.cs" />
+    <Compile Include="VehiculosNegocio.cs" />
+    <Compile Include="VendedoresAltaNegocio.cs" />
+    <Compile Include="VendedoresNegocio.cs" />
+    <Compile Include="VentasAltaNegocio.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\HuergoMotors.DAO\HuergoMotors.DAO.csproj">

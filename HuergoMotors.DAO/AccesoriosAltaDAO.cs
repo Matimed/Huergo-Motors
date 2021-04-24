@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HuergoMotors.DAO
 {
-    class AccesoriosAltaDAO
+    public class AccesoriosAltaDAO
     {
     }
 }
