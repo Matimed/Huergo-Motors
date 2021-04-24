@@ -61,7 +61,7 @@ namespace HuergoMotorsForms
             {
                 AccesorioSeleccionadoDTO = accesoriosAltaNegocio.BDCargarDTO(Id);
                 
-                txtPrecio.Text = AccesorioSeleccionadoDTO.Precio.ToString(HuergoMotors.Negocio.HelperNegocio.nfi());
+                txtPrecio.Text = AccesorioSeleccionadoDTO.Precio.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
                 txtTipo.Text = AccesorioSeleccionadoDTO.Tipo;
                 txtNombre.Text = AccesorioSeleccionadoDTO.Nombre;
                 cboModelos.SelectedValue = AccesorioSeleccionadoDTO.IdVehiculo;

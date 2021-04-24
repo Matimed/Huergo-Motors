@@ -13,11 +13,13 @@ namespace HuergoMotors.Negocio
     public static class HelperNegocio
     {
         
-        public static NumberFormatInfo nfi()
+        public static NumberFormatInfo NFI()
         {
             //Escribe el número con puntos en lugar de comas para no dar error en la DB en los decimal
-            NumberFormatInfo numberFormatInfo = new NumberFormatInfo();
-            numberFormatInfo.NumberDecimalSeparator = ".";
+            NumberFormatInfo numberFormatInfo = new NumberFormatInfo
+            {
+                NumberDecimalSeparator = "."
+            };
             return numberFormatInfo;
         }
 
@@ -83,8 +85,7 @@ namespace HuergoMotors.Negocio
         {
             try
             {
-                decimal numeroRacional;
-                if (!decimal.TryParse(numeroValidar, out numeroRacional) | numeroRacional < 0)
+                if (!decimal.TryParse(numeroValidar, out decimal numeroRacional) | numeroRacional < 0)
                 {
                     throw new Exception($"Tipo de dato inválido. Se esperaba un numero racional.");
                 }
@@ -99,8 +100,7 @@ namespace HuergoMotors.Negocio
         {
             try
             {
-                int numeroNatural;
-                if (!int.TryParse(numeroValidar, out numeroNatural) | numeroNatural < 0)
+                if (!int.TryParse(numeroValidar, out int numeroNatural) | numeroNatural < 0)
                 {
                     throw new Exception($"Tipo de dato inválido. Se esperaba un numero entero.");
                 }

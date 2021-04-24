@@ -29,14 +29,15 @@ namespace HuergoMotors.Negocio
             
         public DTO.ClienteDTO Seleccionar(object fila)
         {
-            DTO.ClienteDTO clienteDTO = new DTO.ClienteDTO();
-            clienteDTO.Id = (int)((DataRowView)fila)["Id"];
-            clienteDTO.Nombre = (string)((DataRowView)fila)["Nombre"];
-            clienteDTO.Direccion = (string)((DataRowView)fila)["Direccion"];
-            clienteDTO.Telefono = (string)((DataRowView)fila)["Telefono"];
-            clienteDTO.Email = (string)((DataRowView)fila)["Email"];
+            DTO.ClienteDTO clienteDTO = new DTO.ClienteDTO
+            {
+                Id = (int)((DataRowView)fila)["Id"],
+                Nombre = (string)((DataRowView)fila)["Nombre"],
+                Direccion = (string)((DataRowView)fila)["Direccion"],
+                Telefono = (string)((DataRowView)fila)["Telefono"],
+                Email = (string)((DataRowView)fila)["Email"]
+            };
             return clienteDTO;
         }
-        //return clienteDTO;
     }
 }
