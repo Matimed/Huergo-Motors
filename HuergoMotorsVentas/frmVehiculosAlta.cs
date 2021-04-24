@@ -13,7 +13,9 @@ namespace HuergoMotorsForms
 {
     public partial class frmVehiculosAlta : Form
     {
-        public int Id { get; set; } //Esto es una 'propiedad'.
+        HuergoMotors.Negocio.VehiculosNegocio vehiculosNegocio = new HuergoMotors.Negocio.VehiculosNegocio();
+        public HuergoMotors.DTO.VehiculoDTO VehiculoSeleccionadoDTO {get; set;}
+    public int Id { get; set; } //Esto es una 'propiedad'.
         public HelperForms.Modo Modo { get; private set; }
 
         public frmVehiculosAlta(HelperForms.Modo modo)
@@ -34,29 +36,20 @@ namespace HuergoMotorsForms
                 txtTipo.Text = string.Empty;
                 txtPrecio.Text = "0.00";
                 txtStock.Text = "0";
+                VehiculoSeleccionadoDTO = new HuergoMotors.DTO.VehiculoDTO();
             }
         }
 
         internal void CargarDatos(int id)
         {
-            Id = id;
-            string query = $"SELECT * FROM Vehiculos WHERE Id={id}";
             try
             {
-                DataTable dt = HelperForms.CargarDataTable(query);
-                string tipo = string.Empty;
-                string modelo = string.Empty;
-                decimal precioVenta = 0;
-                int stock = 0;
-                if (!dt.Rows[0].IsNull("Tipo")) tipo = (string)dt.Rows[0]["Tipo"];
-                if (!dt.Rows[0].IsNull("Modelo")) modelo = (string)dt.Rows[0]["Modelo"];
-                if (!dt.Rows[0].IsNull("PrecioVenta")) precioVenta = (decimal)dt.Rows[0]["PrecioVenta"];
-                if (!dt.Rows[0].IsNull("Stock")) stock = (int)dt.Rows[0]["Stock"];
+                VehiculoSeleccionadoDTO = vehiculosNegocio.BDCargarDTO(Id);
 
-                txtPrecio.Text = precioVenta.ToString(HelperForms.nfi());
-                txtModelo.Text = modelo;
-                txtTipo.Text = tipo;
-                txtStock.Text = stock.ToString();
+                txtPrecio.Text = VehiculoSeleccionadoDTO.PrecioVenta.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
+                txtModelo.Text = VehiculoSeleccionadoDTO.Modelo;
+                txtTipo.Text = VehiculoSeleccionadoDTO.Tipo;
+                txtStock.Text = VehiculoSeleccionadoDTO.Stock.ToString();
             }
             catch (Exception ex)
             {
@@ -73,21 +66,20 @@ namespace HuergoMotorsForms
         {
             try
             {
-                HelperForms.ValidarTextosVacios(txtModelo, txtPrecio, txtStock, txtTipo);
-                HelperForms.ValidarNumerosNaturales(txtStock);
-                HelperForms.ValidarNumerosRacionales(txtPrecio);
+                vehiculosNegocio.CargarDTO(VehiculoSeleccionadoDTO,
+                    txtModelo.Text, txtPrecio.Text, txtStock.Text, txtTipo.Text);
                 switch (Modo)
                 {
                     case HelperForms.Modo.Modificar:
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
-                            HelperForms.EditarDB(this, Modo, $"UPDATE Vehiculos SET Tipo='{txtTipo.Text}', Modelo='{txtModelo.Text}', PrecioVenta='{txtPrecio.Text}'," +
-                                    $" Stock='{txtStock.Text}' WHERE Id={Id}");
+                            HelperForms.MostrarOperacionExitosa(this, Modo, 
+                                vehiculosNegocio.ModificarElemento(VehiculoSeleccionadoDTO));
                         }
                         break;
                     case HelperForms.Modo.Agregar:
-                        HelperForms.EditarDB(this, Modo, $"INSERT INTO Vehiculos (Tipo, Modelo, PrecioVenta, Stock) " +
-                        $"VALUES ('{txtTipo.Text}', '{txtModelo.Text}', {txtPrecio.Text}, {txtStock.Text})");
+                        HelperForms.MostrarOperacionExitosa(this, Modo,
+                            vehiculosNegocio.AgregarElemento(VehiculoSeleccionadoDTO));
                         break;
                 }
             }
