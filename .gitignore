@@ -1,5 +1,10 @@
 .vs
 
 HuergoMotorsVentas/bin
-
 HuergoMotorsVentas/obj
+HuergoMotors.DAO/bin
+HuergoMotors.DAO/obj
+HuergoMotors.DTO/bin
+HuergoMotors.DTO/obj
+HuergoMotors.Negocio/bin
+HuergoMotors.Negocio/obj

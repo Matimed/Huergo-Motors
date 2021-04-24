@@ -8,7 +8,7 @@ namespace HuergoMotorsForms
 {
     public partial class frmClientes : Form
     {
-        public ClienteForms ClienteSeleccionado { get; set; }
+        //public ClienteForms ClienteSeleccionado { get; set; }
         private new const string Select = "SELECT * FROM Clientes";
         public frmClientes()
         {
