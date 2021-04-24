@@ -82,7 +82,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                HelperForms.ValidarTextosVacios(txtNombre,txtPrecio,txtTipo);
+                HelperForms.ValidarTextBoxVacios(txtNombre,txtPrecio,txtTipo);
                 HelperForms.ValidarNumerosRacionales(txtPrecio);
                 int idVehiculo = (int)(cboModelos.SelectedValue);
                 switch (Modo)

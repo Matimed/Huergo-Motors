@@ -71,7 +71,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                HelperForms.ValidarTextosVacios(txtApellido,txtNombre,txtSucursal);
+                HelperForms.ValidarTextBoxVacios(txtApellido,txtNombre,txtSucursal);
                 switch (Modo)
                 {
                     case HelperForms.Modo.Modificar:

@@ -68,45 +68,15 @@ namespace HuergoMotors.DAO
             }
         }
 
-        public static DataTable LeerCombo(ComboBox combo, string campo, string tabla)
+        public static DataTable LeerCombo(int id, string campo, string tabla)
         {
             try
             {
-                int id = (int)combo.SelectedValue;
-                DataTable dt = CargarDataTable($"SELECT {campo} FROM {tabla} WHERE ID = {id}");
-                return dt;
+                return CargarDataTable($"SELECT {campo} FROM {tabla} WHERE ID = {id}"); ;
             }
             catch (Exception ex)
             {
                 throw new Exception("Error al leer un ComboBox", ex);
-            }
-        }
-
-        public static string LeerDatoCombo(ComboBox combo, string campo, string tabla)
-        {
-            try
-            {
-                DataTable dt = LeerCombo(combo, campo, tabla);
-                string result = (string)dt.Rows[0][campo];
-                return result;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al leer un dato del ComboBox", ex);
-            }
-        }
-
-        public static int LeerNumeroCombo(ComboBox combo, string campo, string tabla)
-        {
-            try
-            {
-                DataTable dt = LeerCombo(combo, campo, tabla);
-                int result = (int)dt.Rows[0][campo];
-                return result;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al leer un numero del ComboBox", ex);
             }
         }
 

@@ -43,45 +43,40 @@ namespace HuergoMotors.Negocio
             }
         }
 
-        public static bool VerificarCombosCargados(ComboBox combo)
+        public static DataTable LeerCombo(int id, string campo, string tabla)
         {
             try
             {
-                if (string.IsNullOrEmpty(combo.Text))
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+                return DAO.HelperDAO.LeerCombo(id, campo, tabla);
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al cargar los combos", ex);
+                throw new Exception("Error al leer un ComboBox", ex);
             }
         }
 
-        public static bool VerificarCombosCargados(ComboBox combo1, ComboBox combo2)
+        public static string LeerDatoCombo(DataTable dataTable, string campo)
         {
             try
             {
-                if (string.IsNullOrEmpty(combo1.Text) | string.IsNullOrEmpty(combo2.Text))
-                {
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
+                return (string)dataTable.Rows[0][campo];
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al cargar los combos", ex);
+                throw new Exception("Error al leer un dato del ComboBox", ex);
             }
         }
 
-
-
+        public static int LeerNumeroCombo(DataTable dataTable, string campo)
+        {
+            try
+            {
+                return (int)dataTable.Rows[0][campo];
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al leer un numero del ComboBox", ex);
+            }
+        }
     }
 }
