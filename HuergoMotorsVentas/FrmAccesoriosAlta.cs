@@ -14,8 +14,8 @@ namespace HuergoMotorsForms
     public partial class frmAccesoriosAlta : Form
     {
         
-        HuergoMotors.Negocio.AccesoriosAltaNegocio accesoriosAltaNegocio = 
-            new HuergoMotors.Negocio.AccesoriosAltaNegocio();
+        HuergoMotors.Negocio.AccesoriosNegocio accesoriosNegocio = 
+            new HuergoMotors.Negocio.AccesoriosNegocio();
 
         public HuergoMotors.DTO.AccesorioDTO AccesorioSeleccionadoDTO { get; set; }
 
@@ -31,7 +31,7 @@ namespace HuergoMotorsForms
                 ActiveControl = label1;
                 cboModelos.DisplayMember = "Modelo";
                 cboModelos.ValueMember = "Id";
-                cboModelos.DataSource = accesoriosAltaNegocio.CargarCombo();
+                cboModelos.DataSource = accesoriosNegocio.CargarCombo();
                 if (Modo == HelperForms.Modo.Agregar)
                 {
                     txtNombre.Text = string.Empty;
@@ -59,7 +59,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                AccesorioSeleccionadoDTO = accesoriosAltaNegocio.BDCargarDTO(Id);
+                AccesorioSeleccionadoDTO = accesoriosNegocio.BDCargarDTO(Id);
                 
                 txtPrecio.Text = AccesorioSeleccionadoDTO.Precio.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
                 txtTipo.Text = AccesorioSeleccionadoDTO.Tipo;
@@ -82,7 +82,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                accesoriosAltaNegocio.CargarDTO(AccesorioSeleccionadoDTO, (int)cboModelos.SelectedValue, 
+                accesoriosNegocio.CargarDTO(AccesorioSeleccionadoDTO, (int)cboModelos.SelectedValue, 
                     (string)cboModelos.SelectedItem, txtPrecio.Text, txtNombre.Text, txtTipo.Text);
 
                 switch (Modo)
@@ -91,13 +91,13 @@ namespace HuergoMotorsForms
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
                             HelperForms.MostrarOperacionExitosa
-                                (this, Modo, accesoriosAltaNegocio.ModificarElemento (AccesorioSeleccionadoDTO));
+                                (this, Modo, accesoriosNegocio.ModificarElemento (AccesorioSeleccionadoDTO));
                         }
                         break;
                     case HelperForms.Modo.Agregar:
                        
                         HelperForms.MostrarOperacionExitosa
-                            (this, Modo, accesoriosAltaNegocio.AgregarElemento(AccesorioSeleccionadoDTO));
+                            (this, Modo, accesoriosNegocio.AgregarElemento(AccesorioSeleccionadoDTO));
                         break;
                 }
             }

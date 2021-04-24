@@ -128,6 +128,13 @@ namespace HuergoMotorsForms
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
             }
-        } 
+
+        }
+
+        public void CargarGridView(DataGridView gv)
+        {
+            gv.AutoGenerateColumns = false;
+            gv.DataSource = clienteNegocio.CargarTabla();
+        }
     }
 }
