@@ -12,7 +12,7 @@ namespace HuergoMotorsForms
 {
     public partial class frmClientesAlta : Form
     {
-        HuergoMotors.Negocio.ClientesAltaNegocio clientesAltaNegocio = new HuergoMotors.Negocio.ClientesAltaNegocio();
+        HuergoMotors.Negocio.ClientesAltaNegocio clientesNegocio = new HuergoMotors.Negocio.ClientesAltaNegocio();
         public int Id { get; set; }
         public HuergoMotors.DTO.ClienteDTO ClienteSeleccionadoDTO { get; set; }
         public HelperForms.Modo Modo { get; private set; }
@@ -43,7 +43,7 @@ namespace HuergoMotorsForms
             try
             {
 
-                ClienteSeleccionadoDTO = clientesAltaNegocio.BDCargarDTO(Id);
+                ClienteSeleccionadoDTO = clientesNegocio.BDCargarDTO(Id);
 
                 txtEmail.Text = ClienteSeleccionadoDTO.Email;
                 txtNombre.Text = ClienteSeleccionadoDTO.Nombre;
@@ -65,7 +65,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                clientesAltaNegocio.CargarDTO(ClienteSeleccionadoDTO, 
+                clientesNegocio.CargarDTO(ClienteSeleccionadoDTO, 
                     txtNombre.Text, txtDireccion.Text, txtEmail.Text, txtTelefono.Text);
 
                 switch (Modo)
@@ -73,12 +73,12 @@ namespace HuergoMotorsForms
                     case HelperForms.Modo.Modificar:
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
-                            HelperForms.MostrarOperacionExitosa(this, Modo, clientesAltaNegocio.
+                            HelperForms.MostrarOperacionExitosa(this, Modo, clientesNegocio.
                                 ModificarElemento(ClienteSeleccionadoDTO));
                         }
                         break;
                     case HelperForms.Modo.Agregar:
-                        HelperForms.MostrarOperacionExitosa(this, Modo, clientesAltaNegocio.
+                        HelperForms.MostrarOperacionExitosa(this, Modo, clientesNegocio.
                             AgregarElemento(ClienteSeleccionadoDTO));
                         break;
                 }

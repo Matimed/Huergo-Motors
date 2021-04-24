@@ -8,7 +8,7 @@ namespace HuergoMotorsForms
 {
     public partial class frmClientes : Form
     {
-        HuergoMotors.Negocio.ClienteNegocio clienteNegocio = new HuergoMotors.Negocio.ClienteNegocio();
+        HuergoMotors.Negocio.ClientesNegocio clienteNegocio = new HuergoMotors.Negocio.ClientesNegocio();
         public HuergoMotors.DTO.ClienteDTO ClienteSeleccionado { get; set; }
         public frmClientes()
         {
