@@ -27,17 +27,17 @@ namespace HuergoMotors.Negocio
             return clientesDAO.EliminarElemento(id);
         }
 
-        public DataTable Seleccionar(DataTable clientesdatatable)
-        {
-            ClienteForms cliente = new ClienteForms();
-            cliente.Id = (int)gv.SelectedRows[0].Cells["Id"].Value;
-            cliente.Nombre = (string)gv.SelectedRows[0].Cells["Nombre"].Value;
-            cliente.Direccion = (string)gv.SelectedRows[0].Cells["Direccion"].Value;
-            cliente.Telefono = (string)gv.SelectedRows[0].Cells["Telefono"].Value;
-            cliente.Email = (string)gv.SelectedRows[0].Cells["Email"].Value;
+        //public DataTable Seleccionar(DataTable clientesdatatable)
+        //{
+        //    ClienteForms cliente = new ClienteForms();
+        //    cliente.Id = (int)gv.SelectedRows[0].Cells["Id"].Value;
+        //    cliente.Nombre = (string)gv.SelectedRows[0].Cells["Nombre"].Value;
+        //    cliente.Direccion = (string)gv.SelectedRows[0].Cells["Direccion"].Value;
+        //    cliente.Telefono = (string)gv.SelectedRows[0].Cells["Telefono"].Value;
+        //    cliente.Email = (string)gv.SelectedRows[0].Cells["Email"].Value;
 
-            ClienteSeleccionado = cliente;
+        //    ClienteSeleccionado = cliente;
 
-        }
+        //}
     }
 }

@@ -12,6 +12,7 @@ namespace HuergoMotorsForms
 {
     public partial class frmClientesAlta : Form
     {
+        HuergoMotors.Negocio.ClientesAltaNegocio clientesAltaNegocio = new HuergoMotors.Negocio.ClientesAltaNegocio();
         public int Id { get; set; } //Esto es una 'propiedad'.
         public HelperForms.Modo Modo { get; private set; }
 
@@ -40,11 +41,10 @@ namespace HuergoMotorsForms
         {
             try
             {
-                Id = id;
-                string query = $"SELECT * FROM Clientes WHERE Id={id}";
 
-                DataTable dt = HelperForms.CargarDataTable(query);
-
+                DataTable dt = clientesAltaNegocio.CargarTabla(Id);
+            
+                //ToDo: hacer validaciones y pasarlo a negocio
                 string nombre = string.Empty;
                 string direccion = string.Empty;
                 string email = string.Empty;
@@ -75,19 +75,19 @@ namespace HuergoMotorsForms
         {
             try
             {
-                HelperForms.ValidarTextosVacios(txtDireccion, txtEmail, txtNombre, txtTelefono);
+                HelperForms.ValidarTextBoxVacios(txtDireccion, txtEmail, txtNombre, txtTelefono);
                 switch (Modo)
                 {
                     case HelperForms.Modo.Modificar:
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
-                            HelperForms.EditarDB(this, Modo, $"UPDATE Clientes SET Nombre='{txtNombre.Text}', Direccion='{txtDireccion.Text}', " +
-                                $"Email='{txtEmail.Text}', Telefono='{txtTelefono.Text}' WHERE Id={Id}");
+                            HelperForms.MostrarOperacionExitosa(this, Modo,clientesAltaNegocio.ModificarElemento
+                                (txtNombre.Text,txtDireccion.Text,txtEmail.Text,txtTelefono.Text,Id));
                         }
                         break;
                     case HelperForms.Modo.Agregar:
-                        HelperForms.EditarDB(this, Modo, $"INSERT INTO Clientes (Nombre, Direccion, Email, Telefono) " +
-                        $"VALUES ('{txtNombre.Text}', '{txtDireccion.Text}', '{txtEmail.Text}', '{txtTelefono.Text}')");
+                        HelperForms.MostrarOperacionExitosa(this, Modo,clientesAltaNegocio.AgregarElemento
+                            (txtNombre.Text, txtDireccion.Text, txtEmail.Text, txtTelefono.Text));
                         break;
                 }
             }
