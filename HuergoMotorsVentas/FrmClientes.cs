@@ -8,7 +8,7 @@ namespace HuergoMotorsForms
 {
     public partial class frmClientes : Form
     {
-        HuergoMotors.Negocio.ClientesNegocio clienteNegocio = new HuergoMotors.Negocio.ClientesNegocio();
+        HuergoMotors.Negocio.ClientesNegocio clientesNegocio = new HuergoMotors.Negocio.ClientesNegocio();
         public HuergoMotors.DTO.ClienteDTO ClienteSeleccionado { get; set; }
         public frmClientes()
         {
@@ -82,7 +82,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                gv.DataSource = clienteNegocio.Buscar(txFiltro.Text);
+                gv.DataSource = clientesNegocio.Buscar(txFiltro.Text);
                 txFiltro.Text = "";
             }
             catch (Exception ex)
@@ -118,7 +118,7 @@ namespace HuergoMotorsForms
                     object item = gv.SelectedRows[0].DataBoundItem;
                     if (HelperForms.ConfirmacionEliminación((string)((DataRowView)item)["Nombre"]) == DialogResult.Yes)
                     {
-                        HelperForms.MostrarOperacionExitosa(this, HelperForms.Modo.Eliminar,clienteNegocio.
+                        HelperForms.MostrarOperacionExitosa(this, HelperForms.Modo.Eliminar,clientesNegocio.
                             EliminarElemento((int)((DataRowView)item)["Id"]));
                         CargarGridView(gv);
                     }
@@ -141,7 +141,7 @@ namespace HuergoMotorsForms
                 if (gv.SelectedRows.Count == 1)
                 {
                     object filaSeleccionada = gv.SelectedRows[0].DataBoundItem;
-                    ClienteSeleccionado = clienteNegocio.Seleccionar(filaSeleccionada);
+                    ClienteSeleccionado = clientesNegocio.Seleccionar(filaSeleccionada);
                     DialogResult = DialogResult.OK;
                 }
             }
@@ -154,7 +154,7 @@ namespace HuergoMotorsForms
         public void CargarGridView(DataGridView gv)
         {
             gv.AutoGenerateColumns = false;
-            gv.DataSource = clienteNegocio.CargarTabla();
+            gv.DataSource = clientesNegocio.CargarTabla();
         }
     }
 }

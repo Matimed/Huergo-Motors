@@ -44,16 +44,16 @@ namespace HuergoMotorsForms
 
         private void CargarABM(HelperForms.Modo modo)
         {
-            frmVehiculosAlta f = new frmVehiculosAlta(modo);
+            frmVehiculosAlta frmVehiculosAlta = new frmVehiculosAlta(modo);
             if (modo == HelperForms.Modo.Modificar)
             {
                 object item = gv.SelectedRows[0].DataBoundItem;
-                int id = (int)((DataRowView)item)["Id"];
-                f.CargarDatos(id);
+                frmVehiculosAlta.Id = (int)((DataRowView)item)["Id"];
+                frmVehiculosAlta.CargarDatos();
             }
-            f.ShowDialog();
+            frmVehiculosAlta.ShowDialog();
             //Solo recargo datos si se cerró con un OK.
-            if (f.DialogResult == DialogResult.OK)
+            if (frmVehiculosAlta.DialogResult == DialogResult.OK)
             {
                 try
                 {

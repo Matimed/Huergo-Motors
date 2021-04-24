@@ -9,7 +9,7 @@ namespace HuergoMotorsForms
 {
     public partial class frmVendedores : Form
     {
-        private new const string Select = "SELECT * FROM Vendedores";
+        HuergoMotors.Negocio.VendedoresNegocio vendedoresNegocio = new HuergoMotors.Negocio.VendedoresNegocio();
         public frmVendedores()
         {
             InitializeComponent();
@@ -31,18 +31,18 @@ namespace HuergoMotorsForms
         {
             try
             {
-                frmVendedoresAlta f = new frmVendedoresAlta(modo);
+                frmVendedoresAlta frmVendedoresAlta = new frmVendedoresAlta(modo);
                 if (modo == HelperForms.Modo.Modificar)
                 {
                     object item = gv.SelectedRows[0].DataBoundItem;
-                    int id = (int)((DataRowView)item)["Id"];
-                    f.CargarDatos(id);
+                    frmVendedoresAlta.Id = (int)((DataRowView)item)["Id"];
+                    frmVendedoresAlta.CargarDatos();
                 }
-                f.ShowDialog();
+                frmVendedoresAlta.ShowDialog();
                 //Solo recargo datos si se cerró con un OK.
-                if (f.DialogResult == DialogResult.OK)
+                if (frmVendedoresAlta.DialogResult == DialogResult.OK)
                 {
-                    gv.DataSource = HelperForms.CargarDataTable(Select);
+                    CargarGridView(gv);
                 }
             }
             catch (Exception ex)
@@ -63,13 +63,13 @@ namespace HuergoMotorsForms
                 if (gv.SelectedRows.Count == 1)
                 {
                     object item = gv.SelectedRows[0].DataBoundItem;
-                    int id = (int)((DataRowView)item)["Id"];
-                    string nombre = (string)((DataRowView)item)["Nombre"];
-                    string apellido = (string)((DataRowView)item)["Apellido"];
-                    if (HelperForms.ConfirmacionEliminación(nombre, apellido) == DialogResult.Yes)
+
+                    if (HelperForms.ConfirmacionEliminación((string)((DataRowView)item)["Nombre"], 
+                        (string)((DataRowView)item)["Apellido"]) == DialogResult.Yes)
                     {
-                        HelperForms.EditarDB(this, HelperForms.Modo.Eliminar, $"DELETE FROM Vendedores Where Id={id} ");
-                        gv.DataSource = HelperForms.CargarDataTable(Select);
+                        HelperForms.MostrarOperacionExitosa(this, HelperForms.Modo.Eliminar, vendedoresNegocio.
+                             EliminarElemento((int)((DataRowView)item)["Id"]));
+                        CargarGridView(gv);
                     }
                 }
                 else
@@ -92,8 +92,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                gv.DataSource = HelperForms.CargarDataTable(Select);
-                txFiltro.Text = "";
+                CargarGridView(gv);
             }
             catch (Exception ex)
             {
@@ -105,8 +104,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                gv.AutoGenerateColumns = false;
-                gv.DataSource = HelperForms.CargarDataTable(Select);
+                CargarGridView(gv);
             }
             catch (Exception ex)
             {
@@ -118,9 +116,8 @@ namespace HuergoMotorsForms
         {
             try
             {
-                string filtro = $"SELECT * FROM Vendedores WHERE Apellido LIKE '%{txFiltro.Text}%'" +
-                    $" or Nombre LIKE '%{txFiltro.Text}%' or Sucursal LIKE '%{txFiltro.Text}%'";
-                gv.DataSource = HelperForms.CargarDataTable(filtro);
+
+                gv.DataSource = vendedoresNegocio.Buscar(txFiltro.Text);
                 txFiltro.Text = "";
             }
             catch (Exception ex)
@@ -133,13 +130,18 @@ namespace HuergoMotorsForms
         {
             try
             {
-                gv.DataSource = HelperForms.CargarDataTable(Select);
-                txFiltro.Text = "";
+                CargarGridView(gv);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
             }
-        } 
+     
+        }
+        public void CargarGridView(DataGridView gv)
+        {
+            gv.AutoGenerateColumns = false;
+            gv.DataSource = vendedoresNegocio.CargarTabla();
+        }
     }
 }

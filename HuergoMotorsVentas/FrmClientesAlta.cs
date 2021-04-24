@@ -42,7 +42,6 @@ namespace HuergoMotorsForms
         {
             try
             {
-
                 ClienteSeleccionadoDTO = clientesNegocio.BDCargarDTO(Id);
 
                 txtEmail.Text = ClienteSeleccionadoDTO.Email;
