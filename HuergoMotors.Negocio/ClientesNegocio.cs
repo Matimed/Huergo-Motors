@@ -9,9 +9,9 @@ using HuergoMotors.DAO;
 
 namespace HuergoMotors.Negocio
 {
-    public class ClienteNegocio
+    public class ClientesNegocio
     {
-        ClienteDAO clientesDAO = new ClienteDAO();
+        ClientesDAO clientesDAO = new ClientesDAO();
         public DataTable CargarTabla()
         {
             return clientesDAO.CargarTabla();

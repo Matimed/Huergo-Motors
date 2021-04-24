@@ -7,14 +7,23 @@ using System.Threading.Tasks;
 
 namespace HuergoMotors.DAO
 {
-    class VehiculosDAO
+    public class VehiculosDAO
     {
-        private new const string Select = "SELECT * FROM Vehiculos";
 
-
-        public DataTable CargarDataTable()
+        public DataTable CargarTabla()
         {
+            return HelperDAO.CargarDataTable("SELECT * FROM Vehiculos");
+        }
 
+        public int EliminarElemento(int id)
+        {
+            return HelperDAO.EditarDB($"DELETE FROM Vehiculos Where Id={id} ");
+        }
+
+        public DataTable Buscar(string filtro)
+        {
+            return HelperDAO.CargarDataTable($"SELECT * FROM Vehiculos WHERE Tipo LIKE '%{filtro}%'" +
+                     $" or Modelo LIKE '%{filtro}%' or PrecioVenta LIKE '%{filtro}%' ");
         }
 
     }

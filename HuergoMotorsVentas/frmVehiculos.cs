@@ -9,7 +9,8 @@ namespace HuergoMotorsForms
 
     public partial class frmVehiculos : Form
     {
-        private new const string Select = "SELECT * FROM Vehiculos";
+        HuergoMotors.Negocio.VehiculosNegocio vehiculosNegocio = new HuergoMotors.Negocio.VehiculosNegocio();
+   
         public frmVehiculos()
         {
             InitializeComponent();
@@ -19,8 +20,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                gv.AutoGenerateColumns = false;
-                gv.DataSource = HelperForms.CargarDataTable(Select);
+                CargarGridView(gv);
             }
             catch (Exception ex)
             {
@@ -57,7 +57,7 @@ namespace HuergoMotorsForms
             {
                 try
                 {
-                    gv.DataSource = HelperForms.CargarDataTable(Select);
+                    CargarGridView(gv);
                 }
                 catch (Exception ex)
                 {
@@ -75,21 +75,22 @@ namespace HuergoMotorsForms
         {
             try
             {
+
                 if (gv.SelectedRows.Count == 1)
                 {
                     object item = gv.SelectedRows[0].DataBoundItem;
-                    int id = (int)((DataRowView)item)["Id"];
-                    string tipo = (string)((DataRowView)item)["Tipo"];
-                    if (HelperForms.ConfirmacionEliminación(tipo) == DialogResult.Yes)
+                    if (HelperForms.ConfirmacionEliminación((string)((DataRowView)item)["Tipo"]) == DialogResult.Yes)
                     {
-                        HelperForms.EditarDB(this, HelperForms.Modo.Eliminar, $"DELETE FROM Vehiculos Where Id={id} ");
-                        gv.DataSource = HelperForms.CargarDataTable(Select);
+                        HelperForms.MostrarOperacionExitosa(this, HelperForms.Modo.Eliminar, vehiculosNegocio.
+                            EliminarElemento((int)((DataRowView)item)["Id"]));
+                        CargarGridView(gv);
                     }
                 }
                 else
                 {
                     throw new Exception("Debe seleccionar un elemento para eliminar");
                 }
+
             }
             catch (Exception ex)
             {
@@ -106,9 +107,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                string filtro = $"SELECT * FROM Vehiculos WHERE Tipo LIKE '%{txFiltro.Text}%'" +
-                     $" or Modelo LIKE '%{txFiltro.Text}%' or PrecioVenta LIKE '%{txFiltro.Text}%' ";
-                gv.DataSource = HelperForms.CargarDataTable(filtro);
+                gv.DataSource = vehiculosNegocio.Buscar(txFiltro.Text);
                 txFiltro.Text = "";
             }
             catch (Exception ex)
@@ -121,7 +120,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                gv.DataSource = HelperForms.CargarDataTable(Select);
+                CargarGridView(gv);
                 txFiltro.Text = "";
             }
             catch (Exception ex)
@@ -134,7 +133,7 @@ namespace HuergoMotorsForms
         public void CargarGridView(DataGridView gv)
         {
             gv.AutoGenerateColumns = false;
-            gv.DataSource = clienteNegocio.CargarTabla();
+            gv.DataSource = vehiculosNegocio.CargarTabla();
         }
     }
 }

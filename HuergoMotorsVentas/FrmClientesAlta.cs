@@ -12,7 +12,7 @@ namespace HuergoMotorsForms
 {
     public partial class frmClientesAlta : Form
     {
-        HuergoMotors.Negocio.ClientesAltaNegocio clientesNegocio = new HuergoMotors.Negocio.ClientesAltaNegocio();
+        HuergoMotors.Negocio.ClientesNegocio clientesNegocio = new HuergoMotors.Negocio.ClientesNegocio();
         public int Id { get; set; }
         public HuergoMotors.DTO.ClienteDTO ClienteSeleccionadoDTO { get; set; }
         public HelperForms.Modo Modo { get; private set; }

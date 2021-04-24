@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace HuergoMotors.DAO
 {
-    public class ClienteDAO
+    public class ClientesDAO
     {
 
         public DataTable CargarTabla()
