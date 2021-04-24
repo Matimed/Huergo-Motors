@@ -17,14 +17,14 @@ namespace HuergoMotorsForms
 
         private void btModificar_Click(object sender, EventArgs e)
         {
-            if (gv.SelectedRows.Count == 1)
+            try
             {
+                if (gv.SelectedRows.Count != 1) throw new Exception("Debe seleccionar un elemento para modificar");
                 CargarABM(HelperForms.Modo.Modificar);
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Debe seleccionar un elemento para modificar",
-                    "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
             }
         }
         private void CargarABM(HelperForms.Modo modo)
@@ -43,8 +43,6 @@ namespace HuergoMotorsForms
                 if (frmClientesAlta.DialogResult == DialogResult.OK)
                 {
                     CargarGridView(gv);
-                    //enviar señar a negocios que haga un return del cargardatatable
-                    
                 }
             }
             catch (Exception ex)
@@ -118,12 +116,10 @@ namespace HuergoMotorsForms
                 if (gv.SelectedRows.Count == 1)
                 {
                     object item = gv.SelectedRows[0].DataBoundItem;
-                    int id = (int)((DataRowView)item)["Id"];
-                    string nombre = (string)((DataRowView)item)["Nombre"];
-                    if (HelperForms.ConfirmacionEliminación(nombre) == DialogResult.Yes)
+                    if (HelperForms.ConfirmacionEliminación((string)((DataRowView)item)["Nombre"]) == DialogResult.Yes)
                     {
-                        HelperForms.MostrarOperacionExitosa(this, HelperForms.Modo.Eliminar,
-                            clienteNegocio.EliminarElemento(id));
+                        HelperForms.MostrarOperacionExitosa(this, HelperForms.Modo.Eliminar,clienteNegocio.
+                            EliminarElemento((int)((DataRowView)item)["Id"]));
                         CargarGridView(gv);
                     }
                 }
@@ -140,11 +136,18 @@ namespace HuergoMotorsForms
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            if (gv.SelectedRows.Count == 1)
+            try
             {
-                object filaSeleccionada = gv.SelectedRows[0].DataBoundItem;
-                ClienteSeleccionado = clienteNegocio.Seleccionar(filaSeleccionada);
-                DialogResult = DialogResult.OK;
+                if (gv.SelectedRows.Count == 1)
+                {
+                    object filaSeleccionada = gv.SelectedRows[0].DataBoundItem;
+                    ClienteSeleccionado = clienteNegocio.Seleccionar(filaSeleccionada);
+                    DialogResult = DialogResult.OK;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
             }
         }
 

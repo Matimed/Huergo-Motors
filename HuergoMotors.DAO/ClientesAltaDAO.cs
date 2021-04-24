@@ -14,16 +14,16 @@ namespace HuergoMotors.DAO
             return HelperDAO.CargarDataTable($"SELECT * FROM Clientes WHERE Id={id}");
         }
 
-        public int ModificarElemento(string nombre,string direccion , string email, string telefono ,int id )
+        public int ModificarElemento(DTO.ClienteDTO clienteDTO)
         {
-            return HelperDAO.EditarDB($"UPDATE Clientes SET Nombre='{nombre}', Direccion='{direccion}', " +
-                                $"Email='{email}', Telefono='{telefono}' WHERE Id={id}");
+            return HelperDAO.EditarDB($"UPDATE Clientes SET Nombre='{clienteDTO.Nombre}', Direccion='{clienteDTO.Direccion}', " +
+                                $"Email='{clienteDTO.Email}', Telefono='{clienteDTO.Telefono}' WHERE Id={clienteDTO.Id}");
         }
 
-        public int AgregarElemento(string nombre, string direccion, string email, string telefono)
+        public int AgregarElemento(DTO.ClienteDTO clienteDTO)
         {
             return HelperDAO.EditarDB($"INSERT INTO Clientes (Nombre, Direccion, Email, Telefono) " +
-                        $"VALUES ('{nombre}', '{direccion}', '{email}', '{telefono}')");
+                        $"VALUES ('{clienteDTO.Nombre}', '{clienteDTO.Direccion}', '{clienteDTO.Email}', '{clienteDTO.Telefono}')");
         }
 
     }

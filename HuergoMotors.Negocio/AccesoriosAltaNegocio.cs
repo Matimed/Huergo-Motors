@@ -24,8 +24,7 @@ namespace HuergoMotors.Negocio
             try
             {
                 DTO.AccesorioDTO accesorioDTO = new DTO.AccesorioDTO();
-                DataTable dt = CargarTabla(id);
-                CargarDTO(accesorioDTO, dt);
+                CargarDTO(accesorioDTO, CargarTabla(id).Rows[0].ItemArray);
                 return accesorioDTO;
             }
             catch (Exception ex)
@@ -34,17 +33,16 @@ namespace HuergoMotors.Negocio
             }
         }
 
-        public void CargarDTO(DTO.AccesorioDTO accesorioDTO, DataTable dt)
+        public void CargarDTO(DTO.AccesorioDTO accesorioDTO, object item)
         {
             try
             {
-                HelperNegocio.ValidarTextosVacios(dt, "Tipo", "Nombre", "Precio", "Modelo", "Id", "IdVehiulo");
-                accesorioDTO.Precio = HelperNegocio.ConvertirNumeroRacional((string)dt.Rows[0]["Precio"]);
-                accesorioDTO.Id = (int)dt.Rows[0]["IdVehiculo"];
-                accesorioDTO.IdVehiculo = (int)dt.Rows[0]["IdVehiculo"];
-                accesorioDTO.Tipo = (string)dt.Rows[0]["Tipo"];
-                accesorioDTO.Nombre = (string)dt.Rows[0]["Nombre"];
-                accesorioDTO.ModeloVehiculo = (string)dt.Rows[0]["Modelo"];
+                accesorioDTO.Precio = HelperNegocio.ConvertirNumeroRacional((string)((DataRow)item)["Precio"]);
+                accesorioDTO.Id = (int)((DataRow)item)["IdVehiculo"];
+                accesorioDTO.IdVehiculo = (int)((DataRow)item)["IdVehiculo"];
+                accesorioDTO.Tipo = (string)((DataRow)item)["Tipo"];
+                accesorioDTO.Nombre = (string)((DataRow)item)["Nombre"];
+                accesorioDTO.ModeloVehiculo = (string)((DataRow)item)["Modelo"];
             }
            catch (Exception ex)
             {

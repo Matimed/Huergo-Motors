@@ -25,17 +25,24 @@ namespace HuergoMotorsForms
 
         private void frmVehiculosAlta_Load(object sender, EventArgs e)
         {
-            //Saca el focus del textbox y lo pone en el label por estetica
-            ActiveControl = label1;
-            cboModelos.DisplayMember = "Modelo";
-            cboModelos.ValueMember = "Id";
-            cboModelos.DataSource = accesoriosAltaNegocio.CargarCombo();
-            if (Modo == HelperForms.Modo.Agregar)
+            try
             {
-                txtNombre.Text = string.Empty;
-                txtTipo.Text = string.Empty;
-                txtPrecio.Text = "0.00";
-                AccesorioSeleccionadoDTO = new HuergoMotors.DTO.AccesorioDTO();
+                //Saca el focus del textbox y lo pone en el label por estetica
+                ActiveControl = label1;
+                cboModelos.DisplayMember = "Modelo";
+                cboModelos.ValueMember = "Id";
+                cboModelos.DataSource = accesoriosAltaNegocio.CargarCombo();
+                if (Modo == HelperForms.Modo.Agregar)
+                {
+                    txtNombre.Text = string.Empty;
+                    txtTipo.Text = string.Empty;
+                    txtPrecio.Text = "0.00";
+                    AccesorioSeleccionadoDTO = new HuergoMotors.DTO.AccesorioDTO();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar el formulario: " + ex.Message, "Error", MessageBoxButtons.OK);
             }
         }
 
@@ -57,8 +64,7 @@ namespace HuergoMotorsForms
                 txtPrecio.Text = AccesorioSeleccionadoDTO.Precio.ToString(HuergoMotors.Negocio.HelperNegocio.nfi());
                 txtTipo.Text = AccesorioSeleccionadoDTO.Tipo;
                 txtNombre.Text = AccesorioSeleccionadoDTO.Nombre;
-                int index = cboModelos.FindString(AccesorioSeleccionadoDTO.ModeloVehiculo);
-                cboModelos.SelectedIndex = index;
+                cboModelos.SelectedValue = AccesorioSeleccionadoDTO.IdVehiculo;
             }
 
             catch (Exception ex)

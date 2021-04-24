@@ -68,15 +68,13 @@ namespace HuergoMotorsForms
             if (gv.SelectedRows.Count == 1)
             {
                 object item = gv.SelectedRows[0].DataBoundItem;
-                int id = (int)((DataRowView)item)["Id"];
-                string tipo = (string)((DataRowView)item)["Tipo"];
-                string nombre = (string)((DataRowView)item)["Nombre"];
-                if (HelperForms.ConfirmacionEliminación(nombre, tipo) == DialogResult.Yes)
+                if (HelperForms.ConfirmacionEliminación
+                    ((string)((DataRowView)item)["Nombre"], (string)((DataRowView)item)["Tipo"]) == DialogResult.Yes)
                 {
                     try
                     {
-                        int resultados = accesoriosNegocio.EliminarElemento(id);
-                        HelperForms.MostrarOperacionExitosa(this, HelperForms.Modo.Eliminar, resultados);
+                        HelperForms.MostrarOperacionExitosa(this, HelperForms.Modo.Eliminar, accesoriosNegocio.
+                            EliminarElemento((int)((DataRowView)item)["Id"]));
                         CargarGridView(gv);
                     }
                     catch (Exception ex)

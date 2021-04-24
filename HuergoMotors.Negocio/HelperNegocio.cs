@@ -6,11 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace HuergoMotors.Negocio
 {
     public static class HelperNegocio
     {
+        
         public static NumberFormatInfo nfi()
         {
             //Escribe el número con puntos en lugar de comas para no dar error en la DB en los decimal
@@ -110,6 +112,30 @@ namespace HuergoMotors.Negocio
             }
         }
 
+        public static void ValidarEmail(string email)
+        {
+            try
+            {
+                string rgxEmail = @"\A(?:[a-z0-9!#$%&'+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'+/=?^_`{|}~-]+)@(?:[a-z0-9](?:[a-z0-9-][a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z";
+                if (!Regex.IsMatch(email, rgxEmail)) throw new Exception("Email Invalido");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static void ValidarTelefono(string telefono)
+        {
+            try
+            {
+                string rgxTelefono = @"^(?:(?:00)?549?)?0?(?:11|[2368]\d)(?:(?=\d{0,2}15)\d{2})??\d{8}$";
+                if (!Regex.IsMatch(telefono, rgxTelefono)) throw new Exception("Telefono Invalido");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         public static DataTable LeerCombo(int id, string campo, string tabla)
         {
