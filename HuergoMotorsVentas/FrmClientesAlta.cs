@@ -36,7 +36,7 @@ namespace HuergoMotorsForms
             }
 
         }
-        internal void CargarDatos(int id)
+        internal void CargarDatos()
         {
             try
             {

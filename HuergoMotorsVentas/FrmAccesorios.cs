@@ -38,7 +38,8 @@ namespace HuergoMotorsForms
             if (modo == HelperForms.Modo.Modificar)
             {
                 object item = gv.SelectedRows[0].DataBoundItem;
-                accesoriosAlta.Id = (int)((DataRowView)item)["Id"]; ;
+                accesoriosAlta.Id = (int)((DataRowView)item)["Id"];
+                accesoriosAlta.CargarDatos();
             }
             accesoriosAlta.ShowDialog();
 
@@ -74,7 +75,7 @@ namespace HuergoMotorsForms
                 {
                     try
                     {
-                        int resultados = accesoriosNegocio.EliminarId(id);
+                        int resultados = accesoriosNegocio.EliminarElemento(id);
                         HelperForms.MostrarOperacionExitosa(this, HelperForms.Modo.Eliminar, resultados);
                         CargarGridView(gv);
                     }
@@ -138,6 +139,7 @@ namespace HuergoMotorsForms
 
         public void CargarGridView(DataGridView gv)
         {
+            gv.AutoGenerateColumns = false;
             gv.DataSource = accesoriosNegocio.CargarTabla();
         }
     }

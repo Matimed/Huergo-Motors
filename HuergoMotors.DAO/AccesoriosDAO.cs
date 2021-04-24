@@ -16,7 +16,7 @@ namespace HuergoMotors.DAO
             "FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id;");
         }
 
-        public int EliminarId(int id)
+        public int EliminarElemento(int id)
         {
             return HelperDAO.EditarDB($"DELETE FROM Accesorios Where Id={id} ");
         }

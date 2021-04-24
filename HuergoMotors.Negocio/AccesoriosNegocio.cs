@@ -15,9 +15,9 @@ namespace HuergoMotors.Negocio
             return accesoriosDAO.CargarTabla();
         }
 
-        public int EliminarId (int id)
+        public int EliminarElemento (int id)
         {
-            return accesoriosDAO.EliminarId(id);
+            return accesoriosDAO.EliminarElemento(id);
         }
         public DataTable Buscar(string filtro)
         {
