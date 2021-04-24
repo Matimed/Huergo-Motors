@@ -9,7 +9,7 @@ namespace HuergoMotorsForms
     public partial class frmClientes : Form
     {
         HuergoMotors.Negocio.ClienteNegocio clienteNegocio = new HuergoMotors.Negocio.ClienteNegocio();
-        //public ClienteForms ClienteSeleccionado { get; set; }
+        public HuergoMotors.DTO.ClienteDTO ClienteSeleccionado { get; set; }
         public frmClientes()
         {
             InitializeComponent();
@@ -125,7 +125,6 @@ namespace HuergoMotorsForms
                         HelperForms.MostrarOperacionExitosa(this, HelperForms.Modo.Eliminar,
                             clienteNegocio.EliminarElemento(id));
                         CargarGridView(gv);
-
                     }
                 }
                 else
@@ -139,26 +138,12 @@ namespace HuergoMotorsForms
             }
         }
 
-        private void gv_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
             if (gv.SelectedRows.Count == 1)
             {
-                //ToDo:Hacer validacion de btnSeleccionar
-                HuergoMotors.DTO.ClienteDTO clienteDTO = new HuergoMotors.DTO.ClienteDTO();
-
-                clienteDTO.Id = (int)gv.SelectedRows[0].Cells["Id"].Value;
-                clienteDTO.Nombre = (string)gv.SelectedRows[0].Cells["Nombre"].Value;
-                clienteDTO.Direccion = (string)gv.SelectedRows[0].Cells["Direccion"].Value;
-                clienteDTO.Telefono = (string)gv.SelectedRows[0].Cells["Telefono"].Value;
-                clienteDTO.Email = (string)gv.SelectedRows[0].Cells["Email"].Value;
-                
-                 //return clienteDTO;
-
+                object filaSeleccionada = gv.SelectedRows[0].DataBoundItem;
+                ClienteSeleccionado = clienteNegocio.Seleccionar(filaSeleccionada);
                 DialogResult = DialogResult.OK;
             }
         }
