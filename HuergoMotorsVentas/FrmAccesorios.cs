@@ -73,7 +73,7 @@ namespace HuergoMotorsForms
                 {
                     try
                     {
-                        HelperForms.MostrarOperacionExitosa(this, HelperForms.Modo.Eliminar, accesoriosNegocio.
+                        HelperForms.OperacionExitosa(this, HelperForms.Modo.Eliminar, accesoriosNegocio.
                             EliminarElemento((int)((DataRowView)item)["Id"]));
                         CargarGridView(gv);
                     }

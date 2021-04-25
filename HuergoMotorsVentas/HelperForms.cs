@@ -19,37 +19,32 @@ namespace HuergoMotorsForms
 
 
 
-        public static void MostrarOperacionExitosa(Form form, Modo modo, int resultados)
+        public static void OperacionExitosa(Form form, Modo modo, int result)
         {
             try
             {
-                OperacionExitosa(modo, resultados);
+                switch (modo)
+                {
+                    case Modo.Agregar:
+                        MessageBox.Show($"{result} registro/s agregados correctamente",
+                        "Los registros fueron agregados exitosamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+
+                    case Modo.Modificar:
+                        MessageBox.Show($"{result} registro/s actualizados correctamente",
+                        "Actualización completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+
+                    case Modo.Eliminar:
+                        MessageBox.Show($"{result} registro/s eliminados correctamente",
+                        "Eliminacion completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
+                }
                 form.DialogResult = DialogResult.OK;
             }
             catch (Exception ex)
             {
                 throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
-            }
-        }
-
-        public static void OperacionExitosa(Modo modo, int result)
-        {
-            switch (modo)
-            {
-                case Modo.Agregar:
-                    MessageBox.Show($"{result} registro/s agregados correctamente",
-                    "Los registros fueron agregados exitosamente", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-
-                case Modo.Modificar:
-                    MessageBox.Show($"{result} registro/s actualizados correctamente",
-                    "Actualización completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-
-                case Modo.Eliminar:
-                    MessageBox.Show($"{result} registro/s eliminados correctamente",
-                    "Eliminacion completada con éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
             }
         }
  

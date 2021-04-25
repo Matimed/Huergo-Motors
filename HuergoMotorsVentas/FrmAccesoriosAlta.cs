@@ -92,13 +92,13 @@ namespace HuergoMotorsForms
                     case HelperForms.Modo.Modificar:
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
-                            HelperForms.MostrarOperacionExitosa
+                            HelperForms.OperacionExitosa
                                 (this, Modo, accesoriosNegocio.ModificarElemento (AccesorioSeleccionadoDTO));
                         }
                         break;
                     case HelperForms.Modo.Agregar:
                        
-                        HelperForms.MostrarOperacionExitosa
+                        HelperForms.OperacionExitosa
                             (this, Modo, accesoriosNegocio.AgregarElemento(AccesorioSeleccionadoDTO));
                         break;
                 }

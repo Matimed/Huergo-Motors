@@ -81,7 +81,7 @@ namespace HuergoMotorsForms
                     object item = gv.SelectedRows[0].DataBoundItem;
                     if (HelperForms.ConfirmacionEliminación((string)((DataRowView)item)["Tipo"]) == DialogResult.Yes)
                     {
-                        HelperForms.MostrarOperacionExitosa(this, HelperForms.Modo.Eliminar, vehiculosNegocio.
+                        HelperForms.OperacionExitosa(this, HelperForms.Modo.Eliminar, vehiculosNegocio.
                             EliminarElemento((int)((DataRowView)item)["Id"]));
                         CargarGridView(gv);
                     }

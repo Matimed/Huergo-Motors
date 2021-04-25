@@ -67,7 +67,7 @@ namespace HuergoMotorsForms
                     if (HelperForms.ConfirmacionEliminación((string)((DataRowView)item)["Nombre"], 
                         (string)((DataRowView)item)["Apellido"]) == DialogResult.Yes)
                     {
-                        HelperForms.MostrarOperacionExitosa(this, HelperForms.Modo.Eliminar, vendedoresNegocio.
+                        HelperForms.OperacionExitosa(this, HelperForms.Modo.Eliminar, vendedoresNegocio.
                              EliminarElemento((int)((DataRowView)item)["Id"]));
                         CargarGridView(gv);
                     }
