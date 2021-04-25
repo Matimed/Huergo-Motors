@@ -29,8 +29,7 @@ namespace HuergoMotorsForms
             {
                 //Saca el focus del textbox y lo pone en el label por estetica
                 ActiveControl = label1;
-                cboModelos.DisplayMember = "Modelo";
-                cboModelos.ValueMember = "Id";
+                HelperForms.DisplayCombo(cboModelos, "Modelo");
                 cboModelos.DataSource = accesoriosNegocio.CargarCombo();
                 if (Modo == HelperForms.Modo.Agregar)
                 {

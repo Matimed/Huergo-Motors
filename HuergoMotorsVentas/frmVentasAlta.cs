@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace HuergoMotorsForms
@@ -13,10 +9,15 @@ namespace HuergoMotorsForms
     public partial class frmVentasAlta : Form
 
     {
-        private DataTable dtAccesorios;
+        HuergoMotors.Negocio.VehiculosNegocio vehiculosNegocio = new HuergoMotors.Negocio.VehiculosNegocio();
+        HuergoMotors.Negocio.VentasNegocio ventasNegocio = new HuergoMotors.Negocio.VentasNegocio();
+
+
+        public HuergoMotors.DTO.VehiculoDTO VehiculoSeleccionado { get; set; }
+
+        private DataTable dataTableAccesorios;
         private int idCliente;
-        private decimal precioVehiculo;
-        private decimal precioAccesorios;
+        private decimal precioTotalAccesorios;
         public frmVentasAlta()
         {
             InitializeComponent();
@@ -26,8 +27,10 @@ namespace HuergoMotorsForms
         {
             try
             {
-                HelperForms.CargarCombo(cboVendedor, "SELECT Id, Nombre + ' ' + Apellido AS Vendedor FROM Vendedores", "Vendedor");
-                HelperForms.CargarCombo(cboModelo, "SELECT  Id, Modelo FROM Vehiculos", "Modelo");
+                HelperForms.DisplayCombo(cboVendedor, "Vendedor");
+                cboVendedor.DataSource = ventasNegocio.CargarDTVendedor();
+                HelperForms.DisplayCombo(cboModelo, "Modelo");
+                cboModelo.DataSource = ventasNegocio.CargarDTModelo();
                 gvAccesorios.AutoGenerateColumns = false;
                 ActiveControl = label1;
 
@@ -44,7 +47,7 @@ namespace HuergoMotorsForms
             {
                 if (HelperForms.VerificarCombosCargados(cboVendedor))
                 {
-                    txtSucursal.Text = HelperForms.LeerDatoCombo(cboVendedor, "Sucursal", "Vendedores");
+                    txtSucursal.Text = (string)HelperForms.LeerCombo(cboVendedor, "Sucursal", "Vendedores").Rows[0]["Sucursal"];
                 }
             }
             catch (Exception ex)
@@ -59,19 +62,20 @@ namespace HuergoMotorsForms
             {
                 if (HelperForms.VerificarCombosCargados(cboModelo))
                 {
-                    if (dtAccesorios != null)
+                    if (dataTableAccesorios != null)
                     {
-                        precioAccesorios = 0;
-                        dtAccesorios.Clear();
-                        gvAccesorios.DataSource= dtAccesorios;
+                        precioTotalAccesorios = 0;
+                        dataTableAccesorios.Clear();
+                        gvAccesorios.DataSource= dataTableAccesorios;
                     }
-                    DataTable dtModelo = HelperForms.LeerCombo(cboModelo, "*", "Vehiculos");
-                    txtTipo.Text = (string)dtModelo.Rows[0]["Tipo"];
-                    precioVehiculo = (decimal)dtModelo.Rows[0]["PrecioVenta"];
-                    txtPrecio.Text = precioVehiculo.ToString(HelperForms.nfi());
-                    lblTotal.Text = "$ "+ precioVehiculo.ToString(HelperForms.nfi());
-                    int idVehiculo = (int)dtModelo.Rows[0]["Id"];
-                    HelperForms.CargarCombo(cboAccesorios, $"SELECT Nombre, Id FROM Accesorios WHERE idVehiculo = {idVehiculo}", "Nombre");
+
+                    VehiculoSeleccionado = vehiculosNegocio.BDCargarDTO((int)cboModelo.SelectedValue);
+
+                    txtTipo.Text = VehiculoSeleccionado.Tipo;
+                    txtPrecio.Text = VehiculoSeleccionado.PrecioVenta.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
+                    lblTotal.Text = "$ "+ VehiculoSeleccionado.PrecioVenta.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
+                    HelperForms.DisplayCombo(cboAccesorios, "Nombre");
+                    cboAccesorios.DataSource = ventasNegocio.CargarDTAccesorios(VehiculoSeleccionado.Id);
                 }
             }
             catch (Exception ex)
@@ -84,20 +88,21 @@ namespace HuergoMotorsForms
         {
             try
             {
+                
                 if (cboAccesorios.Items.Count <= 0) throw new Exception("No puede agregar un accesorio inexistente");
-                DataTable dtNuevosDatos = HelperForms.LeerCombo(cboAccesorios, "*", "Accesorios");
-                if (dtAccesorios != null && dtAccesorios.Rows.Count > 0)
+                DataTable dtNuevosDatos = vehiculosNegocio.CargarTabla(((int)cboModelo.SelectedValue));
+                if (dataTableAccesorios != null && dataTableAccesorios.Rows.Count > 0)
                 {
-                    dtAccesorios.Merge(dtNuevosDatos);
+                    dataTableAccesorios.Merge(dtNuevosDatos);
                 }
                 else
                 {
-                    precioAccesorios = 0;
-                    dtAccesorios = dtNuevosDatos;
+                    precioTotalAccesorios = 0;
+                    dataTableAccesorios = dtNuevosDatos;
                 }
-                gvAccesorios.DataSource = dtAccesorios;
-                precioAccesorios = precioAccesorios + (decimal)dtNuevosDatos.Rows[0]["Precio"];
-                lblTotal.Text = "$ " + Convert.ToString(precioAccesorios + precioVehiculo);
+                gvAccesorios.DataSource = dataTableAccesorios;
+                precioTotalAccesorios = precioTotalAccesorios + (decimal)dtNuevosDatos.Rows[0]["Precio"];
+                lblTotal.Text = "$ " + Convert.ToString(precioTotalAccesorios + VehiculoSeleccionado.PrecioVenta);
             
             }
             catch (Exception ex)
@@ -109,16 +114,16 @@ namespace HuergoMotorsForms
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
-            using (frmClientes f = new frmClientes())
+            using (frmClientes frmClientes = new frmClientes())
             {
-                f.Seleccionar();
+                frmClientes.Seleccionar();
 
-                if (f.ShowDialog() == DialogResult.OK)
+                if (frmClientes.ShowDialog() == DialogResult.OK)
                 {
-                    txtNombreCliente.Text = f.ClienteSeleccionado.Nombre;
-                    txtEmail.Text = f.ClienteSeleccionado.Email;
-                    txtTelefono.Text = f.ClienteSeleccionado.Telefono;
-                    idCliente = f.ClienteSeleccionado.Id;
+                    txtNombreCliente.Text = frmClientes.ClienteSeleccionado.Nombre;
+                    txtEmail.Text = frmClientes.ClienteSeleccionado.Email;
+                    txtTelefono.Text = frmClientes.ClienteSeleccionado.Telefono;
+                    idCliente = frmClientes.ClienteSeleccionado.Id;
                 }
                 else
                 {
@@ -213,10 +218,10 @@ namespace HuergoMotorsForms
         {
             if (e.ColumnIndex == 5) //El index 5 es el del boton eliminar
             {
-                precioAccesorios = precioAccesorios - (decimal)dtAccesorios.Rows[gvAccesorios.CurrentRow.Index]["Precio"];
+                precioTotalAccesorios = precioTotalAccesorios - (decimal)dtAccesorios.Rows[gvAccesorios.CurrentRow.Index]["Precio"];
                 dtAccesorios.Rows.RemoveAt(gvAccesorios.CurrentRow.Index);
                 gvAccesorios.DataSource = dtAccesorios;
-                lblTotal.Text = "$ " + Convert.ToString(precioAccesorios + precioVehiculo);
+                lblTotal.Text = "$ " + Convert.ToString(precioTotalAccesorios + precioVehiculo);
             }
         }
 
