@@ -15,7 +15,7 @@ namespace HuergoMotors.DAO
         }
         public DataTable CargarTabla(int id)
         {
-            return HelperDAO.CargarDataTable($"SELECT * FROM Clientes WHERE Id={id}");
+            return HelperDAO.CargarDataTable($"SELECT * FROM Vendedores WHERE Id={id}");
         }
         public int EliminarElemento(int id)
         {

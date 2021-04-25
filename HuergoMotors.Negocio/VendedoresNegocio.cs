@@ -30,6 +30,10 @@ namespace HuergoMotors.Negocio
 
         public DTO.VendedorDTO BDCargarDTO(int id)
         {
+
+            DataTable dt = CargarTabla(id);
+
+            object linea = dt.Rows[0].ItemArray;
             try
             {
                 DTO.VendedorDTO vendedorDTO = new DTO.VendedorDTO();
@@ -40,7 +44,10 @@ namespace HuergoMotors.Negocio
             {
                 throw ex;
             }
+
         }
+
+
 
         public void CargarDTO(DTO.VendedorDTO vendedorDTO, object item)
         {
