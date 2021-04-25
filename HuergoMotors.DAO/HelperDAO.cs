@@ -68,18 +68,6 @@ namespace HuergoMotors.DAO
             }
         }
 
-        public static DataTable LeerCombo(int id, string campo, string tabla)
-        {
-            try
-            {
-                return CargarDataTable($"SELECT {campo} FROM {tabla} WHERE ID = {id}"); ;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al leer un ComboBox", ex);
-            }
-        }
-
 
 
     }

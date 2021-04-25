@@ -44,7 +44,7 @@ namespace HuergoMotors.Negocio
             try
             {
                 DTO.VehiculoDTO vehiculoDTO = new DTO.VehiculoDTO();
-                CargarDTO(vehiculoDTO, CargarTabla(id).Rows[0].ItemArray);
+                CargarDTO(vehiculoDTO, CargarTabla(id));
                 return vehiculoDTO;
             }
             catch (Exception ex)
@@ -53,15 +53,15 @@ namespace HuergoMotors.Negocio
             }
         }
 
-        public void CargarDTO(DTO.VehiculoDTO vehiculoDTO, object item)
+        public void CargarDTO(DTO.VehiculoDTO vehiculoDTO, DataTable vehiculoDT)
         {
             try
             {
-                vehiculoDTO.Id = (int)((DataRow)item)["Id"];
-                vehiculoDTO.Tipo = (string)((DataRow)item)["Tipo"];
-                vehiculoDTO.Modelo = (string)((DataRow)item)["Modelo"];
-                vehiculoDTO.PrecioVenta = (decimal)((DataRow)item)["PrecioVenta"];
-                vehiculoDTO.Stock = (int)((DataRow)item)["Stock"];
+                vehiculoDTO.Id = (int)vehiculoDT.Rows[0]["Id"];
+                vehiculoDTO.Tipo = (string)vehiculoDT.Rows[0]["Tipo"];
+                vehiculoDTO.Modelo = (string)vehiculoDT.Rows[0]["Modelo"];
+                vehiculoDTO.PrecioVenta = (decimal)vehiculoDT.Rows[0]["PrecioVenta"];
+                vehiculoDTO.Stock = (int)vehiculoDT.Rows[0]["Stock"];
             }
             catch (Exception ex)
             {

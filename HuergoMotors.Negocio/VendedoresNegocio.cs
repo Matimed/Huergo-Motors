@@ -37,7 +37,7 @@ namespace HuergoMotors.Negocio
             try
             {
                 DTO.VendedorDTO vendedorDTO = new DTO.VendedorDTO();
-                CargarDTO(vendedorDTO, CargarTabla(id).Rows[0].ItemArray);
+                CargarDTO(vendedorDTO, CargarTabla(id));
                 return vendedorDTO;
             }
             catch (Exception ex)
@@ -49,14 +49,14 @@ namespace HuergoMotors.Negocio
 
 
 
-        public void CargarDTO(DTO.VendedorDTO vendedorDTO, object item)
+        public void CargarDTO(DTO.VendedorDTO vendedorDTO, DataTable vendedorDT)
         {
             try
             {
-                vendedorDTO.Id = (int)((DataRow)item)["Id"];
-                vendedorDTO.Nombre = (string)((DataRow)item)["Nombre"];
-                vendedorDTO.Apellido = (string)((DataRow)item)["Apellido"];
-                vendedorDTO.Sucursal = (string)((DataRow)item)["Sucursal"];
+                vendedorDTO.Id = (int)vendedorDT.Rows[0]["Id"];
+                vendedorDTO.Nombre = (string)vendedorDT.Rows[0]["Nombre"];
+                vendedorDTO.Apellido = (string)vendedorDT.Rows[0]["Apellido"];
+                vendedorDTO.Sucursal = (string)vendedorDT.Rows[0]["Sucursal"];
             }
             catch (Exception ex)
             {

@@ -61,6 +61,8 @@ namespace HuergoMotorsForms
         {
             try
             {
+                vendedoresNegocio.CargarDTO(VendedorSeleccionadoDTO,
+                    txtNombre.Text, txtApellido.Text, txtSucursal.Text);
                 switch (Modo)
                 {
                     case HelperForms.Modo.Modificar:

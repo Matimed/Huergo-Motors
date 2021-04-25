@@ -23,30 +23,6 @@ namespace HuergoMotors.Negocio
             return numberFormatInfo;
         }
 
-        public static int EditarDB(string query)
-        {
-            try
-            {
-                return DAO.HelperDAO.EditarDB(query);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
-            }
-        }
-
-        public static DataTable CargarDataTable(string query)
-        {
-            try
-            {
-                return DAO.HelperDAO.CargarDataTable(query);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al cargar los datos desde la base de datos", ex);
-            }
-        }
-
         public static void ValidarTextosVacios(params string[] textosValidar)
         {
             try
@@ -136,19 +112,6 @@ namespace HuergoMotors.Negocio
                 throw ex;
             }
         }
-
-        public static DataTable LeerCombo(int id, string campo, string tabla)
-        {
-            try
-            {
-                return DAO.HelperDAO.LeerCombo(id, campo, tabla);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al leer un ComboBox", ex);
-            }
-        }
-
 
 
         //public static bool CargarDataTableDTOS(params DTO.AccesorioDTO[] accesorioDTOs)

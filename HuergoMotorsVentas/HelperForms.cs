@@ -32,34 +32,6 @@ namespace HuergoMotorsForms
             }
         }
 
-        public static DataTable LeerCombo(ComboBox combo, string campo, string tabla)
-        {
-            try
-            {
-                int id = (int)combo.SelectedValue;
-                return HuergoMotors.Negocio.HelperNegocio.LeerCombo(id, campo, tabla);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al leer un ComboBox", ex);
-            }
-        }
-
-
-
-        public static int LeerNumeroCombo(ComboBox combo, string campo, string tabla)
-        {
-            try
-            {
-                DataTable dataTable = LeerCombo(combo, campo, tabla);
-                return HuergoMotors.Negocio.HelperNegocio.LeerNumeroCombo(dataTable, campo);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al leer un numero del ComboBox", ex);
-            }
-        }
-
         public static void OperacionExitosa(Modo modo, int result)
         {
             switch (modo)
@@ -134,7 +106,6 @@ namespace HuergoMotorsForms
             }
         }
 
-    
     }
 }
 
