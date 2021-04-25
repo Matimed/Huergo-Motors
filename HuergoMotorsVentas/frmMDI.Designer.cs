@@ -35,8 +35,8 @@
             this.btAccesorios = new System.Windows.Forms.ToolStripButton();
             this.btClientes = new System.Windows.Forms.ToolStripButton();
             this.btVendedores = new System.Windows.Forms.ToolStripButton();
+            this.btVentas = new System.Windows.Forms.ToolStripButton();
             this.btNuevaVenta = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +57,7 @@
             this.btAccesorios,
             this.btClientes,
             this.btVendedores,
-            this.toolStripButton1,
+            this.btVentas,
             this.btNuevaVenta});
             this.toolStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -116,6 +116,18 @@
             this.btVendedores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btVendedores.Click += new System.EventHandler(this.btVendedores_Click);
             // 
+            // btVentas
+            // 
+            this.btVentas.Image = ((System.Drawing.Image)(resources.GetObject("btVentas.Image")));
+            this.btVentas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btVentas.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btVentas.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btVentas.Name = "btVentas";
+            this.btVentas.Size = new System.Drawing.Size(107, 36);
+            this.btVentas.Text = "Ventas";
+            this.btVentas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btVentas.Click += new System.EventHandler(this.btVentas_Click);
+            // 
             // btNuevaVenta
             // 
             this.btNuevaVenta.Image = ((System.Drawing.Image)(resources.GetObject("btNuevaVenta.Image")));
@@ -124,20 +136,9 @@
             this.btNuevaVenta.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btNuevaVenta.Name = "btNuevaVenta";
             this.btNuevaVenta.Size = new System.Drawing.Size(107, 36);
-            this.btNuevaVenta.Text = "Ventas";
+            this.btNuevaVenta.Text = "Nueva Venta";
             this.btNuevaVenta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btNuevaVenta.Click += new System.EventHandler(this.btNuevaVenta_Click);
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.toolStripButton1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(107, 36);
-            this.toolStripButton1.Text = "Nueva Venta";
-            this.toolStripButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmMDI
             // 
@@ -168,7 +169,7 @@
         private System.Windows.Forms.ToolStripButton btClientes;
         private System.Windows.Forms.ToolStripButton btVendedores;
         private System.Windows.Forms.ToolStripButton btNuevaVenta;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton btVentas;
     }
 }
 

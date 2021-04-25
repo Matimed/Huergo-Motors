@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HuergoMotors.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -44,6 +45,11 @@ namespace HuergoMotorsForms
         {
             frmVentasAlta form = new frmVentasAlta();
             form.ShowDialog();
+        }
+
+        private void btVentas_Click(object sender, EventArgs e)
+        {
+            AbrirForm(new frmVentas());
         }
     }
 }
