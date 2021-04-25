@@ -47,8 +47,8 @@ namespace HuergoMotorsForms
             frmVehiculosAlta frmVehiculosAlta = new frmVehiculosAlta(modo);
             if (modo == HelperForms.Modo.Modificar)
             {
-                object item = gv.SelectedRows[0].DataBoundItem;
-                frmVehiculosAlta.Id = (int)((DataRowView)item)["Id"];
+                HuergoMotors.DTO.VehiculoDTO vehiculoDTO = new HuergoMotors.DTO.VehiculoDTO();
+                frmVehiculosAlta.VehiculoSeleccionadoDTO = (HuergoMotors.DTO.VehiculoDTO)gv.SelectedRows[0].DataBoundItem;
                 frmVehiculosAlta.CargarDatos();
             }
             frmVehiculosAlta.ShowDialog();

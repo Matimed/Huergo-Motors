@@ -43,7 +43,6 @@ namespace HuergoMotors.Negocio
         public static void ValidarID(int id)
         {
             if (id < 0) throw new Exception("Ningun elemento seleccionado");
-            if (id = null) throw new Exception("Ningun elemento seleccionado");
         }
         public static decimal ConvertirNumeroRacional(string numeroValidar)
         {

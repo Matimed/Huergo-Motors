@@ -15,7 +15,6 @@ namespace HuergoMotorsForms
     {
         HuergoMotors.Negocio.VehiculosNegocio vehiculosNegocio = new HuergoMotors.Negocio.VehiculosNegocio();
         public HuergoMotors.DTO.VehiculoDTO VehiculoSeleccionadoDTO {get; set;}
-    public int Id { get; set; } //Esto es una 'propiedad'.
         public HelperForms.Modo Modo { get; private set; }
 
         public frmVehiculosAlta(HelperForms.Modo modo)
@@ -44,8 +43,6 @@ namespace HuergoMotorsForms
         {
             try
             {
-                VehiculoSeleccionadoDTO = vehiculosNegocio.CargarTabla(Id);
-
                 txtPrecio.Text = VehiculoSeleccionadoDTO.PrecioVenta.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
                 txtModelo.Text = VehiculoSeleccionadoDTO.Modelo;
                 txtTipo.Text = VehiculoSeleccionadoDTO.Tipo;
