@@ -77,7 +77,7 @@ namespace HuergoMotorsForms
                         gvAccesorios.DataSource= dataTableAccesorios;
                     }
 
-                    VehiculoSeleccionado = vehiculosNegocio.BDCargarDTO((int)cboModelo.SelectedValue);
+                    VehiculoSeleccionado = vehiculosNegocio.CargarTabla((int)cboModelo.SelectedValue);
 
                     txtTipo.Text = VehiculoSeleccionado.Tipo;
                     txtPrecio.Text = VehiculoSeleccionado.PrecioVenta.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
@@ -160,7 +160,7 @@ namespace HuergoMotorsForms
                 DateTime dateTime = dtpFecha.Value;
                 string observaciones = string.Empty;
                 if (!string.IsNullOrEmpty(txtObservaciones.Text) &
-                    (txtObservaciones.Text!= "Observaciones:" & txtObservaciones.Text != "Observaciones")) 
+                    (txtObservaciones.Text != "Observaciones:" & txtObservaciones.Text != "Observaciones"))
                 {
                     observaciones = txtObservaciones.Text;
                 }
@@ -175,7 +175,14 @@ namespace HuergoMotorsForms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+                if (ex.InnerException != null)
+                {
+                    MessageBox.Show(ex.Message + ex.InnerException.Message, "Error", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+                }
             }
         }
 

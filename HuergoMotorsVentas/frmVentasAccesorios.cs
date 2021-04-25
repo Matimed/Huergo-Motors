@@ -10,14 +10,13 @@ using System.Windows.Forms;
 
 namespace HuergoMotors.Forms
 {
-    public partial class frmVentas : Form
+    public partial class frmVentasAccesorios : Form
     {
-        public frmVentas()
+        public frmVentasAccesorios()
         {
             InitializeComponent();
         }
-
-       Negocio.VentasNegocio ventasNegocio = new Negocio.VentasNegocio();
+        Negocio.VentasNegocio ventasNegocio = new Negocio.VentasNegocio();
 
         private void frmVentas_load(object sender, EventArgs e)
         {
@@ -69,15 +68,5 @@ namespace HuergoMotors.Forms
         {
             Close();
         }
-
-        private void btVentasAccesorios_Click(object sender, EventArgs e)
-        {
-            frmVentasAccesorios ventasAccesorios = new frmVentasAccesorios();
-            ventasAccesorios.MdiParent = this.MdiParent;
-            ventasAccesorios.Show();
-
-        }
     }
-
 }
-

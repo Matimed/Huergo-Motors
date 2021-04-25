@@ -39,8 +39,6 @@ namespace HuergoMotors.Negocio
 
                 if (dateNow.Date > DateTime.Now.Date) throw new Exception
                         ("La fecha no puede ser posterior a la actual del sistema");
-
-
             }
             catch (Exception ex)
             {

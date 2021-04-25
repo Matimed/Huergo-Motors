@@ -40,22 +40,10 @@ namespace HuergoMotors.Negocio
                 throw ex;
             }
         }
-        public static void ValidarTextosVacios(DataTable dt, params string[] campos)
+        public static void ValidarID(int id)
         {
-            try
-            {
-                foreach (string campo in campos)
-                {
-                    if (dt.Rows[0].IsNull(campo))
-                    {
-                        throw new Exception("Error al Validar DataTable. Se encontraron campos vácios");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            if (id < 0) throw new Exception("Ningun elemento seleccionado");
+            if (id = null) throw new Exception("Ningun elemento seleccionado");
         }
         public static decimal ConvertirNumeroRacional(string numeroValidar)
         {

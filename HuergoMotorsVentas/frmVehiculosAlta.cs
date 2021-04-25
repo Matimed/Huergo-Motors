@@ -44,7 +44,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                VehiculoSeleccionadoDTO = vehiculosNegocio.BDCargarDTO(Id);
+                VehiculoSeleccionadoDTO = vehiculosNegocio.CargarTabla(Id);
 
                 txtPrecio.Text = VehiculoSeleccionadoDTO.PrecioVenta.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
                 txtModelo.Text = VehiculoSeleccionadoDTO.Modelo;
@@ -66,7 +66,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                vehiculosNegocio.CargarDTO(VehiculoSeleccionadoDTO,
+                vehiculosNegocio.CargarDTO(VehiculoSeleccionadoDTO.Id,
                     txtModelo.Text, txtPrecio.Text, txtStock.Text, txtTipo.Text);
                 switch (Modo)
                 {

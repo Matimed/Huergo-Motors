@@ -17,7 +17,7 @@ namespace HuergoMotorsForms
             InitializeComponent();  
         }
 
-        private void AbrirForm(Form formulario)
+        public void AbrirForm(Form formulario)
         {
             formulario.MdiParent = this;
             formulario.Show();
