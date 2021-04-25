@@ -29,16 +29,20 @@ namespace HuergoMotors.DAO
         public void ConfirmarVenta(DTO.ClienteDTO clienteDTO, DTO.VehiculoDTO vehiculoDTO, DTO.VendedorDTO vendedorDTO,
             string fecha, string observaciones, string precioVenta, DataTable dtAccesorios)
         {
+        
+           
             using (SqlConnection conexion = new SqlConnection(HelperDAO.ConnectionString))
             {
+                //Valida el stock otra vez
+                
+                
                 conexion.Open();
                 using (SqlTransaction transaction = conexion.BeginTransaction())
                 {
                     try
                     {
-                        //Valida el stock otra vez
                         int stock = (int)HelperDAO.CargarDataTable($"SELECT Stock FROM Vehiculos " +
-                            $"WHERE idVehiculo = {vehiculoDTO.Id}").Rows[0]["Stock"];
+                            $"WHERE Id = {vehiculoDTO.Id}").Rows[0]["Stock"];
                         if (stock < 1) throw new Exception("No hay stock del vehiculo seleccionado");
 
                         HelperDAO.EditarDB($"INSERT INTO Ventas(Fecha, IdVehiculo, IdCliente, IdVendedor, Observaciones, Total) " +

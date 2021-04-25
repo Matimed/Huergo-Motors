@@ -8,6 +8,7 @@ namespace HuergoMotors.Negocio
 {
     public class VentasNegocio
     {
+        DAO.VentasDAO ventasDAO = new DAO.VentasDAO();
         public DataTable dataTableAccesorios;
         public decimal precioTotalAccesorios;
 
@@ -58,7 +59,7 @@ namespace HuergoMotors.Negocio
         }
 
 
-        DAO.VentasDAO ventasDAO = new DAO.VentasDAO();
+
         public DataTable CargarDTVendedor()
         {
             return ventasDAO.CargarDTVendedores();
