@@ -30,7 +30,7 @@ namespace HuergoMotors.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVentas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.picReload = new System.Windows.Forms.PictureBox();
             this.picBusqueda = new System.Windows.Forms.PictureBox();
             this.btCerrar = new System.Windows.Forms.Button();
@@ -64,6 +64,7 @@ namespace HuergoMotors.Forms
             this.picReload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picReload.TabIndex = 21;
             this.picReload.TabStop = false;
+            this.picReload.Click += new System.EventHandler(this.picReload_Click);
             // 
             // picBusqueda
             // 
@@ -77,6 +78,7 @@ namespace HuergoMotors.Forms
             this.picBusqueda.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBusqueda.TabIndex = 20;
             this.picBusqueda.TabStop = false;
+            this.picBusqueda.Click += new System.EventHandler(this.picBusqueda_Click);
             // 
             // btCerrar
             // 
@@ -163,9 +165,9 @@ namespace HuergoMotors.Forms
             // IdCliente
             // 
             this.IdCliente.DataPropertyName = "IdCliente";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.NullValue = "0";
-            this.IdCliente.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.NullValue = "0";
+            this.IdCliente.DefaultCellStyle = dataGridViewCellStyle1;
             this.IdCliente.HeaderText = "idCliente";
             this.IdCliente.Name = "IdCliente";
             this.IdCliente.ReadOnly = true;

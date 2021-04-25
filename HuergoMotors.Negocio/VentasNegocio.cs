@@ -30,24 +30,24 @@ namespace HuergoMotors.Negocio
         {
             try
             {
-                try
-                {
-                    ValidarClienteSeleccionado(clienteDTO);
-                    ValidarVehiculoSeleccionado(vehiculoDTO);
-                    ValidarVendedorSeleccionado(vendedorDTO);
+                ValidarClienteSeleccionado(clienteDTO);
+                ValidarVehiculoSeleccionado(vehiculoDTO);
+                ValidarVendedorSeleccionado(vendedorDTO);
 
-                    if (vehiculoDTO.Stock < 1) throw new Exception("No hay stock del vehiculo seleccionado");
+                if (vehiculoDTO.Stock < 1) throw new Exception("No hay stock del vehiculo seleccionado");
 
 
-                    if (dateNow.Date > DateTime.Now.Date) throw new Exception
-                            ("La fecha no puede ser posterior a la actual del sistema");
+                if (dateNow.Date > DateTime.Now.Date) throw new Exception
+                        ("La fecha no puede ser posterior a la actual del sistema");
 
 
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception("Eror al validar los datos: ", ex);
-                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Eror al validar los datos: ", ex);
+            }
+            try
+            {
                 string fecha = dateNow.ToString("yyyyMMdd");
                 ventasDAO.ConfirmarVenta(clienteDTO, vehiculoDTO, vendedorDTO,
                     fecha, observaciones, vehiculoDTO.PrecioVenta.ToString(HelperNegocio.NFI()), accesorios);

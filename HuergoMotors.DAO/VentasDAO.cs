@@ -26,18 +26,14 @@ namespace HuergoMotors.DAO
         public void ConfirmarVenta(DTO.ClienteDTO clienteDTO, DTO.VehiculoDTO vehiculoDTO, DTO.VendedorDTO vendedorDTO,
             string fecha, string observaciones, string precioVenta, DataTable dtAccesorios)
         {
-        
-           
             using (SqlConnection conexion = new SqlConnection(HelperDAO.ConnectionString))
             {
-                //Valida el stock otra vez
-                
-                
                 conexion.Open();
                 using (SqlTransaction transaction = conexion.BeginTransaction())
                 {
                     try
                     {
+                        //Valida el stock otra vez
                         int stock = (int)HelperDAO.CargarDataTable($"SELECT Stock FROM Vehiculos " +
                             $"WHERE Id = {vehiculoDTO.Id}").Rows[0]["Stock"];
                         if (stock < 1) throw new Exception("No hay stock del vehiculo seleccionado");
@@ -70,7 +66,7 @@ namespace HuergoMotors.DAO
                     catch (Exception ex)
                     {
                         transaction.Rollback();
-                        throw new Exception("Error al confirmar la venta", ex);
+                        throw new Exception("Error al intentar cargar la venta en la base de datos", ex);
                     }
                 }
             }
@@ -84,8 +80,11 @@ namespace HuergoMotors.DAO
         }
         public DataTable Buscar(string filtro)
         {
-            return HelperDAO.CargarDataTable($"SELECT * FROM Ventas WHERE Apellido LIKE '%{filtro}%'" +
-                    $" or Nombre LIKE '%{filtro}%' or Sucursal LIKE '%{filtro}%'");
+            return HelperDAO.CargarDataTable($"SELECT a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor," +
+                $" a.Observaciones, a.Total, b.Modelo as Vehiculo, c.Nombre as Cliente, (d.Nombre + ' ' + d.Apellido) as Vendedor " +
+                $"FROM Ventas a JOIN Vehiculos b ON a.IdVehiculo = b.Id JOIN Clientes c ON a.IdCliente = c.Id JOIN Vendedores d " +
+                $"ON a.IdVendedor = d.Id WHERE a.Fecha LIKE '%{filtro}%' OR a.Total LIKE '%{filtro}%' OR b.Modelo LIKE '%{filtro}%'" +
+                $"OR c.Nombre LIKE '%{filtro}%' OR d.Nombre LIKE '%{filtro}%' OR d.Apellido LIKE '%{filtro}%'");
         }
     }
 }
