@@ -10,6 +10,7 @@ namespace HuergoMotorsForms
 
     {
         HuergoMotors.Negocio.VehiculosNegocio vehiculosNegocio = new HuergoMotors.Negocio.VehiculosNegocio();
+        HuergoMotors.Negocio.AccesoriosNegocio accesoriosNegocio = new HuergoMotors.Negocio.AccesoriosNegocio();
         HuergoMotors.Negocio.VendedoresNegocio vendedoresNegocio = new HuergoMotors.Negocio.VendedoresNegocio();
         HuergoMotors.Negocio.VentasNegocio ventasNegocio = new HuergoMotors.Negocio.VentasNegocio();
 
@@ -95,9 +96,8 @@ namespace HuergoMotorsForms
         {
             try
             {
-                
                 if (cboAccesorios.Items.Count <= 0) throw new Exception("No puede agregar un accesorio inexistente");
-                DataTable dtNuevosDatos = vehiculosNegocio.CargarTabla(((int)cboModelo.SelectedValue));
+                DataTable dtNuevosDatos = accesoriosNegocio.CargarTabla(((int)cboAccesorios.SelectedValue));
                 if (dataTableAccesorios != null && dataTableAccesorios.Rows.Count > 0)
                 {
                     dataTableAccesorios.Merge(dtNuevosDatos);

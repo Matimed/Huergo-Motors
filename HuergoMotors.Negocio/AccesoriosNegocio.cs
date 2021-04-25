@@ -28,7 +28,6 @@ namespace HuergoMotors.Negocio
         {
             return accesoriosDAO.CargarTabla(id);
         }
-
         public DataTable CargarCombo()
         {
             return accesoriosDAO.CargarCombo();
@@ -47,6 +46,7 @@ namespace HuergoMotors.Negocio
                 throw ex;
             }
         }
+       
 
         public void CargarDTO(DTO.AccesorioDTO accesorioDTO, DataTable accesorioDT)
         {

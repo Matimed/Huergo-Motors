@@ -36,6 +36,7 @@ namespace HuergoMotors.DAO
                     $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id WHERE a.Id={id}");
         }
 
+
         public DataTable CargarCombo()
         {
             return HelperDAO.CargarDataTable("SELECT Id, Modelo FROM Vehiculos");
