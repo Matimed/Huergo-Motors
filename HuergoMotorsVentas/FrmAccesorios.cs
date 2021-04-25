@@ -37,8 +37,7 @@ namespace HuergoMotorsForms
             frmAccesoriosAlta accesoriosAlta = new frmAccesoriosAlta(modo);
             if (modo == HelperForms.Modo.Modificar)
             {
-                object item = gv.SelectedRows[0].DataBoundItem;
-                accesoriosAlta.Id = (int)((DataRowView)item)["Id"];
+                accesoriosAlta.AccesorioSeleccionadoDTO = (HuergoMotors.DTO.AccesorioDTO)gv.SelectedRows[0].DataBoundItem;
                 accesoriosAlta.CargarDatos();
             }
             accesoriosAlta.ShowDialog();

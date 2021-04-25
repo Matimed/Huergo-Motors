@@ -4,68 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using HuergoMotors.DAO;
+using HuergoMotors.DTO;
 
 namespace HuergoMotors.Negocio
 {
     public class AccesoriosNegocio
     {
         AccesoriosDAO accesoriosDAO = new AccesoriosDAO();
-        public DataTable CargarTabla()
+        public List<AccesorioDTO> CargarTabla()
         {
-            return accesoriosDAO.CargarTabla();
+            return accesoriosDAO.CargarListaDTOs(accesoriosDAO.CargarTabla());
         }
 
-        public int EliminarElemento (int id)
+        public List<AccesorioDTO> Buscar(string filtro)
         {
-            return accesoriosDAO.EliminarElemento(id);
-        }
-        public DataTable Buscar(string filtro)
-        {
-            return accesoriosDAO.Buscar(filtro);
+            return accesoriosDAO.CargarListaDTOs(accesoriosDAO.Buscar(filtro));
         }
 
-        public DataTable CargarTabla(int id)
+        public List<AccesorioDTO> CargarTabla(int id)
         {
-            return accesoriosDAO.CargarTabla(id);
-        }
-        public DataTable CargarCombo()
-        {
-            return accesoriosDAO.CargarCombo();
+            return accesoriosDAO.CargarListaDTOs(accesoriosDAO.CargarTabla(id));
         }
 
-        public DTO.AccesorioDTO BDCargarDTO(int id)
+        public List<AccesorioDTO> CargarCombo()
         {
-            try
-            {
-                DTO.AccesorioDTO accesorioDTO = new DTO.AccesorioDTO();
-                CargarDTO(accesorioDTO, CargarTabla(id));
-                return accesorioDTO;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-       
-
-        public void CargarDTO(DTO.AccesorioDTO accesorioDTO, DataTable accesorioDT)
-        {
-            try
-            {
-                accesorioDTO.Precio = (decimal)accesorioDT.Rows[0]["Precio"];
-                accesorioDTO.Id = (int)accesorioDT.Rows[0]["Id"];
-                accesorioDTO.IdVehiculo = (int)accesorioDT.Rows[0]["IdVehiculo"];
-                accesorioDTO.Tipo = (string)accesorioDT.Rows[0]["Tipo"];
-                accesorioDTO.Nombre = (string)accesorioDT.Rows[0]["Nombre"];
-                accesorioDTO.ModeloVehiculo = (string)accesorioDT.Rows[0]["Modelo"];
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return accesoriosDAO.CargarListaDTOs(accesoriosDAO.CargarCombo());
         }
 
-        public void CargarDTO(DTO.AccesorioDTO accesorioDTO, int idVehiculo, string modeloVehiuclo, string precio, string nombre, string tipo)
+        public void CargarDTO(AccesorioDTO accesorioDTO, int idVehiculo, string modeloVehiuclo, string precio, string nombre, string tipo)
         {
             try
             {
@@ -90,6 +56,11 @@ namespace HuergoMotors.Negocio
         public int AgregarElemento(DTO.AccesorioDTO accesorioDTO)
         {
             return accesoriosDAO.AgregarElemento(accesorioDTO);
+        }
+
+        public int EliminarElemento(int id)
+        {
+            return accesoriosDAO.EliminarElemento(id);
         }
     }
 }

@@ -19,7 +19,6 @@ namespace HuergoMotorsForms
 
         public HuergoMotors.DTO.AccesorioDTO AccesorioSeleccionadoDTO { get; set; }
 
-        public int Id { get; set; }
         public HelperForms.Modo Modo { get; private set; }
         
 
@@ -59,8 +58,6 @@ namespace HuergoMotorsForms
         {
             try
             {
-                AccesorioSeleccionadoDTO = accesoriosNegocio.BDCargarDTO(Id);
-                
                 txtPrecio.Text = AccesorioSeleccionadoDTO.Precio.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
                 txtTipo.Text = AccesorioSeleccionadoDTO.Tipo;
                 txtNombre.Text = AccesorioSeleccionadoDTO.Nombre;
