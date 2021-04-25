@@ -29,10 +29,11 @@ namespace HuergoMotorsForms
             {
                 //Saca el focus del textbox y lo pone en el label por estetica
                 ActiveControl = label1;
-                HelperForms.DisplayCombo(cboModelos, "Modelo");
-                cboModelos.DataSource = accesoriosNegocio.CargarCombo();
+
                 if (Modo == HelperForms.Modo.Agregar)
                 {
+                    HelperForms.DisplayCombo(cboModelos, "Modelo");
+                    cboModelos.DataSource = accesoriosNegocio.CargarCombo();
                     txtNombre.Text = string.Empty;
                     txtTipo.Text = string.Empty;
                     txtPrecio.Text = "0.00";
@@ -63,6 +64,8 @@ namespace HuergoMotorsForms
                 txtPrecio.Text = AccesorioSeleccionadoDTO.Precio.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
                 txtTipo.Text = AccesorioSeleccionadoDTO.Tipo;
                 txtNombre.Text = AccesorioSeleccionadoDTO.Nombre;
+                HelperForms.DisplayCombo(cboModelos, "Modelo");
+                cboModelos.DataSource = accesoriosNegocio.CargarCombo();
                 cboModelos.SelectedValue = AccesorioSeleccionadoDTO.IdVehiculo;
             }
 
@@ -82,7 +85,7 @@ namespace HuergoMotorsForms
             try
             {
                 accesoriosNegocio.CargarDTO(AccesorioSeleccionadoDTO, (int)cboModelos.SelectedValue, 
-                    (string)cboModelos.SelectedItem, txtPrecio.Text, txtNombre.Text, txtTipo.Text);
+                    cboModelos.Text, txtPrecio.Text, txtNombre.Text, txtTipo.Text);
 
                 switch (Modo)
                 {

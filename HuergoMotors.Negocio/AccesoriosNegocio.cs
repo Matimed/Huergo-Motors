@@ -52,8 +52,8 @@ namespace HuergoMotors.Negocio
         {
             try
             {
-                accesorioDTO.Precio = HelperNegocio.ConvertirNumeroRacional((string)accesorioDT.Rows[0]["Precio"]);
-                accesorioDTO.Id = (int)accesorioDT.Rows[0]["IdVehiculo"];
+                accesorioDTO.Precio = (decimal)accesorioDT.Rows[0]["Precio"];
+                accesorioDTO.Id = (int)accesorioDT.Rows[0]["Id"];
                 accesorioDTO.IdVehiculo = (int)accesorioDT.Rows[0]["IdVehiculo"];
                 accesorioDTO.Tipo = (string)accesorioDT.Rows[0]["Tipo"];
                 accesorioDTO.Nombre = (string)accesorioDT.Rows[0]["Nombre"];
@@ -69,7 +69,7 @@ namespace HuergoMotors.Negocio
         {
             try
             {
-                HelperNegocio.ValidarTextosVacios(modeloVehiuclo, precio, nombre, tipo);
+                HelperNegocio.ValidarTextosVacios(modeloVehiuclo ,precio, nombre, tipo);
                 accesorioDTO.Precio = HelperNegocio.ConvertirNumeroRacional(precio);
                 accesorioDTO.IdVehiculo = idVehiculo;
                 accesorioDTO.Tipo = tipo;
