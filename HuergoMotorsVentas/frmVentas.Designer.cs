@@ -30,15 +30,11 @@ namespace HuergoMotors.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVentas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.label1 = new System.Windows.Forms.Label();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.picReload = new System.Windows.Forms.PictureBox();
             this.picBusqueda = new System.Windows.Forms.PictureBox();
             this.btCerrar = new System.Windows.Forms.Button();
-            this.btNuevo = new System.Windows.Forms.Button();
             this.gv = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txFiltro = new System.Windows.Forms.TextBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VehiculoModelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,22 +45,12 @@ namespace HuergoMotors.Forms
             this.IdVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Observaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txFiltro = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picReload)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBusqueda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(-22, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 15);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Filtro";
             // 
             // picReload
             // 
@@ -101,19 +87,7 @@ namespace HuergoMotors.Forms
             this.btCerrar.TabIndex = 19;
             this.btCerrar.Text = "Cerrar";
             this.btCerrar.UseVisualStyleBackColor = true;
-            // 
-            // btNuevo
-            // 
-            this.btNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btNuevo.BackColor = System.Drawing.Color.OliveDrab;
-            this.btNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btNuevo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btNuevo.Location = new System.Drawing.Point(609, 422);
-            this.btNuevo.Name = "btNuevo";
-            this.btNuevo.Size = new System.Drawing.Size(75, 23);
-            this.btNuevo.TabIndex = 17;
-            this.btNuevo.Text = "Nuevo";
-            this.btNuevo.UseVisualStyleBackColor = false;
+            this.btCerrar.Click += new System.EventHandler(this.btCerrar_Click);
             // 
             // gv
             // 
@@ -141,26 +115,6 @@ namespace HuergoMotors.Forms
             this.gv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gv.Size = new System.Drawing.Size(673, 375);
             this.gv.TabIndex = 15;
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(53, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(34, 15);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Filtro";
-            // 
-            // txFiltro
-            // 
-            this.txFiltro.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txFiltro.Location = new System.Drawing.Point(93, 15);
-            this.txFiltro.Name = "txFiltro";
-            this.txFiltro.Size = new System.Drawing.Size(463, 20);
-            this.txFiltro.TabIndex = 13;
             // 
             // Id
             // 
@@ -209,9 +163,9 @@ namespace HuergoMotors.Forms
             // IdCliente
             // 
             this.IdCliente.DataPropertyName = "IdCliente";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.NullValue = "0";
-            this.IdCliente.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.NullValue = "0";
+            this.IdCliente.DefaultCellStyle = dataGridViewCellStyle4;
             this.IdCliente.HeaderText = "idCliente";
             this.IdCliente.Name = "IdCliente";
             this.IdCliente.ReadOnly = true;
@@ -239,6 +193,26 @@ namespace HuergoMotors.Forms
             this.Total.Name = "Total";
             this.Total.ReadOnly = true;
             // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(53, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(34, 15);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Filtro";
+            // 
+            // txFiltro
+            // 
+            this.txFiltro.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txFiltro.Location = new System.Drawing.Point(93, 15);
+            this.txFiltro.Name = "txFiltro";
+            this.txFiltro.Size = new System.Drawing.Size(463, 20);
+            this.txFiltro.TabIndex = 13;
+            // 
             // frmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -248,15 +222,14 @@ namespace HuergoMotors.Forms
             this.Controls.Add(this.picReload);
             this.Controls.Add(this.picBusqueda);
             this.Controls.Add(this.btCerrar);
-            this.Controls.Add(this.btNuevo);
             this.Controls.Add(this.gv);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txFiltro);
-            this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmVentas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmVentas";
+            this.Load += new System.EventHandler(this.frmVentas_load);
             ((System.ComponentModel.ISupportInitialize)(this.picReload)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBusqueda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).EndInit();
@@ -266,11 +239,9 @@ namespace HuergoMotors.Forms
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox picReload;
         private System.Windows.Forms.PictureBox picBusqueda;
         private System.Windows.Forms.Button btCerrar;
-        private System.Windows.Forms.Button btNuevo;
         private System.Windows.Forms.DataGridView gv;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txFiltro;

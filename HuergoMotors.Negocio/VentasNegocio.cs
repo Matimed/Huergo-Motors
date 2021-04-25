@@ -52,14 +52,11 @@ namespace HuergoMotors.Negocio
                 ventasDAO.ConfirmarVenta(clienteDTO, vehiculoDTO, vendedorDTO,
                     fecha, observaciones, vehiculoDTO.PrecioVenta.ToString(HelperNegocio.NFI()), accesorios);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
         }
-
-
-
         public DataTable CargarDTVendedor()
         {
             return ventasDAO.CargarDTVendedores();
@@ -73,7 +70,14 @@ namespace HuergoMotors.Negocio
             return ventasDAO.CargarDTAccesorios(id);
         }
 
- 
+        public DataTable CargarTabla()
+        {
+            return ventasDAO.CargarTabla();
+        }
+        public DataTable Buscar(string filtro)
+        {
+            return ventasDAO.Buscar(filtro);
+        }
 
     }
 }

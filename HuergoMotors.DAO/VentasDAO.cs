@@ -23,9 +23,6 @@ namespace HuergoMotors.DAO
         {
             return HelperDAO.CargarDataTable($"SELECT Nombre, Id FROM Accesorios WHERE idVehiculo = {id}");
         }
-
-
-
         public void ConfirmarVenta(DTO.ClienteDTO clienteDTO, DTO.VehiculoDTO vehiculoDTO, DTO.VendedorDTO vendedorDTO,
             string fecha, string observaciones, string precioVenta, DataTable dtAccesorios)
         {
@@ -77,6 +74,18 @@ namespace HuergoMotors.DAO
                     }
                 }
             }
+        }
+        public DataTable CargarTabla()
+        {
+            return HelperDAO.CargarDataTable("SELECT a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor, a.Observaciones, a.Total," +
+                " b.Modelo as Vehiculo, c.Nombre as Cliente, (d.Nombre + ' ' + d.Apellido) as Vendedor" +
+                " FROM Ventas a JOIN Vehiculos b ON a.IdVehiculo = b.Id  JOIN Clientes c ON a.IdCliente = c.Id JOIN" +
+                " Vendedores d ON a.IdVendedor = d.Id");
+        }
+        public DataTable Buscar(string filtro)
+        {
+            return HelperDAO.CargarDataTable($"SELECT * FROM Ventas WHERE Apellido LIKE '%{filtro}%'" +
+                    $" or Nombre LIKE '%{filtro}%' or Sucursal LIKE '%{filtro}%'");
         }
     }
 }
