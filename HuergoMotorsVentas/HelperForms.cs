@@ -10,7 +10,6 @@ namespace HuergoMotorsForms
 {
     public static class HelperForms
     {
-        //ToDo: Pasar todos los datatables a DTO
         //ToDo: frmVentasAccesorios
         //ToDo: Mensajes de error con icon de error
 

@@ -46,10 +46,10 @@ namespace HuergoMotors.DAO
             return HelperDAO.CargarDataTable($"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
                     $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id WHERE a.Id={id}");
         }
-
-        public DataTable CargarCombo()
+        public DataTable CargarTablaIdVehiculo(int id)
         {
-            return HelperDAO.CargarDataTable("SELECT Id, Modelo FROM Vehiculos");
+            return HelperDAO.CargarDataTable($"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
+                    $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id WHERE a.IdVehiculo={id}");
         }
 
         public int EliminarElemento(int id)

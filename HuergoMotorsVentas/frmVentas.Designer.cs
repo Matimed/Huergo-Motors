@@ -30,11 +30,11 @@ namespace HuergoMotors.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVentas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.picReload = new System.Windows.Forms.PictureBox();
             this.picBusqueda = new System.Windows.Forms.PictureBox();
             this.btCerrar = new System.Windows.Forms.Button();
-            this.gv = new System.Windows.Forms.DataGridView();
+            this.gvVentas = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VehiculoModelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,10 +47,22 @@ namespace HuergoMotors.Forms
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.txFiltro = new System.Windows.Forms.TextBox();
-            this.btVentasAccesorios = new System.Windows.Forms.Button();
+            this.splitTablas = new System.Windows.Forms.SplitContainer();
+            this.gvAccesorios = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreAccesorio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoAccesorio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.picReload)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBusqueda)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvVentas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitTablas)).BeginInit();
+            this.splitTablas.Panel1.SuspendLayout();
+            this.splitTablas.Panel2.SuspendLayout();
+            this.splitTablas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvAccesorios)).BeginInit();
             this.SuspendLayout();
             // 
             // picReload
@@ -92,16 +104,13 @@ namespace HuergoMotors.Forms
             this.btCerrar.UseVisualStyleBackColor = true;
             this.btCerrar.Click += new System.EventHandler(this.btCerrar_Click);
             // 
-            // gv
+            // gvVentas
             // 
-            this.gv.AllowUserToAddRows = false;
-            this.gv.AllowUserToDeleteRows = false;
-            this.gv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.gvVentas.AllowUserToAddRows = false;
+            this.gvVentas.AllowUserToDeleteRows = false;
+            this.gvVentas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gvVentas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvVentas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.VehiculoModelo,
             this.Cliente,
@@ -112,12 +121,14 @@ namespace HuergoMotors.Forms
             this.IdVendedor,
             this.Observaciones,
             this.Total});
-            this.gv.Location = new System.Drawing.Point(12, 41);
-            this.gv.Name = "gv";
-            this.gv.ReadOnly = true;
-            this.gv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.gv.Size = new System.Drawing.Size(673, 375);
-            this.gv.TabIndex = 15;
+            this.gvVentas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gvVentas.Location = new System.Drawing.Point(0, 0);
+            this.gvVentas.Name = "gvVentas";
+            this.gvVentas.ReadOnly = true;
+            this.gvVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gvVentas.Size = new System.Drawing.Size(673, 267);
+            this.gvVentas.TabIndex = 15;
+            this.gvVentas.SelectionChanged += new System.EventHandler(this.gvVentas_SelectionChanged);
             // 
             // Id
             // 
@@ -166,9 +177,9 @@ namespace HuergoMotors.Forms
             // IdCliente
             // 
             this.IdCliente.DataPropertyName = "IdCliente";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.NullValue = "0";
-            this.IdCliente.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.NullValue = "0";
+            this.IdCliente.DefaultCellStyle = dataGridViewCellStyle1;
             this.IdCliente.HeaderText = "idCliente";
             this.IdCliente.Name = "IdCliente";
             this.IdCliente.ReadOnly = true;
@@ -216,16 +227,88 @@ namespace HuergoMotors.Forms
             this.txFiltro.Size = new System.Drawing.Size(463, 20);
             this.txFiltro.TabIndex = 13;
             // 
-            // btVentasAccesorios
+            // splitTablas
             // 
-            this.btVentasAccesorios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btVentasAccesorios.Location = new System.Drawing.Point(521, 422);
-            this.btVentasAccesorios.Name = "btVentasAccesorios";
-            this.btVentasAccesorios.Size = new System.Drawing.Size(163, 23);
-            this.btVentasAccesorios.TabIndex = 22;
-            this.btVentasAccesorios.Text = "Ventas de Accesorios";
-            this.btVentasAccesorios.UseVisualStyleBackColor = true;
-            this.btVentasAccesorios.Click += new System.EventHandler(this.btVentasAccesorios_Click);
+            this.splitTablas.Location = new System.Drawing.Point(12, 41);
+            this.splitTablas.Name = "splitTablas";
+            this.splitTablas.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitTablas.Panel1
+            // 
+            this.splitTablas.Panel1.Controls.Add(this.gvVentas);
+            // 
+            // splitTablas.Panel2
+            // 
+            this.splitTablas.Panel2.Controls.Add(this.gvAccesorios);
+            this.splitTablas.Size = new System.Drawing.Size(673, 375);
+            this.splitTablas.SplitterDistance = 267;
+            this.splitTablas.TabIndex = 23;
+            // 
+            // gvAccesorios
+            // 
+            this.gvAccesorios.AllowUserToAddRows = false;
+            this.gvAccesorios.AllowUserToDeleteRows = false;
+            this.gvAccesorios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gvAccesorios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvAccesorios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.NombreAccesorio,
+            this.TipoAccesorio,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn10});
+            this.gvAccesorios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gvAccesorios.Location = new System.Drawing.Point(0, 0);
+            this.gvAccesorios.Name = "gvAccesorios";
+            this.gvAccesorios.ReadOnly = true;
+            this.gvAccesorios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gvAccesorios.Size = new System.Drawing.Size(673, 104);
+            this.gvAccesorios.TabIndex = 16;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // NombreAccesorio
+            // 
+            this.NombreAccesorio.DataPropertyName = "NombreAccesorio";
+            this.NombreAccesorio.HeaderText = "Nombre";
+            this.NombreAccesorio.Name = "NombreAccesorio";
+            this.NombreAccesorio.ReadOnly = true;
+            // 
+            // TipoAccesorio
+            // 
+            this.TipoAccesorio.DataPropertyName = "TipoAccesorio";
+            this.TipoAccesorio.HeaderText = "Tipo";
+            this.TipoAccesorio.Name = "TipoAccesorio";
+            this.TipoAccesorio.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "IdAccesorios";
+            this.dataGridViewTextBoxColumn2.HeaderText = "IdAccesorios";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "IdVenta";
+            this.dataGridViewTextBoxColumn6.HeaderText = "IdVenta";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Visible = false;
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.DataPropertyName = "Precio";
+            this.dataGridViewTextBoxColumn10.HeaderText = "Precio";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            this.dataGridViewTextBoxColumn10.ReadOnly = true;
             // 
             // frmVentas
             // 
@@ -233,11 +316,10 @@ namespace HuergoMotors.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(697, 461);
-            this.Controls.Add(this.btVentasAccesorios);
+            this.Controls.Add(this.splitTablas);
             this.Controls.Add(this.picReload);
             this.Controls.Add(this.picBusqueda);
             this.Controls.Add(this.btCerrar);
-            this.Controls.Add(this.gv);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txFiltro);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -247,7 +329,12 @@ namespace HuergoMotors.Forms
             this.Load += new System.EventHandler(this.frmVentas_load);
             ((System.ComponentModel.ISupportInitialize)(this.picReload)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBusqueda)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvVentas)).EndInit();
+            this.splitTablas.Panel1.ResumeLayout(false);
+            this.splitTablas.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitTablas)).EndInit();
+            this.splitTablas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gvAccesorios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,7 +344,7 @@ namespace HuergoMotors.Forms
         private System.Windows.Forms.PictureBox picReload;
         private System.Windows.Forms.PictureBox picBusqueda;
         private System.Windows.Forms.Button btCerrar;
-        private System.Windows.Forms.DataGridView gv;
+        private System.Windows.Forms.DataGridView gvVentas;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txFiltro;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
@@ -270,6 +357,13 @@ namespace HuergoMotors.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn IdVendedor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Observaciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
-        private System.Windows.Forms.Button btVentasAccesorios;
+        private System.Windows.Forms.SplitContainer splitTablas;
+        private System.Windows.Forms.DataGridView gvAccesorios;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NombreAccesorio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TipoAccesorio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
     }
 }

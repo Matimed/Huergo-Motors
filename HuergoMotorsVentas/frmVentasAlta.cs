@@ -86,7 +86,7 @@ namespace HuergoMotorsForms
                     txtPrecio.Text = VehiculoSeleccionado.PrecioVenta.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
                     lblTotal.Text = "$ "+ VehiculoSeleccionado.PrecioVenta.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
                     HelperForms.DisplayCombo(cboAccesorios, "Nombre");
-                    cboAccesorios.DataSource = ventasNegocio.CargarDTAccesorios(VehiculoSeleccionado.Id);
+                    cboAccesorios.DataSource = accesoriosNegocio.CargarTablaIdVehiculo(VehiculoSeleccionado.Id);
                 }
             }
             catch (Exception ex)
@@ -104,7 +104,7 @@ namespace HuergoMotorsForms
                 accesorioSeleccionado = accesoriosNegocio.CargarTabla((int)cboAccesorios.SelectedValue)[0];
                 listaAccesoriosDTOs.Add(accesorioSeleccionado);
                 gvAccesorios.DataSource = listaAccesoriosDTOs;
-
+                //Bug: No se muestran las rows que se agregan el el grid view
                 PrecioTotalAccesorios = PrecioTotalAccesorios + accesorioSeleccionado.Precio;
                 lblTotal.Text = "$ " + Convert.ToString(PrecioTotalAccesorios + VehiculoSeleccionado.PrecioVenta);
 
@@ -118,8 +118,9 @@ namespace HuergoMotorsForms
 
         private void gvAccesorios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 5) //El index 5 es el del boton eliminar
+            if (gvAccesorios.Columns[e.ColumnIndex].Name == "Eliminar")
             {
+                
                 AccesorioDTO accesorioSeleccionado = new AccesorioDTO();
                 accesorioSeleccionado = accesoriosNegocio.CargarTabla((int)cboAccesorios.SelectedValue)[0];
                 PrecioTotalAccesorios = PrecioTotalAccesorios - accesorioSeleccionado.Precio;

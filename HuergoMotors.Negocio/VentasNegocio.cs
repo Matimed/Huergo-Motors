@@ -13,15 +13,20 @@ namespace HuergoMotors.Negocio
         public DataTable dataTableAccesorios;
         public decimal precioTotalAccesorios;
 
-        public List<VentaDTO> CargarTabla()
+        public List<VentaDTO> CargarTablaVentas()
         {
-            return ventasDAO.CargarListaDTOs(ventasDAO.CargarTabla());
+            return ventasDAO.CargarListaDTOs(ventasDAO.CargarTablaVentas());
         }
+
+        public List<VentaDTO> CargarTablaVentasAccesorios(int id)
+        {
+            return ventasDAO.CargarListaDTOs(ventasDAO.CargarTablaVentasAccesorios(id));
+        }
+
         public List<VentaDTO> Buscar(string filtro)
         {
             return ventasDAO.CargarListaDTOs(ventasDAO.Buscar(filtro));
         }
-
 
         public void ValidarClienteSeleccionado(DTO.ClienteDTO clienteDTO)
         {
@@ -35,7 +40,6 @@ namespace HuergoMotors.Negocio
         {
             if (vendedorDTO == null) throw new Exception("Debe seleccionar un vendedor");
         }
-
 
         public VentaDTO CargarDTO(ClienteDTO clienteDTO,VehiculoDTO vehiculoDTO,
             VendedorDTO vendedorDTO, DateTime fecha, string observaciones)
@@ -80,20 +84,5 @@ namespace HuergoMotors.Negocio
         {
             ventasDAO.ConfirmarVenta(venta, accesorios);
         }
-
-        public DataTable CargarDTVendedor()
-        {
-            return ventasDAO.CargarDTVendedores();
-        }
-        public DataTable CargarDTModelo()
-        {
-            return ventasDAO.CargarDTModelos();
-        }
-        public DataTable CargarDTAccesorios(int id)
-        {
-            return ventasDAO.CargarDTAccesorios(id);
-        }
-
-
     }
 }

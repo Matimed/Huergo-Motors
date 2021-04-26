@@ -33,12 +33,18 @@ namespace HuergoMotors.DAO
             return listaVentas;
         }
 
-        public DataTable CargarTabla()
+        public DataTable CargarTablaVentas()
         {
             return HelperDAO.CargarDataTable("SELECT a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor, a.Observaciones, a.Total," +
                 " b.Modelo as Vehiculo, c.Nombre as Cliente, (d.Nombre + ' ' + d.Apellido) as Vendedor" +
                 " FROM Ventas a JOIN Vehiculos b ON a.IdVehiculo = b.Id  JOIN Clientes c ON a.IdCliente = c.Id JOIN" +
                 " Vendedores d ON a.IdVendedor = d.Id");
+        }
+
+        public DataTable CargarTablaVentasAccesorios(int id)
+        {
+            return HelperDAO.CargarDataTable($"SELECT a.Id, a.IdVenta, a.IdAccesorio, a.Precio, b.Nombre AS NombreAccesorio," +
+                $" b.Tipo as TipoAccesorio  FROM VentasAccesorios a JOIN Accesorios b ON a.IdAccesorio = b.Id WHERE a.IdVenta = {id}");
         }
 
         public DataTable Buscar(string filtro)
@@ -48,23 +54,6 @@ namespace HuergoMotors.DAO
                 $"FROM Ventas a JOIN Vehiculos b ON a.IdVehiculo = b.Id JOIN Clientes c ON a.IdCliente = c.Id JOIN Vendedores d " +
                 $"ON a.IdVendedor = d.Id WHERE a.Fecha LIKE '%{filtro}%' OR a.Total LIKE '%{filtro}%' OR b.Modelo LIKE '%{filtro}%'" +
                 $"OR c.Nombre LIKE '%{filtro}%' OR d.Nombre LIKE '%{filtro}%' OR d.Apellido LIKE '%{filtro}%'");
-        }
-
-
-        //ToDo: Cargar todos los datos llamando al Cargar desde sus propios DAOs
-        public DataTable CargarDTVendedores()
-        {
-            return HelperDAO.CargarDataTable("SELECT Id, Nombre + ' ' + Apellido AS Vendedor FROM Vendedores");
-        }
-
-        public DataTable CargarDTModelos()
-        {
-            return HelperDAO.CargarDataTable("SELECT  Id, Modelo FROM Vehiculos");
-        }
-
-        public DataTable CargarDTAccesorios(int id)
-        {
-            return HelperDAO.CargarDataTable($"SELECT Nombre, Id FROM Accesorios WHERE idVehiculo = {id}");
         }
 
         public void ConfirmarVenta(VentaDTO venta, List<AccesorioDTO> listaAccesorios)

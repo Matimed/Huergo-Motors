@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HuergoMotors.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,7 +24,7 @@ namespace HuergoMotors.Forms
         {
             try
             {
-                CargarGridView(gv);
+                CargarGridViewVentas(gvVentas);
             }
             catch (Exception ex)
             {
@@ -37,7 +38,7 @@ namespace HuergoMotors.Forms
         {
             try
             {
-                gv.DataSource = ventasNegocio.Buscar(txFiltro.Text);
+                gvVentas.DataSource = ventasNegocio.Buscar(txFiltro.Text);
                 txFiltro.Text = "";
             }
             catch (Exception ex)
@@ -50,7 +51,7 @@ namespace HuergoMotors.Forms
         {
             try
             {
-                CargarGridView(gv);
+                CargarGridViewVentas(gvVentas);
                 txFiltro.Text = "";
             }
             catch (Exception ex)
@@ -59,10 +60,16 @@ namespace HuergoMotors.Forms
             }
 
         }
-        private void CargarGridView(DataGridView gv)
+        private void CargarGridViewVentas(DataGridView gv)
         {
             gv.AutoGenerateColumns = false;
-            gv.DataSource = ventasNegocio.CargarTabla();
+            gv.DataSource = ventasNegocio.CargarTablaVentas();
+        }
+
+        private void CargarGridViewVentasAccesorios(DataGridView gv, int id)
+        {
+            gv.AutoGenerateColumns = false;
+            gv.DataSource = ventasNegocio.CargarTablaVentasAccesorios(id);
         }
 
         private void btCerrar_Click(object sender, EventArgs e)
@@ -70,12 +77,15 @@ namespace HuergoMotors.Forms
             Close();
         }
 
-        private void btVentasAccesorios_Click(object sender, EventArgs e)
-        {
-            frmVentasAccesorios ventasAccesorios = new frmVentasAccesorios();
-            ventasAccesorios.MdiParent = this.MdiParent;
-            ventasAccesorios.Show();
+   
 
+        private void gvVentas_SelectionChanged(object sender, EventArgs e)
+        {
+            if (gvVentas.SelectedRows > 0)
+            {
+                int id = ((VentaDTO)gvVentas.SelectedRows[0].DataBoundItem).Id;
+                CargarGridViewVentasAccesorios(gvAccesorios, id);
+            }
         }
     }
 
