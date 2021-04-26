@@ -6,90 +6,39 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HuergoMotors.DAO;
+using HuergoMotors.DTO;
 
 namespace HuergoMotors.Negocio
 {
     public class ClientesNegocio
     {
         ClientesDAO clientesDAO = new ClientesDAO();
-        public DataTable CargarTabla()
+
+        public List<ClienteDTO> CargarTabla()
         {
-            return clientesDAO.CargarTabla();
+            return clientesDAO.CargarListaDTOs(clientesDAO.CargarTabla());
         }
 
-        public DataTable Buscar(string filtro)
+        public List<ClienteDTO> CargarTabla(int id)
         {
-            return clientesDAO.Buscar(filtro);
+            return clientesDAO.CargarListaDTOs(clientesDAO.CargarTabla(id));
         }
 
-        public int EliminarElemento(int id)
+        public List<ClienteDTO> Buscar(string filtro)
         {
-            return clientesDAO.EliminarElemento(id);
-        }
-            
-        public DTO.ClienteDTO Seleccionar(object fila)
-        {
-            DTO.ClienteDTO clienteDTO = new DTO.ClienteDTO
-            {
-                Id = (int)((DataRowView)fila)["Id"],
-                Nombre = (string)((DataRowView)fila)["Nombre"],
-                Direccion = (string)((DataRowView)fila)["Direccion"],
-                Telefono = (string)((DataRowView)fila)["Telefono"],
-                Email = (string)((DataRowView)fila)["Email"]
-            };
-            return clienteDTO;
-        }
-        public DataTable CargarTabla(int id)
-        {
-            return clientesDAO.CargarTabla(id);
+            return clientesDAO.CargarListaDTOs(clientesDAO.Buscar(filtro));
         }
 
-        public int ModificarElemento(DTO.ClienteDTO clienteDTO)
-        {
-            return clientesDAO.ModificarElemento(clienteDTO);
-        }
-
-        public int AgregarElemento(DTO.ClienteDTO clienteDTO)
-        {
-            return clientesDAO.AgregarElemento(clienteDTO);
-        }
-
-        public DTO.ClienteDTO BDCargarDTO(int id)
+        public void CargarDTO(int id, string nombre, string direccion, string email, string telefono)
         {
             try
             {
-                DTO.ClienteDTO clienteDTO = new DTO.ClienteDTO();
-                CargarDTO(clienteDTO, CargarTabla(id));
-                return clienteDTO;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
-        public void CargarDTO(DTO.ClienteDTO clienteDTO, DataTable clienteDT)
-        {
-            try
-            {
-                clienteDTO.Id = (int)clienteDT.Rows[0]["Id"];
-                clienteDTO.Nombre = (string)clienteDT.Rows[0]["Nombre"];
-                clienteDTO.Direccion = (string)clienteDT.Rows[0]["Direccion"];
-                clienteDTO.Email = (string)clienteDT.Rows[0]["Email"];
-                clienteDTO.Telefono = (string)clienteDT.Rows[0]["Telefono"];
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public void CargarDTO(DTO.ClienteDTO clienteDTO, string nombre, string direccion, string email, string telefono)
-        {
-            try
-            {
+                ClienteDTO clienteDTO = new ClienteDTO();
                 HelperNegocio.ValidarEmail(email);
                 HelperNegocio.ValidarTelefono(telefono);
                 HelperNegocio.ValidarTextosVacios(direccion, email, nombre, telefono);
+                HelperNegocio.ValidarID(id);
+                clienteDTO.Id = id;
                 clienteDTO.Direccion = direccion;
                 clienteDTO.Email = email;
                 clienteDTO.Nombre = nombre;
@@ -101,5 +50,19 @@ namespace HuergoMotors.Negocio
             }
         }
 
+        public int EliminarElemento(int id)
+        {
+            return clientesDAO.EliminarElemento(id);
+        }
+            
+        public int ModificarElemento(ClienteDTO clienteDTO)
+        {
+            return clientesDAO.ModificarElemento(clienteDTO);
+        }
+
+        public int AgregarElemento(ClienteDTO clienteDTO)
+        {
+            return clientesDAO.AgregarElemento(clienteDTO);
+        }
     }
 }

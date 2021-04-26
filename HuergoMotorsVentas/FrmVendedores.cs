@@ -34,8 +34,8 @@ namespace HuergoMotorsForms
                 frmVendedoresAlta frmVendedoresAlta = new frmVendedoresAlta(modo);
                 if (modo == HelperForms.Modo.Modificar)
                 {
-                    object item = gv.SelectedRows[0].DataBoundItem;
-                    frmVendedoresAlta.Id = (int)((DataRowView)item)["Id"];
+                    frmVendedoresAlta.VendedorSeleccionadoDTO = 
+                        (HuergoMotors.DTO.VendedorDTO)gv.SelectedRows[0].DataBoundItem;
                     frmVendedoresAlta.CargarDatos();
                 }
                 frmVendedoresAlta.ShowDialog();

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using HuergoMotors.DTO;
 
 namespace HuergoMotors.Negocio
 {
@@ -10,64 +11,48 @@ namespace HuergoMotors.Negocio
     {
         DAO.VendedoresDAO vendedoresDAO = new DAO.VendedoresDAO();
 
-        public DataTable CargarTabla()
-        {
-            return vendedoresDAO.CargarTabla();
-        }
-        public DataTable CargarTabla(int id)
-        {
-            return vendedoresDAO.CargarTabla(id);
-        }
-        public int EliminarElemento(int id)
-        {
-            return vendedoresDAO.EliminarElemento(id);
-        }
-        public DataTable Buscar(string filtro)
-        {
-            return vendedoresDAO.Buscar(filtro);
-        }
+        //public VendedorDTO BDCargarDTO(int id)
+        //{
 
+        //    DataTable dt = CargarTabla(id);
 
-        public DTO.VendedorDTO BDCargarDTO(int id)
+        //    object linea = dt.Rows[0].ItemArray;
+        //    try
+        //    {
+        //        DTO.VendedorDTO vendedorDTO = new DTO.VendedorDTO();
+        //        CargarDTO(vendedorDTO, CargarTabla(id));
+        //        return vendedorDTO;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+
+        //}
+
+        public List<VendedorDTO> CargarTabla()
         {
-
-            DataTable dt = CargarTabla(id);
-
-            object linea = dt.Rows[0].ItemArray;
-            try
-            {
-                DTO.VendedorDTO vendedorDTO = new DTO.VendedorDTO();
-                CargarDTO(vendedorDTO, CargarTabla(id));
-                return vendedorDTO;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
+            return vendedoresDAO.CargarListaDTOs(vendedoresDAO.CargarTabla());
         }
 
+        public List<VendedorDTO> CargarTabla(int id)
+        {
+            return vendedoresDAO.CargarListaDTOs(vendedoresDAO.CargarTabla(id));
+        }
 
+        public List<VendedorDTO> Buscar(string filtro)
+        {
+            return vendedoresDAO.CargarListaDTOs(vendedoresDAO.Buscar(filtro));
+        }
 
-        public void CargarDTO(DTO.VendedorDTO vendedorDTO, DataTable vendedorDT)
+        public void CargarDTO(int id, string nombre, string apellido, string sucursal)
         {
             try
             {
-                vendedorDTO.Id = (int)vendedorDT.Rows[0]["Id"];
-                vendedorDTO.Nombre = (string)vendedorDT.Rows[0]["Nombre"];
-                vendedorDTO.Apellido = (string)vendedorDT.Rows[0]["Apellido"];
-                vendedorDTO.Sucursal = (string)vendedorDT.Rows[0]["Sucursal"];
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public void CargarDTO(DTO.VendedorDTO vendedorDTO, string nombre, string apellido, string sucursal)
-        {
-            try
-            {
+                VendedorDTO vendedorDTO = new VendedorDTO();
                 HelperNegocio.ValidarTextosVacios(nombre, apellido, sucursal);
+                HelperNegocio.ValidarID(id);
+                vendedorDTO.Id = id;
                 vendedorDTO.Apellido = apellido;
                 vendedorDTO.Nombre = nombre;
                 vendedorDTO.Sucursal = sucursal;
@@ -78,11 +63,17 @@ namespace HuergoMotors.Negocio
             }
         }
 
-        public int ModificarElemento(DTO.VendedorDTO vendedorDTO)
+        public int EliminarElemento(int id)
+        {
+            return vendedoresDAO.EliminarElemento(id);
+        }
+
+        public int ModificarElemento(VendedorDTO vendedorDTO)
         {
             return vendedoresDAO.ModificarElemento(vendedorDTO);
         }
-        public int AgregarElemento(DTO.VendedorDTO vendedorDTO)
+
+        public int AgregarElemento(VendedorDTO vendedorDTO)
         {
             return vendedoresDAO.AgregarElementos(vendedorDTO);
         }

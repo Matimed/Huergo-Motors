@@ -35,7 +35,7 @@ namespace HuergoMotorsForms
                 if (modo == HelperForms.Modo.Modificar)
                 {
                     object item = gv.SelectedRows[0].DataBoundItem;
-                    frmClientesAlta.Id = (int)((DataRowView)item)["Id"];
+                    frmClientesAlta.ClienteSeleccionadoDTO = (HuergoMotors.DTO.ClienteDTO)gv.SelectedRows[0].DataBoundItem;
                     frmClientesAlta.CargarDatos();
                 }
                 frmClientesAlta.ShowDialog();
@@ -140,8 +140,7 @@ namespace HuergoMotorsForms
             {
                 if (gv.SelectedRows.Count == 1)
                 {
-                    object filaSeleccionada = gv.SelectedRows[0].DataBoundItem;
-                    ClienteSeleccionado = clientesNegocio.Seleccionar(filaSeleccionada);
+                    ClienteSeleccionado = (HuergoMotors.DTO.ClienteDTO)gv.SelectedRows[0].DataBoundItem;
                     DialogResult = DialogResult.OK;
                 }
             }

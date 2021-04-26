@@ -54,7 +54,7 @@ namespace HuergoMotorsForms
             {
                 if (HelperForms.VerificarCombosCargados(cboVendedor))
                 {
-                    VendedorSeleccionado = vendedoresNegocio.BDCargarDTO((int)cboVendedor.SelectedValue);
+                    //VendedorSeleccionado = vendedoresNegocio.BDCargarDTO((int)cboVendedor.SelectedValue);
                     txtSucursal.Text = VendedorSeleccionado.Sucursal;
                 }
             }
@@ -94,29 +94,29 @@ namespace HuergoMotorsForms
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (cboAccesorios.Items.Count <= 0) throw new Exception("No puede agregar un accesorio inexistente");
-                DataTable dtNuevosDatos = accesoriosNegocio.CargarTabla(((int)cboAccesorios.SelectedValue));
-                if (dataTableAccesorios != null && dataTableAccesorios.Rows.Count > 0)
-                {
-                    dataTableAccesorios.Merge(dtNuevosDatos);
-                }
-                else
-                {
-                    precioTotalAccesorios = 0;
-                    dataTableAccesorios = dtNuevosDatos;
-                }
-                gvAccesorios.DataSource = dataTableAccesorios;
-                precioTotalAccesorios = precioTotalAccesorios + (decimal)dtNuevosDatos.Rows[0]["Precio"];
-                lblTotal.Text = "$ " + Convert.ToString(precioTotalAccesorios + VehiculoSeleccionado.PrecioVenta);
-            
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
-            }
-        
+            //    try
+            //    {
+            //        if (cboAccesorios.Items.Count <= 0) throw new Exception("No puede agregar un accesorio inexistente");
+            //        //DataTable dtNuevosDatos = accesoriosNegocio.CargarTabla(((int)cboAccesorios.SelectedValue));
+            //        if (dataTableAccesorios != null && dataTableAccesorios.Rows.Count > 0)
+            //        {
+            //            dataTableAccesorios.Merge(dtNuevosDatos);
+            //        }
+            //        else
+            //        {
+            //            precioTotalAccesorios = 0;
+            //            dataTableAccesorios = dtNuevosDatos;
+            //        }
+            //        gvAccesorios.DataSource = dataTableAccesorios;
+            //        precioTotalAccesorios = precioTotalAccesorios + (decimal)dtNuevosDatos.Rows[0]["Precio"];
+            //        lblTotal.Text = "$ " + Convert.ToString(precioTotalAccesorios + VehiculoSeleccionado.PrecioVenta);
+
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+            //    }
+
         }
 
         private void gvAccesorios_CellClick(object sender, DataGridViewCellEventArgs e)

@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using HuergoMotors.DTO;
 
 namespace HuergoMotorsForms
 {
@@ -47,7 +48,7 @@ namespace HuergoMotorsForms
             frmVehiculosAlta frmVehiculosAlta = new frmVehiculosAlta(modo);
             if (modo == HelperForms.Modo.Modificar)
             {
-                HuergoMotors.DTO.VehiculoDTO vehiculoDTO = new HuergoMotors.DTO.VehiculoDTO();
+                VehiculoDTO vehiculoDTO = new VehiculoDTO();
                 frmVehiculosAlta.VehiculoSeleccionadoDTO = (HuergoMotors.DTO.VehiculoDTO)gv.SelectedRows[0].DataBoundItem;
                 frmVehiculosAlta.CargarDatos();
             }
@@ -78,11 +79,12 @@ namespace HuergoMotorsForms
 
                 if (gv.SelectedRows.Count == 1)
                 {
+                    VehiculoDTO vehiculoDTO  = (VehiculoDTO)gv.SelectedRows[0].DataBoundItem;
                     object item = gv.SelectedRows[0].DataBoundItem;
-                    if (HelperForms.ConfirmacionEliminación((string)((DataRowView)item)["Tipo"]) == DialogResult.Yes)
+                    if (HelperForms.ConfirmacionEliminación(vehiculoDTO.Tipo) == DialogResult.Yes)
                     {
                         HelperForms.OperacionExitosa(this, HelperForms.Modo.Eliminar, vehiculosNegocio.
-                            EliminarElemento((int)((DataRowView)item)["Id"]));
+                            EliminarElemento(vehiculoDTO.Id));
                         CargarGridView(gv);
                     }
                 }

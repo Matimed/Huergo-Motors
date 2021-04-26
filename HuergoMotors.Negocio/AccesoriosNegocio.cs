@@ -31,10 +31,11 @@ namespace HuergoMotors.Negocio
             return accesoriosDAO.CargarListaDTOs(accesoriosDAO.CargarCombo());
         }
 
-        public void CargarDTO(AccesorioDTO accesorioDTO, int idVehiculo, string modeloVehiuclo, string precio, string nombre, string tipo)
+        public void CargarDTO(int id, int idVehiculo, string modeloVehiuclo, string precio, string nombre, string tipo)
         {
             try
             {
+                AccesorioDTO accesorioDTO = new AccesorioDTO();
                 HelperNegocio.ValidarTextosVacios(modeloVehiuclo ,precio, nombre, tipo);
                 accesorioDTO.Precio = HelperNegocio.ConvertirNumeroRacional(precio);
                 accesorioDTO.IdVehiculo = idVehiculo;

@@ -13,7 +13,6 @@ namespace HuergoMotorsForms
     public partial class frmClientesAlta : Form
     {
         HuergoMotors.Negocio.ClientesNegocio clientesNegocio = new HuergoMotors.Negocio.ClientesNegocio();
-        public int Id { get; set; }
         public HuergoMotors.DTO.ClienteDTO ClienteSeleccionadoDTO { get; set; }
         public HelperForms.Modo Modo { get; private set; }
 
@@ -42,8 +41,6 @@ namespace HuergoMotorsForms
         {
             try
             {
-                ClienteSeleccionadoDTO = clientesNegocio.BDCargarDTO(Id);
-
                 txtEmail.Text = ClienteSeleccionadoDTO.Email;
                 txtNombre.Text = ClienteSeleccionadoDTO.Nombre;
                 txtDireccion.Text = ClienteSeleccionadoDTO.Direccion;
@@ -64,7 +61,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                clientesNegocio.CargarDTO(ClienteSeleccionadoDTO, 
+                clientesNegocio.CargarDTO(ClienteSeleccionadoDTO.Id, 
                     txtNombre.Text, txtDireccion.Text, txtEmail.Text, txtTelefono.Text);
 
                 switch (Modo)
