@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using HuergoMotors.Negocio;
+using HuergoMotors.DTO;
 
 
 namespace HuergoMotorsForms
@@ -66,14 +67,14 @@ namespace HuergoMotorsForms
         {
             if (gv.SelectedRows.Count == 1)
             {
-                object item = gv.SelectedRows[0].DataBoundItem;
+                AccesorioDTO accesorioDTO = (AccesorioDTO)gv.SelectedRows[0].DataBoundItem;
                 if (HelperForms.ConfirmacionEliminación
-                    ((string)((DataRowView)item)["Nombre"], (string)((DataRowView)item)["Tipo"]) == DialogResult.Yes)
+                    (accesorioDTO.Nombre, accesorioDTO.Tipo) == DialogResult.Yes)
                 {
                     try
                     {
                         HelperForms.OperacionExitosa(this, HelperForms.Modo.Eliminar, accesoriosNegocio.
-                            EliminarElemento((int)((DataRowView)item)["Id"]));
+                            EliminarElemento(accesorioDTO.Id));
                         CargarGridView(gv);
                     }
                     catch (Exception ex)

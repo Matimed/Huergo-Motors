@@ -49,7 +49,7 @@ namespace HuergoMotorsForms
             if (modo == HelperForms.Modo.Modificar)
             {
                 VehiculoDTO vehiculoDTO = new VehiculoDTO();
-                frmVehiculosAlta.VehiculoSeleccionadoDTO = (HuergoMotors.DTO.VehiculoDTO)gv.SelectedRows[0].DataBoundItem;
+                frmVehiculosAlta.VehiculoSeleccionadoDTO = (VehiculoDTO)gv.SelectedRows[0].DataBoundItem;
                 frmVehiculosAlta.CargarDatos();
             }
             frmVehiculosAlta.ShowDialog();

@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using HuergoMotors.DTO;
 
 
 namespace HuergoMotorsForms
@@ -34,8 +35,7 @@ namespace HuergoMotorsForms
                 frmVendedoresAlta frmVendedoresAlta = new frmVendedoresAlta(modo);
                 if (modo == HelperForms.Modo.Modificar)
                 {
-                    frmVendedoresAlta.VendedorSeleccionadoDTO = 
-                        (HuergoMotors.DTO.VendedorDTO)gv.SelectedRows[0].DataBoundItem;
+                    frmVendedoresAlta.VendedorSeleccionadoDTO = (VendedorDTO)gv.SelectedRows[0].DataBoundItem;
                     frmVendedoresAlta.CargarDatos();
                 }
                 frmVendedoresAlta.ShowDialog();
@@ -62,13 +62,13 @@ namespace HuergoMotorsForms
             {
                 if (gv.SelectedRows.Count == 1)
                 {
-                    object item = gv.SelectedRows[0].DataBoundItem;
+                    VendedorDTO vendedorDTO = (VendedorDTO)gv.SelectedRows[0].DataBoundItem;
 
-                    if (HelperForms.ConfirmacionEliminación((string)((DataRowView)item)["Nombre"], 
-                        (string)((DataRowView)item)["Apellido"]) == DialogResult.Yes)
+                    if (HelperForms.ConfirmacionEliminación(vendedorDTO.Nombre, 
+                        vendedorDTO.Apellido) == DialogResult.Yes)
                     {
                         HelperForms.OperacionExitosa(this, HelperForms.Modo.Eliminar, vendedoresNegocio.
-                             EliminarElemento((int)((DataRowView)item)["Id"]));
+                             EliminarElemento(vendedorDTO.Id));
                         CargarGridView(gv);
                     }
                 }

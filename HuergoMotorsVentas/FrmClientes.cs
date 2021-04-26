@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using HuergoMotors.DTO;
 
 namespace HuergoMotorsForms
 {
@@ -35,7 +36,7 @@ namespace HuergoMotorsForms
                 if (modo == HelperForms.Modo.Modificar)
                 {
                     object item = gv.SelectedRows[0].DataBoundItem;
-                    frmClientesAlta.ClienteSeleccionadoDTO = (HuergoMotors.DTO.ClienteDTO)gv.SelectedRows[0].DataBoundItem;
+                    frmClientesAlta.ClienteSeleccionadoDTO = (ClienteDTO)gv.SelectedRows[0].DataBoundItem;
                     frmClientesAlta.CargarDatos();
                 }
                 frmClientesAlta.ShowDialog();
@@ -115,11 +116,11 @@ namespace HuergoMotorsForms
             {
                 if (gv.SelectedRows.Count == 1)
                 {
-                    object item = gv.SelectedRows[0].DataBoundItem;
-                    if (HelperForms.ConfirmacionEliminación((string)((DataRowView)item)["Nombre"]) == DialogResult.Yes)
+                    ClienteDTO clienteDTO = (ClienteDTO)gv.SelectedRows[0].DataBoundItem;
+                    if (HelperForms.ConfirmacionEliminación(clienteDTO.Nombre) == DialogResult.Yes)
                     {
                         HelperForms.OperacionExitosa(this, HelperForms.Modo.Eliminar,clientesNegocio.
-                            EliminarElemento((int)((DataRowView)item)["Id"]));
+                            EliminarElemento(clienteDTO.Id));
                         CargarGridView(gv);
                     }
                 }
