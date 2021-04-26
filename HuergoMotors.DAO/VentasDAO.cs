@@ -14,24 +14,35 @@ namespace HuergoMotors.DAO
     {
         public List<VentaDTO> CargarListaDTOs(DataTable dataTable)
         {
+
             List<VentaDTO> listaVentas = new List<VentaDTO>();
-            foreach (DataRow dataRow in dataTable.Rows)
+            try
             {
-                VentaDTO ventaDTO = new VentaDTO();
-                ventaDTO.Id = (int)dataRow["Id"];
-                ventaDTO.IdCliente = (int)dataRow["IdCliente"];
-                ventaDTO.IdVehiculo = (int)dataRow["IdVehiculo"];
-                ventaDTO.IdVendedor = (int)dataRow["IdVendedor"];
-                ventaDTO.Observaciones = (string)dataRow["Observaciones"];
-                ventaDTO.Fecha = ((DateTime)dataRow["Fecha"]).ToString("yyyyMMdd");
-                ventaDTO.Total = (decimal)dataRow["Total"];
-                ventaDTO.Cliente = (string)dataRow["Cliente"];
-                ventaDTO.Vendedor = (string)dataRow["Vendedor"];
-                ventaDTO.Vehiculo = (string)dataRow["Vehiculo"];
-                listaVentas.Add(ventaDTO);
+                foreach (DataRow dataRow in dataTable.Rows)
+                {
+                    //Da error cuando llega al ultimo DataRow 68
+                    VentaDTO ventaDTO = new VentaDTO();
+                    ventaDTO.Id = (int)dataRow["Id"];
+                    ventaDTO.IdCliente = (int)dataRow["IdCliente"];
+                    ventaDTO.IdVehiculo = (int)dataRow["IdVehiculo"];
+                    ventaDTO.IdVendedor = (int)dataRow["IdVendedor"];
+                    ventaDTO.Observaciones = (string)dataRow["Observaciones"];
+                    ventaDTO.Fecha = ((DateTime)dataRow["Fecha"]).ToString("yyyyMMdd");
+                    ventaDTO.Total = (decimal)dataRow["Total"];
+                    ventaDTO.Cliente = (string)dataRow["Cliente"];
+                    ventaDTO.Vendedor = (string)dataRow["Vendedor"];
+                    ventaDTO.Vehiculo = (string)dataRow["Vehiculo"];
+                    listaVentas.Add(ventaDTO);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
             }
             return listaVentas;
-        }
+        } 
 
         public DataTable CargarTablaVentas()
         {

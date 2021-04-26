@@ -64,6 +64,7 @@ namespace HuergoMotors.Forms
         {
             gv.AutoGenerateColumns = false;
             gv.DataSource = ventasNegocio.CargarTablaVentas();
+
         }
 
         private void CargarGridViewVentasAccesorios(DataGridView gv, int id)
@@ -81,7 +82,8 @@ namespace HuergoMotors.Forms
 
         private void gvVentas_SelectionChanged(object sender, EventArgs e)
         {
-            if (gvVentas.SelectedRows > 0)
+            //Validar que ya se haya cargado el gv
+            if (gvVentas.SelectedRows.Count > 0)
             {
                 int id = ((VentaDTO)gvVentas.SelectedRows[0].DataBoundItem).Id;
                 CargarGridViewVentasAccesorios(gvAccesorios, id);
