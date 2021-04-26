@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
 using HuergoMotors.DTO;
 
 

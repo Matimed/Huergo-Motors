@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using HuergoMotors.DTO;
-using System.Linq;
-using System.Text;
-
 
 namespace HuergoMotors.Negocio
 {
