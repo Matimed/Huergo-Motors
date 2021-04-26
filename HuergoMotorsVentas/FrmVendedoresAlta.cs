@@ -59,7 +59,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                vendedoresNegocio.CargarDTO(VendedorSeleccionadoDTO.Id,
+                VendedorSeleccionadoDTO = vendedoresNegocio.CargarDTO(VendedorSeleccionadoDTO.Id,
                     txtNombre.Text, txtApellido.Text, txtSucursal.Text);
                 switch (Modo)
                 {

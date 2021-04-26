@@ -6,24 +6,67 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HuergoMotors.DTO;
 
 namespace HuergoMotors.DAO
 {
     public class VentasDAO
     {
+        public List<VentaDTO> CargarListaDTOs(DataTable dataTable)
+        {
+            List<VentaDTO> listaVentas = new List<VentaDTO>();
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                VentaDTO ventaDTO = new VentaDTO();
+                ventaDTO.Id = (int)dataRow["Id"];
+                ventaDTO.IdCliente = (int)dataRow["IdCliente"];
+                ventaDTO.IdVehiculo = (int)dataRow["IdVehiculo"];
+                ventaDTO.IdVendedor = (int)dataRow["IdVendedor"];
+                ventaDTO.Observaciones = (string)dataRow["Observaciones"];
+                ventaDTO.Fecha = (string)dataRow["Fecha"];
+                ventaDTO.Total = (decimal)dataRow["Total"];
+                ventaDTO.Cliente = (string)dataRow["Cliente"];
+                ventaDTO.Vendedor = (string)dataRow["Vendedor"];
+                listaVentas.Add(ventaDTO);
+            }
+            return listaVentas;
+        }
+
+        public DataTable CargarTabla()
+        {
+            return HelperDAO.CargarDataTable("SELECT a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor, a.Observaciones, a.Total," +
+                " b.Modelo as Vehiculo, c.Nombre as Cliente, (d.Nombre + ' ' + d.Apellido) as Vendedor" +
+                " FROM Ventas a JOIN Vehiculos b ON a.IdVehiculo = b.Id  JOIN Clientes c ON a.IdCliente = c.Id JOIN" +
+                " Vendedores d ON a.IdVendedor = d.Id");
+        }
+
+        public DataTable Buscar(string filtro)
+        {
+            return HelperDAO.CargarDataTable($"SELECT a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor," +
+                $" a.Observaciones, a.Total, b.Modelo as Vehiculo, c.Nombre as Cliente, (d.Nombre + ' ' + d.Apellido) as Vendedor " +
+                $"FROM Ventas a JOIN Vehiculos b ON a.IdVehiculo = b.Id JOIN Clientes c ON a.IdCliente = c.Id JOIN Vendedores d " +
+                $"ON a.IdVendedor = d.Id WHERE a.Fecha LIKE '%{filtro}%' OR a.Total LIKE '%{filtro}%' OR b.Modelo LIKE '%{filtro}%'" +
+                $"OR c.Nombre LIKE '%{filtro}%' OR d.Nombre LIKE '%{filtro}%' OR d.Apellido LIKE '%{filtro}%'");
+        }
+
+
+        //ToDo: Cargar todos los datos llamando al Cargar desde sus propios DAOs
         public DataTable CargarDTVendedores()
         {
             return HelperDAO.CargarDataTable("SELECT Id, Nombre + ' ' + Apellido AS Vendedor FROM Vendedores");
         }
+
         public DataTable CargarDTModelos()
         {
             return HelperDAO.CargarDataTable("SELECT  Id, Modelo FROM Vehiculos");
         }
+
         public DataTable CargarDTAccesorios(int id)
         {
             return HelperDAO.CargarDataTable($"SELECT Nombre, Id FROM Accesorios WHERE idVehiculo = {id}");
         }
-        public void ConfirmarVenta(DTO.ClienteDTO clienteDTO, DTO.VehiculoDTO vehiculoDTO, DTO.VendedorDTO vendedorDTO,
+
+        public void ConfirmarVenta(ClienteDTO clienteDTO, DTO.VehiculoDTO vehiculoDTO, DTO.VendedorDTO vendedorDTO,
             string fecha, string observaciones, string precioVenta, DataTable dtAccesorios)
         {
             using (SqlConnection conexion = new SqlConnection(HelperDAO.ConnectionString))
@@ -71,20 +114,6 @@ namespace HuergoMotors.DAO
                 }
             }
         }
-        public DataTable CargarTabla()
-        {
-            return HelperDAO.CargarDataTable("SELECT a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor, a.Observaciones, a.Total," +
-                " b.Modelo as Vehiculo, c.Nombre as Cliente, (d.Nombre + ' ' + d.Apellido) as Vendedor" +
-                " FROM Ventas a JOIN Vehiculos b ON a.IdVehiculo = b.Id  JOIN Clientes c ON a.IdCliente = c.Id JOIN" +
-                " Vendedores d ON a.IdVendedor = d.Id");
-        }
-        public DataTable Buscar(string filtro)
-        {
-            return HelperDAO.CargarDataTable($"SELECT a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor," +
-                $" a.Observaciones, a.Total, b.Modelo as Vehiculo, c.Nombre as Cliente, (d.Nombre + ' ' + d.Apellido) as Vendedor " +
-                $"FROM Ventas a JOIN Vehiculos b ON a.IdVehiculo = b.Id JOIN Clientes c ON a.IdCliente = c.Id JOIN Vendedores d " +
-                $"ON a.IdVendedor = d.Id WHERE a.Fecha LIKE '%{filtro}%' OR a.Total LIKE '%{filtro}%' OR b.Modelo LIKE '%{filtro}%'" +
-                $"OR c.Nombre LIKE '%{filtro}%' OR d.Nombre LIKE '%{filtro}%' OR d.Apellido LIKE '%{filtro}%'");
-        }
+
     }
 }

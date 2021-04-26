@@ -12,6 +12,6 @@ namespace HuergoMotors.DTO
         public string Tipo { get; set; }
         public decimal Precio { get; set; }
         public int IdVehiculo { get; set; }
-        public string ModeloVehiculo { get; set; }
+        public string Modelo { get; set; }
     }
 }

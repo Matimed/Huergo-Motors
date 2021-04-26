@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HuergoMotors.DTO
 {
-    class VentaAccesorioDTO
+    public class VentaAccesorioDTO
     {
         public int Id { get; set; }
         public int IdVenta { get; set; }

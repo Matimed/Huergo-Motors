@@ -29,7 +29,7 @@ namespace HuergoMotors.Negocio
             return clientesDAO.CargarListaDTOs(clientesDAO.Buscar(filtro));
         }
 
-        public void CargarDTO(int id, string nombre, string direccion, string email, string telefono)
+        public ClienteDTO CargarDTO(int id, string nombre, string direccion, string email, string telefono)
         {
             try
             {
@@ -43,6 +43,7 @@ namespace HuergoMotors.Negocio
                 clienteDTO.Email = email;
                 clienteDTO.Nombre = nombre;
                 clienteDTO.Telefono = telefono;
+                return clienteDTO;
             }
             catch (Exception ex)
             {

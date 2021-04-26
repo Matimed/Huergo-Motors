@@ -12,7 +12,7 @@ namespace HuergoMotors.Negocio
     {
         DAO.VehiculosDAO vehiculosDAO = new DAO.VehiculosDAO();
 
-        public void CargarDTO(int id, string modelo, string precio, string stock, string tipo)
+        public VehiculoDTO CargarDTO(int id, string modelo, string precio, string stock, string tipo)
         {
             try
             {
@@ -24,6 +24,7 @@ namespace HuergoMotors.Negocio
                 vehiculoDTO.Stock = HelperNegocio.ConvertirNumeroNatural(stock);
                 vehiculoDTO.Tipo = tipo;
                 vehiculoDTO.Modelo = modelo;
+                return vehiculoDTO;
             }
             catch (Exception ex)
             {

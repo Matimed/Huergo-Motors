@@ -18,7 +18,7 @@ namespace HuergoMotors.DAO
                 AccesorioDTO accesorioDTO = new AccesorioDTO();
                 accesorioDTO.Id = (int)dataRow["Id"];
                 accesorioDTO.Tipo = (string)dataRow["Tipo"];
-                accesorioDTO.ModeloVehiculo = (string)dataRow["Modelo"];
+                accesorioDTO.Modelo = (string)dataRow["Modelo"];
                 accesorioDTO.Nombre = (string)dataRow["Nombre"];
                 accesorioDTO.Precio = (decimal)dataRow["Precio"];
                 accesorioDTO.IdVehiculo = (int)dataRow["IdVehiculo"];
@@ -57,13 +57,13 @@ namespace HuergoMotors.DAO
             return HelperDAO.EditarDB($"DELETE FROM Accesorios Where Id={id} ");
         }
 
-        public int ModificarElemento(DTO.AccesorioDTO accesorioDTO)
+        public int ModificarElemento(AccesorioDTO accesorioDTO)
         {
             return HelperDAO.EditarDB($"UPDATE Accesorios SET Nombre='{accesorioDTO.Nombre}', Tipo='{accesorioDTO.Tipo}'," +
                                 $" Precio='{accesorioDTO.Precio}', IdVehiculo= '{accesorioDTO.IdVehiculo}' WHERE Id={accesorioDTO.Id}");
         }
 
-        public int AgregarElemento(DTO.AccesorioDTO accesorioDTO)
+        public int AgregarElemento(AccesorioDTO accesorioDTO)
         {
             return HelperDAO.EditarDB($"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
                         $" VALUES ('{accesorioDTO.Nombre}', '{accesorioDTO.Tipo}', '{accesorioDTO.Precio}', '{accesorioDTO.IdVehiculo}')");

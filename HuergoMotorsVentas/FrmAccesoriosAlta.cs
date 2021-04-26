@@ -17,6 +17,9 @@ namespace HuergoMotorsForms
         HuergoMotors.Negocio.AccesoriosNegocio accesoriosNegocio = 
             new HuergoMotors.Negocio.AccesoriosNegocio();
 
+        HuergoMotors.Negocio.VehiculosNegocio vehiculosNegocio =
+            new HuergoMotors.Negocio.VehiculosNegocio();
+
         public HuergoMotors.DTO.AccesorioDTO AccesorioSeleccionadoDTO { get; set; }
 
         public HelperForms.Modo Modo { get; private set; }
@@ -32,7 +35,7 @@ namespace HuergoMotorsForms
                 if (Modo == HelperForms.Modo.Agregar)
                 {
                     HelperForms.DisplayCombo(cboModelos, "Modelo");
-                    cboModelos.DataSource = accesoriosNegocio.CargarCombo();
+                    cboModelos.DataSource = vehiculosNegocio.CargarTabla();
                     txtNombre.Text = string.Empty;
                     txtTipo.Text = string.Empty;
                     txtPrecio.Text = "0.00";
@@ -62,7 +65,7 @@ namespace HuergoMotorsForms
                 txtTipo.Text = AccesorioSeleccionadoDTO.Tipo;
                 txtNombre.Text = AccesorioSeleccionadoDTO.Nombre;
                 HelperForms.DisplayCombo(cboModelos, "Modelo");
-                cboModelos.DataSource = accesoriosNegocio.CargarCombo();
+                cboModelos.DataSource = vehiculosNegocio.CargarTabla();
                 cboModelos.SelectedValue = AccesorioSeleccionadoDTO.IdVehiculo;
             }
 
@@ -81,7 +84,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                accesoriosNegocio.CargarDTO(AccesorioSeleccionadoDTO.Id, (int)cboModelos.SelectedValue, 
+                AccesorioSeleccionadoDTO = accesoriosNegocio.CargarDTO(AccesorioSeleccionadoDTO.Id, (int)cboModelos.SelectedValue, 
                     cboModelos.Text, txtPrecio.Text, txtNombre.Text, txtTipo.Text);
 
                 switch (Modo)

@@ -45,7 +45,7 @@ namespace HuergoMotors.Negocio
             return vendedoresDAO.CargarListaDTOs(vendedoresDAO.Buscar(filtro));
         }
 
-        public void CargarDTO(int id, string nombre, string apellido, string sucursal)
+        public VendedorDTO CargarDTO(int id, string nombre, string apellido, string sucursal)
         {
             try
             {
@@ -56,6 +56,7 @@ namespace HuergoMotors.Negocio
                 vendedorDTO.Apellido = apellido;
                 vendedorDTO.Nombre = nombre;
                 vendedorDTO.Sucursal = sucursal;
+                return vendedorDTO;
             }
             catch (Exception ex)
             {

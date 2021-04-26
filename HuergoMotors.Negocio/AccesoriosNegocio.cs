@@ -31,17 +31,20 @@ namespace HuergoMotors.Negocio
             return accesoriosDAO.CargarListaDTOs(accesoriosDAO.CargarCombo());
         }
 
-        public void CargarDTO(int id, int idVehiculo, string modeloVehiuclo, string precio, string nombre, string tipo)
+        public AccesorioDTO CargarDTO(int id, int idVehiculo, string modeloVehiuculo, string precio, string nombre, string tipo)
         {
             try
             {
                 AccesorioDTO accesorioDTO = new AccesorioDTO();
-                HelperNegocio.ValidarTextosVacios(modeloVehiuclo ,precio, nombre, tipo);
+                HelperNegocio.ValidarTextosVacios(modeloVehiuculo ,precio, nombre, tipo);
+                HelperNegocio.ValidarID(id);
+                accesorioDTO.Id = id;
                 accesorioDTO.Precio = HelperNegocio.ConvertirNumeroRacional(precio);
                 accesorioDTO.IdVehiculo = idVehiculo;
                 accesorioDTO.Tipo = tipo;
                 accesorioDTO.Nombre = nombre;
-                accesorioDTO.ModeloVehiculo = modeloVehiuclo;
+                accesorioDTO.Modelo = modeloVehiuculo;
+                return accesorioDTO;
             }
             catch (Exception ex)
             {
@@ -49,7 +52,7 @@ namespace HuergoMotors.Negocio
             }
         }
 
-        public int ModificarElemento(DTO.AccesorioDTO accesorioDTO)
+        public int ModificarElemento(AccesorioDTO accesorioDTO)
         {
             return accesoriosDAO.ModificarElemento(accesorioDTO);
         }
