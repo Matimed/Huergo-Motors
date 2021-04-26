@@ -20,6 +20,7 @@ namespace HuergoMotors.DAO
                 vendedorDTO.Nombre = (string)dataRow["Nombre"];
                 vendedorDTO.Sucursal = (string)dataRow["Sucursal"];
                 vendedorDTO.Apellido = (string)dataRow["Apellido"];
+                vendedorDTO.NombreCompleto = vendedorDTO.Nombre + " " + vendedorDTO.Apellido;
                 listaVendedores.Add(vendedorDTO);
             }
             return listaVendedores;

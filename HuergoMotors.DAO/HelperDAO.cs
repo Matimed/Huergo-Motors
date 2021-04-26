@@ -13,6 +13,17 @@ namespace HuergoMotors.DAO
     {
         public static string ConnectionString = "Server=sql5078.site4now.net;Database=DB_9CF8B6_HuergoMotors2021;User Id=DB_9CF8B6_HuergoMotors2021_admin;Password=huergo2021;";
 
+        public static NumberFormatInfo NFI()
+        {
+            //Escribe el número con puntos en lugar de comas para no dar error en la DB en los decimal
+            NumberFormatInfo numberFormatInfo = new NumberFormatInfo
+            {
+                NumberDecimalSeparator = "."
+            };
+            return numberFormatInfo;
+        }
+
+
         public static void EditarDB(string query, SqlConnection conexion, SqlTransaction transaction)
         {
             try

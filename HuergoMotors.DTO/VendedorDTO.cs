@@ -11,5 +11,6 @@ namespace HuergoMotors.DTO
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Sucursal { get; set; }
+        public string NombreCompleto { get; set; }
     }
 }

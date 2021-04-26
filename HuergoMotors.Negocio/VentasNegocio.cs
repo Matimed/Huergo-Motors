@@ -37,37 +37,49 @@ namespace HuergoMotors.Negocio
         }
 
 
-        public void ConfirmarVenta(DTO.ClienteDTO clienteDTO, DTO.VehiculoDTO vehiculoDTO,
-            DTO.VendedorDTO vendedorDTO, DateTime dateNow, string observaciones, DataTable accesorios)
+        public VentaDTO CargarDTO(ClienteDTO clienteDTO,VehiculoDTO vehiculoDTO,
+            VendedorDTO vendedorDTO, DateTime fecha, string observaciones)
         {
             try
             {
                 ValidarClienteSeleccionado(clienteDTO);
                 ValidarVehiculoSeleccionado(vehiculoDTO);
                 ValidarVendedorSeleccionado(vendedorDTO);
-
+                
                 if (vehiculoDTO.Stock < 1) throw new Exception("No hay stock del vehiculo seleccionado");
 
 
-                if (dateNow.Date > DateTime.Now.Date) throw new Exception
+                if (fecha.Date > DateTime.Now.Date) throw new Exception
                         ("La fecha no puede ser posterior a la actual del sistema");
             }
             catch (Exception ex)
             {
-                throw new Exception("Eror al validar los datos: ", ex);
+                throw new Exception("Error al validar los datos: ", ex);
             }
             try
             {
-                string fecha = dateNow.ToString("yyyyMMdd");
-                ventasDAO.ConfirmarVenta(clienteDTO, vehiculoDTO, vendedorDTO,
-                    fecha, observaciones, vehiculoDTO.PrecioVenta.ToString(HelperNegocio.NFI()), accesorios);
+                VentaDTO ventaDTO = new VentaDTO();
+                ventaDTO.IdCliente = clienteDTO.Id;
+                ventaDTO.IdVehiculo = vehiculoDTO.Id;
+                ventaDTO.IdVendedor = vendedorDTO.Id;
+                ventaDTO.Observaciones = observaciones;
+                ventaDTO.Total = vehiculoDTO.PrecioVenta;
+                ventaDTO.Cliente = clienteDTO.Nombre;
+                ventaDTO.Fecha = fecha.ToString("yyyyMMdd");
+                ventaDTO.Vehiculo = vehiculoDTO.Modelo;
+                ventaDTO.Vendedor = vendedorDTO.NombreCompleto;
+                return ventaDTO;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-
+        
+        public void ConfirmarVenta(VentaDTO venta, List<AccesorioDTO> accesorios)
+        {
+            ventasDAO.ConfirmarVenta(venta, accesorios);
+        }
 
         public DataTable CargarDTVendedor()
         {

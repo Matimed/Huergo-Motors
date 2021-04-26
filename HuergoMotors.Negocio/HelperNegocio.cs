@@ -15,12 +15,8 @@ namespace HuergoMotors.Negocio
         
         public static NumberFormatInfo NFI()
         {
-            //Escribe el número con puntos en lugar de comas para no dar error en la DB en los decimal
-            NumberFormatInfo numberFormatInfo = new NumberFormatInfo
-            {
-                NumberDecimalSeparator = "."
-            };
-            return numberFormatInfo;
+            
+            return DAO.HelperDAO.NFI();
         }
 
         public static void ValidarTextosVacios(params string[] textosValidar)
