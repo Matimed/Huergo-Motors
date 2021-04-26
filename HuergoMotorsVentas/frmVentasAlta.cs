@@ -22,7 +22,7 @@ namespace HuergoMotorsForms
         public VendedorDTO VendedorSeleccionado { get; set; }
 
 
-        public  List<AccesorioDTO> listaAccesoriosDTOs = new List<AccesorioDTO>();
+        public List<AccesorioDTO> listaAccesoriosDTOs = new List<AccesorioDTO>();
 
         private decimal PrecioTotalAccesorios;
 
@@ -35,7 +35,7 @@ namespace HuergoMotorsForms
         private void frmVentas_Load(object sender, EventArgs e)
         {
             try
-            { 
+            {
                 HelperForms.DisplayCombo(cboVendedor, "NombreCompleto");
                 cboVendedor.DataSource = vendedoresNegocio.CargarTabla();
                 HelperForms.DisplayCombo(cboModelo, "Modelo");
@@ -46,14 +46,14 @@ namespace HuergoMotorsForms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void cboVendedor_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
-                
+
             {
                 if (HelperForms.VerificarCombosCargados(cboVendedor))
                 {
@@ -63,7 +63,7 @@ namespace HuergoMotorsForms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -77,21 +77,21 @@ namespace HuergoMotorsForms
                     {
                         PrecioTotalAccesorios = 0;
                         listaAccesoriosDTOs.Clear();
-                        gvAccesorios.DataSource= listaAccesoriosDTOs;
+                        gvAccesorios.DataSource = listaAccesoriosDTOs;
                     }
 
                     VehiculoSeleccionado = vehiculosNegocio.CargarTabla((int)cboModelo.SelectedValue);
 
                     txtTipo.Text = VehiculoSeleccionado.Tipo;
                     txtPrecio.Text = VehiculoSeleccionado.PrecioVenta.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
-                    lblTotal.Text = "$ "+ VehiculoSeleccionado.PrecioVenta.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
+                    lblTotal.Text = "$ " + VehiculoSeleccionado.PrecioVenta.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
                     HelperForms.DisplayCombo(cboAccesorios, "Nombre");
                     cboAccesorios.DataSource = accesoriosNegocio.CargarTablaIdVehiculo(VehiculoSeleccionado.Id);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -111,24 +111,32 @@ namespace HuergoMotorsForms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
 
         private void gvAccesorios_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (gvAccesorios.Columns[e.ColumnIndex].Name == "Eliminar")
+            try
             {
-                
-                AccesorioDTO accesorioSeleccionado = new AccesorioDTO();
-                accesorioSeleccionado = accesoriosNegocio.CargarTabla((int)cboAccesorios.SelectedValue)[0];
-                PrecioTotalAccesorios = PrecioTotalAccesorios - accesorioSeleccionado.Precio;
-                listaAccesoriosDTOs.Remove(accesorioSeleccionado);
-                gvAccesorios.DataSource = listaAccesoriosDTOs;
-                lblTotal.Text = "$ " + Convert.ToString(PrecioTotalAccesorios + VehiculoSeleccionado.PrecioVenta);
+                if (gvAccesorios.Columns[e.ColumnIndex].Name == "Eliminar")
+                {
+
+                    AccesorioDTO accesorioSeleccionado = new AccesorioDTO();
+                    accesorioSeleccionado = accesoriosNegocio.CargarTabla((int)cboAccesorios.SelectedValue)[0];
+                    PrecioTotalAccesorios = PrecioTotalAccesorios - accesorioSeleccionado.Precio;
+                    listaAccesoriosDTOs.Remove(accesorioSeleccionado);
+                    gvAccesorios.DataSource = listaAccesoriosDTOs;
+                    lblTotal.Text = "$ " + Convert.ToString(PrecioTotalAccesorios + VehiculoSeleccionado.PrecioVenta);
+                }
+
             }
-        }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        } 
 
         private void btnSeleccionar_Click(object sender, EventArgs e)
         {
@@ -179,11 +187,11 @@ namespace HuergoMotorsForms
             {
                 if (ex.InnerException != null)
                 {
-                    MessageBox.Show(ex.Message + ex.InnerException.Message, "Error", MessageBoxButtons.OK);
+                    MessageBox.Show(ex.Message + ex.InnerException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

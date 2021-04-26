@@ -11,7 +11,6 @@ namespace HuergoMotorsForms
     public static class HelperForms
     {
         //ToDo: frmVentasAccesorios
-        //ToDo: Mensajes de error con icon de error
 
         public enum Modo
         {
