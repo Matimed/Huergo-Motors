@@ -23,20 +23,15 @@ namespace HuergoMotors.DAO
             return listaClientes;
         }
 
-        public DataTable CargarTabla()
+        public List<ClienteDTO> CargarTabla()
         {
-            return HelperDAO.CargarDataTable("SELECT * FROM Clientes");
+            return CargarListaDTOs(HelperDAO.CargarDataTable("SELECT * FROM Clientes"));
         }
 
-        public DataTable Buscar(string filtro)
+        public List<ClienteDTO> Buscar(string filtro)
         {
-            return HelperDAO.CargarDataTable($"SELECT * FROM Clientes WHERE Nombre LIKE '%{filtro}%'" +
-                     $" or Direccion LIKE '%{filtro}%' or Telefono LIKE '%{filtro}%' or Email LIKE '%{filtro}%'");
-        }
-
-        public DataTable CargarTabla(int id)
-        {
-            return HelperDAO.CargarDataTable($"SELECT * FROM Clientes WHERE Id={id}");
+            return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT * FROM Clientes WHERE Nombre LIKE '%{filtro}%'" +
+                     $" or Direccion LIKE '%{filtro}%' or Telefono LIKE '%{filtro}%' or Email LIKE '%{filtro}%'"));
         }
 
         public int ModificarElemento(ClienteDTO clienteDTO)
