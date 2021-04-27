@@ -37,15 +37,16 @@ namespace HuergoMotors.DAO
             $"LIKE '%{filtro}%' or b.Modelo LIKE '%{filtro}%'");
         }
 
-        public DataTable CargarTabla(int id)
+        public AccesorioDTO CargarTabla(int id)
         {
-            return HelperDAO.CargarDataTable($"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
-                    $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id WHERE a.Id={id}");
+            return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
+                    $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id WHERE a.Id={id}"))[0];
         }
-        public DataTable CargarTablaIdVehiculo(int id)
+
+        public List<AccesorioDTO> CargarTablaIdVehiculo(int id)
         {
-            return HelperDAO.CargarDataTable($"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
-                    $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id WHERE a.IdVehiculo={id}");
+            return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
+                    $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id WHERE a.IdVehiculo={id}"));
         }
 
         public int EliminarElemento(int id)

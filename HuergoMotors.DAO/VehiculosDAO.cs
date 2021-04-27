@@ -22,20 +22,20 @@ namespace HuergoMotors.DAO
             return listaVehiculos;
         }
 
-        public DataTable CargarTabla()
+        public List<VehiculoDTO> CargarTabla()
         {
-            return HelperDAO.CargarDataTable("SELECT * FROM Vehiculos");
+            return CargarListaDTOs(HelperDAO.CargarDataTable("SELECT * FROM Vehiculos"));
         }
 
-        public DataTable CargarTabla(int id)
+        public VehiculoDTO CargarTabla(int id)
         {
-            return HelperDAO.CargarDataTable($"SELECT * FROM Vehiculos WHERE Id={id}");
+            return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT * FROM Vehiculos WHERE Id={id}"))[0];
         }
 
-        public DataTable Buscar(string filtro)
+        public List<VehiculoDTO> Buscar(string filtro)
         {
-            return HelperDAO.CargarDataTable($"SELECT * FROM Vehiculos WHERE Tipo LIKE '%{filtro}%'" +
-                     $" or Modelo LIKE '%{filtro}%' or PrecioVenta LIKE '%{filtro}%' "); ;
+            return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT * FROM Vehiculos WHERE Tipo LIKE '%{filtro}%'" +
+                     $" or Modelo LIKE '%{filtro}%' or PrecioVenta LIKE '%{filtro}%' "));
         }
 
         public int EliminarElemento(int id)
@@ -54,6 +54,5 @@ namespace HuergoMotors.DAO
             return HelperDAO.EditarDB($"INSERT INTO Vehiculos (Tipo, Modelo, PrecioVenta, Stock) " +
                         $"VALUES ('{vehiculoDTO.Tipo}', '{vehiculoDTO.Modelo}', {vehiculoDTO.PrecioVenta}, {vehiculoDTO.Stock})");
         }
-
     }
 }

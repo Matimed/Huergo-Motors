@@ -30,7 +30,7 @@ namespace HuergoMotors.Forms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVentas));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.picReload = new System.Windows.Forms.PictureBox();
             this.picBusqueda = new System.Windows.Forms.PictureBox();
             this.btCerrar = new System.Windows.Forms.Button();
@@ -177,9 +177,9 @@ namespace HuergoMotors.Forms
             // IdCliente
             // 
             this.IdCliente.DataPropertyName = "IdCliente";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.NullValue = "0";
-            this.IdCliente.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.NullValue = "0";
+            this.IdCliente.DefaultCellStyle = dataGridViewCellStyle2;
             this.IdCliente.HeaderText = "IdCliente";
             this.IdCliente.Name = "IdCliente";
             this.IdCliente.ReadOnly = true;

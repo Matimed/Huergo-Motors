@@ -16,7 +16,6 @@ namespace HuergoMotors.DAO
             {
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
-                    //Da error cuando llega al ultimo DataRow 68
                     VentaDTO ventaDTO = new VentaDTO();
                     ventaDTO.Id = (int)dataRow["Id"];
                     ventaDTO.IdCliente = (int)dataRow["IdCliente"];
@@ -120,7 +119,7 @@ namespace HuergoMotors.DAO
                             {
                                 HelperDAO.EditarDB($"INSERT INTO VentasAccesorios (IdVenta, IdAccesorio, Precio) VALUES" +
                                     $"((SELECT MAX(Id) AS IdVenta FROM Ventas), '{accesorio.Id}'," +
-                                    $" '{accesorio.Precio}')", conexion, transaction);
+                                    $" '{accesorio.Precio.ToString(HelperDAO.NFI())}')", conexion, transaction);
                             }
                         }
                         transaction.Commit();
@@ -128,7 +127,7 @@ namespace HuergoMotors.DAO
                     catch (Exception ex)
                     {
                         transaction.Rollback();
-                        throw new Exception("Error al intentar cargar la venta en la base de datos", ex);
+                        throw new Exception("Error al intentar cargar la venta en la base de datos.", ex);
                     }
                 }
             }

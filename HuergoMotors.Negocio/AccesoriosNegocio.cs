@@ -8,6 +8,7 @@ namespace HuergoMotors.Negocio
     public class AccesoriosNegocio
     {
         AccesoriosDAO accesoriosDAO = new AccesoriosDAO();
+
         public List<AccesorioDTO> CargarTabla()
         {
             return accesoriosDAO.CargarListaDTOs(accesoriosDAO.CargarTabla());
@@ -18,16 +19,15 @@ namespace HuergoMotors.Negocio
             return accesoriosDAO.CargarListaDTOs(accesoriosDAO.Buscar(filtro));
         }
 
-        public List<AccesorioDTO> CargarTabla(int id)
-        {
-            return accesoriosDAO.CargarListaDTOs(accesoriosDAO.CargarTabla(id));
-        }
-
         public List<AccesorioDTO> CargarTablaIdVehiculo(int id)
         {
-            return accesoriosDAO.CargarListaDTOs(accesoriosDAO.CargarTablaIdVehiculo(id));
+            return accesoriosDAO.CargarTablaIdVehiculo(id);
         }
 
+        public AccesorioDTO CargarTabla(int id)
+        {
+            return accesoriosDAO.CargarTabla(id);
+        }
 
         public AccesorioDTO CargarDTO(int id, int idVehiculo, string modeloVehiuculo, string precio, string nombre, string tipo)
         {

@@ -99,7 +99,7 @@ namespace HuergoMotorsForms
             {
                 if (cboAccesorios.Items.Count <= 0) throw new Exception("No puede agregar un accesorio inexistente");
                 AccesorioDTO accesorioSeleccionado = new AccesorioDTO();
-                accesorioSeleccionado = accesoriosNegocio.CargarTabla((int)cboAccesorios.SelectedValue)[0];
+                accesorioSeleccionado = accesoriosNegocio.CargarTabla((int)cboAccesorios.SelectedValue);
                 listaAccesoriosDTOs.Add(accesorioSeleccionado);
                 gvAccesorios.DataSource = new BindingList<AccesorioDTO> (listaAccesoriosDTOs);
                 PrecioTotalAccesorios = PrecioTotalAccesorios + accesorioSeleccionado.Precio;
@@ -182,7 +182,7 @@ namespace HuergoMotorsForms
             {
                 if (ex.InnerException != null)
                 {
-                    MessageBox.Show(ex.Message + ex.InnerException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message +" "+ ex.InnerException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
