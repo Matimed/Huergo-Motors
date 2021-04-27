@@ -7,7 +7,7 @@ namespace HuergoMotors.Negocio
     public class VehiculosNegocio
     {
         DAO.VehiculosDAO vehiculosDAO = new DAO.VehiculosDAO();
-
+        AccesoriosNegocio accesoriosNegocio = new AccesoriosNegocio();
         public VehiculoDTO CargarDTO(int id, string modelo, string precio, string stock, string tipo)
         {
             try
@@ -45,7 +45,16 @@ namespace HuergoMotors.Negocio
 
         public int EliminarElemento(int id)
         {
-            return vehiculosDAO.EliminarElemento(id);
+            try
+            {
+                if (accesoriosNegocio.CargarTablaIdVehiculo(id).Count > 0)
+                    throw new Exception("No se puede borrar un vehiculo que tenga accesorios");
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+                return vehiculosDAO.EliminarElemento(id);
         }
 
         public int ModificarElemento(VehiculoDTO vehiculoDTO)

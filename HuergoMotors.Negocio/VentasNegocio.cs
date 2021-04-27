@@ -24,15 +24,15 @@ namespace HuergoMotors.Negocio
             return ventasDAO.Buscar(filtro);
         }
 
-        public void ValidarClienteSeleccionado(DTO.ClienteDTO clienteDTO)
+        public void ValidarClienteSeleccionado(ClienteDTO clienteDTO)
         {
             if (clienteDTO == null) throw new Exception("Debe seleccionar un cliente");
         }
-        public void ValidarVehiculoSeleccionado(DTO.VehiculoDTO vehiculoDTO)
+        public void ValidarVehiculoSeleccionado(VehiculoDTO vehiculoDTO)
         {
             if (vehiculoDTO == null) throw new Exception("Debe seleccionar un vehiculo");
         }
-        public void ValidarVendedorSeleccionado(DTO.VendedorDTO vendedorDTO)
+        public void ValidarVendedorSeleccionado(VendedorDTO vendedorDTO)
         {
             if (vendedorDTO == null) throw new Exception("Debe seleccionar un vendedor");
         }
