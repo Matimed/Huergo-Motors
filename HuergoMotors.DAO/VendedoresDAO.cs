@@ -22,9 +22,9 @@ namespace HuergoMotors.DAO
             return listaVendedores;
         }
 
-        public DataTable CargarTabla()
+        public List<VendedorDTO> CargarTabla()
         {
-            return HelperDAO.CargarDataTable("SELECT * FROM Vendedores");
+            return CargarListaDTOs(HelperDAO.CargarDataTable("SELECT * FROM Vendedores"));
         }
 
         public DataTable CargarTabla(int id)
@@ -32,10 +32,10 @@ namespace HuergoMotors.DAO
             return HelperDAO.CargarDataTable($"SELECT * FROM Vendedores WHERE Id={id}");
         }
 
-        public DataTable Buscar(string filtro)
+        public List<VendedorDTO> Buscar(string filtro)
         {
-            return HelperDAO.CargarDataTable($"SELECT * FROM Vendedores WHERE Apellido LIKE '%{filtro}%'" +
-                    $" or Nombre LIKE '%{filtro}%' or Sucursal LIKE '%{filtro}%'");
+            return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT * FROM Vendedores WHERE Apellido LIKE '%{filtro}%'" +
+                    $" or Nombre LIKE '%{filtro}%' or Sucursal LIKE '%{filtro}%'"));
         }
 
         public int EliminarElemento(int id)
