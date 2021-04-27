@@ -22,7 +22,7 @@ namespace HuergoMotors.DAO
                     ventaDTO.IdVehiculo = (int)dataRow["IdVehiculo"];
                     ventaDTO.IdVendedor = (int)dataRow["IdVendedor"];
                     ventaDTO.Observaciones = (string)dataRow["Observaciones"];
-                    ventaDTO.Fecha = ((DateTime)dataRow["Fecha"]).ToString("yyyyMMdd");
+                    ventaDTO.Fecha = ((DateTime)dataRow["Fecha"]).ToString("dd/MM/yyyy");
                     ventaDTO.Total = (decimal)dataRow["Total"];
                     ventaDTO.Cliente = (string)dataRow["Cliente"];
                     ventaDTO.Vendedor = (string)dataRow["Vendedor"];
