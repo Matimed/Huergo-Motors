@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using HuergoMotors.DTO;
 
 namespace HuergoMotors.Negocio
@@ -8,22 +7,21 @@ namespace HuergoMotors.Negocio
     public class VentasNegocio
     {
         DAO.VentasDAO ventasDAO = new DAO.VentasDAO();
-        public DataTable dataTableAccesorios;
         public decimal precioTotalAccesorios;
 
         public List<VentaDTO> CargarTablaVentas()
         {
-            return ventasDAO.CargarListaDTOs(ventasDAO.CargarTablaVentas());
+            return ventasDAO.CargarTablaVentas();
         }
 
         public List<VentaAccesorioDTO> CargarTablaVentasAccesorios(int id)
         {
-            return ventasDAO.CargarListaAccesoriosDTOs(ventasDAO.CargarTablaVentasAccesorios(id));
+            return ventasDAO.CargarTablaVentasAccesorios(id);
         }
 
         public List<VentaDTO> Buscar(string filtro)
         {
-            return ventasDAO.CargarListaDTOs(ventasDAO.Buscar(filtro));
+            return ventasDAO.Buscar(filtro);
         }
 
         public void ValidarClienteSeleccionado(DTO.ClienteDTO clienteDTO)
