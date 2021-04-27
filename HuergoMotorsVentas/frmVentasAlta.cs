@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
 using HuergoMotors.DTO;
 
@@ -100,8 +101,7 @@ namespace HuergoMotorsForms
                 AccesorioDTO accesorioSeleccionado = new AccesorioDTO();
                 accesorioSeleccionado = accesoriosNegocio.CargarTabla((int)cboAccesorios.SelectedValue)[0];
                 listaAccesoriosDTOs.Add(accesorioSeleccionado);
-                gvAccesorios.DataSource = listaAccesoriosDTOs;
-                //Bug: No se muestran las rows que se agregan el el grid view
+                gvAccesorios.DataSource = new BindingList<AccesorioDTO> (listaAccesoriosDTOs);
                 PrecioTotalAccesorios = PrecioTotalAccesorios + accesorioSeleccionado.Precio;
                 lblTotal.Text = "$ " + Convert.ToString(PrecioTotalAccesorios + VehiculoSeleccionado.PrecioVenta);
 
@@ -118,13 +118,11 @@ namespace HuergoMotorsForms
             try
             {
                 if (gvAccesorios.Columns[e.ColumnIndex].Name == "Eliminar")
-                {
-
+                {                    
                     AccesorioDTO accesorioSeleccionado = new AccesorioDTO();
-                    accesorioSeleccionado = accesoriosNegocio.CargarTabla((int)cboAccesorios.SelectedValue)[0];
-                    PrecioTotalAccesorios = PrecioTotalAccesorios - accesorioSeleccionado.Precio;
-                    listaAccesoriosDTOs.Remove(accesorioSeleccionado);
-                    gvAccesorios.DataSource = listaAccesoriosDTOs;
+                    PrecioTotalAccesorios = PrecioTotalAccesorios - listaAccesoriosDTOs[e.RowIndex].Precio;
+                    listaAccesoriosDTOs.Remove(listaAccesoriosDTOs[e.RowIndex]);
+                    gvAccesorios.DataSource = new BindingList<AccesorioDTO>(listaAccesoriosDTOs);
                     lblTotal.Text = "$ " + Convert.ToString(PrecioTotalAccesorios + VehiculoSeleccionado.PrecioVenta);
                 }
 

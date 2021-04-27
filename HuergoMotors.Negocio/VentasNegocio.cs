@@ -16,9 +16,9 @@ namespace HuergoMotors.Negocio
             return ventasDAO.CargarListaDTOs(ventasDAO.CargarTablaVentas());
         }
 
-        public List<VentaDTO> CargarTablaVentasAccesorios(int id)
+        public List<VentaAccesorioDTO> CargarTablaVentasAccesorios(int id)
         {
-            return ventasDAO.CargarListaDTOs(ventasDAO.CargarTablaVentasAccesorios(id));
+            return ventasDAO.CargarListaAccesoriosDTOs(ventasDAO.CargarTablaVentasAccesorios(id));
         }
 
         public List<VentaDTO> Buscar(string filtro)

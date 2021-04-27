@@ -35,16 +35,6 @@ namespace HuergoMotors.Forms
             this.picBusqueda = new System.Windows.Forms.PictureBox();
             this.btCerrar = new System.Windows.Forms.Button();
             this.gvVentas = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txFiltro = new System.Windows.Forms.TextBox();
-            this.splitTablas = new System.Windows.Forms.SplitContainer();
-            this.gvAccesorios = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NombreAccesorio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TipoAccesorio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.VehiculoModelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -55,6 +45,16 @@ namespace HuergoMotors.Forms
             this.IdVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Observaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txFiltro = new System.Windows.Forms.TextBox();
+            this.splitTablas = new System.Windows.Forms.SplitContainer();
+            this.gvAccesorios = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NombreAccesorio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TipoAccesorio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.picReload)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBusqueda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvVentas)).BeginInit();
@@ -129,6 +129,83 @@ namespace HuergoMotors.Forms
             this.gvVentas.Size = new System.Drawing.Size(673, 267);
             this.gvVentas.TabIndex = 15;
             this.gvVentas.SelectionChanged += new System.EventHandler(this.gvVentas_SelectionChanged);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Visible = false;
+            // 
+            // VehiculoModelo
+            // 
+            this.VehiculoModelo.DataPropertyName = "Vehiculo";
+            this.VehiculoModelo.HeaderText = "Vehiculo";
+            this.VehiculoModelo.Name = "VehiculoModelo";
+            this.VehiculoModelo.ReadOnly = true;
+            // 
+            // Cliente
+            // 
+            this.Cliente.DataPropertyName = "Cliente";
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
+            // 
+            // Vendedor
+            // 
+            this.Vendedor.DataPropertyName = "Vendedor";
+            this.Vendedor.HeaderText = "Vendedor";
+            this.Vendedor.Name = "Vendedor";
+            this.Vendedor.ReadOnly = true;
+            // 
+            // Fecha
+            // 
+            this.Fecha.DataPropertyName = "Fecha";
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            // 
+            // IdVehiculo
+            // 
+            this.IdVehiculo.DataPropertyName = "IdVehiculo";
+            this.IdVehiculo.HeaderText = "idVehiculo";
+            this.IdVehiculo.Name = "IdVehiculo";
+            this.IdVehiculo.ReadOnly = true;
+            this.IdVehiculo.Visible = false;
+            // 
+            // IdCliente
+            // 
+            this.IdCliente.DataPropertyName = "IdCliente";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.NullValue = "0";
+            this.IdCliente.DefaultCellStyle = dataGridViewCellStyle1;
+            this.IdCliente.HeaderText = "IdCliente";
+            this.IdCliente.Name = "IdCliente";
+            this.IdCliente.ReadOnly = true;
+            this.IdCliente.Visible = false;
+            // 
+            // IdVendedor
+            // 
+            this.IdVendedor.DataPropertyName = "IdVendedor";
+            this.IdVendedor.HeaderText = "idVendedor";
+            this.IdVendedor.Name = "IdVendedor";
+            this.IdVendedor.ReadOnly = true;
+            this.IdVendedor.Visible = false;
+            // 
+            // Observaciones
+            // 
+            this.Observaciones.DataPropertyName = "Observaciones";
+            this.Observaciones.HeaderText = "Observacion";
+            this.Observaciones.Name = "Observaciones";
+            this.Observaciones.ReadOnly = true;
+            // 
+            // Total
+            // 
+            this.Total.DataPropertyName = "Total";
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
             // 
             // label2
             // 
@@ -233,83 +310,6 @@ namespace HuergoMotors.Forms
             this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
             this.dataGridViewTextBoxColumn10.ReadOnly = true;
             // 
-            // Id
-            // 
-            this.Id.DataPropertyName = "Id";
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Visible = false;
-            // 
-            // VehiculoModelo
-            // 
-            this.VehiculoModelo.DataPropertyName = "Vehiculo";
-            this.VehiculoModelo.HeaderText = "Vehiculo";
-            this.VehiculoModelo.Name = "VehiculoModelo";
-            this.VehiculoModelo.ReadOnly = true;
-            // 
-            // Cliente
-            // 
-            this.Cliente.DataPropertyName = "Cliente";
-            this.Cliente.HeaderText = "Cliente";
-            this.Cliente.Name = "Cliente";
-            this.Cliente.ReadOnly = true;
-            // 
-            // Vendedor
-            // 
-            this.Vendedor.DataPropertyName = "Vendedor";
-            this.Vendedor.HeaderText = "Vendedor";
-            this.Vendedor.Name = "Vendedor";
-            this.Vendedor.ReadOnly = true;
-            // 
-            // Fecha
-            // 
-            this.Fecha.DataPropertyName = "Fecha";
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            // 
-            // IdVehiculo
-            // 
-            this.IdVehiculo.DataPropertyName = "IdVehiculo";
-            this.IdVehiculo.HeaderText = "idVehiculo";
-            this.IdVehiculo.Name = "IdVehiculo";
-            this.IdVehiculo.ReadOnly = true;
-            this.IdVehiculo.Visible = false;
-            // 
-            // IdCliente
-            // 
-            this.IdCliente.DataPropertyName = "IdCliente";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle1.NullValue = "0";
-            this.IdCliente.DefaultCellStyle = dataGridViewCellStyle1;
-            this.IdCliente.HeaderText = "IdCliente";
-            this.IdCliente.Name = "IdCliente";
-            this.IdCliente.ReadOnly = true;
-            this.IdCliente.Visible = false;
-            // 
-            // IdVendedor
-            // 
-            this.IdVendedor.DataPropertyName = "IdVendedor";
-            this.IdVendedor.HeaderText = "idVendedor";
-            this.IdVendedor.Name = "IdVendedor";
-            this.IdVendedor.ReadOnly = true;
-            this.IdVendedor.Visible = false;
-            // 
-            // Observaciones
-            // 
-            this.Observaciones.DataPropertyName = "Observaciones";
-            this.Observaciones.HeaderText = "Observacion";
-            this.Observaciones.Name = "Observaciones";
-            this.Observaciones.ReadOnly = true;
-            // 
-            // Total
-            // 
-            this.Total.DataPropertyName = "Total";
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            // 
             // frmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -325,7 +325,7 @@ namespace HuergoMotors.Forms
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmVentas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmVentas";
+            this.Text = "Ventas - Busqueda";
             this.Load += new System.EventHandler(this.frmVentas_load);
             ((System.ComponentModel.ISupportInitialize)(this.picReload)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBusqueda)).EndInit();

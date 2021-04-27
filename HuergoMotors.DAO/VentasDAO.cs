@@ -38,7 +38,34 @@ namespace HuergoMotors.DAO
 
             }
             return listaVentas;
-        } 
+        }
+
+        public List<VentaAccesorioDTO> CargarListaAccesoriosDTOs(DataTable dataTable)
+        {
+
+            List<VentaAccesorioDTO> listaVentasAccesorios = new List<VentaAccesorioDTO>();
+            try
+            {
+                foreach (DataRow dataRow in dataTable.Rows)
+                {
+                    VentaAccesorioDTO ventaDTO = new VentaAccesorioDTO();
+                    ventaDTO.Id = (int)dataRow["Id"];
+                    ventaDTO.IdVenta = (int)dataRow["IdVenta"];
+                    ventaDTO.IdAccesorio = (int)dataRow["IdAccesorio"];
+                    ventaDTO.Precio = (decimal)dataRow["Precio"];
+                    ventaDTO.NombreAccesorio = (string)dataRow["NombreAccesorio"];
+                    ventaDTO.TipoAccesorio = (string)dataRow["TipoAccesorio"];
+                    listaVentasAccesorios.Add(ventaDTO);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+            return listaVentasAccesorios;
+        }
 
         public DataTable CargarTablaVentas()
         {

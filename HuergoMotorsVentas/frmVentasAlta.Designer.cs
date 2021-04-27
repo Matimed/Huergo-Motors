@@ -30,7 +30,7 @@ namespace HuergoMotorsForms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVentasAlta));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -65,13 +65,13 @@ namespace HuergoMotorsForms
             this.btnCancelar = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IdVehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEliminarAccesorio = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvAccesorios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -293,15 +293,16 @@ namespace HuergoMotorsForms
             this.gvAccesorios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gvAccesorios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvAccesorios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Nombre,
             this.Id,
             this.IdVehiculo,
+            this.Modelo,
+            this.Nombre,
             this.Tipo,
             this.Precio,
-            this.Modelo,
-            this.btnEliminarAccesorio});
+            this.Eliminar});
             this.gvAccesorios.Location = new System.Drawing.Point(48, 329);
             this.gvAccesorios.Name = "gvAccesorios";
+            this.gvAccesorios.ReadOnly = true;
             this.gvAccesorios.Size = new System.Drawing.Size(446, 147);
             this.gvAccesorios.TabIndex = 32;
             this.gvAccesorios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvAccesorios_CellClick);
@@ -439,17 +440,12 @@ namespace HuergoMotorsForms
             this.pictureBox1.TabIndex = 45;
             this.pictureBox1.TabStop = false;
             // 
-            // Nombre
-            // 
-            this.Nombre.DataPropertyName = "Nombre";
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            // 
             // Id
             // 
             this.Id.DataPropertyName = "Id";
             this.Id.HeaderText = "Id";
             this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
             this.Id.Visible = false;
             // 
             // IdVehiculo
@@ -457,34 +453,49 @@ namespace HuergoMotorsForms
             this.IdVehiculo.DataPropertyName = "IdVehiculo";
             this.IdVehiculo.HeaderText = "IdVehiculo";
             this.IdVehiculo.Name = "IdVehiculo";
+            this.IdVehiculo.ReadOnly = true;
             this.IdVehiculo.Visible = false;
-            // 
-            // Tipo
-            // 
-            this.Tipo.DataPropertyName = "Tipo";
-            this.Tipo.HeaderText = "Tipo";
-            this.Tipo.Name = "Tipo";
-            // 
-            // Precio
-            // 
-            this.Precio.DataPropertyName = "Precio";
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
             // 
             // Modelo
             // 
             this.Modelo.DataPropertyName = "Modelo";
             this.Modelo.HeaderText = "Modelo";
             this.Modelo.Name = "Modelo";
+            this.Modelo.ReadOnly = true;
             this.Modelo.Visible = false;
             // 
-            // btnEliminarAccesorio
+            // Nombre
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.NullValue = "X";
-            this.btnEliminarAccesorio.DefaultCellStyle = dataGridViewCellStyle2;
-            this.btnEliminarAccesorio.HeaderText = "Eliminar";
-            this.btnEliminarAccesorio.Name = "btnEliminarAccesorio";
+            this.Nombre.DataPropertyName = "Nombre";
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            this.Nombre.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Tipo
+            // 
+            this.Tipo.DataPropertyName = "Tipo";
+            this.Tipo.HeaderText = "Tipo";
+            this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
+            this.Tipo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Precio
+            // 
+            this.Precio.DataPropertyName = "Precio";
+            this.Precio.HeaderText = "Precio";
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            this.Precio.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Eliminar
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.NullValue = "X";
+            this.Eliminar.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Name = "Eliminar";
+            this.Eliminar.ReadOnly = true;
             // 
             // frmVentasAlta
             // 
@@ -578,12 +589,12 @@ namespace HuergoMotorsForms
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdVehiculo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
-        private System.Windows.Forms.DataGridViewButtonColumn btnEliminarAccesorio;
+        private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
     }
 }
