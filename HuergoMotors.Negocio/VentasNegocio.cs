@@ -24,38 +24,9 @@ namespace HuergoMotors.Negocio
             return ventasDAO.Buscar(filtro);
         }
 
-        public void ValidarClienteSeleccionado(ClienteDTO clienteDTO)
-        {
-            if (clienteDTO == null) throw new Exception("Debe seleccionar un cliente");
-        }
-        public void ValidarVehiculoSeleccionado(VehiculoDTO vehiculoDTO)
-        {
-            if (vehiculoDTO == null) throw new Exception("Debe seleccionar un vehiculo");
-        }
-        public void ValidarVendedorSeleccionado(VendedorDTO vendedorDTO)
-        {
-            if (vendedorDTO == null) throw new Exception("Debe seleccionar un vendedor");
-        }
-
         public VentaDTO CargarDTO(ClienteDTO clienteDTO,VehiculoDTO vehiculoDTO,
             VendedorDTO vendedorDTO, DateTime fecha, string observaciones)
         {
-            try
-            {
-                ValidarClienteSeleccionado(clienteDTO);
-                ValidarVehiculoSeleccionado(vehiculoDTO);
-                ValidarVendedorSeleccionado(vendedorDTO);
-                
-                if (vehiculoDTO.Stock < 1) throw new Exception("No hay stock del vehiculo seleccionado");
-
-
-                if (fecha.Date > DateTime.Now.Date) throw new Exception
-                        ("La fecha no puede ser posterior a la actual del sistema");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al validar los datos: ", ex);
-            }
             try
             {
                 VentaDTO ventaDTO = new VentaDTO();

@@ -170,6 +170,12 @@ namespace HuergoMotorsForms
                 throw ex;
             }
         }
+        public static void ValidarDTOVacio<T>(T DTO)
+        {
+            string tabla = typeof(T).Name;
+            tabla = tabla.Remove(tabla.Length - 3);
+            if (DTO == null) throw new Exception($"Debe seleccionar un {tabla}");
+        }
     }
 }
 

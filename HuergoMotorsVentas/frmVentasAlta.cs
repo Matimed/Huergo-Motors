@@ -160,7 +160,7 @@ namespace HuergoMotorsForms
             try
             {
 
-                DateTime dateTime = dtpFecha.Value;
+                DateTime fecha = dtpFecha.Value;
                 string observaciones = string.Empty;
                 if (!string.IsNullOrEmpty(txtObservaciones.Text) &
                     (txtObservaciones.Text != "Observaciones:" & txtObservaciones.Text != "Observaciones"))
@@ -168,8 +168,16 @@ namespace HuergoMotorsForms
                     observaciones = txtObservaciones.Text;
                 }
 
+                //Validaciones:
+                HelperForms.ValidarDTOVacio(VehiculoSeleccionado);
+                HelperForms.ValidarDTOVacio(VendedorSeleccionado);
+                HelperForms.ValidarDTOVacio(ClienteSelecionado);
+                if (VehiculoSeleccionado.Stock < 1) throw new Exception("No hay stock del vehiculo seleccionado");
+                if (fecha.Date > DateTime.Now.Date) throw new Exception
+                        ("La fecha no puede ser posterior a la actual del sistema");
+
                 VentaDTO venta = ventasNegocio.CargarDTO(ClienteSelecionado, VehiculoSeleccionado,
-                    VendedorSeleccionado, dateTime, observaciones);
+                    VendedorSeleccionado, fecha, observaciones);
                 string precioVehiculo = VehiculoSeleccionado.PrecioVenta.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
 
                 ventasNegocio.ConfirmarVenta(venta, listaAccesoriosDTOs);
