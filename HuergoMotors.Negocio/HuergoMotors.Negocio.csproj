@@ -47,7 +47,6 @@
   <ItemGroup>
     <Compile Include="AccesoriosNegocio.cs" />
     <Compile Include="ClientesNegocio.cs" />
-    <Compile Include="HelperNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VehiculosNegocio.cs" />
     <Compile Include="VendedoresNegocio.cs" />
