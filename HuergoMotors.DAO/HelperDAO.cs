@@ -21,6 +21,7 @@ namespace HuergoMotors.DAO
             return numberFormatInfo;
         }
 
+       
         public List<T> CargarDatos<T>() where T : new()
         {
             string tabla = typeof(T).Name;
@@ -32,6 +33,14 @@ namespace HuergoMotors.DAO
             string tabla = typeof(T).Name;
             tabla = tabla.Remove(tabla.Length - 3);
             return CargarListaDTOs<T>(CargarDataTable($"SELECT * FROM {tabla} WHERE {condicion}"));
+        }
+        public List<T> CargarDatos<T>(string campos, string tablas) where T : new()
+        {
+            return CargarListaDTOs<T>(CargarDataTable($"SELECT {campos} FROM {tablas}"));
+        }
+        public List<T> CargarDatos<T>(string campos, string tablas, string condicion) where T : new()
+        {
+            return CargarListaDTOs<T>(CargarDataTable($"SELECT {campos} FROM {tablas} WHERE {condicion}"));
         }
 
         public DataTable CargarDataTable(string query)

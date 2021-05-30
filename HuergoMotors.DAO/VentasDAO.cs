@@ -8,85 +8,102 @@ namespace HuergoMotors.DAO
 {
     public class VentasDAO
     {
-        public List<VentasDTO> CargarListaDTOs(DataTable dataTable)
-        {
+        public static string VentasCampos = "a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor, a.Observaciones," +
+            " a.Total, b.Modelo AS Vehiculo, c.Nombre AS Cliente, (d.Nombre + ' ' + d.Apellido) AS Vendedor";
 
-            List<VentasDTO> listaVentas = new List<VentasDTO>();
-            try
-            {
-                foreach (DataRow dataRow in dataTable.Rows)
-                {
-                    VentasDTO ventaDTO = new VentasDTO();
-                    ventaDTO.Id = (int)dataRow["Id"];
-                    ventaDTO.IdCliente = (int)dataRow["IdCliente"];
-                    ventaDTO.IdVehiculo = (int)dataRow["IdVehiculo"];
-                    ventaDTO.IdVendedor = (int)dataRow["IdVendedor"];
-                    ventaDTO.Observaciones = (string)dataRow["Observaciones"];
-                    ventaDTO.Fecha = (DateTime)dataRow["Fecha"];
-                    ventaDTO.Total = (decimal)dataRow["Total"];
-                    ventaDTO.Cliente = (string)dataRow["Cliente"];
-                    ventaDTO.Vendedor = (string)dataRow["Vendedor"];
-                    ventaDTO.Vehiculo = (string)dataRow["Vehiculo"];
-                    listaVentas.Add(ventaDTO);
+        public static string VentasTablas = "Ventas a JOIN Vehiculos b ON a.IdVehiculo = b.Id " +
+            "JOIN Clientes c ON a.IdCliente = c.Id JOIN Vendedores d ON a.IdVendedor = d.Id";
 
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+        public static string AccesoriosCampos = "a.Id, a.IdVenta, a.IdAccesorio, a.Precio, b.Nombre AS NombreAccesorio, b.Tipo AS TipoAccesorio";
 
-            }
-            return listaVentas;
-        }
+        public static string AccesoriosTablas = "VentasAccesorios a JOIN Accesorios b ON a.IdAccesorio = b.Id";
 
-        public List<VentasAccesoriosDTO> CargarListaAccesoriosDTOs(DataTable dataTable)
-        {
+        HelperDAO helperDAO = new HelperDAO();
+        //public List<VentasDTO> CargarListaDTOs(DataTable dataTable)
+        //{
 
-            List<VentasAccesoriosDTO> listaVentasAccesorios = new List<VentasAccesoriosDTO>();
-            try
-            {
-                foreach (DataRow dataRow in dataTable.Rows)
-                {
-                    VentasAccesoriosDTO ventaDTO = new VentasAccesoriosDTO();
-                    ventaDTO.Id = (int)dataRow["Id"];
-                    ventaDTO.IdVenta = (int)dataRow["IdVenta"];
-                    ventaDTO.IdAccesorio = (int)dataRow["IdAccesorio"];
-                    ventaDTO.Precio = (decimal)dataRow["Precio"];
-                    ventaDTO.NombreAccesorio = (string)dataRow["NombreAccesorio"];
-                    ventaDTO.TipoAccesorio = (string)dataRow["TipoAccesorio"];
-                    listaVentasAccesorios.Add(ventaDTO);
+        //    List<VentasDTO> listaVentas = new List<VentasDTO>();
+        //    try
+        //    {
+        //        foreach (DataRow dataRow in dataTable.Rows)
+        //        {
+        //            VentasDTO ventaDTO = new VentasDTO();
+        //            ventaDTO.Id = (int)dataRow["Id"];
+        //            ventaDTO.IdCliente = (int)dataRow["IdCliente"];
+        //            ventaDTO.IdVehiculo = (int)dataRow["IdVehiculo"];
+        //            ventaDTO.IdVendedor = (int)dataRow["IdVendedor"];
+        //            ventaDTO.Observaciones = (string)dataRow["Observaciones"];
+        //            ventaDTO.Fecha = (DateTime)dataRow["Fecha"];
+        //            ventaDTO.Total = (decimal)dataRow["Total"];
+        //            ventaDTO.Cliente = (string)dataRow["Cliente"];
+        //            ventaDTO.Vendedor = (string)dataRow["Vendedor"];
+        //            ventaDTO.Vehiculo = (string)dataRow["Vehiculo"];
+        //            listaVentas.Add(ventaDTO);
 
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
 
-            }
-            return listaVentasAccesorios;
-        }
+        //    }
+        //    return listaVentas;
+        //}
+
+        //public List<VentasAccesoriosDTO> CargarListaAccesoriosDTOs(DataTable dataTable)
+        //{
+
+        //    List<VentasAccesoriosDTO> listaVentasAccesorios = new List<VentasAccesoriosDTO>();
+        //    try
+        //    {
+        //        foreach (DataRow dataRow in dataTable.Rows)
+        //        {
+        //            VentasAccesoriosDTO ventaDTO = new VentasAccesoriosDTO();
+        //            ventaDTO.Id = (int)dataRow["Id"];
+        //            ventaDTO.IdVenta = (int)dataRow["IdVenta"];
+        //            ventaDTO.IdAccesorio = (int)dataRow["IdAccesorio"];
+        //            ventaDTO.Precio = (decimal)dataRow["Precio"];
+        //            ventaDTO.NombreAccesorio = (string)dataRow["NombreAccesorio"];
+        //            ventaDTO.TipoAccesorio = (string)dataRow["TipoAccesorio"];
+        //            listaVentasAccesorios.Add(ventaDTO);
+
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+
+        //    }
+        //    return listaVentasAccesorios;
+        //}
 
         public List<VentasDTO> CargarTablaVentas()
         {
-            return CargarListaDTOs( HelperDAO.CargarDataTable("SELECT a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor, a.Observaciones, a.Total," +
-                " b.Modelo as Vehiculo, c.Nombre as Cliente, (d.Nombre + ' ' + d.Apellido) as Vendedor" +
-                " FROM Ventas a JOIN Vehiculos b ON a.IdVehiculo = b.Id  JOIN Clientes c ON a.IdCliente = c.Id JOIN" +
-                " Vendedores d ON a.IdVendedor = d.Id"));
+            return helperDAO.CargarDatos<VentasDTO>(VentasCampos, VentasTablas);
+            //return CargarListaDTOs( HelperDAO.CargarDataTable("SELECT a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor, a.Observaciones, a.Total," +
+            //    " b.Modelo as Vehiculo, c.Nombre as Cliente, (d.Nombre + ' ' + d.Apellido) as Vendedor" +
+            //    " FROM Ventas a JOIN Vehiculos b ON a.IdVehiculo = b.Id  JOIN Clientes c ON a.IdCliente = c.Id JOIN" +
+            //    " Vendedores d ON a.IdVendedor = d.Id"));
         }
 
         public List<VentasAccesoriosDTO> CargarTablaVentasAccesorios(int idVenta)
         {
-            return CargarListaAccesoriosDTOs(HelperDAO.CargarDataTable($"SELECT a.Id, a.IdVenta, a.IdAccesorio, a.Precio, b.Nombre AS NombreAccesorio," +
-                $" b.Tipo as TipoAccesorio  FROM VentasAccesorios a JOIN Accesorios b ON a.IdAccesorio = b.Id WHERE a.IdVenta = {idVenta}"));
+            return helperDAO.CargarDatos<VentasAccesoriosDTO>(AccesoriosCampos, AccesoriosTablas, $"a.IdVenta = {idVenta}");
+            //return CargarListaAccesoriosDTOs(HelperDAO.CargarDataTable($"SELECT a.Id, a.IdVenta, a.IdAccesorio, a.Precio, b.Nombre AS NombreAccesorio," +
+            //    $" b.Tipo as TipoAccesorio  FROM VentasAccesorios a JOIN Accesorios b ON a.IdAccesorio = b.Id WHERE a.IdVenta = {idVenta}"));
         }
 
         public List<VentasDTO> Buscar(string filtro)
         {
-            return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor," +
-                $" a.Observaciones, a.Total, b.Modelo as Vehiculo, c.Nombre as Cliente, (d.Nombre + ' ' + d.Apellido) as Vendedor " +
-                $"FROM Ventas a JOIN Vehiculos b ON a.IdVehiculo = b.Id JOIN Clientes c ON a.IdCliente = c.Id JOIN Vendedores d " +
-                $"ON a.IdVendedor = d.Id WHERE a.Fecha LIKE '%{filtro}%' OR a.Total LIKE '%{filtro}%' OR b.Modelo LIKE '%{filtro}%'" +
-                $"OR c.Nombre LIKE '%{filtro}%' OR d.Nombre LIKE '%{filtro}%' OR d.Apellido LIKE '%{filtro}%'"));
+            return helperDAO.CargarDatos<VentasDTO>(VentasCampos, VentasTablas, 
+                $"a.Fecha LIKE '%{filtro}%' OR a.Total LIKE '%{filtro}%' OR b.Modelo LIKE '%{filtro}%'" +
+                $"OR c.Nombre LIKE '%{filtro}%' OR d.Nombre LIKE '%{filtro}%' OR d.Apellido LIKE '%{filtro}%'");
+
+            //return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor," +
+            //    $" a.Observaciones, a.Total, b.Modelo as Vehiculo, c.Nombre as Cliente, (d.Nombre + ' ' + d.Apellido) as Vendedor " +
+            //    $"FROM Ventas a JOIN Vehiculos b ON a.IdVehiculo = b.Id JOIN Clientes c ON a.IdCliente = c.Id JOIN Vendedores d " +
+            //    $"ON a.IdVendedor = d.Id WHERE a.Fecha LIKE '%{filtro}%' OR a.Total LIKE '%{filtro}%' OR b.Modelo LIKE '%{filtro}%'" +
+            //    $"OR c.Nombre LIKE '%{filtro}%' OR d.Nombre LIKE '%{filtro}%' OR d.Apellido LIKE '%{filtro}%'"));
         }
 
         public void ConfirmarVenta(VentasDTO venta, List<AccesoriosDTO> listaAccesorios)
@@ -99,7 +116,7 @@ namespace HuergoMotors.DAO
                     try
                     {
                         //Valida el stock otra vez
-                        int stock = (int)HelperDAO.CargarDataTable($"SELECT Stock FROM Vehiculos " +
+                        int stock = (int)helperDAO.CargarDataTable($"SELECT Stock FROM Vehiculos " +
                             $"WHERE Id = {venta.IdVehiculo}").Rows[0]["Stock"];
                         if (stock < 1) throw new Exception("No hay stock del vehiculo seleccionado");
 

@@ -11,8 +11,8 @@ namespace HuergoMotors.DTO
         public int IdVendedor { get; set; }
         public string Observaciones { get; set; }
         public decimal Total { get; set; }
-        public string Vehiculo { get; }
-        public string Cliente { get;  }
-        public string Vendedor { get;  }
+        public string Vehiculo { get; set; }
+        public string Cliente { get; set; }
+        public string Vendedor { get; set; }
     }
 }
