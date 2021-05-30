@@ -77,25 +77,25 @@ namespace HuergoMotors.DAO
         //    return listaVentasAccesorios;
         //}
 
-        public List<VentasDTO> CargarTablaVentas()
+        public List<VentasRDTO> CargarTablaVentas()
         {
-            return helperDAO.CargarDatos<VentasDTO>(VentasCampos, VentasTablas);
+            return helperDAO.CargarDatos<VentasRDTO>(VentasCampos, VentasTablas);
             //return CargarListaDTOs( HelperDAO.CargarDataTable("SELECT a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor, a.Observaciones, a.Total," +
             //    " b.Modelo as Vehiculo, c.Nombre as Cliente, (d.Nombre + ' ' + d.Apellido) as Vendedor" +
             //    " FROM Ventas a JOIN Vehiculos b ON a.IdVehiculo = b.Id  JOIN Clientes c ON a.IdCliente = c.Id JOIN" +
             //    " Vendedores d ON a.IdVendedor = d.Id"));
         }
 
-        public List<VentasAccesoriosDTO> CargarTablaVentasAccesorios(int idVenta)
+        public List<VentasAccesoriosRDTO> CargarTablaVentasAccesorios(int idVenta)
         {
-            return helperDAO.CargarDatos<VentasAccesoriosDTO>(AccesoriosCampos, AccesoriosTablas, $"a.IdVenta = {idVenta}");
+            return helperDAO.CargarDatos<VentasAccesoriosRDTO>(AccesoriosCampos, AccesoriosTablas, $"a.IdVenta = {idVenta}");
             //return CargarListaAccesoriosDTOs(HelperDAO.CargarDataTable($"SELECT a.Id, a.IdVenta, a.IdAccesorio, a.Precio, b.Nombre AS NombreAccesorio," +
             //    $" b.Tipo as TipoAccesorio  FROM VentasAccesorios a JOIN Accesorios b ON a.IdAccesorio = b.Id WHERE a.IdVenta = {idVenta}"));
         }
 
-        public List<VentasDTO> Buscar(string filtro)
+        public List<VentasRDTO> Buscar(string filtro)
         {
-            return helperDAO.CargarDatos<VentasDTO>(VentasCampos, VentasTablas, 
+            return helperDAO.CargarDatos<VentasRDTO>(VentasCampos, VentasTablas, 
                 $"a.Fecha LIKE '%{filtro}%' OR a.Total LIKE '%{filtro}%' OR b.Modelo LIKE '%{filtro}%'" +
                 $"OR c.Nombre LIKE '%{filtro}%' OR d.Nombre LIKE '%{filtro}%' OR d.Apellido LIKE '%{filtro}%'");
 
@@ -106,7 +106,7 @@ namespace HuergoMotors.DAO
             //    $"OR c.Nombre LIKE '%{filtro}%' OR d.Nombre LIKE '%{filtro}%' OR d.Apellido LIKE '%{filtro}%'"));
         }
 
-        public void ConfirmarVenta(VentasDTO venta, List<AccesoriosDTO> listaAccesorios)
+        public void ConfirmarVenta(VentasRDTO venta, List<AccesoriosRDTO> listaAccesorios)
         {
             using (SqlConnection conexion = new SqlConnection(HelperDAO.ConnectionString))
             {
@@ -131,7 +131,7 @@ namespace HuergoMotors.DAO
                         if (listaAccesorios != null && listaAccesorios.Count > 0)
                         {
                             //Por cada accesorio en la lista se agrega una venta en VentasAccesorios
-                            foreach (AccesoriosDTO accesorio in listaAccesorios)
+                            foreach (AccesoriosRDTO accesorio in listaAccesorios)
                             {
                                 HelperDAO.EditarDB($"INSERT INTO VentasAccesorios (IdVenta, IdAccesorio, Precio) VALUES" +
                                     $"((SELECT MAX(Id) AS IdVenta FROM Ventas), '{accesorio.Id}'," +

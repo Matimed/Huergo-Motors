@@ -78,7 +78,7 @@ namespace HuergoMotors.Forms
             //Validar que ya se haya cargado el gv
             if (gvVentas.SelectedRows.Count > 0)
             {
-                int id = ((VentasDTO)gvVentas.SelectedRows[0].DataBoundItem).Id;
+                int id = ((VentasRDTO)gvVentas.SelectedRows[0].DataBoundItem).Id;
                 CargarGridViewVentasAccesorios(gvAccesorios, id);
             }
         }
