@@ -34,7 +34,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                HelperForms.DisplayCombo(cboVendedor, "NombreCompleto");
+                HelperForms.DisplayCombo(cboVendedor,"NombreCompleto");
                 cboVendedor.DataSource = vendedoresNegocio.CargarTabla();
                 HelperForms.DisplayCombo(cboModelo, "Modelo");
                 cboModelo.DataSource = vehiculosNegocio.CargarTabla();

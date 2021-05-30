@@ -4,6 +4,7 @@ using System.Data;
 using System.Globalization;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Linq;
 
 namespace HuergoMotors.DAO
 {
@@ -21,7 +22,6 @@ namespace HuergoMotors.DAO
             return numberFormatInfo;
         }
 
-       
         public List<T> CargarDatos<T>() where T : new()
         {
             string tabla = typeof(T).Name;
@@ -63,26 +63,30 @@ namespace HuergoMotors.DAO
         }
         public List<T> CargarListaDTOs<T>(DataTable dataTable) where T : new()
         {
-            List<T> listaDTOs = new List<T>();
-
-            var propiedades = typeof(T).GetProperties(); //ToDo: BindingFlags de propiedades solo get;
-
-            //Recorro todas las filas (registros) del DataTable. Cada fila sera un dto de la lista.
-            foreach (DataRow dataRow in dataTable.Rows)
+            try
             {
-                T dto = new T();
+                List<T> listaDTOs = new List<T>();
+                var propiedades = typeof(T).GetProperties().Where(p => p.CanWrite); //Solo trae las propiedades que se puedan escribir
 
-                //Por cada dto, recorro todas las propiedades que tenga, y las completo con las celdas de la fila.
-                foreach (PropertyInfo propiedad in propiedades)
+                //Recorro todas las filas (registros) del DataTable. Cada fila sera un dto de la lista.
+                foreach (DataRow dataRow in dataTable.Rows)
                 {
-                    object valor = dataRow[propiedad.Name];
-                    propiedad.SetValue(dto, valor, null);
+                    T dto = new T();
+
+                    //Por cada dto, recorro todas las propiedades que tenga, y las completo con las celdas de la fila.
+                    foreach (PropertyInfo propiedad in propiedades)
+                    {
+                        object valor = dataRow[propiedad.Name];
+                        propiedad.SetValue(dto, valor, null);
+                    }
+                    listaDTOs.Add(dto);
                 }
-
-                listaDTOs.Add(dto);
+                return listaDTOs;
             }
-
-            return listaDTOs;
+            catch (Exception ex)
+            {
+                throw new Exception("Error al llenar los DTO", ex);
+            }
         }
 
         public static int EditarDB(string query)
