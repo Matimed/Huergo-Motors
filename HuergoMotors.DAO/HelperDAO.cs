@@ -75,7 +75,5 @@ namespace HuergoMotors.DAO
             }
         }
 
-
-
     }
 }

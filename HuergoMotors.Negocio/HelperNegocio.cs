@@ -90,33 +90,5 @@ namespace HuergoMotors.Negocio
                 throw ex;
             }
         }
-
-
-        //public static bool CargarDataTableDTOS(params DTO.AccesorioDTO[] accesorioDTOs)
-        //{
-        //    try
-        //    {
-        //        foreach (DTO.AccesorioDTO accesorioDTO in accesorioDTOs)
-        //        {
-        //            
-        //        }
-        //        return true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception("Error al cargar los accesorios", ex);
-        //    }
-        //}
-        public static int LeerNumeroCombo(DataTable dataTable, string campo)
-        {
-            try
-            {
-                return (int)dataTable.Rows[0][campo];
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al leer un numero del ComboBox", ex);
-            }
-        }
     }
 }

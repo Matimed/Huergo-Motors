@@ -5,8 +5,6 @@ namespace HuergoMotorsForms
 {
     public static class HelperForms
     {
-        //ToDo: frmVentasAccesorios
-
         public enum Modo
         {
             Agregar,

@@ -22,7 +22,7 @@ namespace HuergoMotors.DAO
                     ventaDTO.IdVehiculo = (int)dataRow["IdVehiculo"];
                     ventaDTO.IdVendedor = (int)dataRow["IdVendedor"];
                     ventaDTO.Observaciones = (string)dataRow["Observaciones"];
-                    ventaDTO.Fecha = ((DateTime)dataRow["Fecha"]).ToString("dd/MM/yyyy");
+                    ventaDTO.Fecha = (DateTime)dataRow["Fecha"];
                     ventaDTO.Total = (decimal)dataRow["Total"];
                     ventaDTO.Cliente = (string)dataRow["Cliente"];
                     ventaDTO.Vendedor = (string)dataRow["Vendedor"];
@@ -104,7 +104,7 @@ namespace HuergoMotors.DAO
                         if (stock < 1) throw new Exception("No hay stock del vehiculo seleccionado");
 
                         HelperDAO.EditarDB($"INSERT INTO Ventas(Fecha, IdVehiculo, IdCliente, IdVendedor, Observaciones, Total) " +
-                        $"VALUES ('{venta.Fecha}', '{venta.IdVehiculo}', '{venta.IdCliente}', '{venta.IdVendedor}', " +
+                        $"VALUES ('{venta.Fecha.ToString("yyyyMMdd")}', '{venta.IdVehiculo}', '{venta.IdCliente}', '{venta.IdVendedor}', " +
                         $"'{venta.Observaciones}', '{venta.Total.ToString(HelperDAO.NFI())}')", conexion, transaction);
 
                         //Actualizar Stock
@@ -120,6 +120,7 @@ namespace HuergoMotors.DAO
                                 HelperDAO.EditarDB($"INSERT INTO VentasAccesorios (IdVenta, IdAccesorio, Precio) VALUES" +
                                     $"((SELECT MAX(Id) AS IdVenta FROM Ventas), '{accesorio.Id}'," +
                                     $" '{accesorio.Precio.ToString(HelperDAO.NFI())}')", conexion, transaction);
+                                
                             }
                         }
                         transaction.Commit();

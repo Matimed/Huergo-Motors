@@ -13,7 +13,7 @@ namespace HuergoMotorsForms
             new HuergoMotors.Negocio.VehiculosNegocio();
 
         public HuergoMotors.DTO.AccesorioDTO AccesorioSeleccionadoDTO { get; set; }
-
+        
         public HelperForms.Modo Modo { get; private set; }
         
 

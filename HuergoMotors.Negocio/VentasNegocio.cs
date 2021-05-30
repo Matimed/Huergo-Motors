@@ -65,7 +65,7 @@ namespace HuergoMotors.Negocio
                 ventaDTO.Observaciones = observaciones;
                 ventaDTO.Total = vehiculoDTO.PrecioVenta;
                 ventaDTO.Cliente = clienteDTO.Nombre;
-                ventaDTO.Fecha = fecha.ToString("yyyyMMdd");
+                ventaDTO.Fecha = fecha;
                 ventaDTO.Vehiculo = vehiculoDTO.Modelo;
                 ventaDTO.Vendedor = vendedorDTO.NombreCompleto;
                 return ventaDTO;

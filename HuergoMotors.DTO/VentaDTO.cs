@@ -1,9 +1,11 @@
-﻿namespace HuergoMotors.DTO
+﻿using System;
+
+namespace HuergoMotors.DTO
 {
     public class VentaDTO
     {
         public int Id { get; set; }
-        public string Fecha { get; set; }
+        public DateTime Fecha { get; set; }
         public int IdVehiculo { get; set; }
         public int IdCliente { get; set; }
         public int IdVendedor { get; set; }
