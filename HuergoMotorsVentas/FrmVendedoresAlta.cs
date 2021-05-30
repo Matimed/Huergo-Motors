@@ -51,6 +51,8 @@ namespace HuergoMotorsForms
         {
             try
             {
+                HelperForms.ValidarTextosVacios(txtNombre.Text, txtApellido.Text, txtSucursal.Text);
+                HelperForms.ValidarID(VendedorSeleccionadoDTO.Id);
                 VendedorSeleccionadoDTO = vendedoresNegocio.CargarDTO(VendedorSeleccionadoDTO.Id,
                     txtNombre.Text, txtApellido.Text, txtSucursal.Text);
                 switch (Modo)

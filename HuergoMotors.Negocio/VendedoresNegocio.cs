@@ -23,8 +23,6 @@ namespace HuergoMotors.Negocio
             try
             {
                 VendedorDTO vendedorDTO = new VendedorDTO();
-                HelperNegocio.ValidarTextosVacios(nombre, apellido, sucursal);
-                HelperNegocio.ValidarID(id);
                 vendedorDTO.Id = id;
                 vendedorDTO.Apellido = apellido;
                 vendedorDTO.Nombre = nombre;

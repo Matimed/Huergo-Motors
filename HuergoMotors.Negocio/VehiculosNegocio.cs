@@ -13,8 +13,6 @@ namespace HuergoMotors.Negocio
             try
             {
                 VehiculoDTO vehiculoDTO = new VehiculoDTO();
-                HelperNegocio.ValidarTextosVacios(modelo, precio, stock, tipo);
-                HelperNegocio.ValidarID(id);
                 vehiculoDTO.Id = id;
                 vehiculoDTO.PrecioVenta = HelperNegocio.ConvertirNumeroRacional(precio);
                 vehiculoDTO.Stock = HelperNegocio.ConvertirNumeroNatural(stock);
