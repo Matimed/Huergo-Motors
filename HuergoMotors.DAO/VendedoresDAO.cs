@@ -6,37 +6,35 @@ namespace HuergoMotors.DAO
 {
     public class VendedoresDAO
     {
-        public List<VendedoresDTO> CargarListaDTOs(DataTable dataTable)
+        HelperDAO helperDAO = new HelperDAO();
+        //public List<VendedoresDTO> CargarListaDTOs(DataTable dataTable)
+        //{
+        //    List<VendedoresDTO> listaVendedores = new List<VendedoresDTO>();
+        //    foreach (DataRow dataRow in dataTable.Rows)
+        //    {
+        //        VendedoresDTO vendedorDTO = new VendedoresDTO();
+        //        vendedorDTO.Id = (int)dataRow["Id"];
+        //        vendedorDTO.Nombre = (string)dataRow["Nombre"];
+        //        vendedorDTO.Sucursal = (string)dataRow["Sucursal"];
+        //        vendedorDTO.Apellido = (string)dataRow["Apellido"];
+        //        vendedorDTO.NombreCompleto = vendedorDTO.Nombre + " " + vendedorDTO.Apellido;
+        //        listaVendedores.Add(vendedorDTO);
+        //    }
+        //    return listaVendedores;
+        //}
+
+        public List<VendedoresDTO> CargarDatos()
         {
-            List<VendedoresDTO> listaVendedores = new List<VendedoresDTO>();
-            foreach (DataRow dataRow in dataTable.Rows)
-            {
-                VendedoresDTO vendedorDTO = new VendedoresDTO();
-                vendedorDTO.Id = (int)dataRow["Id"];
-                vendedorDTO.Nombre = (string)dataRow["Nombre"];
-                vendedorDTO.Sucursal = (string)dataRow["Sucursal"];
-                vendedorDTO.Apellido = (string)dataRow["Apellido"];
-                vendedorDTO.NombreCompleto = vendedorDTO.Nombre + " " + vendedorDTO.Apellido;
-                listaVendedores.Add(vendedorDTO);
-            }
-            return listaVendedores;
+            return helperDAO.CargarDatos<VendedoresDTO>();
+            //return CargarListaDTOs(HelperDAO.CargarDataTable("SELECT * FROM Vendedores"));
         }
 
-        public List<VendedoresDTO> CargarTabla()
-        {
-            //    return HelperDAO.CargarDatos<VendedorDTO>();
-            return CargarListaDTOs(HelperDAO.CargarDataTable("SELECT * FROM Vendedores"));
-        }
-
-        public DataTable CargarTabla(int id)
-        {
-            return HelperDAO.CargarDataTable($"SELECT * FROM Vendedores WHERE Id={id}");
-        }
-
+     
         public List<VendedoresDTO> Buscar(string filtro)
         {
-            return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT * FROM Vendedores WHERE Apellido LIKE '%{filtro}%'" +
-                    $" or Nombre LIKE '%{filtro}%' or Sucursal LIKE '%{filtro}%'"));
+            return helperDAO.CargarDatos<VendedoresDTO>($"Apellido LIKE '%{filtro}%' OR Nombre LIKE '%{filtro}%' OR Sucursal LIKE '%{filtro}%'");
+            //return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT * FROM Vendedores WHERE Apellido LIKE '%{filtro}%'" +
+            //        $" or Nombre LIKE '%{filtro}%' or Sucursal LIKE '%{filtro}%'"));
         }
 
         public int EliminarElemento(int id)
