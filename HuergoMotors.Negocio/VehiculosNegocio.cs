@@ -8,11 +8,11 @@ namespace HuergoMotors.Negocio
     {
         DAO.VehiculosDAO vehiculosDAO = new DAO.VehiculosDAO();
         AccesoriosNegocio accesoriosNegocio = new AccesoriosNegocio();
-        public VehiculoDTO CargarDTO(int id, string modelo, decimal precio, int stock, string tipo)
+        public VehiculosDTO CargarDTO(int id, string modelo, decimal precio, int stock, string tipo)
         {
             try
             {
-                VehiculoDTO vehiculoDTO = new VehiculoDTO();
+                VehiculosDTO vehiculoDTO = new VehiculosDTO();
                 vehiculoDTO.Id = id;
                 vehiculoDTO.PrecioVenta = precio;
                 vehiculoDTO.Stock = stock;
@@ -26,17 +26,17 @@ namespace HuergoMotors.Negocio
             }
         }
 
-        public VehiculoDTO CargarTabla(int id)
+        public VehiculosDTO CargarTabla(int id)
         {
             return vehiculosDAO.CargarTabla(id);
         }
 
-        public List<VehiculoDTO> CargarTabla()
+        public List<VehiculosDTO> CargarTabla()
         {
             return vehiculosDAO.CargarTabla();
         }
 
-        public List<VehiculoDTO> Buscar(string filtro)
+        public List<VehiculosDTO> Buscar(string filtro)
         {
             return vehiculosDAO.Buscar(filtro);
         }
@@ -55,12 +55,12 @@ namespace HuergoMotors.Negocio
                 return vehiculosDAO.EliminarElemento(id);
         }
 
-        public int ModificarElemento(VehiculoDTO vehiculoDTO)
+        public int ModificarElemento(VehiculosDTO vehiculoDTO)
         {
             return vehiculosDAO.ModificarElemento(vehiculoDTO);
         }
 
-        public int AgregarElemento(VehiculoDTO vehiculoDTO)
+        public int AgregarElemento(VehiculosDTO vehiculoDTO)
         {
             return vehiculosDAO.AgregarElemento(vehiculoDTO);
         }

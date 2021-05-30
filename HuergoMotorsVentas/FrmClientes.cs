@@ -7,7 +7,7 @@ namespace HuergoMotorsForms
     public partial class frmClientes : Form
     {
         HuergoMotors.Negocio.ClientesNegocio clientesNegocio = new HuergoMotors.Negocio.ClientesNegocio();
-        public HuergoMotors.DTO.ClienteDTO ClienteSeleccionado { get; set; }
+        public HuergoMotors.DTO.ClientesDTO ClienteSeleccionado { get; set; }
         public frmClientes()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace HuergoMotorsForms
                 if (modo == HelperForms.Modo.Modificar)
                 {
                     object item = gv.SelectedRows[0].DataBoundItem;
-                    frmClientesAlta.ClienteSeleccionadoDTO = (ClienteDTO)gv.SelectedRows[0].DataBoundItem;
+                    frmClientesAlta.ClienteSeleccionadoDTO = (ClientesDTO)gv.SelectedRows[0].DataBoundItem;
                     frmClientesAlta.CargarDatos();
                 }
                 frmClientesAlta.ShowDialog();
@@ -113,7 +113,7 @@ namespace HuergoMotorsForms
             {
                 if (gv.SelectedRows.Count == 1)
                 {
-                    ClienteDTO clienteDTO = (ClienteDTO)gv.SelectedRows[0].DataBoundItem;
+                    ClientesDTO clienteDTO = (ClientesDTO)gv.SelectedRows[0].DataBoundItem;
                     if (HelperForms.ConfirmacionEliminación(clienteDTO.Nombre) == DialogResult.Yes)
                     {
                         HelperForms.OperacionExitosa(this, HelperForms.Modo.Eliminar,clientesNegocio.
@@ -138,7 +138,7 @@ namespace HuergoMotorsForms
             {
                 if (gv.SelectedRows.Count == 1)
                 {
-                    ClienteSeleccionado = (HuergoMotors.DTO.ClienteDTO)gv.SelectedRows[0].DataBoundItem;
+                    ClienteSeleccionado = (HuergoMotors.DTO.ClientesDTO)gv.SelectedRows[0].DataBoundItem;
                     DialogResult = DialogResult.OK;
                 }
             }

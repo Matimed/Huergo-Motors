@@ -12,7 +12,7 @@ namespace HuergoMotorsForms
         HuergoMotors.Negocio.VehiculosNegocio vehiculosNegocio =
             new HuergoMotors.Negocio.VehiculosNegocio();
 
-        public HuergoMotors.DTO.AccesorioDTO AccesorioSeleccionadoDTO { get; set; }
+        public HuergoMotors.DTO.AccesoriosDTO AccesorioSeleccionadoDTO { get; set; }
         
         public HelperForms.Modo Modo { get; private set; }
         
@@ -31,7 +31,7 @@ namespace HuergoMotorsForms
                     txtNombre.Text = string.Empty;
                     txtTipo.Text = string.Empty;
                     txtPrecio.Text = "0.00";
-                    AccesorioSeleccionadoDTO = new HuergoMotors.DTO.AccesorioDTO();
+                    AccesorioSeleccionadoDTO = new HuergoMotors.DTO.AccesoriosDTO();
                 }
             }
             catch (Exception ex)

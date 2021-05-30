@@ -8,21 +8,21 @@ namespace HuergoMotors.Negocio
     {
         DAO.VendedoresDAO vendedoresDAO = new DAO.VendedoresDAO();
 
-        public List<VendedorDTO> CargarTabla()
+        public List<VendedoresDTO> CargarTabla()
         {
             return vendedoresDAO.CargarTabla();
         }
 
-        public List<VendedorDTO> Buscar(string filtro)
+        public List<VendedoresDTO> Buscar(string filtro)
         {
             return vendedoresDAO.Buscar(filtro);
         }
 
-        public VendedorDTO CargarDTO(int id, string nombre, string apellido, string sucursal)
+        public VendedoresDTO CargarDTO(int id, string nombre, string apellido, string sucursal)
         {
             try
             {
-                VendedorDTO vendedorDTO = new VendedorDTO();
+                VendedoresDTO vendedorDTO = new VendedoresDTO();
                 vendedorDTO.Id = id;
                 vendedorDTO.Apellido = apellido;
                 vendedorDTO.Nombre = nombre;
@@ -40,12 +40,12 @@ namespace HuergoMotors.Negocio
             return vendedoresDAO.EliminarElemento(id);
         }
 
-        public int ModificarElemento(VendedorDTO vendedorDTO)
+        public int ModificarElemento(VendedoresDTO vendedorDTO)
         {
             return vendedoresDAO.ModificarElemento(vendedorDTO);
         }
 
-        public int AgregarElemento(VendedorDTO vendedorDTO)
+        public int AgregarElemento(VendedoresDTO vendedorDTO)
         {
             return vendedoresDAO.AgregarElementos(vendedorDTO);
         }

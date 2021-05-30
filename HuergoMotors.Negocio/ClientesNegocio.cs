@@ -9,21 +9,21 @@ namespace HuergoMotors.Negocio
     {
         ClientesDAO clientesDAO = new ClientesDAO();
 
-        public List<ClienteDTO> CargarTabla()
+        public List<ClientesDTO> CargarTabla()
         {
             return clientesDAO.CargarTabla();
         }
 
-        public List<ClienteDTO> Buscar(string filtro)
+        public List<ClientesDTO> Buscar(string filtro)
         {
             return clientesDAO.Buscar(filtro);
         }
 
-        public ClienteDTO CargarDTO(int id, string nombre, string direccion, string email, string telefono)
+        public ClientesDTO CargarDTO(int id, string nombre, string direccion, string email, string telefono)
         {
             try
             {
-                ClienteDTO clienteDTO = new ClienteDTO();
+                ClientesDTO clienteDTO = new ClientesDTO();
                 clienteDTO.Id = id;
                 clienteDTO.Direccion = direccion;
                 clienteDTO.Email = email;
@@ -42,12 +42,12 @@ namespace HuergoMotors.Negocio
             return clientesDAO.EliminarElemento(id);
         }
             
-        public int ModificarElemento(ClienteDTO clienteDTO)
+        public int ModificarElemento(ClientesDTO clienteDTO)
         {
             return clientesDAO.ModificarElemento(clienteDTO);
         }
 
-        public int AgregarElemento(ClienteDTO clienteDTO)
+        public int AgregarElemento(ClientesDTO clienteDTO)
         {
             return clientesDAO.AgregarElemento(clienteDTO);
         }

@@ -6,7 +6,7 @@ namespace HuergoMotorsForms
     public partial class frmVehiculosAlta : Form
     {
         HuergoMotors.Negocio.VehiculosNegocio vehiculosNegocio = new HuergoMotors.Negocio.VehiculosNegocio();
-        public HuergoMotors.DTO.VehiculoDTO VehiculoSeleccionadoDTO {get; set;}
+        public HuergoMotors.DTO.VehiculosDTO VehiculoSeleccionadoDTO {get; set;}
         public HelperForms.Modo Modo { get; private set; }
 
         public frmVehiculosAlta(HelperForms.Modo modo)
@@ -27,7 +27,7 @@ namespace HuergoMotorsForms
                 txtTipo.Text = string.Empty;
                 txtPrecio.Text = "0.00";
                 txtStock.Text = "0";
-                VehiculoSeleccionadoDTO = new HuergoMotors.DTO.VehiculoDTO();
+                VehiculoSeleccionadoDTO = new HuergoMotors.DTO.VehiculosDTO();
             }
         }
 

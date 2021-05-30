@@ -8,15 +8,15 @@ namespace HuergoMotors.DAO
 {
     public class VentasDAO
     {
-        public List<VentaDTO> CargarListaDTOs(DataTable dataTable)
+        public List<VentasDTO> CargarListaDTOs(DataTable dataTable)
         {
 
-            List<VentaDTO> listaVentas = new List<VentaDTO>();
+            List<VentasDTO> listaVentas = new List<VentasDTO>();
             try
             {
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
-                    VentaDTO ventaDTO = new VentaDTO();
+                    VentasDTO ventaDTO = new VentasDTO();
                     ventaDTO.Id = (int)dataRow["Id"];
                     ventaDTO.IdCliente = (int)dataRow["IdCliente"];
                     ventaDTO.IdVehiculo = (int)dataRow["IdVehiculo"];
@@ -39,15 +39,15 @@ namespace HuergoMotors.DAO
             return listaVentas;
         }
 
-        public List<VentaAccesorioDTO> CargarListaAccesoriosDTOs(DataTable dataTable)
+        public List<VentasAccesoriosDTO> CargarListaAccesoriosDTOs(DataTable dataTable)
         {
 
-            List<VentaAccesorioDTO> listaVentasAccesorios = new List<VentaAccesorioDTO>();
+            List<VentasAccesoriosDTO> listaVentasAccesorios = new List<VentasAccesoriosDTO>();
             try
             {
                 foreach (DataRow dataRow in dataTable.Rows)
                 {
-                    VentaAccesorioDTO ventaDTO = new VentaAccesorioDTO();
+                    VentasAccesoriosDTO ventaDTO = new VentasAccesoriosDTO();
                     ventaDTO.Id = (int)dataRow["Id"];
                     ventaDTO.IdVenta = (int)dataRow["IdVenta"];
                     ventaDTO.IdAccesorio = (int)dataRow["IdAccesorio"];
@@ -66,7 +66,7 @@ namespace HuergoMotors.DAO
             return listaVentasAccesorios;
         }
 
-        public List<VentaDTO> CargarTablaVentas()
+        public List<VentasDTO> CargarTablaVentas()
         {
             return CargarListaDTOs( HelperDAO.CargarDataTable("SELECT a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor, a.Observaciones, a.Total," +
                 " b.Modelo as Vehiculo, c.Nombre as Cliente, (d.Nombre + ' ' + d.Apellido) as Vendedor" +
@@ -74,13 +74,13 @@ namespace HuergoMotors.DAO
                 " Vendedores d ON a.IdVendedor = d.Id"));
         }
 
-        public List<VentaAccesorioDTO> CargarTablaVentasAccesorios(int idVenta)
+        public List<VentasAccesoriosDTO> CargarTablaVentasAccesorios(int idVenta)
         {
             return CargarListaAccesoriosDTOs(HelperDAO.CargarDataTable($"SELECT a.Id, a.IdVenta, a.IdAccesorio, a.Precio, b.Nombre AS NombreAccesorio," +
                 $" b.Tipo as TipoAccesorio  FROM VentasAccesorios a JOIN Accesorios b ON a.IdAccesorio = b.Id WHERE a.IdVenta = {idVenta}"));
         }
 
-        public List<VentaDTO> Buscar(string filtro)
+        public List<VentasDTO> Buscar(string filtro)
         {
             return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor," +
                 $" a.Observaciones, a.Total, b.Modelo as Vehiculo, c.Nombre as Cliente, (d.Nombre + ' ' + d.Apellido) as Vendedor " +
@@ -89,7 +89,7 @@ namespace HuergoMotors.DAO
                 $"OR c.Nombre LIKE '%{filtro}%' OR d.Nombre LIKE '%{filtro}%' OR d.Apellido LIKE '%{filtro}%'"));
         }
 
-        public void ConfirmarVenta(VentaDTO venta, List<AccesorioDTO> listaAccesorios)
+        public void ConfirmarVenta(VentasDTO venta, List<AccesoriosDTO> listaAccesorios)
         {
             using (SqlConnection conexion = new SqlConnection(HelperDAO.ConnectionString))
             {
@@ -115,7 +115,7 @@ namespace HuergoMotors.DAO
                         if (listaAccesorios != null && listaAccesorios.Count > 0)
                         {
                             //Por cada accesorio en la lista se agrega una venta en VentasAccesorios
-                            foreach (AccesorioDTO accesorio in listaAccesorios)
+                            foreach (AccesoriosDTO accesorio in listaAccesorios)
                             {
                                 HelperDAO.EditarDB($"INSERT INTO VentasAccesorios (IdVenta, IdAccesorio, Precio) VALUES" +
                                     $"((SELECT MAX(Id) AS IdVenta FROM Ventas), '{accesorio.Id}'," +

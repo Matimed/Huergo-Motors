@@ -6,12 +6,12 @@ namespace HuergoMotors.DAO
 {
     public class AccesoriosDAO
     {
-        public List<AccesorioDTO> CargarListaDTOs(DataTable dataTable)
+        public List<AccesoriosDTO> CargarListaDTOs(DataTable dataTable)
         {
-            List<AccesorioDTO> listaAccesorios = new List<AccesorioDTO>();
+            List<AccesoriosDTO> listaAccesorios = new List<AccesoriosDTO>();
             foreach (DataRow dataRow in dataTable.Rows)
             {
-                AccesorioDTO accesorioDTO = new AccesorioDTO();
+                AccesoriosDTO accesorioDTO = new AccesoriosDTO();
                 accesorioDTO.Id = (int)dataRow["Id"];
                 accesorioDTO.Tipo = (string)dataRow["Tipo"];
                 accesorioDTO.Modelo = (string)dataRow["Modelo"];
@@ -23,13 +23,13 @@ namespace HuergoMotors.DAO
             return listaAccesorios;
         }
 
-        public List<AccesorioDTO> CargarTabla()
+        public List<AccesoriosDTO> CargarTabla()
         {
             return CargarListaDTOs(HelperDAO.CargarDataTable("SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
             "FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id;"));
         }
 
-        public List<AccesorioDTO> Buscar(string filtro)
+        public List<AccesoriosDTO> Buscar(string filtro)
         {
             return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
             $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id " +
@@ -37,13 +37,13 @@ namespace HuergoMotors.DAO
             $"LIKE '%{filtro}%' or b.Modelo LIKE '%{filtro}%'"));
         }
 
-        public AccesorioDTO CargarTabla(int id)
+        public AccesoriosDTO CargarTabla(int id)
         {
             return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
                     $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id WHERE a.Id={id}"))[0];
         }
 
-        public List<AccesorioDTO> CargarTablaIdVehiculo(int id)
+        public List<AccesoriosDTO> CargarTablaIdVehiculo(int id)
         {
             return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
                     $"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id WHERE a.IdVehiculo={id}"));
@@ -54,13 +54,13 @@ namespace HuergoMotors.DAO
             return HelperDAO.EditarDB($"DELETE FROM Accesorios Where Id={id} ");
         }
 
-        public int ModificarElemento(AccesorioDTO accesorioDTO)
+        public int ModificarElemento(AccesoriosDTO accesorioDTO)
         {
             return HelperDAO.EditarDB($"UPDATE Accesorios SET Nombre='{accesorioDTO.Nombre}', Tipo='{accesorioDTO.Tipo}'," +
                                 $" Precio='{accesorioDTO.Precio}', IdVehiculo= '{accesorioDTO.IdVehiculo}' WHERE Id={accesorioDTO.Id}");
         }
 
-        public int AgregarElemento(AccesorioDTO accesorioDTO)
+        public int AgregarElemento(AccesoriosDTO accesorioDTO)
         {
             return HelperDAO.EditarDB($"INSERT INTO Accesorios (Nombre, Tipo, Precio, IdVehiculo)" +
                         $" VALUES ('{accesorioDTO.Nombre}', '{accesorioDTO.Tipo}', '{accesorioDTO.Precio}', '{accesorioDTO.IdVehiculo}')");

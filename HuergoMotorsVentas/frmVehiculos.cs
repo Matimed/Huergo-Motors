@@ -45,8 +45,8 @@ namespace HuergoMotorsForms
             frmVehiculosAlta frmVehiculosAlta = new frmVehiculosAlta(modo);
             if (modo == HelperForms.Modo.Modificar)
             {
-                VehiculoDTO vehiculoDTO = new VehiculoDTO();
-                frmVehiculosAlta.VehiculoSeleccionadoDTO = (VehiculoDTO)gv.SelectedRows[0].DataBoundItem;
+                VehiculosDTO vehiculoDTO = new VehiculosDTO();
+                frmVehiculosAlta.VehiculoSeleccionadoDTO = (VehiculosDTO)gv.SelectedRows[0].DataBoundItem;
                 frmVehiculosAlta.CargarDatos();
             }
             frmVehiculosAlta.ShowDialog();
@@ -76,7 +76,7 @@ namespace HuergoMotorsForms
 
                 if (gv.SelectedRows.Count == 1)
                 {
-                    VehiculoDTO vehiculoDTO  = (VehiculoDTO)gv.SelectedRows[0].DataBoundItem;
+                    VehiculosDTO vehiculoDTO  = (VehiculosDTO)gv.SelectedRows[0].DataBoundItem;
                     object item = gv.SelectedRows[0].DataBoundItem;
                     if (HelperForms.ConfirmacionEliminación(vehiculoDTO.Tipo) == DialogResult.Yes)
                     {

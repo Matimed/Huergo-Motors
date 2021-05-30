@@ -6,12 +6,12 @@ namespace HuergoMotors.DAO
 {
     public class VehiculosDAO
     {
-        public List<VehiculoDTO> CargarListaDTOs(DataTable dataTable)
+        public List<VehiculosDTO> CargarListaDTOs(DataTable dataTable)
         {
-            List<VehiculoDTO> listaVehiculos = new List<VehiculoDTO>();
+            List<VehiculosDTO> listaVehiculos = new List<VehiculosDTO>();
             foreach (DataRow dataRow in dataTable.Rows)
             {
-                VehiculoDTO vehiculoDTO = new VehiculoDTO();
+                VehiculosDTO vehiculoDTO = new VehiculosDTO();
                 vehiculoDTO.Id = (int)dataRow["Id"];
                 vehiculoDTO.Tipo = (string)dataRow["Tipo"];
                 vehiculoDTO.Modelo = (string)dataRow["Modelo"];
@@ -22,17 +22,17 @@ namespace HuergoMotors.DAO
             return listaVehiculos;
         }
 
-        public List<VehiculoDTO> CargarTabla()
+        public List<VehiculosDTO> CargarTabla()
         {
             return CargarListaDTOs(HelperDAO.CargarDataTable("SELECT * FROM Vehiculos"));
         }
 
-        public VehiculoDTO CargarTabla(int id)
+        public VehiculosDTO CargarTabla(int id)
         {
             return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT * FROM Vehiculos WHERE Id={id}"))[0];
         }
 
-        public List<VehiculoDTO> Buscar(string filtro)
+        public List<VehiculosDTO> Buscar(string filtro)
         {
             return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT * FROM Vehiculos WHERE Tipo LIKE '%{filtro}%'" +
                      $" or Modelo LIKE '%{filtro}%' or PrecioVenta LIKE '%{filtro}%' "));
@@ -43,13 +43,13 @@ namespace HuergoMotors.DAO
             return HelperDAO.EditarDB($"DELETE FROM Vehiculos Where Id={id} ");
         }
 
-        public int ModificarElemento(VehiculoDTO vehiculoDTO)
+        public int ModificarElemento(VehiculosDTO vehiculoDTO)
         {
             return HelperDAO.EditarDB($"UPDATE Vehiculos SET Tipo='{vehiculoDTO.Tipo}', Modelo='{vehiculoDTO.Modelo}', " +
                 $"PrecioVenta='{vehiculoDTO.PrecioVenta}',Stock='{vehiculoDTO.Stock}' WHERE Id={vehiculoDTO.Id}");
         }
 
-        public int AgregarElemento(VehiculoDTO  vehiculoDTO)
+        public int AgregarElemento(VehiculosDTO  vehiculoDTO)
         {
             return HelperDAO.EditarDB($"INSERT INTO Vehiculos (Tipo, Modelo, PrecioVenta, Stock) " +
                         $"VALUES ('{vehiculoDTO.Tipo}', '{vehiculoDTO.Modelo}', {vehiculoDTO.PrecioVenta}, {vehiculoDTO.Stock})");

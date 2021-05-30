@@ -6,12 +6,12 @@ namespace HuergoMotors.DAO
 {
     public class VendedoresDAO
     {
-        public List<VendedorDTO> CargarListaDTOs(DataTable dataTable)
+        public List<VendedoresDTO> CargarListaDTOs(DataTable dataTable)
         {
-            List<VendedorDTO> listaVendedores = new List<VendedorDTO>();
+            List<VendedoresDTO> listaVendedores = new List<VendedoresDTO>();
             foreach (DataRow dataRow in dataTable.Rows)
             {
-                VendedorDTO vendedorDTO = new VendedorDTO();
+                VendedoresDTO vendedorDTO = new VendedoresDTO();
                 vendedorDTO.Id = (int)dataRow["Id"];
                 vendedorDTO.Nombre = (string)dataRow["Nombre"];
                 vendedorDTO.Sucursal = (string)dataRow["Sucursal"];
@@ -22,7 +22,7 @@ namespace HuergoMotors.DAO
             return listaVendedores;
         }
 
-        public List<VendedorDTO> CargarTabla()
+        public List<VendedoresDTO> CargarTabla()
         {
             //    return HelperDAO.CargarDatos<VendedorDTO>();
             return CargarListaDTOs(HelperDAO.CargarDataTable("SELECT * FROM Vendedores"));
@@ -33,7 +33,7 @@ namespace HuergoMotors.DAO
             return HelperDAO.CargarDataTable($"SELECT * FROM Vendedores WHERE Id={id}");
         }
 
-        public List<VendedorDTO> Buscar(string filtro)
+        public List<VendedoresDTO> Buscar(string filtro)
         {
             return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT * FROM Vendedores WHERE Apellido LIKE '%{filtro}%'" +
                     $" or Nombre LIKE '%{filtro}%' or Sucursal LIKE '%{filtro}%'"));
@@ -44,13 +44,13 @@ namespace HuergoMotors.DAO
             return HelperDAO.EditarDB($"DELETE FROM Vendedores Where Id={id} ");
         }
 
-        public int ModificarElemento(VendedorDTO vendedorDTO)
+        public int ModificarElemento(VendedoresDTO vendedorDTO)
         {
             return HelperDAO.EditarDB($"UPDATE Vendedores SET Nombre='{vendedorDTO.Nombre}', " +
                 $"Apellido='{vendedorDTO.Apellido}', Sucursal='{vendedorDTO.Sucursal}' WHERE Id={vendedorDTO.Id}");
         }
 
-        public int AgregarElementos(VendedorDTO vendedorDTO)
+        public int AgregarElementos(VendedoresDTO vendedorDTO)
         {
             return HelperDAO.EditarDB($"INSERT INTO Vendedores (Nombre, Apellido, Sucursal) VALUES" +
                             $" ('{vendedorDTO.Nombre}', '{vendedorDTO.Apellido}', '{vendedorDTO.Sucursal}')");

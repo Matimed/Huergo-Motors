@@ -2,7 +2,7 @@
 
 namespace HuergoMotors.DTO
 {
-    public class VentaDTO
+    public class VentasDTO
     {
         public int Id { get; set; }
         public DateTime Fecha { get; set; }
@@ -11,8 +11,8 @@ namespace HuergoMotors.DTO
         public int IdVendedor { get; set; }
         public string Observaciones { get; set; }
         public decimal Total { get; set; }
-        public string Vehiculo { get; set; }
-        public string Cliente { get; set; }
-        public string Vendedor { get; set; }
+        public string Vehiculo { get; }
+        public string Cliente { get;  }
+        public string Vendedor { get;  }
     }
 }

@@ -15,12 +15,12 @@ namespace HuergoMotorsForms
         HuergoMotors.Negocio.VentasNegocio ventasNegocio = new HuergoMotors.Negocio.VentasNegocio();
 
 
-        public ClienteDTO ClienteSelecionado { get; set; }
-        public VehiculoDTO VehiculoSeleccionado { get; set; }
-        public VendedorDTO VendedorSeleccionado { get; set; }
+        public ClientesDTO ClienteSelecionado { get; set; }
+        public VehiculosDTO VehiculoSeleccionado { get; set; }
+        public VendedoresDTO VendedorSeleccionado { get; set; }
 
 
-        public List<AccesorioDTO> listaAccesoriosDTOs = new List<AccesorioDTO>();
+        public List<AccesoriosDTO> listaAccesoriosDTOs = new List<AccesoriosDTO>();
 
         private decimal PrecioTotalAccesorios;
 
@@ -55,7 +55,7 @@ namespace HuergoMotorsForms
             {
                 if (HelperForms.VerificarCombosCargados(cboVendedor))
                 {
-                    VendedorSeleccionado = (VendedorDTO)cboVendedor.SelectedItem;
+                    VendedorSeleccionado = (VendedoresDTO)cboVendedor.SelectedItem;
                     txtSucursal.Text = VendedorSeleccionado.Sucursal;
                 }
             }
@@ -98,10 +98,10 @@ namespace HuergoMotorsForms
             try
             {
                 if (cboAccesorios.Items.Count <= 0) throw new Exception("No puede agregar un accesorio inexistente");
-                AccesorioDTO accesorioSeleccionado = new AccesorioDTO();
+                AccesoriosDTO accesorioSeleccionado = new AccesoriosDTO();
                 accesorioSeleccionado = accesoriosNegocio.CargarTabla((int)cboAccesorios.SelectedValue);
                 listaAccesoriosDTOs.Add(accesorioSeleccionado);
-                gvAccesorios.DataSource = new BindingList<AccesorioDTO> (listaAccesoriosDTOs);
+                gvAccesorios.DataSource = new BindingList<AccesoriosDTO> (listaAccesoriosDTOs);
                 PrecioTotalAccesorios = PrecioTotalAccesorios + accesorioSeleccionado.Precio;
                 lblTotal.Text = "$ " + Convert.ToString(PrecioTotalAccesorios + VehiculoSeleccionado.PrecioVenta);
 
@@ -119,10 +119,10 @@ namespace HuergoMotorsForms
             {
                 if (gvAccesorios.Columns[e.ColumnIndex].Name == "Eliminar")
                 {                    
-                    AccesorioDTO accesorioSeleccionado = new AccesorioDTO();
+                    AccesoriosDTO accesorioSeleccionado = new AccesoriosDTO();
                     PrecioTotalAccesorios = PrecioTotalAccesorios - listaAccesoriosDTOs[e.RowIndex].Precio;
                     listaAccesoriosDTOs.Remove(listaAccesoriosDTOs[e.RowIndex]);
-                    gvAccesorios.DataSource = new BindingList<AccesorioDTO>(listaAccesoriosDTOs);
+                    gvAccesorios.DataSource = new BindingList<AccesoriosDTO>(listaAccesoriosDTOs);
                     lblTotal.Text = "$ " + Convert.ToString(PrecioTotalAccesorios + VehiculoSeleccionado.PrecioVenta);
                 }
 
@@ -176,7 +176,7 @@ namespace HuergoMotorsForms
                 if (fecha.Date > DateTime.Now.Date) throw new Exception
                         ("La fecha no puede ser posterior a la actual del sistema");
 
-                VentaDTO venta = ventasNegocio.CargarDTO(ClienteSelecionado, VehiculoSeleccionado,
+                VentasDTO venta = ventasNegocio.CargarDTO(ClienteSelecionado, VehiculoSeleccionado,
                     VendedorSeleccionado, fecha, observaciones);
 
                 ventasNegocio.ConfirmarVenta(venta, listaAccesoriosDTOs);

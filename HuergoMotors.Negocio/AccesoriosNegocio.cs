@@ -9,31 +9,31 @@ namespace HuergoMotors.Negocio
     {
         AccesoriosDAO accesoriosDAO = new AccesoriosDAO();
 
-        public List<AccesorioDTO> CargarTabla()
+        public List<AccesoriosDTO> CargarTabla()
         {
             return accesoriosDAO.CargarTabla();
         }
 
-        public List<AccesorioDTO> Buscar(string filtro)
+        public List<AccesoriosDTO> Buscar(string filtro)
         {
             return accesoriosDAO.Buscar(filtro);
         }
 
-        public List<AccesorioDTO> CargarTablaIdVehiculo(int id)
+        public List<AccesoriosDTO> CargarTablaIdVehiculo(int id)
         {
             return accesoriosDAO.CargarTablaIdVehiculo(id);
         }
 
-        public AccesorioDTO CargarTabla(int id)
+        public AccesoriosDTO CargarTabla(int id)
         {
             return accesoriosDAO.CargarTabla(id);
         }
 
-        public AccesorioDTO CargarDTO(int id, int idVehiculo, string modeloVehiuculo, decimal precio, string nombre, string tipo)
+        public AccesoriosDTO CargarDTO(int id, int idVehiculo, string modeloVehiuculo, decimal precio, string nombre, string tipo)
         {
             try
             {
-                AccesorioDTO accesorioDTO = new AccesorioDTO();
+                AccesoriosDTO accesorioDTO = new AccesoriosDTO();
                 accesorioDTO.Id = id;
                 accesorioDTO.Precio = precio;
                 accesorioDTO.IdVehiculo = idVehiculo;
@@ -48,12 +48,12 @@ namespace HuergoMotors.Negocio
             }
         }
 
-        public int ModificarElemento(AccesorioDTO accesorioDTO)
+        public int ModificarElemento(AccesoriosDTO accesorioDTO)
         {
             return accesoriosDAO.ModificarElemento(accesorioDTO);
         }
 
-        public int AgregarElemento(AccesorioDTO accesorioDTO)
+        public int AgregarElemento(AccesoriosDTO accesorioDTO)
         {
             return accesoriosDAO.AgregarElemento(accesorioDTO);
         }

@@ -32,7 +32,7 @@ namespace HuergoMotorsForms
                 frmVendedoresAlta frmVendedoresAlta = new frmVendedoresAlta(modo);
                 if (modo == HelperForms.Modo.Modificar)
                 {
-                    frmVendedoresAlta.VendedorSeleccionadoDTO = (VendedorDTO)gv.SelectedRows[0].DataBoundItem;
+                    frmVendedoresAlta.VendedorSeleccionadoDTO = (VendedoresDTO)gv.SelectedRows[0].DataBoundItem;
                     frmVendedoresAlta.CargarDatos();
                 }
                 frmVendedoresAlta.ShowDialog();
@@ -59,7 +59,7 @@ namespace HuergoMotorsForms
             {
                 if (gv.SelectedRows.Count == 1)
                 {
-                    VendedorDTO vendedorDTO = (VendedorDTO)gv.SelectedRows[0].DataBoundItem;
+                    VendedoresDTO vendedorDTO = (VendedoresDTO)gv.SelectedRows[0].DataBoundItem;
 
                     if (HelperForms.ConfirmacionEliminación(vendedorDTO.Nombre, 
                         vendedorDTO.Apellido) == DialogResult.Yes)

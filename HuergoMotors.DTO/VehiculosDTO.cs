@@ -1,6 +1,6 @@
 ﻿namespace HuergoMotors.DTO
 {
-    public class VehiculoDTO
+    public class VehiculosDTO
     {
         public int Id { get; set; }
         public string Tipo { get; set; }
