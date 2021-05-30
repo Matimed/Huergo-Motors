@@ -64,12 +64,6 @@ namespace HuergoMotorsForms
             return resp;
         }
 
-
-        //public static NumberFormatInfo NFI()
-        //{
-        //    return DAO.HelperDAO.NFI();
-        //}
-
         public static bool VerificarCombosCargados(params ComboBox[] comboBoxes)
         {
             try

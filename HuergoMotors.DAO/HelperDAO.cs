@@ -2,6 +2,8 @@
 using System;
 using System.Data;
 using System.Globalization;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace HuergoMotors.DAO
 {
@@ -17,23 +19,6 @@ namespace HuergoMotors.DAO
                 NumberDecimalSeparator = "."
             };
             return numberFormatInfo;
-        }
-
-
-        public static void EditarDB(string query, SqlConnection conexion, SqlTransaction transaction)
-        {
-            try
-            {
-                using (SqlCommand comando = new SqlCommand(query, conexion))
-                {
-                    comando.Transaction = transaction;
-                    comando.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al intentar la siguiente operacion: " + query, ex);
-            }
         }
 
         public static int EditarDB(string query)
@@ -55,6 +40,27 @@ namespace HuergoMotors.DAO
                 throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
             }
         }
+        public static void EditarDB(string query, SqlConnection conexion, SqlTransaction transaction)
+        {
+            try
+            {
+                using (SqlCommand comando = new SqlCommand(query, conexion))
+                {
+                    comando.Transaction = transaction;
+                    comando.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar la siguiente operacion: " + query, ex);
+            }
+        }
+        public static List<T> CargarDatos<T>() where T : new()
+        {
+            string tabla = typeof(T).Name;
+            tabla = tabla.Remove(tabla.Length - 3);
+            return CargarListaDTOs<T>(CargarDataTable($"SELECT * FROM {tabla}"));
+        }
 
         public static DataTable CargarDataTable(string query)
         {
@@ -74,6 +80,28 @@ namespace HuergoMotors.DAO
                 throw new Exception("Error al cargar los datos desde la base de datos", ex);
             }
         }
+        public static List<T> CargarListaDTOs<T>(DataTable dataTable) where T : new()
+        {
+            List<T> listaDTOs = new List<T>();
 
+            var propiedades = typeof(T).GetProperties();
+
+            //Recorro todas las filas (registros) del DataTable. Cada fila sera un dto de la lista.
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                T dto = new T();
+
+                //Por cada dto, recorro todas las propiedades que tenga, y las completo con las celdas de la fila.
+                foreach (PropertyInfo propiedad in propiedades)
+                {
+                    object valor = dataRow[propiedad.Name];
+                    propiedad.SetValue(dto, valor, null);
+                }
+
+                listaDTOs.Add(dto);
+            }
+
+            return listaDTOs;
+        }
     }
 }

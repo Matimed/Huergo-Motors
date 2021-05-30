@@ -24,6 +24,7 @@ namespace HuergoMotors.DAO
 
         public List<VendedorDTO> CargarTabla()
         {
+            //    return HelperDAO.CargarDatos<VendedorDTO>();
             return CargarListaDTOs(HelperDAO.CargarDataTable("SELECT * FROM Vendedores"));
         }
 
