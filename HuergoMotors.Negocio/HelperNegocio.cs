@@ -65,7 +65,6 @@ namespace HuergoMotors.Negocio
                 throw ex;
             }
         }
-
         public static void ValidarEmail(string email)
         {
             try

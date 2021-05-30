@@ -24,10 +24,6 @@ namespace HuergoMotors.Negocio
             try
             {
                 ClienteDTO clienteDTO = new ClienteDTO();
-                HelperNegocio.ValidarEmail(email);
-                HelperNegocio.ValidarTelefono(telefono);
-                HelperNegocio.ValidarTextosVacios(direccion, email, nombre, telefono);
-                HelperNegocio.ValidarID(id);
                 clienteDTO.Id = id;
                 clienteDTO.Direccion = direccion;
                 clienteDTO.Email = email;
