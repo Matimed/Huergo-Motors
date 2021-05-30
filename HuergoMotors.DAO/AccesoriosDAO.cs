@@ -37,7 +37,7 @@ namespace HuergoMotors.DAO
         public List<AccesoriosDTO> Buscar(string filtro)
         {
             return helperDAO.CargarDatos<AccesoriosDTO>(Campos, Tablas,
-                "a.Tipo LIKE '%{filtro}%' OR a.Nombre LIKE '%{filtro}%' OR a.Precio LIKE '%{filtro}%' OR b.Modelo LIKE '%{filtro}%'");
+                $"a.Tipo LIKE '%{filtro}%' OR a.Nombre LIKE '%{filtro}%' OR a.Precio LIKE '%{filtro}%' OR b.Modelo LIKE '%{filtro}%'");
 
             //return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT a.Id, a.Nombre, a.Tipo, a.Precio, a.IdVehiculo, b.Modelo " +
             //$"FROM Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id " +

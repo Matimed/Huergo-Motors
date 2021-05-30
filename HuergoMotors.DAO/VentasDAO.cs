@@ -116,8 +116,7 @@ namespace HuergoMotors.DAO
                     try
                     {
                         //Valida el stock otra vez
-                        int stock = (int)helperDAO.CargarDataTable($"SELECT Stock FROM Vehiculos " +
-                            $"WHERE Id = {venta.IdVehiculo}").Rows[0]["Stock"];
+                        int stock = helperDAO.CargarDatos<VehiculosDTO>($"Id = { venta.IdVehiculo}")[0].Stock;
                         if (stock < 1) throw new Exception("No hay stock del vehiculo seleccionado");
 
                         HelperDAO.EditarDB($"INSERT INTO Ventas(Fecha, IdVehiculo, IdCliente, IdVendedor, Observaciones, Total) " +

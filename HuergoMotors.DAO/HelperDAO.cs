@@ -10,7 +10,7 @@ namespace HuergoMotors.DAO
 {
     public class HelperDAO
     {
-        public static string ConnectionString = "Server=sql5078.site4now.net;Database=DB_9CF8B6_HuergoMotors2021;User Id=DB_9CF8B6_HuergoMotors2021_admin;Password=huergo2021;";
+        private static string ConnectionString = "Server=sql5078.site4now.net;Database=DB_9CF8B6_HuergoMotors2021;User Id=DB_9CF8B6_HuergoMotors2021_admin;Password=huergo2021;";
 
         public static NumberFormatInfo NFI()
         {
@@ -43,7 +43,19 @@ namespace HuergoMotors.DAO
             return CargarListaDTOs<T>(CargarDataTable($"SELECT {campos} FROM {tablas} WHERE {condicion}"));
         }
 
-        public DataTable CargarDataTable(string query)
+        public int AgregarElemento<T>(T dto)
+        {
+            using (SqlCommand command = new SqlCommand())
+            {
+                var datos = GenerarCampos(dto, command);
+                datos.command.CommandText = $"INSERT INTO {datos.tabla} ({datos.campos}) VALUES ({datos.parametros})";
+                return EditarDB(datos.command);
+            }
+        }
+
+
+
+        private DataTable CargarDataTable(string query)
         {
             try
             {
@@ -61,7 +73,7 @@ namespace HuergoMotors.DAO
                 throw new Exception("Error al cargar los datos desde la base de datos", ex);
             }
         }
-        public List<T> CargarListaDTOs<T>(DataTable dataTable) where T : new()
+        private List<T> CargarListaDTOs<T>(DataTable dataTable) where T : new()
         {
             try
             {
@@ -89,6 +101,52 @@ namespace HuergoMotors.DAO
             }
         }
 
+
+        private (string tabla, string campos, string parametros, SqlCommand command) 
+            GenerarCampos<T> (T dto, SqlCommand command)
+        {
+            string tabla = typeof(T).Name;
+            tabla = tabla.Remove(tabla.Length - 3);
+            string campos = "";
+            string parametros = "";
+            var propiedades = typeof(T).GetProperties();
+            foreach (PropertyInfo prop in propiedades)
+            {
+                if (prop.Name == "Id") continue; //Si es el Id, paso al que sigue.
+                campos += prop.Name + ',';
+                parametros += "@" + prop.Name + ',';
+                object valor = prop.GetValue(dto, null);
+                command.Parameters.AddWithValue("@" + prop.Name, valor);
+            }
+            campos = campos.TrimEnd(',');
+            parametros = parametros.TrimEnd(',');
+            return (tabla, campos, parametros, command);
+        }
+        private static int EditarDB(SqlCommand command)
+        {
+            try
+            {
+                using (SqlConnection conexion = new SqlConnection(ConnectionString))
+                {
+                    conexion.Open();
+                    using (command)
+                    {
+                        command.Connection = conexion;
+                        int resultados = command.ExecuteNonQuery();
+                        return resultados;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
+            }
+        }
+
+
+
+
+        //Borar:
         public static int EditarDB(string query)
         {
             try
@@ -123,5 +181,42 @@ namespace HuergoMotors.DAO
                 throw new Exception("Error al intentar la siguiente operacion: " + query, ex);
             }
         }
+
+        //public void Create<T>(T dto)
+        //{
+        //    string tabla = typeof(T).Name;
+        //    tabla = tabla.Remove(tabla.Length - 3);
+        //    string campos = "";
+        //    string parametros = "";
+        //    var propiedades = typeof(T).GetProperties();
+
+        //    using (SqlConnection conn = new SqlConnection(ConnectionString))
+        //    {
+        //        conn.Open();
+
+        //        using (SqlCommand cmd = new SqlCommand())
+        //        {
+        //            foreach (PropertyInfo prop in propiedades)
+        //            {
+        //                if (prop.Name == "Id") continue; //Si es el Id, paso al que sigue.
+
+        //                campos += prop.Name + ',';
+        //                parametros += "@" + prop.Name + ',';
+
+        //                object valor = prop.GetValue(dto, null);
+        //                cmd.Parameters.AddWithValue("@" + prop.Name, valor);
+        //            }
+
+        //            campos = campos.TrimEnd(',');
+        //            parametros = parametros.TrimEnd(',');
+
+        //            string query = $"INSERT INTO {tabla} ({campos}) VALUES ({parametros})";
+
+        //            cmd.CommandText = query;
+        //            cmd.Connection = conn;
+        //            cmd.ExecuteNonQuery();
+        //        }
+        //    }
+        //}
     }
 }
