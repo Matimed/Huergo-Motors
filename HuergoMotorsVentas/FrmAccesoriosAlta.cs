@@ -79,7 +79,7 @@ namespace HuergoMotorsForms
                 HelperForms.ValidarTextosVacios(cboModelos.Text, txtPrecio.Text, txtNombre.Text, txtTipo.Text);
                 HelperForms.ValidarID(AccesorioSeleccionadoDTO.Id);
                 AccesorioSeleccionadoDTO = accesoriosNegocio.CargarDTO(AccesorioSeleccionadoDTO.Id, (int)cboModelos.SelectedValue, 
-                    cboModelos.Text, txtPrecio.Text, txtNombre.Text, txtTipo.Text);
+                    cboModelos.Text, HelperForms.ConvertirNumeroRacional(txtPrecio.Text), txtNombre.Text, txtTipo.Text);
 
                 switch (Modo)
                 {

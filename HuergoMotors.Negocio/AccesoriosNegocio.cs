@@ -29,13 +29,13 @@ namespace HuergoMotors.Negocio
             return accesoriosDAO.CargarTabla(id);
         }
 
-        public AccesorioDTO CargarDTO(int id, int idVehiculo, string modeloVehiuculo, string precio, string nombre, string tipo)
+        public AccesorioDTO CargarDTO(int id, int idVehiculo, string modeloVehiuculo, decimal precio, string nombre, string tipo)
         {
             try
             {
                 AccesorioDTO accesorioDTO = new AccesorioDTO();
                 accesorioDTO.Id = id;
-                accesorioDTO.Precio = HelperNegocio.ConvertirNumeroRacional(precio);
+                accesorioDTO.Precio = precio;
                 accesorioDTO.IdVehiculo = idVehiculo;
                 accesorioDTO.Tipo = tipo;
                 accesorioDTO.Nombre = nombre;

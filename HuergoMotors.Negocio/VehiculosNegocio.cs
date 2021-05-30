@@ -8,14 +8,14 @@ namespace HuergoMotors.Negocio
     {
         DAO.VehiculosDAO vehiculosDAO = new DAO.VehiculosDAO();
         AccesoriosNegocio accesoriosNegocio = new AccesoriosNegocio();
-        public VehiculoDTO CargarDTO(int id, string modelo, string precio, string stock, string tipo)
+        public VehiculoDTO CargarDTO(int id, string modelo, decimal precio, int stock, string tipo)
         {
             try
             {
                 VehiculoDTO vehiculoDTO = new VehiculoDTO();
                 vehiculoDTO.Id = id;
-                vehiculoDTO.PrecioVenta = HelperNegocio.ConvertirNumeroRacional(precio);
-                vehiculoDTO.Stock = HelperNegocio.ConvertirNumeroNatural(stock);
+                vehiculoDTO.PrecioVenta = precio;
+                vehiculoDTO.Stock = stock;
                 vehiculoDTO.Tipo = tipo;
                 vehiculoDTO.Modelo = modelo;
                 return vehiculoDTO;

@@ -116,36 +116,6 @@ namespace HuergoMotorsForms
         {
             if (id < 0) throw new Exception("Ningun elemento seleccionado");
         }
-        public static decimal ConvertirNumeroRacional(string numeroValidar)
-        {
-            try
-            {
-                if (!decimal.TryParse(numeroValidar, out decimal numeroRacional) | numeroRacional < 0)
-                {
-                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero racional.");
-                }
-                return numeroRacional;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public static int ConvertirNumeroNatural(string numeroValidar)
-        {
-            try
-            {
-                if (!int.TryParse(numeroValidar, out int numeroNatural) | numeroNatural < 0)
-                {
-                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero entero.");
-                }
-                return numeroNatural;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
         public static void ValidarEmail(string email)
         {
             try
@@ -175,6 +145,37 @@ namespace HuergoMotorsForms
             string tabla = typeof(T).Name;
             tabla = tabla.Remove(tabla.Length - 3);
             if (DTO == null) throw new Exception($"Debe seleccionar un {tabla}");
+        }
+
+        public static decimal ConvertirNumeroRacional(string numeroValidar)
+        {
+            try
+            {
+                if (!decimal.TryParse(numeroValidar, out decimal numeroRacional) | numeroRacional < 0)
+                {
+                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero racional.");
+                }
+                return numeroRacional;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static int ConvertirNumeroNatural(string numeroValidar)
+        {
+            try
+            {
+                if (!int.TryParse(numeroValidar, out int numeroNatural) | numeroNatural < 0)
+                {
+                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero entero.");
+                }
+                return numeroNatural;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

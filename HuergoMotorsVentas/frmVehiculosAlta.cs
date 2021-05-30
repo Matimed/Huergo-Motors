@@ -58,7 +58,8 @@ namespace HuergoMotorsForms
                 HelperForms.ValidarTextosVacios(txtModelo.Text, txtPrecio.Text, txtStock.Text, txtTipo.Text);
                 HelperForms.ValidarID(VehiculoSeleccionadoDTO.Id);
                 VehiculoSeleccionadoDTO = vehiculosNegocio.CargarDTO(VehiculoSeleccionadoDTO.Id,
-                    txtModelo.Text, txtPrecio.Text, txtStock.Text, txtTipo.Text);
+                    txtModelo.Text, HelperForms.ConvertirNumeroRacional(txtPrecio.Text), 
+                    HelperForms.ConvertirNumeroNatural(txtStock.Text), txtTipo.Text);
                 switch (Modo)
                 {
                     case HelperForms.Modo.Modificar:
