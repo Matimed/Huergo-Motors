@@ -53,7 +53,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                txtPrecio.Text = AccesorioSeleccionadoDTO.Precio.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
+                txtPrecio.Text = AccesorioSeleccionadoDTO.Precio.ToString();
                 txtTipo.Text = AccesorioSeleccionadoDTO.Tipo;
                 txtNombre.Text = AccesorioSeleccionadoDTO.Nombre;
                 HelperForms.DisplayCombo(cboModelos, "Modelo");

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace HuergoMotorsForms
 {
@@ -62,6 +63,12 @@ namespace HuergoMotorsForms
                      "Eliminar permanentemente", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             return resp;
         }
+
+
+        //public static NumberFormatInfo NFI()
+        //{
+        //    return DAO.HelperDAO.NFI();
+        //}
 
         public static bool VerificarCombosCargados(params ComboBox[] comboBoxes)
         {

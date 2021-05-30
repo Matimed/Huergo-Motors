@@ -35,7 +35,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                txtPrecio.Text = VehiculoSeleccionadoDTO.PrecioVenta.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
+                txtPrecio.Text = VehiculoSeleccionadoDTO.PrecioVenta.ToString();
                 txtModelo.Text = VehiculoSeleccionadoDTO.Modelo;
                 txtTipo.Text = VehiculoSeleccionadoDTO.Tipo;
                 txtStock.Text = VehiculoSeleccionadoDTO.Stock.ToString();

@@ -81,8 +81,8 @@ namespace HuergoMotorsForms
                     VehiculoSeleccionado = vehiculosNegocio.CargarTabla((int)cboModelo.SelectedValue);
 
                     txtTipo.Text = VehiculoSeleccionado.Tipo;
-                    txtPrecio.Text = VehiculoSeleccionado.PrecioVenta.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
-                    lblTotal.Text = "$ " + VehiculoSeleccionado.PrecioVenta.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
+                    txtPrecio.Text = VehiculoSeleccionado.PrecioVenta.ToString();
+                    lblTotal.Text = "$ " + VehiculoSeleccionado.PrecioVenta.ToString();
                     HelperForms.DisplayCombo(cboAccesorios, "Nombre");
                     cboAccesorios.DataSource = accesoriosNegocio.CargarTablaIdVehiculo(VehiculoSeleccionado.Id);
                 }
@@ -178,7 +178,6 @@ namespace HuergoMotorsForms
 
                 VentaDTO venta = ventasNegocio.CargarDTO(ClienteSelecionado, VehiculoSeleccionado,
                     VendedorSeleccionado, fecha, observaciones);
-                string precioVehiculo = VehiculoSeleccionado.PrecioVenta.ToString(HuergoMotors.Negocio.HelperNegocio.NFI());
 
                 ventasNegocio.ConfirmarVenta(venta, listaAccesoriosDTOs);
                 MessageBox.Show("Venta realizada exitosamente", "Operacion Completada",

@@ -8,11 +8,5 @@ namespace HuergoMotors.Negocio
     public static class HelperNegocio
     {
         
-        public static NumberFormatInfo NFI()
-        {
-            
-            return DAO.HelperDAO.NFI();
-        }
-
     }
 }
