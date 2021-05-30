@@ -34,8 +34,6 @@ namespace HuergoMotors.Negocio
             try
             {
                 AccesorioDTO accesorioDTO = new AccesorioDTO();
-                HelperNegocio.ValidarTextosVacios(modeloVehiuculo ,precio, nombre, tipo);
-                HelperNegocio.ValidarID(id);
                 accesorioDTO.Id = id;
                 accesorioDTO.Precio = HelperNegocio.ConvertirNumeroRacional(precio);
                 accesorioDTO.IdVehiculo = idVehiculo;
