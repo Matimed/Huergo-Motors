@@ -25,7 +25,7 @@ namespace HuergoMotors.Negocio
         }
 
         public VentasDTO CargarDTO(ClientesDTO clienteDTO,VehiculosDTO vehiculoDTO,
-            VendedoresDTO vendedorDTO, DateTime fecha, string observaciones)
+            VendedoresDTO vendedorDTO, DateTime fecha,decimal total, string observaciones)
         {
             try
             {
@@ -34,7 +34,7 @@ namespace HuergoMotors.Negocio
                 ventaDTO.IdVehiculo = vehiculoDTO.Id;
                 ventaDTO.IdVendedor = vendedorDTO.Id;
                 ventaDTO.Observaciones = observaciones;
-                ventaDTO.Total = vehiculoDTO.PrecioVenta;
+                ventaDTO.Total = total;
                 ventaDTO.Cliente = clienteDTO.Nombre;
                 ventaDTO.Fecha = fecha;
                 ventaDTO.Vehiculo = vehiculoDTO.Modelo;

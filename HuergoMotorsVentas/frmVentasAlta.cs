@@ -159,7 +159,6 @@ namespace HuergoMotorsForms
         {
             try
             {
-
                 DateTime fecha = dtpFecha.Value;
                 string observaciones = string.Empty;
                 if (!string.IsNullOrEmpty(txtObservaciones.Text) &
@@ -177,7 +176,7 @@ namespace HuergoMotorsForms
                         ("La fecha no puede ser posterior a la actual del sistema");
 
                 VentasDTO venta = ventasNegocio.CargarDTO(ClienteSelecionado, VehiculoSeleccionado,
-                    VendedorSeleccionado, fecha, observaciones);
+                    VendedorSeleccionado, fecha,VehiculoSeleccionado.PrecioVenta + PrecioTotalAccesorios, observaciones);
 
                 ventasNegocio.ConfirmarVenta(venta, listaAccesoriosDTOs);
                 MessageBox.Show("Venta realizada exitosamente", "Operacion Completada",
