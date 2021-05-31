@@ -29,7 +29,7 @@ namespace HuergoMotorsForms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccesorios));
             this.btCerrar = new System.Windows.Forms.Button();
             this.btEliminar = new System.Windows.Forms.Button();
@@ -68,7 +68,7 @@ namespace HuergoMotorsForms
             this.btEliminar.BackColor = System.Drawing.Color.Firebrick;
             this.btEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btEliminar.ForeColor = System.Drawing.Color.White;
-            this.btEliminar.Location = new System.Drawing.Point(498, 424);
+            this.btEliminar.Location = new System.Drawing.Point(336, 424);
             this.btEliminar.Name = "btEliminar";
             this.btEliminar.Size = new System.Drawing.Size(75, 23);
             this.btEliminar.TabIndex = 15;
@@ -82,7 +82,7 @@ namespace HuergoMotorsForms
             this.btNuevo.BackColor = System.Drawing.Color.OliveDrab;
             this.btNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btNuevo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btNuevo.Location = new System.Drawing.Point(336, 424);
+            this.btNuevo.Location = new System.Drawing.Point(497, 424);
             this.btNuevo.Name = "btNuevo";
             this.btNuevo.Size = new System.Drawing.Size(75, 23);
             this.btNuevo.TabIndex = 14;
@@ -151,9 +151,9 @@ namespace HuergoMotorsForms
             // Precio
             // 
             this.Precio.DataPropertyName = "Precio";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.NullValue = "0";
-            this.Precio.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.NullValue = "0";
+            this.Precio.DefaultCellStyle = dataGridViewCellStyle1;
             this.Precio.HeaderText = "Precio";
             this.Precio.Name = "Precio";
             this.Precio.ReadOnly = true;
@@ -238,6 +238,7 @@ namespace HuergoMotorsForms
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txFiltro);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(600, 200);
             this.Name = "frmAccesorios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Accesorios - Busqueda";

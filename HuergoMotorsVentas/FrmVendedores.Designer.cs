@@ -29,7 +29,7 @@ namespace HuergoMotorsForms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVendedores));
             this.btCerrar = new System.Windows.Forms.Button();
             this.btEliminar = new System.Windows.Forms.Button();
@@ -66,7 +66,7 @@ namespace HuergoMotorsForms
             this.btEliminar.BackColor = System.Drawing.Color.Firebrick;
             this.btEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btEliminar.ForeColor = System.Drawing.Color.White;
-            this.btEliminar.Location = new System.Drawing.Point(498, 424);
+            this.btEliminar.Location = new System.Drawing.Point(336, 424);
             this.btEliminar.Name = "btEliminar";
             this.btEliminar.Size = new System.Drawing.Size(75, 23);
             this.btEliminar.TabIndex = 15;
@@ -80,7 +80,7 @@ namespace HuergoMotorsForms
             this.btNuevo.BackColor = System.Drawing.Color.OliveDrab;
             this.btNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btNuevo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btNuevo.Location = new System.Drawing.Point(336, 424);
+            this.btNuevo.Location = new System.Drawing.Point(497, 424);
             this.btNuevo.Name = "btNuevo";
             this.btNuevo.Size = new System.Drawing.Size(75, 23);
             this.btNuevo.TabIndex = 14;
@@ -105,7 +105,9 @@ namespace HuergoMotorsForms
             // 
             this.gv.AllowUserToAddRows = false;
             this.gv.AllowUserToDeleteRows = false;
-            this.gv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.gv.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.gv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gv.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -145,9 +147,9 @@ namespace HuergoMotorsForms
             // Sucursal
             // 
             this.Sucursal.DataPropertyName = "Sucursal";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.NullValue = "0";
-            this.Sucursal.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.NullValue = "0";
+            this.Sucursal.DefaultCellStyle = dataGridViewCellStyle3;
             this.Sucursal.HeaderText = "Sucursal";
             this.Sucursal.Name = "Sucursal";
             this.Sucursal.ReadOnly = true;
@@ -217,6 +219,7 @@ namespace HuergoMotorsForms
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txFiltro);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(600, 200);
             this.Name = "frmVendedores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vendedores - Busqueda";

@@ -10,7 +10,7 @@ namespace HuergoMotors.DAO
 {
     public class HelperDAO
     {
-        private static string ConnectionString = "Server=sql5078.site4now.net;Database=DB_9CF8B6_HuergoMotors2021;User Id=DB_9CF8B6_HuergoMotors2021_admin;Password=huergo2021;";
+        public static string ConnectionString = "Server=sql5078.site4now.net;Database=DB_9CF8B6_HuergoMotors2021;User Id=DB_9CF8B6_HuergoMotors2021_admin;Password=huergo2021;";
 
         public static NumberFormatInfo NFI()
         {
@@ -53,6 +53,16 @@ namespace HuergoMotors.DAO
                 return EditarDB(datos.command);
             }
         }
+        public void AgregarElemento<T>(T dto, SqlConnection conexion, SqlTransaction trans)
+        {
+            var datos = LeerDatos(dto);
+            var propiedades = OrdenarPropiedadesCreate(datos.propiedades);
+            using (datos.command)
+            {
+                datos.command.CommandText = $"INSERT INTO {datos.tabla} ({propiedades.campos}) VALUES ({propiedades.parametros})";
+                EditarDB(datos.command, conexion, trans);
+            }
+        }
 
         public int ModificarElemento<T>(T dto, int id) where T : new()
         {
@@ -63,12 +73,25 @@ namespace HuergoMotors.DAO
                 return EditarDB(datos.command);
             }
         }
+        //public int ModificarElemento<T>(T dto, int id, List<string> propiedades) where T : new()
+        //{
+        //    var datos = LeerDatos(dto);
+        //    using (datos.command)
+        //    {
+        //        datos.command.CommandText = $"UPDATE {datos.tabla} SET {OrdenarPropiedadesUpdate(propiedades)} WHERE Id= {id}";
+        //        return EditarDB(datos.command);
+        //    }
+        //}
 
         public int EliminarElemento<T>(int id)
         {
             string tabla = typeof(T).Name;
             tabla = tabla.Remove(tabla.Length - 3);
-            return EditarDB($"DELETE FROM {tabla} WHERE Id={id}");
+            using (SqlCommand command = new SqlCommand())
+            {
+                command.CommandText = $"DELETE FROM {tabla} WHERE Id={id}";
+                return EditarDB(command);
+            }
         }
 
 
@@ -168,7 +191,7 @@ namespace HuergoMotors.DAO
                 {
                     conexion.Open();
                     command.Connection = conexion;
-                    return command.ExecuteNonQuery(); ;
+                    return command.ExecuteNonQuery();
                 }
             }
             catch (Exception ex)
@@ -176,80 +199,19 @@ namespace HuergoMotors.DAO
                 throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
             }
         }
-        private int EditarDB(string query)
+        public int EditarDB(SqlCommand command, SqlConnection conexion, SqlTransaction trans)
         {
             try
             {
-                using (SqlConnection conexion = new SqlConnection(ConnectionString))
-                {
-                    conexion.Open();
-                    using (SqlCommand command = new SqlCommand(query, conexion))
-                    {
-                        return command.ExecuteNonQuery();
-                    }
-                }
+                command.Connection = conexion;
+                command.Transaction = trans;
+                return command.ExecuteNonQuery(); 
+                
             }
             catch (Exception ex)
             {
                 throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
             }
         }
-
-
-
-        //Borar:
-
-        public static void EditarDB(string query, SqlConnection conexion, SqlTransaction transaction)
-        {
-            try
-            {
-                using (SqlCommand comando = new SqlCommand(query, conexion))
-                {
-                    comando.Transaction = transaction;
-                    comando.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al intentar la siguiente operacion: " + query, ex);
-            }
-        }
-
-        //public void Create<T>(T dto)
-        //{
-        //    string tabla = typeof(T).Name;
-        //    tabla = tabla.Remove(tabla.Length - 3);
-        //    string campos = "";
-        //    string parametros = "";
-        //    var propiedades = typeof(T).GetProperties();
-
-        //    using (SqlConnection conn = new SqlConnection(ConnectionString))
-        //    {
-        //        conn.Open();
-
-        //        using (SqlCommand cmd = new SqlCommand())
-        //        {
-        //            foreach (PropertyInfo prop in propiedades)
-        //            {
-        //                if (prop.Name == "Id") continue; //Si es el Id, paso al que sigue.
-
-        //                campos += prop.Name + ',';
-        //                parametros += "@" + prop.Name + ',';
-
-        //                object valor = prop.GetValue(dto, null);
-        //                cmd.Parameters.AddWithValue("@" + prop.Name, valor);
-        //            }
-
-        //            campos = campos.TrimEnd(',');
-        //            parametros = parametros.TrimEnd(',');
-
-        //            string query = $"INSERT INTO {tabla} ({campos}) VALUES ({parametros})";
-
-        //            cmd.CommandText = query;
-        //            cmd.Connection = conn;
-        //            cmd.ExecuteNonQuery();
-        //        }
-        //    }
-        //}
     }
 }
