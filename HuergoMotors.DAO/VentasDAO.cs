@@ -98,57 +98,53 @@ namespace HuergoMotors.DAO
             return helperDAO.CargarDatos<VentasRDTO>(VentasCampos, VentasTablas, 
                 $"a.Fecha LIKE '%{filtro}%' OR a.Total LIKE '%{filtro}%' OR b.Modelo LIKE '%{filtro}%'" +
                 $"OR c.Nombre LIKE '%{filtro}%' OR d.Nombre LIKE '%{filtro}%' OR d.Apellido LIKE '%{filtro}%'");
-
-            //return CargarListaDTOs(HelperDAO.CargarDataTable($"SELECT a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor," +
-            //    $" a.Observaciones, a.Total, b.Modelo as Vehiculo, c.Nombre as Cliente, (d.Nombre + ' ' + d.Apellido) as Vendedor " +
-            //    $"FROM Ventas a JOIN Vehiculos b ON a.IdVehiculo = b.Id JOIN Clientes c ON a.IdCliente = c.Id JOIN Vendedores d " +
-            //    $"ON a.IdVendedor = d.Id WHERE a.Fecha LIKE '%{filtro}%' OR a.Total LIKE '%{filtro}%' OR b.Modelo LIKE '%{filtro}%'" +
-            //    $"OR c.Nombre LIKE '%{filtro}%' OR d.Nombre LIKE '%{filtro}%' OR d.Apellido LIKE '%{filtro}%'"));
         }
 
+
+        //ConfirmarVenta:
         public void ConfirmarVenta(VentasRDTO venta, List<AccesoriosRDTO> listaAccesorios)
         {
-            using (SqlConnection conexion = new SqlConnection(HelperDAO.ConnectionString))
-            {
-                conexion.Open();
-                using (SqlTransaction transaction = conexion.BeginTransaction())
-                {
-                    try
-                    {
-                        //Valida el stock otra vez
-                        int stock = helperDAO.CargarDatos<VehiculosDTO>($"Id = { venta.IdVehiculo}")[0].Stock;
-                        if (stock < 1) throw new Exception("No hay stock del vehiculo seleccionado");
+            //    //using (SqlConnection conexion = new SqlConnection(HelperDAO.ConnectionString))
+            //    {
+            //        conexion.Open();
+            //        using (SqlTransaction transaction = conexion.BeginTransaction())
+            //        {
+            //            try
+            //            {
+            //                Valida el stock otra vez
+            //                int stock = helperDAO.CargarDatos<VehiculosDTO>($"Id = { venta.IdVehiculo}")[0].Stock;
+            //                if (stock < 1) throw new Exception("No hay stock del vehiculo seleccionado");
 
-                        HelperDAO.EditarDB($"INSERT INTO Ventas(Fecha, IdVehiculo, IdCliente, IdVendedor, Observaciones, Total) " +
-                        $"VALUES ('{venta.Fecha.ToString("yyyyMMdd")}', '{venta.IdVehiculo}', '{venta.IdCliente}', '{venta.IdVendedor}', " +
-                        $"'{venta.Observaciones}', '{venta.Total.ToString(HelperDAO.NFI())}')", conexion, transaction);
+            //                HelperDAO.EditarDB($"INSERT INTO Ventas(Fecha, IdVehiculo, IdCliente, IdVendedor, Observaciones, Total) " +
+            //                $"VALUES ('{venta.Fecha.ToString("yyyyMMdd")}', '{venta.IdVehiculo}', '{venta.IdCliente}', '{venta.IdVendedor}', " +
+            //                $"'{venta.Observaciones}', '{venta.Total.ToString(HelperDAO.NFI())}')", conexion, transaction);
 
-                        //Actualizar Stock
-                        stock = stock - 1;
-                        HelperDAO.EditarDB($"UPDATE Vehiculos SET Stock='{stock}' WHERE Id={venta.IdVehiculo}", conexion, transaction);
+            //                Actualizar Stock
+            //                stock = stock - 1;
+            //                HelperDAO.EditarDB($"UPDATE Vehiculos SET Stock='{stock}' WHERE Id={venta.IdVehiculo}", conexion, transaction);
 
-                        //Si hay accesorios los agrega y si no termina la transaction
-                        if (listaAccesorios != null && listaAccesorios.Count > 0)
-                        {
-                            //Por cada accesorio en la lista se agrega una venta en VentasAccesorios
-                            foreach (AccesoriosRDTO accesorio in listaAccesorios)
-                            {
-                                HelperDAO.EditarDB($"INSERT INTO VentasAccesorios (IdVenta, IdAccesorio, Precio) VALUES" +
-                                    $"((SELECT MAX(Id) AS IdVenta FROM Ventas), '{accesorio.Id}'," +
-                                    $" '{accesorio.Precio.ToString(HelperDAO.NFI())}')", conexion, transaction);
-                                
-                            }
-                        }
-                        transaction.Commit();
-                    }
-                    catch (Exception ex)
-                    {
-                        transaction.Rollback();
-                        throw new Exception("Error al intentar cargar la venta en la base de datos.", ex);
-                    }
-                }
+            //                Si hay accesorios los agrega y si no termina la transaction
+            //                if (listaAccesorios != null && listaAccesorios.Count > 0)
+            //                {
+            //                    Por cada accesorio en la lista se agrega una venta en VentasAccesorios
+            //                    foreach (AccesoriosRDTO accesorio in listaAccesorios)
+            //                    {
+            //                        HelperDAO.EditarDB($"INSERT INTO VentasAccesorios (IdVenta, IdAccesorio, Precio) VALUES" +
+            //                            $"((SELECT MAX(Id) AS IdVenta FROM Ventas), '{accesorio.Id}'," +
+            //                            $" '{accesorio.Precio.ToString(HelperDAO.NFI())}')", conexion, transaction);
+
+            //                    }
+            //                }
+            //                transaction.Commit();
+            //            }
+            //            catch (Exception ex)
+            //            {
+            //                transaction.Rollback();
+            //                throw new Exception("Error al intentar cargar la venta en la base de datos.", ex);
+            //            }
+            //        }
+                //}
             }
-        }
 
-    }
+        }
 }

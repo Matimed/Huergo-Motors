@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HuergoMotors.DTO;
+using System;
 using System.Windows.Forms;
 
 namespace HuergoMotorsForms
@@ -78,8 +79,8 @@ namespace HuergoMotorsForms
             {
                 HelperForms.ValidarTextosVacios(cboModelos.Text, txtPrecio.Text, txtNombre.Text, txtTipo.Text);
                 HelperForms.ValidarID(AccesorioSeleccionadoDTO.Id);
-                AccesorioSeleccionadoDTO = accesoriosNegocio.CargarDTO(AccesorioSeleccionadoDTO.Id, (int)cboModelos.SelectedValue, 
-                    cboModelos.Text, HelperForms.ConvertirNumeroRacional(txtPrecio.Text), txtNombre.Text, txtTipo.Text);
+                AccesoriosDTO nuevoAccesorio = accesoriosNegocio.CargarDTO(AccesorioSeleccionadoDTO.Id, (int)cboModelos.SelectedValue, 
+                    HelperForms.ConvertirNumeroRacional(txtPrecio.Text), txtNombre.Text, txtTipo.Text);
 
                 switch (Modo)
                 {
@@ -87,13 +88,13 @@ namespace HuergoMotorsForms
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
                             HelperForms.OperacionExitosa
-                                (this, Modo, accesoriosNegocio.ModificarElemento (AccesorioSeleccionadoDTO));
+                                (this, Modo, accesoriosNegocio.ModificarElemento (nuevoAccesorio));
                         }
                         break;
                     case HelperForms.Modo.Agregar:
                        
                         HelperForms.OperacionExitosa
-                            (this, Modo, accesoriosNegocio.AgregarElemento(AccesorioSeleccionadoDTO));
+                            (this, Modo, accesoriosNegocio.AgregarElemento(nuevoAccesorio));
                         break;
                 }
             }
