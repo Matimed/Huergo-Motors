@@ -52,7 +52,7 @@ namespace HuergoMotorsForms
             this.btAceptar.Location = new System.Drawing.Point(211, 230);
             this.btAceptar.Name = "btAceptar";
             this.btAceptar.Size = new System.Drawing.Size(75, 25);
-            this.btAceptar.TabIndex = 15;
+            this.btAceptar.TabIndex = 4;
             this.btAceptar.Text = "Aceptar";
             this.btAceptar.UseVisualStyleBackColor = true;
             this.btAceptar.Click += new System.EventHandler(this.btAceptar_Click);
@@ -64,7 +64,7 @@ namespace HuergoMotorsForms
             this.btCancelar.Location = new System.Drawing.Point(297, 230);
             this.btCancelar.Name = "btCancelar";
             this.btCancelar.Size = new System.Drawing.Size(75, 25);
-            this.btCancelar.TabIndex = 14;
+            this.btCancelar.TabIndex = 5;
             this.btCancelar.Text = "Cancelar";
             this.btCancelar.UseVisualStyleBackColor = true;
             this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
@@ -104,7 +104,7 @@ namespace HuergoMotorsForms
             this.txtApellido.Location = new System.Drawing.Point(133, 160);
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.Size = new System.Drawing.Size(239, 20);
-            this.txtApellido.TabIndex = 10;
+            this.txtApellido.TabIndex = 2;
             // 
             // txtNombre
             // 
@@ -113,7 +113,7 @@ namespace HuergoMotorsForms
             this.txtNombre.Location = new System.Drawing.Point(133, 134);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(239, 20);
-            this.txtNombre.TabIndex = 9;
+            this.txtNombre.TabIndex = 1;
             // 
             // txtSucursal
             // 
@@ -122,7 +122,7 @@ namespace HuergoMotorsForms
             this.txtSucursal.Location = new System.Drawing.Point(133, 186);
             this.txtSucursal.Name = "txtSucursal";
             this.txtSucursal.Size = new System.Drawing.Size(239, 20);
-            this.txtSucursal.TabIndex = 8;
+            this.txtSucursal.TabIndex = 3;
             // 
             // picLogo
             // 
@@ -160,9 +160,11 @@ namespace HuergoMotorsForms
             // 
             // frmVendedoresAlta
             // 
+            this.AcceptButton = this.btAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.btCancelar;
             this.ClientSize = new System.Drawing.Size(384, 301);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox3);

@@ -56,7 +56,7 @@ namespace HuergoMotorsForms
             this.btAceptar.Location = new System.Drawing.Point(222, 268);
             this.btAceptar.Name = "btAceptar";
             this.btAceptar.Size = new System.Drawing.Size(75, 25);
-            this.btAceptar.TabIndex = 15;
+            this.btAceptar.TabIndex = 5;
             this.btAceptar.Text = "Aceptar";
             this.btAceptar.UseVisualStyleBackColor = true;
             this.btAceptar.Click += new System.EventHandler(this.btAceptar_Click);
@@ -68,7 +68,7 @@ namespace HuergoMotorsForms
             this.btCancelar.Location = new System.Drawing.Point(312, 268);
             this.btCancelar.Name = "btCancelar";
             this.btCancelar.Size = new System.Drawing.Size(75, 25);
-            this.btCancelar.TabIndex = 14;
+            this.btCancelar.TabIndex = 6;
             this.btCancelar.Text = "Cancelar";
             this.btCancelar.UseVisualStyleBackColor = true;
             this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
@@ -107,7 +107,7 @@ namespace HuergoMotorsForms
             this.txtTipo.Location = new System.Drawing.Point(125, 163);
             this.txtTipo.Name = "txtTipo";
             this.txtTipo.Size = new System.Drawing.Size(262, 20);
-            this.txtTipo.TabIndex = 10;
+            this.txtTipo.TabIndex = 2;
             // 
             // txtNombre
             // 
@@ -116,7 +116,7 @@ namespace HuergoMotorsForms
             this.txtNombre.Location = new System.Drawing.Point(125, 137);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(262, 20);
-            this.txtNombre.TabIndex = 9;
+            this.txtNombre.TabIndex = 1;
             // 
             // txtPrecio
             // 
@@ -125,7 +125,7 @@ namespace HuergoMotorsForms
             this.txtPrecio.Location = new System.Drawing.Point(125, 189);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(262, 20);
-            this.txtPrecio.TabIndex = 8;
+            this.txtPrecio.TabIndex = 3;
             // 
             // picLogo
             // 
@@ -188,13 +188,15 @@ namespace HuergoMotorsForms
             this.cboModelos.Location = new System.Drawing.Point(125, 218);
             this.cboModelos.Name = "cboModelos";
             this.cboModelos.Size = new System.Drawing.Size(262, 21);
-            this.cboModelos.TabIndex = 27;
+            this.cboModelos.TabIndex = 4;
             // 
             // frmAccesoriosAlta
             // 
+            this.AcceptButton = this.btAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.btCancelar;
             this.ClientSize = new System.Drawing.Size(399, 333);
             this.ControlBox = false;
             this.Controls.Add(this.cboModelos);

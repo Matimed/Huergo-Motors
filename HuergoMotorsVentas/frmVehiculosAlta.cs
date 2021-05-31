@@ -19,10 +19,11 @@ namespace HuergoMotorsForms
         private void frmVehiculosAlta_Load(object sender, EventArgs e)
         {
             //Saca el focus del textbox y lo pone en el label por estetica
-            this.ActiveControl = label1;
+            ActiveControl = label1;
 
             if (Modo == HelperForms.Modo.Agregar)
             {
+                ActiveControl = txtTipo;
                 // Vaciar todos los txtbox
                 txtModelo.Text = string.Empty;
                 txtTipo.Text = string.Empty;

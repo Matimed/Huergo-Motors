@@ -27,6 +27,7 @@ namespace HuergoMotorsForms
 
                 if (Modo == HelperForms.Modo.Agregar)
                 {
+                    ActiveControl = txtNombre;
                     HelperForms.DisplayCombo(cboModelos, "Modelo");
                     cboModelos.DataSource = vehiculosNegocio.CargarTabla();
                     txtNombre.Text = string.Empty;

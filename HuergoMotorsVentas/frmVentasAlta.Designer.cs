@@ -29,8 +29,8 @@ namespace HuergoMotorsForms
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVentasAlta));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVentasAlta));
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,6 +52,13 @@ namespace HuergoMotorsForms
             this.btnConfirmarVenta = new System.Windows.Forms.Button();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.gvAccesorios = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdVehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.picLogo = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -65,13 +72,6 @@ namespace HuergoMotorsForms
             this.btnCancelar = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdVehiculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Eliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gvAccesorios)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -125,16 +125,17 @@ namespace HuergoMotorsForms
             this.dtpFecha.Location = new System.Drawing.Point(109, 61);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(121, 20);
-            this.dtpFecha.TabIndex = 6;
+            this.dtpFecha.TabIndex = 1;
             // 
             // cboVendedor
             // 
             this.cboVendedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboVendedor.FormattingEnabled = true;
+            this.cboVendedor.ItemHeight = 13;
             this.cboVendedor.Location = new System.Drawing.Point(109, 93);
             this.cboVendedor.Name = "cboVendedor";
             this.cboVendedor.Size = new System.Drawing.Size(121, 21);
-            this.cboVendedor.TabIndex = 7;
+            this.cboVendedor.TabIndex = 2;
             this.cboVendedor.SelectedIndexChanged += new System.EventHandler(this.cboVendedor_SelectedIndexChanged);
             // 
             // txtSucursal
@@ -143,7 +144,7 @@ namespace HuergoMotorsForms
             this.txtSucursal.Name = "txtSucursal";
             this.txtSucursal.ReadOnly = true;
             this.txtSucursal.Size = new System.Drawing.Size(121, 20);
-            this.txtSucursal.TabIndex = 8;
+            this.txtSucursal.TabIndex = 3;
             // 
             // label6
             // 
@@ -178,7 +179,7 @@ namespace HuergoMotorsForms
             this.btnSeleccionar.Location = new System.Drawing.Point(373, 163);
             this.btnSeleccionar.Name = "btnSeleccionar";
             this.btnSeleccionar.Size = new System.Drawing.Size(121, 24);
-            this.btnSeleccionar.TabIndex = 18;
+            this.btnSeleccionar.TabIndex = 9;
             this.btnSeleccionar.Text = "Seleccionar";
             this.btnSeleccionar.UseVisualStyleBackColor = true;
             this.btnSeleccionar.Click += new System.EventHandler(this.btnSeleccionar_Click);
@@ -219,10 +220,11 @@ namespace HuergoMotorsForms
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cboAccesorios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboAccesorios.FormattingEnabled = true;
+            this.cboAccesorios.ItemHeight = 13;
             this.cboAccesorios.Location = new System.Drawing.Point(128, 295);
             this.cboAccesorios.Name = "cboAccesorios";
             this.cboAccesorios.Size = new System.Drawing.Size(239, 21);
-            this.cboAccesorios.TabIndex = 26;
+            this.cboAccesorios.TabIndex = 7;
             // 
             // btnAgregar
             // 
@@ -230,7 +232,7 @@ namespace HuergoMotorsForms
             this.btnAgregar.Location = new System.Drawing.Point(384, 293);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(110, 24);
-            this.btnAgregar.TabIndex = 27;
+            this.btnAgregar.TabIndex = 8;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
@@ -265,7 +267,7 @@ namespace HuergoMotorsForms
             this.btnConfirmarVenta.Location = new System.Drawing.Point(330, 560);
             this.btnConfirmarVenta.Name = "btnConfirmarVenta";
             this.btnConfirmarVenta.Size = new System.Drawing.Size(164, 24);
-            this.btnConfirmarVenta.TabIndex = 30;
+            this.btnConfirmarVenta.TabIndex = 14;
             this.btnConfirmarVenta.Text = "Confirmar Venta";
             this.btnConfirmarVenta.UseVisualStyleBackColor = true;
             this.btnConfirmarVenta.Click += new System.EventHandler(this.btnConfirmarVenta_Click);
@@ -278,7 +280,7 @@ namespace HuergoMotorsForms
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.Size = new System.Drawing.Size(446, 65);
-            this.txtObservaciones.TabIndex = 31;
+            this.txtObservaciones.TabIndex = 13;
             this.txtObservaciones.Text = "Observaciones:";
             this.txtObservaciones.Enter += new System.EventHandler(this.txtObservaciones_Enter);
             this.txtObservaciones.Validated += new System.EventHandler(this.txtObservaciones_Validated);
@@ -306,139 +308,6 @@ namespace HuergoMotorsForms
             this.gvAccesorios.Size = new System.Drawing.Size(446, 147);
             this.gvAccesorios.TabIndex = 32;
             this.gvAccesorios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gvAccesorios_CellClick);
-            // 
-            // picLogo
-            // 
-            this.picLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picLogo.Image = ((System.Drawing.Image)(resources.GetObject("picLogo.Image")));
-            this.picLogo.Location = new System.Drawing.Point(373, 52);
-            this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(122, 97);
-            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picLogo.TabIndex = 33;
-            this.picLogo.TabStop = false;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label15.Location = new System.Drawing.Point(45, 165);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(56, 16);
-            this.label15.TabIndex = 34;
-            this.label15.Text = "Vehiculo";
-            // 
-            // label9
-            // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label9.Location = new System.Drawing.Point(315, 168);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(47, 16);
-            this.label9.TabIndex = 35;
-            this.label9.Text = "Cliente";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label10.Location = new System.Drawing.Point(46, 298);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(67, 16);
-            this.label10.TabIndex = 36;
-            this.label10.Text = "Accesorios";
-            // 
-            // cboModelo
-            // 
-            this.cboModelo.FormattingEnabled = true;
-            this.cboModelo.Location = new System.Drawing.Point(109, 194);
-            this.cboModelo.Name = "cboModelo";
-            this.cboModelo.Size = new System.Drawing.Size(121, 21);
-            this.cboModelo.TabIndex = 37;
-            this.cboModelo.SelectedIndexChanged += new System.EventHandler(this.cboModelo_SelectedIndexChanged);
-            // 
-            // txtTipo
-            // 
-            this.txtTipo.Location = new System.Drawing.Point(109, 221);
-            this.txtTipo.Name = "txtTipo";
-            this.txtTipo.ReadOnly = true;
-            this.txtTipo.Size = new System.Drawing.Size(121, 20);
-            this.txtTipo.TabIndex = 38;
-            // 
-            // txtPrecio
-            // 
-            this.txtPrecio.Location = new System.Drawing.Point(109, 250);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.ReadOnly = true;
-            this.txtPrecio.Size = new System.Drawing.Size(121, 20);
-            this.txtPrecio.TabIndex = 39;
-            // 
-            // txtNombreCliente
-            // 
-            this.txtNombreCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNombreCliente.Location = new System.Drawing.Point(373, 197);
-            this.txtNombreCliente.Name = "txtNombreCliente";
-            this.txtNombreCliente.ReadOnly = true;
-            this.txtNombreCliente.Size = new System.Drawing.Size(121, 20);
-            this.txtNombreCliente.TabIndex = 40;
-            // 
-            // txtTelefono
-            // 
-            this.txtTelefono.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTelefono.Location = new System.Drawing.Point(373, 226);
-            this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.ReadOnly = true;
-            this.txtTelefono.Size = new System.Drawing.Size(121, 20);
-            this.txtTelefono.TabIndex = 41;
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtEmail.Location = new System.Drawing.Point(373, 253);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.ReadOnly = true;
-            this.txtEmail.Size = new System.Drawing.Size(121, 20);
-            this.txtEmail.TabIndex = 42;
-            // 
-            // btnCancelar
-            // 
-            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancelar.Location = new System.Drawing.Point(242, 560);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(82, 24);
-            this.btnCancelar.TabIndex = 43;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = true;
-            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.Location = new System.Drawing.Point(-3, 583);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(551, 30);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 44;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-3, -6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(551, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 45;
-            this.pictureBox1.TabStop = false;
             // 
             // Id
             // 
@@ -496,6 +365,140 @@ namespace HuergoMotorsForms
             this.Eliminar.HeaderText = "Eliminar";
             this.Eliminar.Name = "Eliminar";
             this.Eliminar.ReadOnly = true;
+            // 
+            // picLogo
+            // 
+            this.picLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picLogo.Image = ((System.Drawing.Image)(resources.GetObject("picLogo.Image")));
+            this.picLogo.Location = new System.Drawing.Point(373, 52);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(122, 97);
+            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picLogo.TabIndex = 33;
+            this.picLogo.TabStop = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label15.Location = new System.Drawing.Point(45, 165);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(56, 16);
+            this.label15.TabIndex = 34;
+            this.label15.Text = "Vehiculo";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label9.Location = new System.Drawing.Point(315, 168);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(47, 16);
+            this.label9.TabIndex = 35;
+            this.label9.Text = "Cliente";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label10.Location = new System.Drawing.Point(46, 298);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(67, 16);
+            this.label10.TabIndex = 36;
+            this.label10.Text = "Accesorios";
+            // 
+            // cboModelo
+            // 
+            this.cboModelo.FormattingEnabled = true;
+            this.cboModelo.ItemHeight = 13;
+            this.cboModelo.Location = new System.Drawing.Point(109, 194);
+            this.cboModelo.Name = "cboModelo";
+            this.cboModelo.Size = new System.Drawing.Size(121, 21);
+            this.cboModelo.TabIndex = 4;
+            this.cboModelo.SelectedIndexChanged += new System.EventHandler(this.cboModelo_SelectedIndexChanged);
+            // 
+            // txtTipo
+            // 
+            this.txtTipo.Location = new System.Drawing.Point(109, 221);
+            this.txtTipo.Name = "txtTipo";
+            this.txtTipo.ReadOnly = true;
+            this.txtTipo.Size = new System.Drawing.Size(121, 20);
+            this.txtTipo.TabIndex = 5;
+            // 
+            // txtPrecio
+            // 
+            this.txtPrecio.Location = new System.Drawing.Point(109, 250);
+            this.txtPrecio.Name = "txtPrecio";
+            this.txtPrecio.ReadOnly = true;
+            this.txtPrecio.Size = new System.Drawing.Size(121, 20);
+            this.txtPrecio.TabIndex = 6;
+            // 
+            // txtNombreCliente
+            // 
+            this.txtNombreCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtNombreCliente.Location = new System.Drawing.Point(373, 197);
+            this.txtNombreCliente.Name = "txtNombreCliente";
+            this.txtNombreCliente.ReadOnly = true;
+            this.txtNombreCliente.Size = new System.Drawing.Size(121, 20);
+            this.txtNombreCliente.TabIndex = 10;
+            // 
+            // txtTelefono
+            // 
+            this.txtTelefono.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTelefono.Location = new System.Drawing.Point(373, 226);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.ReadOnly = true;
+            this.txtTelefono.Size = new System.Drawing.Size(121, 20);
+            this.txtTelefono.TabIndex = 11;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtEmail.Location = new System.Drawing.Point(373, 253);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.ReadOnly = true;
+            this.txtEmail.Size = new System.Drawing.Size(121, 20);
+            this.txtEmail.TabIndex = 12;
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancelar.Location = new System.Drawing.Point(242, 560);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(82, 24);
+            this.btnCancelar.TabIndex = 15;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.Location = new System.Drawing.Point(-3, 583);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(551, 30);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 44;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-3, -6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(551, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 45;
+            this.pictureBox1.TabStop = false;
             // 
             // frmVentasAlta
             // 

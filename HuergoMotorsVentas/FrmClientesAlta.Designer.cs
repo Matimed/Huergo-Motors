@@ -56,7 +56,7 @@ namespace HuergoMotorsForms
             this.btAceptar.Location = new System.Drawing.Point(203, 243);
             this.btAceptar.Name = "btAceptar";
             this.btAceptar.Size = new System.Drawing.Size(75, 27);
-            this.btAceptar.TabIndex = 15;
+            this.btAceptar.TabIndex = 5;
             this.btAceptar.Text = "Aceptar";
             this.btAceptar.UseVisualStyleBackColor = true;
             this.btAceptar.Click += new System.EventHandler(this.btAceptar_Click);
@@ -68,7 +68,7 @@ namespace HuergoMotorsForms
             this.btCancelar.Location = new System.Drawing.Point(297, 243);
             this.btCancelar.Name = "btCancelar";
             this.btCancelar.Size = new System.Drawing.Size(75, 27);
-            this.btCancelar.TabIndex = 14;
+            this.btCancelar.TabIndex = 6;
             this.btCancelar.Text = "Cancelar";
             this.btCancelar.UseVisualStyleBackColor = true;
             this.btCancelar.Click += new System.EventHandler(this.btCancelar_Click);
@@ -107,7 +107,7 @@ namespace HuergoMotorsForms
             this.txtDireccion.Location = new System.Drawing.Point(138, 155);
             this.txtDireccion.Name = "txtDireccion";
             this.txtDireccion.Size = new System.Drawing.Size(234, 20);
-            this.txtDireccion.TabIndex = 10;
+            this.txtDireccion.TabIndex = 2;
             // 
             // txtNombre
             // 
@@ -116,7 +116,7 @@ namespace HuergoMotorsForms
             this.txtNombre.Location = new System.Drawing.Point(138, 129);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(234, 20);
-            this.txtNombre.TabIndex = 9;
+            this.txtNombre.TabIndex = 1;
             // 
             // txtTelefono
             // 
@@ -125,7 +125,7 @@ namespace HuergoMotorsForms
             this.txtTelefono.Location = new System.Drawing.Point(138, 181);
             this.txtTelefono.Name = "txtTelefono";
             this.txtTelefono.Size = new System.Drawing.Size(234, 20);
-            this.txtTelefono.TabIndex = 8;
+            this.txtTelefono.TabIndex = 3;
             // 
             // labelEmail
             // 
@@ -143,7 +143,7 @@ namespace HuergoMotorsForms
             this.txtEmail.Location = new System.Drawing.Point(138, 207);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(234, 20);
-            this.txtEmail.TabIndex = 16;
+            this.txtEmail.TabIndex = 4;
             // 
             // picLogo
             // 
@@ -190,9 +190,11 @@ namespace HuergoMotorsForms
             // 
             // frmClientesAlta
             // 
+            this.AcceptButton = this.btAceptar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.btCancelar;
             this.ClientSize = new System.Drawing.Size(384, 301);
             this.ControlBox = false;
             this.Controls.Add(this.pictureBox4);
