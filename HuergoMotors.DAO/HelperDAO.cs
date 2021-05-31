@@ -45,23 +45,23 @@ namespace HuergoMotors.DAO
 
         public int AgregarElemento<T>(T dto)
         {
-            var datos = GenerarDatos(dto);
+            var datos = LeerDatos(dto);
+            var propiedades = OrdenarPropiedadesCreate(datos.propiedades);
             using (datos.command)
             {
-                datos.command.CommandText = $"INSERT INTO {datos.tabla} ({datos.campos}) VALUES ({datos.parametros})";
+                datos.command.CommandText = $"INSERT INTO {datos.tabla} ({propiedades.campos}) VALUES ({propiedades.parametros})";
                 return EditarDB(datos.command);
             }
         }
 
-        public int ModificarElemento<T>(T dto)
+        public int ModificarElemento<T>(T dto, int id) where T : new()
         {
-            var datos = GenerarDatos(dto);
+            var datos = LeerDatos(dto);
             using (datos.command)
             {
-                datos.command.CommandText = $"UPDATE {datos.tabla} INTO ({datos.campos}) VALUES ({datos.parametros})";
+                datos.command.CommandText = $"UPDATE {datos.tabla} SET {OrdenarPropiedadesUpdate(datos.propiedades)} WHERE Id= {id}";
                 return EditarDB(datos.command);
             }
-
         }
 
         public int EliminarElemento<T>(int id)
@@ -118,28 +118,48 @@ namespace HuergoMotors.DAO
             }
         }
 
-        private (string tabla, string campos, string parametros, SqlCommand command) GenerarDatos<T> (T dto)
+        private (string tabla, List<string> propiedades, SqlCommand command) LeerDatos<T>(T dto)
         {
             string tabla = typeof(T).Name;
             tabla = tabla.Remove(tabla.Length - 3);
-            string campos = "";
-            string parametros = "";
+            List<string> nombrePropiedades = new List<string>();
             var propiedades = typeof(T).GetProperties().Where(p => p.CanWrite);
             using (SqlCommand command = new SqlCommand())
             {
                 foreach (PropertyInfo prop in propiedades)
                 {
                     if (prop.Name == "Id") continue; //Si es el Id, paso al que sigue.
-                    campos += prop.Name + ',';
-                    parametros += "@" + prop.Name + ',';
+                    nombrePropiedades.Add(prop.Name);
                     object valor = prop.GetValue(dto, null);
                     command.Parameters.AddWithValue("@" + prop.Name, valor);
                 }
-                campos = campos.TrimEnd(',');
-                parametros = parametros.TrimEnd(',');
-                return (tabla, campos, parametros, command);
+                return (tabla, nombrePropiedades, command);
             }
         }
+
+        private (string campos, string parametros) OrdenarPropiedadesCreate(List<string> propiedades)
+        {
+            string campos = "";
+            string parametros = "";
+            foreach (string propiedad in propiedades)
+            {
+                campos += propiedad + ',';
+                parametros += "@" + propiedad + ',';
+            }
+            campos = campos.TrimEnd(',');
+            parametros = parametros.TrimEnd(',');
+            return (campos, parametros);
+        }
+        private string OrdenarPropiedadesUpdate(List<string> propiedades)
+        {
+            string update = "";
+            foreach (string propiedad in propiedades)
+            {
+                update += $"{propiedad} = @{propiedad},";
+            }
+            return update.TrimEnd(',');
+        }
+
         private int EditarDB(SqlCommand command)
         {
             try

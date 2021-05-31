@@ -36,7 +36,7 @@ namespace HuergoMotors.DAO
 
         public int ModificarElemento(AccesoriosDTO accesorioDTO)
         {
-            return HelperDAO.EditarDB($"UPDATE Accesorios SET Nombre='{accesorioDTO.Nombre}', Tipo='{accesorioDTO.Tipo}'," +
+            return helperDAO.EditarDB($"UPDATE Accesorios SET Nombre='{accesorioDTO.Nombre}', Tipo='{accesorioDTO.Tipo}'," +
                                 $" Precio='{accesorioDTO.Precio.ToString(HelperDAO.NFI())}', IdVehiculo= '{accesorioDTO.IdVehiculo}' WHERE Id={accesorioDTO.Id}");
         }
         public int AgregarElemento(AccesoriosDTO accesorioDTO)
