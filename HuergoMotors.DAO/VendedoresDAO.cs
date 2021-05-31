@@ -21,7 +21,7 @@ namespace HuergoMotors.DAO
 
         public int EliminarElemento(int id)
         {
-            return HelperDAO.EditarDB($"DELETE FROM Vendedores Where Id={id} ");
+            return helperDAO.EliminarElemento<VendedoresDTO>(id);
         }
 
         public int ModificarElemento(VendedoresDTO vendedorDTO)

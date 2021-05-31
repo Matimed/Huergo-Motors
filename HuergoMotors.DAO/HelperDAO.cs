@@ -53,7 +53,12 @@ namespace HuergoMotors.DAO
             }
         }
 
-
+        public int EliminarElemento<T>(int id)
+        {
+            string tabla = typeof(T).Name;
+            tabla = tabla.Remove(tabla.Length - 3);
+            return EditarDB($"DELETE FROM {tabla} WHERE Id={id}");
+        }
 
         private DataTable CargarDataTable(string query)
         {
@@ -131,12 +136,8 @@ namespace HuergoMotors.DAO
                 using (SqlConnection conexion = new SqlConnection(ConnectionString))
                 {
                     conexion.Open();
-                    using (command)
-                    {
-                        command.Connection = conexion;
-                        int resultados = command.ExecuteNonQuery();
-                        return resultados;
-                    }
+                    command.Connection = conexion;
+                    return command.ExecuteNonQuery(); ;
                 }
             }
             catch (Exception ex)
@@ -144,11 +145,6 @@ namespace HuergoMotors.DAO
                 throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
             }
         }
-
-
-
-
-        //Borar:
         public static int EditarDB(string query)
         {
             try
@@ -156,10 +152,9 @@ namespace HuergoMotors.DAO
                 using (SqlConnection conexion = new SqlConnection(ConnectionString))
                 {
                     conexion.Open();
-                    using (SqlCommand comando = new SqlCommand(query, conexion))
+                    using (SqlCommand command = new SqlCommand(query, conexion))
                     {
-                        int resultados = comando.ExecuteNonQuery();
-                        return resultados;
+                        return command.ExecuteNonQuery();
                     }
                 }
             }
@@ -168,6 +163,11 @@ namespace HuergoMotors.DAO
                 throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
             }
         }
+
+
+
+        //Borar:
+
         public static void EditarDB(string query, SqlConnection conexion, SqlTransaction transaction)
         {
             try

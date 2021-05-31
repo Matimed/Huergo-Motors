@@ -29,13 +29,11 @@ namespace HuergoMotors.DAO
         public int AgregarElemento(ClientesDTO clienteDTO)
         {
             return helperDAO.AgregarElemento(clienteDTO);
-            //return HelperDAO.EditarDB($"INSERT INTO Clientes (Nombre, Direccion, Email, Telefono) " +
-            //            $"VALUES ('{clienteDTO.Nombre}', '{clienteDTO.Direccion}', '{clienteDTO.Email}', '{clienteDTO.Telefono}')");
         }
         
         public int EliminarElemento(int id)
         {
-            return HelperDAO.EditarDB($"DELETE FROM Clientes Where Id={id} ");
+            return helperDAO.EliminarElemento<ClientesDTO>(id);
         }
     }
 
