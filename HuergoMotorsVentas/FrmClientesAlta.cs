@@ -1,11 +1,12 @@
-﻿using System;
+﻿using HuergoMotors.DTO;
+using System;
 using System.Windows.Forms;
 namespace HuergoMotorsForms
 {
     public partial class frmClientesAlta : Form
     {
         HuergoMotors.Negocio.ClientesNegocio clientesNegocio = new HuergoMotors.Negocio.ClientesNegocio();
-        public HuergoMotors.DTO.ClientesDTO ClienteSeleccionadoDTO { get; set; }
+        public ClientesDTO ClienteSeleccionadoDTO { get; set; }
         public HelperForms.Modo Modo { get; private set; }
 
         public frmClientesAlta(HelperForms.Modo modo)
@@ -57,7 +58,7 @@ namespace HuergoMotorsForms
                 HelperForms.ValidarEmail(txtEmail.Text);
                 HelperForms.ValidarTelefono(txtTelefono.Text);
                 HelperForms.ValidarID(ClienteSeleccionadoDTO.Id);
-                ClienteSeleccionadoDTO = clientesNegocio.CargarDTO(ClienteSeleccionadoDTO.Id, 
+                ClientesDTO nuevoCliente = clientesNegocio.CargarDTO(ClienteSeleccionadoDTO.Id, 
                     txtNombre.Text, txtDireccion.Text, txtEmail.Text, txtTelefono.Text);
 
                 switch (Modo)
@@ -66,12 +67,12 @@ namespace HuergoMotorsForms
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
                             HelperForms.OperacionExitosa(this, Modo, clientesNegocio.
-                                ModificarElemento(ClienteSeleccionadoDTO));
+                                ModificarElemento(nuevoCliente));
                         }
                         break;
                     case HelperForms.Modo.Agregar:
                         HelperForms.OperacionExitosa(this, Modo, clientesNegocio.
-                            AgregarElemento(ClienteSeleccionadoDTO));
+                            AgregarElemento(nuevoCliente));
                         break;
                 }
             }

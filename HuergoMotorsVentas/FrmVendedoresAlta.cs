@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HuergoMotors.DTO;
+using System;
 using System.Windows.Forms;
 
 namespace HuergoMotorsForms
@@ -6,7 +7,7 @@ namespace HuergoMotorsForms
     public partial class frmVendedoresAlta : Form
     {
         HuergoMotors.Negocio.VendedoresNegocio vendedoresNegocio = new HuergoMotors.Negocio.VendedoresNegocio();
-        public HuergoMotors.DTO.VendedoresDTO VendedorSeleccionadoDTO { get; set; }
+        public VendedoresDTO VendedorSeleccionadoDTO { get; set; }
         public HelperForms.Modo Modo { get; private set; }
         public frmVendedoresAlta(HelperForms.Modo modo)
         {
@@ -53,7 +54,7 @@ namespace HuergoMotorsForms
             {
                 HelperForms.ValidarTextosVacios(txtNombre.Text, txtApellido.Text, txtSucursal.Text);
                 HelperForms.ValidarID(VendedorSeleccionadoDTO.Id);
-                VendedorSeleccionadoDTO = vendedoresNegocio.CargarDTO(VendedorSeleccionadoDTO.Id,
+                VendedoresDTO nuevoVendedor = vendedoresNegocio.CargarDTO(VendedorSeleccionadoDTO.Id,
                     txtNombre.Text, txtApellido.Text, txtSucursal.Text);
                 switch (Modo)
                 {
@@ -61,12 +62,12 @@ namespace HuergoMotorsForms
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
                             HelperForms.OperacionExitosa(this, Modo,
-                                vendedoresNegocio.ModificarElemento(VendedorSeleccionadoDTO));
+                                vendedoresNegocio.ModificarElemento(nuevoVendedor));
                         }
                         break;
                     case HelperForms.Modo.Agregar:
                         HelperForms.OperacionExitosa(this, Modo, 
-                            vendedoresNegocio.AgregarElemento(VendedorSeleccionadoDTO));
+                            vendedoresNegocio.AgregarElemento(nuevoVendedor));
                         break;
                 }
 

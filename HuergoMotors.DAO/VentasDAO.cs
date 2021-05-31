@@ -102,7 +102,7 @@ namespace HuergoMotors.DAO
 
 
         //ConfirmarVenta:
-        public void ConfirmarVenta(VentasRDTO venta, List<AccesoriosRDTO> listaAccesorios)
+        public void ConfirmarVenta(VentasDTO venta, List<AccesoriosDTO> listaAccesorios)
         {
             //    //using (SqlConnection conexion = new SqlConnection(HelperDAO.ConnectionString))
             //    {

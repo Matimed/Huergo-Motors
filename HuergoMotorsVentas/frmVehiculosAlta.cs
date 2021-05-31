@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HuergoMotors.DTO;
+using System;
 using System.Windows.Forms;
 
 namespace HuergoMotorsForms
@@ -6,7 +7,7 @@ namespace HuergoMotorsForms
     public partial class frmVehiculosAlta : Form
     {
         HuergoMotors.Negocio.VehiculosNegocio vehiculosNegocio = new HuergoMotors.Negocio.VehiculosNegocio();
-        public HuergoMotors.DTO.VehiculosDTO VehiculoSeleccionadoDTO {get; set;}
+        public VehiculosDTO VehiculoSeleccionadoDTO {get; set;}
         public HelperForms.Modo Modo { get; private set; }
 
         public frmVehiculosAlta(HelperForms.Modo modo)
@@ -57,7 +58,7 @@ namespace HuergoMotorsForms
             {
                 HelperForms.ValidarTextosVacios(txtModelo.Text, txtPrecio.Text, txtStock.Text, txtTipo.Text);
                 HelperForms.ValidarID(VehiculoSeleccionadoDTO.Id);
-                VehiculoSeleccionadoDTO = vehiculosNegocio.CargarDTO(VehiculoSeleccionadoDTO.Id,
+                VehiculosDTO nuevoVehiculo = vehiculosNegocio.CargarDTO(VehiculoSeleccionadoDTO.Id,
                     txtModelo.Text, HelperForms.ConvertirNumeroRacional(txtPrecio.Text), 
                     HelperForms.ConvertirNumeroNatural(txtStock.Text), txtTipo.Text);
                 switch (Modo)
@@ -66,12 +67,12 @@ namespace HuergoMotorsForms
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
                             HelperForms.OperacionExitosa(this, Modo, 
-                                vehiculosNegocio.ModificarElemento(VehiculoSeleccionadoDTO));
+                                vehiculosNegocio.ModificarElemento(nuevoVehiculo));
                         }
                         break;
                     case HelperForms.Modo.Agregar:
                         HelperForms.OperacionExitosa(this, Modo,
-                            vehiculosNegocio.AgregarElemento(VehiculoSeleccionadoDTO));
+                            vehiculosNegocio.AgregarElemento(nuevoVehiculo));
                         break;
                 }
             }

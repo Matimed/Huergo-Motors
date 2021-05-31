@@ -24,21 +24,18 @@ namespace HuergoMotors.Negocio
             return ventasDAO.Buscar(filtro);
         }
 
-        public VentasRDTO CargarDTO(ClientesDTO clienteDTO,VehiculosDTO vehiculoDTO,
-            VendedoresDTO vendedorDTO, DateTime fecha,decimal total, string observaciones)
+        public VentasDTO CargarDTO(int idCliente,int idVehiculo,
+            int idVendedor, DateTime fecha,decimal total, string observaciones)
         {
             try
             {
-                VentasRDTO ventaDTO = new VentasRDTO();
-                ventaDTO.IdCliente = clienteDTO.Id;
-                ventaDTO.IdVehiculo = vehiculoDTO.Id;
-                ventaDTO.IdVendedor = vendedorDTO.Id;
+                VentasDTO ventaDTO = new VentasDTO();
+                ventaDTO.IdCliente = idCliente;
+                ventaDTO.IdVehiculo = idVehiculo;
+                ventaDTO.IdVendedor = idVendedor;
                 ventaDTO.Observaciones = observaciones;
                 ventaDTO.Total = total;
-                ventaDTO.Cliente = clienteDTO.Nombre;
                 ventaDTO.Fecha = fecha;
-                ventaDTO.Vehiculo = vehiculoDTO.Modelo;
-                ventaDTO.Vendedor = vendedorDTO.NombreCompleto;
                 return ventaDTO;
             }
             catch (Exception ex)
@@ -47,7 +44,7 @@ namespace HuergoMotors.Negocio
             }
         }
         
-        public void ConfirmarVenta(VentasRDTO venta, List<AccesoriosRDTO> accesorios)
+        public void ConfirmarVenta(VentasDTO venta, List<AccesoriosDTO> accesorios)
         {
             ventasDAO.ConfirmarVenta(venta, accesorios);
         }

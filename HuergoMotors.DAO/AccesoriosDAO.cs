@@ -14,21 +14,19 @@ namespace HuergoMotors.DAO
         {
             return helperDAO.CargarDatos<AccesoriosRDTO>(Campos, Tablas);
         }
+        public AccesoriosDTO CargarTabla(int id)
+        {
+            return helperDAO.CargarDatos<AccesoriosDTO>($"Id={id}")[0];
+        }
 
+        public List<AccesoriosDTO> CargarTablaIdVehiculo(int id)
+        {
+            return helperDAO.CargarDatos<AccesoriosDTO>($"IdVehiculo={id}");
+        }
         public List<AccesoriosRDTO> Buscar(string filtro)
         {
             return helperDAO.CargarDatos<AccesoriosRDTO>(Campos, Tablas,
                 $"a.Tipo LIKE '%{filtro}%' OR a.Nombre LIKE '%{filtro}%' OR a.Precio LIKE '%{filtro}%' OR b.Modelo LIKE '%{filtro}%'");
-        }
-
-        public AccesoriosRDTO CargarTabla(int id)
-        {
-            return helperDAO.CargarDatos<AccesoriosRDTO>(Campos, Tablas, $"a.Id={id}")[0];
-        }
-
-        public List<AccesoriosRDTO> CargarTablaIdVehiculo(int id)
-        {
-            return helperDAO.CargarDatos<AccesoriosRDTO>(Campos, Tablas, $"a.IdVehiculo={id}");
         }
 
         public int EliminarElemento(int id)
@@ -41,7 +39,6 @@ namespace HuergoMotors.DAO
             return HelperDAO.EditarDB($"UPDATE Accesorios SET Nombre='{accesorioDTO.Nombre}', Tipo='{accesorioDTO.Tipo}'," +
                                 $" Precio='{accesorioDTO.Precio.ToString(HelperDAO.NFI())}', IdVehiculo= '{accesorioDTO.IdVehiculo}' WHERE Id={accesorioDTO.Id}");
         }
-
         public int AgregarElemento(AccesoriosDTO accesorioDTO)
         {
             return helperDAO.AgregarElemento(accesorioDTO);

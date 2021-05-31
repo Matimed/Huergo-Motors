@@ -20,7 +20,7 @@ namespace HuergoMotorsForms
         public VendedoresDTO VendedorSeleccionado { get; set; }
 
 
-        public List<AccesoriosRDTO> listaAccesoriosDTOs = new List<AccesoriosRDTO>();
+        public List<AccesoriosDTO> listaAccesoriosDTOs = new List<AccesoriosDTO>();
 
         private decimal PrecioTotalAccesorios;
 
@@ -98,10 +98,10 @@ namespace HuergoMotorsForms
             try
             {
                 if (cboAccesorios.Items.Count <= 0) throw new Exception("No puede agregar un accesorio inexistente");
-                AccesoriosRDTO accesorioSeleccionado = new AccesoriosRDTO();
+                AccesoriosDTO accesorioSeleccionado = new AccesoriosDTO();
                 accesorioSeleccionado = accesoriosNegocio.CargarTabla((int)cboAccesorios.SelectedValue);
                 listaAccesoriosDTOs.Add(accesorioSeleccionado);
-                gvAccesorios.DataSource = new BindingList<AccesoriosRDTO> (listaAccesoriosDTOs);
+                gvAccesorios.DataSource = new BindingList<AccesoriosDTO> (listaAccesoriosDTOs);
                 PrecioTotalAccesorios = PrecioTotalAccesorios + accesorioSeleccionado.Precio;
                 lblTotal.Text = "$ " + Convert.ToString(PrecioTotalAccesorios + VehiculoSeleccionado.PrecioVenta);
 
@@ -122,7 +122,7 @@ namespace HuergoMotorsForms
                     AccesoriosRDTO accesorioSeleccionado = new AccesoriosRDTO();
                     PrecioTotalAccesorios = PrecioTotalAccesorios - listaAccesoriosDTOs[e.RowIndex].Precio;
                     listaAccesoriosDTOs.Remove(listaAccesoriosDTOs[e.RowIndex]);
-                    gvAccesorios.DataSource = new BindingList<AccesoriosRDTO>(listaAccesoriosDTOs);
+                    gvAccesorios.DataSource = new BindingList<AccesoriosDTO>(listaAccesoriosDTOs);
                     lblTotal.Text = "$ " + Convert.ToString(PrecioTotalAccesorios + VehiculoSeleccionado.PrecioVenta);
                 }
 
@@ -175,10 +175,10 @@ namespace HuergoMotorsForms
                 if (fecha.Date > DateTime.Now.Date) throw new Exception
                         ("La fecha no puede ser posterior a la actual del sistema");
 
-                VentasRDTO venta = ventasNegocio.CargarDTO(ClienteSelecionado, VehiculoSeleccionado,
-                    VendedorSeleccionado, fecha,VehiculoSeleccionado.PrecioVenta + PrecioTotalAccesorios, observaciones);
+                VentasDTO nuevaVenta = ventasNegocio.CargarDTO(ClienteSelecionado.Id, VehiculoSeleccionado.Id,
+                    VendedorSeleccionado.Id, fecha,VehiculoSeleccionado.PrecioVenta + PrecioTotalAccesorios, observaciones);
 
-                ventasNegocio.ConfirmarVenta(venta, listaAccesoriosDTOs);
+                ventasNegocio.ConfirmarVenta(nuevaVenta, listaAccesoriosDTOs);
                 MessageBox.Show("Venta realizada exitosamente", "Operacion Completada",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 DialogResult = DialogResult.OK;
