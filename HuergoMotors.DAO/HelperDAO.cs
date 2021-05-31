@@ -176,7 +176,7 @@ namespace HuergoMotors.DAO
                 throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
             }
         }
-        public int EditarDB(string query)
+        private int EditarDB(string query)
         {
             try
             {

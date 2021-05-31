@@ -22,8 +22,9 @@ namespace HuergoMotors.DAO
 
         public int ModificarElemento(ClientesDTO clienteDTO)
         {
-            return helperDAO.EditarDB($"UPDATE Clientes SET Nombre='{clienteDTO.Nombre}', Direccion='{clienteDTO.Direccion}', " +
-                                $"Email='{clienteDTO.Email}', Telefono='{clienteDTO.Telefono}' WHERE Id={clienteDTO.Id}");
+            return helperDAO.ModificarElemento(clienteDTO, clienteDTO.Id);
+            //return helperDAO.EditarDB($"UPDATE Clientes SET Nombre='{clienteDTO.Nombre}', Direccion='{clienteDTO.Direccion}', " +
+            //                    $"Email='{clienteDTO.Email}', Telefono='{clienteDTO.Telefono}' WHERE Id={clienteDTO.Id}");
         }
 
         public int AgregarElemento(ClientesDTO clienteDTO)

@@ -31,8 +31,9 @@ namespace HuergoMotors.DAO
 
         public int ModificarElemento(VehiculosDTO vehiculoDTO)
         {
-            return helperDAO.EditarDB($"UPDATE Vehiculos SET Tipo='{vehiculoDTO.Tipo}', Modelo='{vehiculoDTO.Modelo}', " +
-                $"PrecioVenta='{vehiculoDTO.PrecioVenta}',Stock='{vehiculoDTO.Stock}' WHERE Id={vehiculoDTO.Id}");
+            return helperDAO.ModificarElemento(vehiculoDTO, vehiculoDTO.Id);
+            //return helperDAO.EditarDB($"UPDATE Vehiculos SET Tipo='{vehiculoDTO.Tipo}', Modelo='{vehiculoDTO.Modelo}', " +
+            //    $"PrecioVenta='{vehiculoDTO.PrecioVenta}',Stock='{vehiculoDTO.Stock}' WHERE Id={vehiculoDTO.Id}");
         }
 
         public int AgregarElemento(VehiculosDTO  vehiculoDTO)
