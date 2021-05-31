@@ -45,9 +45,9 @@ namespace HuergoMotors.DAO
 
         public int AgregarElemento<T>(T dto)
         {
-            using (SqlCommand command = new SqlCommand())
+            var datos = GenerarDatos(dto);
+            using (datos.command)
             {
-                var datos = GenerarCampos(dto, command);
                 datos.command.CommandText = $"INSERT INTO {datos.tabla} ({datos.campos}) VALUES ({datos.parametros})";
                 return EditarDB(datos.command);
             }
@@ -102,25 +102,27 @@ namespace HuergoMotors.DAO
         }
 
 
-        private (string tabla, string campos, string parametros, SqlCommand command) 
-            GenerarCampos<T> (T dto, SqlCommand command)
+        private (string tabla, string campos, string parametros, SqlCommand command) GenerarDatos<T> (T dto)
         {
             string tabla = typeof(T).Name;
             tabla = tabla.Remove(tabla.Length - 3);
             string campos = "";
             string parametros = "";
-            var propiedades = typeof(T).GetProperties();
-            foreach (PropertyInfo prop in propiedades)
+            var propiedades = typeof(T).GetProperties().Where(p => p.CanWrite);
+            using (SqlCommand command = new SqlCommand())
             {
-                if (prop.Name == "Id") continue; //Si es el Id, paso al que sigue.
-                campos += prop.Name + ',';
-                parametros += "@" + prop.Name + ',';
-                object valor = prop.GetValue(dto, null);
-                command.Parameters.AddWithValue("@" + prop.Name, valor);
+                foreach (PropertyInfo prop in propiedades)
+                {
+                    if (prop.Name == "Id") continue; //Si es el Id, paso al que sigue.
+                    campos += prop.Name + ',';
+                    parametros += "@" + prop.Name + ',';
+                    object valor = prop.GetValue(dto, null);
+                    command.Parameters.AddWithValue("@" + prop.Name, valor);
+                }
+                campos = campos.TrimEnd(',');
+                parametros = parametros.TrimEnd(',');
+                return (tabla, campos, parametros, command);
             }
-            campos = campos.TrimEnd(',');
-            parametros = parametros.TrimEnd(',');
-            return (tabla, campos, parametros, command);
         }
         private static int EditarDB(SqlCommand command)
         {
