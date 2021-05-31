@@ -53,12 +53,24 @@ namespace HuergoMotors.DAO
             }
         }
 
+        public int ModificarElemento<T>(T dto)
+        {
+            var datos = GenerarDatos(dto);
+            using (datos.command)
+            {
+                datos.command.CommandText = $"UPDATE {datos.tabla} INTO ({datos.campos}) VALUES ({datos.parametros})";
+                return EditarDB(datos.command);
+            }
+
+        }
+
         public int EliminarElemento<T>(int id)
         {
             string tabla = typeof(T).Name;
             tabla = tabla.Remove(tabla.Length - 3);
             return EditarDB($"DELETE FROM {tabla} WHERE Id={id}");
         }
+
 
         private DataTable CargarDataTable(string query)
         {
@@ -106,7 +118,6 @@ namespace HuergoMotors.DAO
             }
         }
 
-
         private (string tabla, string campos, string parametros, SqlCommand command) GenerarDatos<T> (T dto)
         {
             string tabla = typeof(T).Name;
@@ -129,7 +140,7 @@ namespace HuergoMotors.DAO
                 return (tabla, campos, parametros, command);
             }
         }
-        private static int EditarDB(SqlCommand command)
+        private int EditarDB(SqlCommand command)
         {
             try
             {
@@ -145,7 +156,7 @@ namespace HuergoMotors.DAO
                 throw new Exception("Error al intentar realizar cambios en la base de datos", ex);
             }
         }
-        public static int EditarDB(string query)
+        public int EditarDB(string query)
         {
             try
             {
