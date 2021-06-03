@@ -28,6 +28,16 @@ namespace HuergoMotors.DAO
         {
             return CargarListaDTOs(CargarDataTable($"SELECT * FROM {NombreTabla()}"));
         }
+        public List<T> Buscar(string filtro)
+        {
+            return CargarListaDTOs(CargarDataTable(QuerySearch(ListaPropiedades(), filtro)));
+
+        }
+        public T BuscarId(int id)
+        {
+            return CargarListaDTOs(CargarDataTable($"SELECT * FROM {NombreTabla()} WHERE Id = {id})"))[0];
+        }
+
         public List<T> CargarDatos(string condicion)
         {
             return CargarListaDTOs(CargarDataTable($"SELECT * FROM {NombreTabla()} WHERE {condicion}"));
@@ -40,11 +50,7 @@ namespace HuergoMotors.DAO
         {
             return CargarListaDTOs(CargarDataTable($"SELECT {campos} FROM {tablas} WHERE {condicion}"));
         }
-        public List<T> Buscar(string filtro)
-        {
-            return CargarListaDTOs(CargarDataTable(QuerySearch(ListaPropiedades(), filtro)));
 
-        }
 
 
 

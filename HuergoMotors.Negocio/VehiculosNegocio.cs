@@ -26,9 +26,9 @@ namespace HuergoMotors.Negocio
             }
         }
 
-        public VehiculosDTO CargarTabla(int id)
+        public VehiculosDTO BuscarId(int id)
         {
-            return vehiculosDAO.CargarDatos(id);
+            return vehiculosDAO.BuscarId(id);
         }
 
         public List<VehiculosDTO> CargarTabla()

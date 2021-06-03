@@ -23,6 +23,9 @@ namespace HuergoMotors.DAO
         {
             return helperDAO.CargarDatos<AccesoriosDTO>($"IdVehiculo={id}");
         }
+      
+        
+        
         public List<AccesoriosRDTO> Buscar(string filtro)
         {
             return helperDAO.CargarDatos<AccesoriosRDTO>(Campos, Tablas,

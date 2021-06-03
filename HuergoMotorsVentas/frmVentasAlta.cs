@@ -78,7 +78,7 @@ namespace HuergoMotorsForms
                         gvAccesorios.DataSource = listaAccesoriosDTOs;
                     }
 
-                    VehiculoSeleccionado = vehiculosNegocio.CargarTabla((int)cboModelo.SelectedValue);
+                    VehiculoSeleccionado = vehiculosNegocio.BuscarId((int)cboModelo.SelectedValue);
 
                     txtTipo.Text = VehiculoSeleccionado.Tipo;
                     txtPrecio.Text = VehiculoSeleccionado.PrecioVenta.ToString();
