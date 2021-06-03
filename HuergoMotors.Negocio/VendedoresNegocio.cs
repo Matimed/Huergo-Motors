@@ -47,7 +47,7 @@ namespace HuergoMotors.Negocio
 
         public int AgregarElemento(VendedoresDTO vendedorDTO)
         {
-            return vendedoresDAO.AgregarElementos(vendedorDTO);
+            return vendedoresDAO.AgregarElemento(vendedorDTO);
         }
     }
 }

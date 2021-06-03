@@ -17,7 +17,7 @@ namespace HuergoMotors.Forms
         {
             try
             {
-                CargarGridViewVentas(gvVentas);
+                CargarGridViewVentas();
             }
             catch (Exception ex)
             {
@@ -44,7 +44,8 @@ namespace HuergoMotors.Forms
         {
             try
             {
-                CargarGridViewVentas(gvVentas);
+                CargarGridViewVentas();
+                CargarGridViewVentasAccesorios();
                 txFiltro.Text = "";
             }
             catch (Exception ex)
@@ -53,17 +54,35 @@ namespace HuergoMotors.Forms
             }
 
         }
-        private void CargarGridViewVentas(DataGridView gv)
+        private void CargarGridViewVentas()
         {
-            gv.AutoGenerateColumns = false;
-            gv.DataSource = ventasNegocio.CargarTablaVentas();
-
+            try
+            {
+                gvVentas.AutoGenerateColumns = false;
+                gvVentas.DataSource = ventasNegocio.CargarTablaVentas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void CargarGridViewVentasAccesorios(DataGridView gv, int id)
+        public void CargarGridViewVentasAccesorios()
         {
-            gv.AutoGenerateColumns = false;
-            gv.DataSource = ventasNegocio.CargarTablaVentasAccesorios(id);
+            try
+            {
+                if (gvVentas.SelectedRows.Count > 0)
+                {
+                    int id = ((VentasRDTO)gvVentas.SelectedRows[0].DataBoundItem).Id;
+                    gvAccesorios.AutoGenerateColumns = false;
+                    gvAccesorios.DataSource = ventasNegocio.CargarTablaVentasAccesorios(id);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btCerrar_Click(object sender, EventArgs e)
@@ -75,12 +94,7 @@ namespace HuergoMotors.Forms
 
         private void gvVentas_SelectionChanged(object sender, EventArgs e)
         {
-            //Validar que ya se haya cargado el gv
-            if (gvVentas.SelectedRows.Count > 0)
-            {
-                int id = ((VentasRDTO)gvVentas.SelectedRows[0].DataBoundItem).Id;
-                CargarGridViewVentasAccesorios(gvAccesorios, id);
-            }
+                CargarGridViewVentasAccesorios();
         }
     }
 

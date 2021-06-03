@@ -7,12 +7,8 @@ namespace HuergoMotors.DAO
 {
     public class VentasDAO : DAOBase<VentasDTO>
     {
-        private static (string campos, string tablas) Ventas = ("a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor, a.Observaciones," +
-            " a.Total, b.Modelo AS Vehiculo, c.Nombre AS Cliente, (d.Nombre + ' ' + d.Apellido) AS Vendedor", "Ventas a JOIN Vehiculos b ON a.IdVehiculo = b.Id " +
-            "JOIN Clientes c ON a.IdCliente = c.Id JOIN Vendedores d ON a.IdVendedor = d.Id");
-        private static (string campos, string tablas) VentasAccesorios = ("a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor, a.Observaciones," +
-            " a.Total, b.Modelo AS Vehiculo, c.Nombre AS Cliente, (d.Nombre + ' ' + d.Apellido) AS Vendedor", "Ventas a JOIN Vehiculos b ON a.IdVehiculo = b.Id " +
-            "JOIN Clientes c ON a.IdCliente = c.Id JOIN Vendedores d ON a.IdVendedor = d.Id");
+        private static (string campos, string tablas) Ventas = ("a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor, a.Observaciones, a.Total, b.Modelo AS Vehiculo, c.Nombre AS Cliente, (d.Nombre + ' ' + d.Apellido) AS Vendedor", "Ventas a JOIN Vehiculos b ON a.IdVehiculo = b.Id JOIN Clientes c ON a.IdCliente = c.Id JOIN Vendedores d ON a.IdVendedor = d.Id");
+        private static (string campos, string tablas) VentasAccesorios = ("a.Id, a.IdVenta, a.IdAccesorio, a.Precio, b.Nombre AS NombreAccesorio, b.Tipo AS TipoAccesorio", "VentasAccesorios a JOIN Accesorios b ON a.IdAccesorio = b.Id");
 
 
         DAOBase<VentasRDTO> daoVentasJoins = new DAOBase<VentasRDTO>();

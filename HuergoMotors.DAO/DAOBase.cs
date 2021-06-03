@@ -176,10 +176,10 @@ namespace HuergoMotors.DAO
 
         private string QuerySearch(List<string> propiedades, string filtro)
         {
-            string search = $"SELECT * FROM {NombreTabla()} WHERE ";
+            string search = $"SELECT * FROM {NombreTabla()} WHERE";
             foreach (string propiedad in propiedades)
             {
-                search += $"{propiedad} LIKE '%{filtro}%' OR";
+                search += $" {propiedad} LIKE '%{filtro}%' OR";
             }
             return search.Remove(search.Length - 3);
         }
