@@ -12,7 +12,6 @@ namespace HuergoMotors.DAO
     public class DAOBase<T> where T : DTOBase, new()
     {
         public static string ConnectionString = "Server=sql5078.site4now.net;Database=DB_9CF8B6_HuergoMotors2021;User Id=DB_9CF8B6_HuergoMotors2021_admin;Password=huergo2021;";
-
         public static NumberFormatInfo NFI()
         {
             //Escribe el número con puntos en lugar de comas para no dar error en la DB en los decimal
@@ -28,20 +27,21 @@ namespace HuergoMotors.DAO
         {
             return CargarListaDTOs(CargarDataTable($"SELECT * FROM {NombreTabla()}"));
         }
+        public List<T> CargarDatos(string condicion)
+        {
+            return CargarListaDTOs(CargarDataTable($"SELECT * FROM {NombreTabla()} WHERE {condicion}"));
+        }
         public List<T> Buscar(string filtro)
         {
             return CargarListaDTOs(CargarDataTable(QuerySearch(ListaPropiedades(), filtro)));
-
         }
         public T BuscarId(int id)
         {
             return CargarListaDTOs(CargarDataTable($"SELECT * FROM {NombreTabla()} WHERE Id = {id})"))[0];
         }
 
-        public List<T> CargarDatos(string condicion)
-        {
-            return CargarListaDTOs(CargarDataTable($"SELECT * FROM {NombreTabla()} WHERE {condicion}"));
-        }
+
+        //Funciones exclusivas de JOINS
         public List<T> CargarDatos(string campos, string tablas)
         {
             return CargarListaDTOs(CargarDataTable($"SELECT {campos} FROM {tablas}"));
@@ -50,8 +50,6 @@ namespace HuergoMotors.DAO
         {
             return CargarListaDTOs(CargarDataTable($"SELECT {campos} FROM {tablas} WHERE {condicion}"));
         }
-
-
 
 
         //Funciones de ABM
@@ -64,13 +62,13 @@ namespace HuergoMotors.DAO
                 return EditarDB(command);
             }
         }
-        public void AgregarElemento(T dto, SqlConnection conexion, SqlTransaction trans)
+        public void AgregarElemento(T dto,  SqlTransaction trans)
         {
             var propiedades = QueryCreate(ListaPropiedades());
             using (SqlCommand command = CargarParametros(dto))
             {
                 command.CommandText = $"INSERT INTO {NombreTabla()} ({propiedades.campos}) VALUES ({propiedades.parametros})";
-                EditarDB(command, conexion, trans);
+                EditarDB(command, trans);
             }
         }
 
@@ -80,6 +78,14 @@ namespace HuergoMotors.DAO
             {
                 command.CommandText = QueryUpdate(ListaPropiedades()) + $" WHERE Id= {dto.Id}";
                 return EditarDB(command);
+            }
+        }
+        public int ModificarElemento(T dto, List<string> listaPropiedades, SqlTransaction transaction)
+        {
+            using (SqlCommand command = CargarParametros(dto))
+            {
+                command.CommandText = QueryUpdate(listaPropiedades) + $" WHERE Id= {dto.Id}";
+                return EditarDB(command, transaction);
             }
         }
 
@@ -198,14 +204,13 @@ namespace HuergoMotors.DAO
             }
         }
 
-        public int EditarDB(SqlCommand command, SqlConnection conexion, SqlTransaction trans)
+        public int EditarDB(SqlCommand command, SqlTransaction trans)
         {
             try
             {
-                command.Connection = conexion;
+                command.Connection = trans.Connection;
                 command.Transaction = trans;
                 return command.ExecuteNonQuery(); 
-                
             }
             catch (Exception ex)
             {

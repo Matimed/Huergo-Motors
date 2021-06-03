@@ -19,14 +19,14 @@ namespace HuergoMotors.Negocio
             return accesoriosDAO.Buscar(filtro);
         }
 
-        public List<AccesoriosDTO> CargarTablaIdVehiculo(int id)
+        public List<AccesoriosDTO> BuscarIdVehiculo(int id)
         {
-            return accesoriosDAO.CargarTablaIdVehiculo(id);
+            return accesoriosDAO.BuscarIdVehiculo(id);
         }
 
-        public AccesoriosDTO CargarTabla(int id)
+        public AccesoriosDTO BuscarId(int id)
         {
-            return accesoriosDAO.CargarTabla(id);
+            return accesoriosDAO.BuscarId(id);
         }
 
         public AccesoriosDTO CargarDTO(int id, int idVehiculo, decimal precio, string nombre, string tipo)

@@ -45,7 +45,7 @@ namespace HuergoMotors.Negocio
         {
             try
             {
-                if (accesoriosNegocio.CargarTablaIdVehiculo(id).Count > 0)
+                if (accesoriosNegocio.BuscarIdVehiculo(id).Count > 0)
                     throw new Exception("No se puede borrar un vehiculo que tenga accesorios");
             }
             catch (Exception ex)
