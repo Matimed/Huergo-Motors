@@ -7,7 +7,7 @@ namespace HuergoMotors.DAO
 {
     public class ClientesDAO
     {
-        HelperDAO helperDAO = new HelperDAO();
+        DAOBase helperDAO = new DAOBase();
 
         public List<ClientesDTO> CargarDatos()
         {
@@ -22,7 +22,7 @@ namespace HuergoMotors.DAO
 
         public int ModificarElemento(ClientesDTO clienteDTO)
         {
-            return helperDAO.ModificarElemento(clienteDTO, clienteDTO.Id);
+            return helperDAO.ModificarElemento(clienteDTO, clienteDTO);
             //return helperDAO.EditarDB($"UPDATE Clientes SET Nombre='{clienteDTO.Nombre}', Direccion='{clienteDTO.Direccion}', " +
             //                    $"Email='{clienteDTO.Email}', Telefono='{clienteDTO.Telefono}' WHERE Id={clienteDTO.Id}");
         }

@@ -45,6 +45,7 @@
     <Compile Include="AccesoriosDTO.cs" />
     <Compile Include="AccesoriosRDTO.cs" />
     <Compile Include="ClientesDTO.cs" />
+    <Compile Include="DTOBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VehiculosDTO.cs" />
     <Compile Include="VendedoresDTO.cs" />

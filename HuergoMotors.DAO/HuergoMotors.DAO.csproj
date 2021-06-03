@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="AccesoriosDAO.cs" />
     <Compile Include="ClientesDAO.cs" />
-    <Compile Include="HelperDAO.cs" />
+    <Compile Include="DAOBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VehiculosDAO.cs" />
     <Compile Include="VendedoresDAO.cs" />

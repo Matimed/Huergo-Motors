@@ -2,9 +2,8 @@
 
 namespace HuergoMotors.DTO
 {
-    public class VentasRDTO
+    public class VentasRDTO : DTOBase
     {
-        public int Id { get; set; }
         public DateTime Fecha { get; set; }
         public int IdVehiculo { get; set; }
         public int IdCliente { get; set; }

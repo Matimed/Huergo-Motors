@@ -6,7 +6,7 @@ namespace HuergoMotors.DAO
 {
     public class VendedoresDAO
     {
-        HelperDAO helperDAO = new HelperDAO();
+        DAOBase helperDAO = new DAOBase();
 
         public List<VendedoresDTO> CargarDatos()
         {

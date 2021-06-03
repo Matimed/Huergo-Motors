@@ -18,7 +18,7 @@ namespace HuergoMotors.DAO
 
         public static string AccesoriosTablas = "VentasAccesorios a JOIN Accesorios b ON a.IdAccesorio = b.Id";
 
-        HelperDAO helperDAO = new HelperDAO();
+        DAOBase helperDAO = new DAOBase();
 
         public List<VentasRDTO> CargarTablaVentas()
         {
@@ -48,7 +48,7 @@ namespace HuergoMotors.DAO
 
         public void ConfirmarVenta(VentasDTO venta, List<AccesoriosDTO> listaAccesorios)
         {
-            using (SqlConnection conexion = new SqlConnection(HelperDAO.ConnectionString))
+            using (SqlConnection conexion = new SqlConnection(DAOBase.ConnectionString))
             {
                 conexion.Open();
                 using (SqlTransaction transaction = conexion.BeginTransaction())
@@ -79,7 +79,7 @@ namespace HuergoMotors.DAO
                                 {
                                     command.CommandText = $"INSERT INTO VentasAccesorios (IdVenta, IdAccesorio, Precio) VALUES" +
                                         $"((SELECT MAX(Id) AS IdVenta FROM Ventas), '{accesorio.Id}'," +
-                                        $" '{accesorio.Precio.ToString(HelperDAO.NFI())}')";
+                                        $" '{accesorio.Precio.ToString(DAOBase.NFI())}')";
                                     helperDAO.EditarDB(command, conexion, transaction);
                                 }
                             }

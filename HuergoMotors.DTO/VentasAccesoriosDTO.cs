@@ -1,8 +1,7 @@
 ﻿namespace HuergoMotors.DTO
 {
-    public class VentasAccesoriosDTO
+    public class VentasAccesoriosDTO : DTOBase
     {
-        public int Id { get; set; }
         public int IdVenta { get; set; }
         public int IdAccesorio { get; set; }
         public decimal Precio { get; set; }
