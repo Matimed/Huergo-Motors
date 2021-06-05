@@ -22,6 +22,7 @@ namespace HuergoMotors.DAO
             return numberFormatInfo;
         }
 
+
         //Funicones de lectura
         public List<T> CargarDatos()
         {

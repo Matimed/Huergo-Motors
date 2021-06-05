@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Reflection;
+using HuergoMotors.DTO;
 
 namespace HuergoMotorsForms
 {
@@ -95,6 +97,46 @@ namespace HuergoMotorsForms
             }
         }
 
+        public static T GenerarDTO<T>(Control.ControlCollection controls) where T : DTOBase, new()
+        {  
+            T dto = new T();
+            foreach (Control control in controls)
+            {
+                if (control is TextBox)
+                {
+                    ValidarTextBoxVacio((TextBox)control);
+                    string nombrePropiedad = control.Name.Replace("txt", "");
+                    PropertyInfo propiedad = dto.GetType().GetProperty(nombrePropiedad);
+                    propiedad.SetValue(dto, ((TextBox)control).Text, null);
+                }
+            }
+            return dto;
+        }
+
+        public static T GenerarDTO<T>(Control.ControlCollection controls, T dto) where T : DTOBase, new()
+        {
+            ValidarID(dto.Id);
+            foreach (Control control in controls)
+            {
+                if (control is TextBox)
+                {
+                    ValidarTextBoxVacio((TextBox)control);
+                    string nombrePropiedad = control.Name.Replace("txt", "");
+                    PropertyInfo propiedad = dto.GetType().GetProperty(nombrePropiedad);
+                    propiedad.SetValue(dto, ((TextBox)control).Text, null);
+                }
+            }
+            return dto;
+        }
+        public static void ValidarTextBoxVacio(TextBox textBox)
+        {
+            if (string.IsNullOrEmpty(textBox.Text))
+            {
+                throw new Exception($"No se pueden dejar el campo {textBox.Name.Replace("txt","")} sin completar");
+            }
+        }
+
+        //Capaz borre esto despues
         public static void ValidarTextosVacios(params string[] textosValidar)
         {
             try
@@ -112,6 +154,8 @@ namespace HuergoMotorsForms
                 throw ex;
             }
         }
+
+
         public static void ValidarID(int id)
         {
             if (id < 0) throw new Exception("Ningun elemento seleccionado");
@@ -140,11 +184,11 @@ namespace HuergoMotorsForms
                 throw ex;
             }
         }
-        public static void ValidarDTOVacio<T>(T DTO)
+        public static void ValidarDTOVacio<T>(T dto)
         {
             string tabla = typeof(T).Name;
             tabla = tabla.Remove(tabla.Length - 3);
-            if (DTO == null) throw new Exception($"Debe seleccionar un {tabla}");
+            if (dto == null) throw new Exception($"Debe seleccionar un {tabla}");
         }
 
         public static decimal ConvertirNumeroRacional(string numeroValidar)
