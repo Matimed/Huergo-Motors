@@ -105,9 +105,23 @@ namespace HuergoMotorsForms
                 if (control is TextBox)
                 {
                     ValidarTextBoxVacio((TextBox)control);
-                    string nombrePropiedad = control.Name.Replace("txt", "");
-                    PropertyInfo propiedad = dto.GetType().GetProperty(nombrePropiedad);
-                    propiedad.SetValue(dto, ((TextBox)control).Text, null);
+                    PropertyInfo propiedad = dto.GetType().GetProperty(control.Name.Replace("txt", ""));
+                    switch (propiedad.PropertyType.Name)
+                    {
+                        case "String":
+                            propiedad.SetValue(dto, control.Text, null);
+                            break;
+
+                        case "Int32":
+                            propiedad.SetValue(dto, ConvertirNumeroNatural((TextBox)control), null);
+                            break;
+                        
+                        case "Decimal":
+                            propiedad.SetValue(dto, ConvertirNumeroRacional((TextBox)control), null);
+                            break;
+                        default:
+                            throw new Exception("Tipo de dato no reconocido");
+                    }
                 }
             }
             return dto;
@@ -121,9 +135,23 @@ namespace HuergoMotorsForms
                 if (control is TextBox)
                 {
                     ValidarTextBoxVacio((TextBox)control);
-                    string nombrePropiedad = control.Name.Replace("txt", "");
-                    PropertyInfo propiedad = dto.GetType().GetProperty(nombrePropiedad);
-                    propiedad.SetValue(dto, ((TextBox)control).Text, null);
+                    PropertyInfo propiedad = dto.GetType().GetProperty(control.Name.Replace("txt", ""));
+                    switch (propiedad.PropertyType.Name)
+                    {
+                        case "String":
+                            propiedad.SetValue(dto, control.Text, null);
+                            break;
+
+                        case "Int32":
+                            propiedad.SetValue(dto, ConvertirNumeroNatural((TextBox)control), null);
+                            break;
+
+                        case "Decimal":
+                            propiedad.SetValue(dto, ConvertirNumeroRacional((TextBox)control), null);
+                            break;
+                        default:
+                            throw new Exception("Tipo de dato no reconocido");
+                    }
                 }
             }
             return dto;
@@ -211,6 +239,39 @@ namespace HuergoMotorsForms
             try
             {
                 if (!int.TryParse(numeroValidar, out int numeroNatural) | numeroNatural < 0)
+                {
+                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero entero.");
+                }
+                return numeroNatural;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+      
+
+
+        public static decimal ConvertirNumeroRacional(TextBox textBox)
+        {
+            try
+            {
+                if (!decimal.TryParse(textBox.Text, out decimal numeroRacional) | numeroRacional < 0)
+                {
+                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero racional.");
+                }
+                return numeroRacional;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        public static int ConvertirNumeroNatural(TextBox textBox)
+        {
+            try
+            {
+                if (!int.TryParse(textBox.Text, out int numeroNatural) | numeroNatural < 0)
                 {
                     throw new Exception($"Tipo de dato inválido. Se esperaba un numero entero.");
                 }
