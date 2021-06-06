@@ -98,8 +98,7 @@ namespace HuergoMotorsForms
             try
             {
                 if (cboAccesorios.Items.Count <= 0) throw new Exception("No puede agregar un accesorio inexistente");
-                AccesoriosDTO accesorioSeleccionado = new AccesoriosDTO();
-                accesorioSeleccionado = accesoriosNegocio.BuscarId((int)cboAccesorios.SelectedValue);
+                AccesoriosDTO accesorioSeleccionado = accesoriosNegocio.BuscarId((int)cboAccesorios.SelectedValue);
                 listaAccesoriosDTOs.Add(accesorioSeleccionado);
                 gvAccesorios.DataSource = new BindingList<AccesoriosDTO> (listaAccesoriosDTOs);
                 PrecioTotalAccesorios = PrecioTotalAccesorios + accesorioSeleccionado.Precio;
@@ -175,7 +174,7 @@ namespace HuergoMotorsForms
                 if (fecha.Date > DateTime.Now.Date) throw new Exception
                         ("La fecha no puede ser posterior a la actual del sistema");
 
-                VentasDTO nuevaVenta = ventasNegocio.CargarDTO(ClienteSelecionado.Id, VehiculoSeleccionado.Id,
+                VentasDTO nuevaVenta = CargarDTO(ClienteSelecionado.Id, VehiculoSeleccionado.Id,
                     VendedorSeleccionado.Id, fecha,VehiculoSeleccionado.PrecioVenta + PrecioTotalAccesorios, observaciones);
 
                 ventasNegocio.ConfirmarVenta(nuevaVenta, listaAccesoriosDTOs);
@@ -210,6 +209,25 @@ namespace HuergoMotorsForms
         private void txtObservaciones_Validated(object sender, EventArgs e)
         {
             if (txtObservaciones.Text == "") txtObservaciones.Text = "Observaciones:";
+        }
+        public VentasDTO CargarDTO(int idCliente, int idVehiculo,
+          int idVendedor, DateTime fecha, decimal total, string observaciones)
+        {
+            try
+            {
+                VentasDTO ventaDTO = new VentasDTO();
+                ventaDTO.IdCliente = idCliente;
+                ventaDTO.IdVehiculo = idVehiculo;
+                ventaDTO.IdVendedor = idVendedor;
+                ventaDTO.Observaciones = observaciones;
+                ventaDTO.Total = total;
+                ventaDTO.Fecha = fecha;
+                return ventaDTO;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

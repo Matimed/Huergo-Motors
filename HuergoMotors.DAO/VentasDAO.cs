@@ -42,8 +42,7 @@ namespace HuergoMotors.DAO
                     {
                         //Valida el stock otra vez
                         VehiculosDAO vehiculosDAO = new VehiculosDAO();
-                        VehiculosDTO vehiculo = new VehiculosDTO();
-                        vehiculo = vehiculosDAO.BuscarId(venta.IdVehiculo);
+                        VehiculosDTO vehiculo = vehiculosDAO.BuscarId(venta.IdVehiculo);
                         if (vehiculo.Stock < 1) throw new Exception("No hay stock del vehiculo seleccionado");
                         AgregarElemento(venta, transaction);
 
