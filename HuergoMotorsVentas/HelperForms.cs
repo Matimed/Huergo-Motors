@@ -98,6 +98,7 @@ namespace HuergoMotorsForms
             }
         }
 
+
         public static T GenerarDTO<T>(Control.ControlCollection controls) where T : DTOBase, new()
         {  
             T dto = new T();
@@ -133,7 +134,6 @@ namespace HuergoMotorsForms
             }
             return dto;
         }
-
         public static T GenerarDTO<T>(Control.ControlCollection controls, T dto) where T : DTOBase, new()
         {
             ValidarID(dto.Id);
@@ -189,38 +189,51 @@ namespace HuergoMotorsForms
             return dto;
         }
 
-        public static void ValidarTextBoxVacio(TextBox textBox)
+
+        //Validaciones
+        private static void ValidarTextBoxVacio(TextBox textBox)
         {
             if (string.IsNullOrEmpty(textBox.Text))
             {
                 throw new Exception($"No se pueden dejar el campo {textBox.Name.Replace("txt","")} sin completar");
             }
         }
-
-        //Capaz borre esto despues
-        public static void ValidarTextosVacios(params string[] textosValidar)
+        private static decimal ConvertirNumeroRacional(TextBox textBox)
         {
             try
             {
-                foreach (string textoValidar in textosValidar)
+                if (!decimal.TryParse(textBox.Text, out decimal numeroRacional) | numeroRacional < 0)
                 {
-                    if (string.IsNullOrEmpty(textoValidar))
-                    {
-                        throw new Exception("No se pueden dejar campos sin completar");
-                    }
+                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero racional.");
                 }
+                return numeroRacional;
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-
-
-        public static void ValidarID(int id)
+        private static int ConvertirNumeroNatural(TextBox textBox)
+        {
+            try
+            {
+                if (!int.TryParse(textBox.Text, out int numeroNatural) | numeroNatural < 0)
+                {
+                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero entero.");
+                }
+                return numeroNatural;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        private static void ValidarID(int id)
         {
             if (id < 0) throw new Exception("Ningun elemento seleccionado");
         }
+
+
         public static void ValidarEmail(string email)
         {
             try
@@ -252,69 +265,7 @@ namespace HuergoMotorsForms
             if (dto == null) throw new Exception($"Debe seleccionar un {tabla}");
         }
 
-        public static decimal ConvertirNumeroRacional(string numeroValidar)
-        {
-            try
-            {
-                if (!decimal.TryParse(numeroValidar, out decimal numeroRacional) | numeroRacional < 0)
-                {
-                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero racional.");
-                }
-                return numeroRacional;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public static int ConvertirNumeroNatural(string numeroValidar)
-        {
-            try
-            {
-                if (!int.TryParse(numeroValidar, out int numeroNatural) | numeroNatural < 0)
-                {
-                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero entero.");
-                }
-                return numeroNatural;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-      
 
-
-        public static decimal ConvertirNumeroRacional(TextBox textBox)
-        {
-            try
-            {
-                if (!decimal.TryParse(textBox.Text, out decimal numeroRacional) | numeroRacional < 0)
-                {
-                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero racional.");
-                }
-                return numeroRacional;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        public static int ConvertirNumeroNatural(TextBox textBox)
-        {
-            try
-            {
-                if (!int.TryParse(textBox.Text, out int numeroNatural) | numeroNatural < 0)
-                {
-                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero entero.");
-                }
-                return numeroNatural;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
     }
 }
 

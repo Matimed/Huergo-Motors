@@ -31,28 +31,28 @@ namespace HuergoMotorsForms
         }
         private void CargarABM(HelperForms.Modo modo)
         {
-
-            frmAccesoriosAlta accesoriosAlta = new frmAccesoriosAlta(modo);
-            if (modo == HelperForms.Modo.Modificar)
+            try
             {
-                accesoriosAlta.AccesorioSeleccionadoDTO = (AccesoriosRDTO)gv.SelectedRows[0].DataBoundItem;
-                accesoriosAlta.CargarDatos();
-            }
-            accesoriosAlta.ShowDialog();
-
-            if (accesoriosAlta.DialogResult == DialogResult.OK)
-            {
-                try
+                frmAccesoriosAlta accesoriosAlta = new frmAccesoriosAlta(modo);
+                if (modo == HelperForms.Modo.Modificar)
+                {
+                    accesoriosAlta.AccesorioSeleccionadoDTO =
+                        HelperForms.ConvertRdtoToDto<AccesoriosDTO, AccesoriosRDTO>(
+                            (AccesoriosRDTO)gv.SelectedRows[0].DataBoundItem);
+                    accesoriosAlta.CargarDatos();
+                }
+                accesoriosAlta.ShowDialog();
+                if (accesoriosAlta.DialogResult == DialogResult.OK)
                 {
                     CargarGridView(gv);
                 }
-                 
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+          
 
 
         private void btNuevo_Click(object sender, EventArgs e)

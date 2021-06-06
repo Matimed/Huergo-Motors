@@ -18,23 +18,7 @@ namespace HuergoMotors.Negocio
             return vendedoresDAO.Buscar(filtro);
         }
 
-        public VendedoresDTO CargarDTO(int id, string nombre, string apellido, string sucursal)
-        {
-            try
-            {
-                VendedoresDTO vendedorDTO = new VendedoresDTO();
-                vendedorDTO.Id = id;
-                vendedorDTO.Apellido = apellido;
-                vendedorDTO.Nombre = nombre;
-                vendedorDTO.Sucursal = sucursal;
-                return vendedorDTO;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
+       
         public int EliminarElemento(int id)
         {
             return vendedoresDAO.EliminarElemento(id);

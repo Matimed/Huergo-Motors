@@ -43,7 +43,7 @@ namespace HuergoMotorsForms
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.cboModelos = new System.Windows.Forms.ComboBox();
+            this.cboVehiculos = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -181,14 +181,14 @@ namespace HuergoMotorsForms
             // 
             // cboModelos
             // 
-            this.cboModelos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cboVehiculos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.cboModelos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboModelos.FormattingEnabled = true;
-            this.cboModelos.Location = new System.Drawing.Point(125, 218);
-            this.cboModelos.Name = "cboModelos";
-            this.cboModelos.Size = new System.Drawing.Size(262, 21);
-            this.cboModelos.TabIndex = 4;
+            this.cboVehiculos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboVehiculos.FormattingEnabled = true;
+            this.cboVehiculos.Location = new System.Drawing.Point(125, 218);
+            this.cboVehiculos.Name = "cboIdVehiculo";
+            this.cboVehiculos.Size = new System.Drawing.Size(262, 21);
+            this.cboVehiculos.TabIndex = 4;
             // 
             // frmAccesoriosAlta
             // 
@@ -199,7 +199,7 @@ namespace HuergoMotorsForms
             this.CancelButton = this.btCancelar;
             this.ClientSize = new System.Drawing.Size(399, 333);
             this.ControlBox = false;
-            this.Controls.Add(this.cboModelos);
+            this.Controls.Add(this.cboVehiculos);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.pictureBox4);
             this.Controls.Add(this.pictureBox3);
@@ -242,6 +242,6 @@ namespace HuergoMotorsForms
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cboModelos;
+        private System.Windows.Forms.ComboBox cboVehiculos;
     }
 }

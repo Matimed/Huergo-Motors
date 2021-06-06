@@ -1,5 +1,6 @@
 ﻿using HuergoMotors.DTO;
 using System;
+using System.Reflection;
 using System.Windows.Forms;
 namespace HuergoMotorsForms
 {
@@ -27,7 +28,6 @@ namespace HuergoMotorsForms
                 txtDireccion.Text = string.Empty;
                 txtEmail.Text = string.Empty;
                 txtTelefono.Text = string.Empty;
-                ClienteSeleccionadoDTO = new ClientesDTO();
             }
 
         }
@@ -51,29 +51,25 @@ namespace HuergoMotorsForms
             DialogResult = DialogResult.Cancel;
         }
 
+       
         private void btAceptar_Click(object sender, EventArgs e)
         {
             try
             {
-                HelperForms.ValidarTextosVacios(txtNombre.Text, txtDireccion.Text, txtEmail.Text, txtTelefono.Text);
                 HelperForms.ValidarEmail(txtEmail.Text);
                 HelperForms.ValidarTelefono(txtTelefono.Text);
-                HelperForms.ValidarID(ClienteSeleccionadoDTO.Id);
-                ClientesDTO nuevoCliente = clientesNegocio.CargarDTO(ClienteSeleccionadoDTO.Id, 
-                    txtNombre.Text, txtDireccion.Text, txtEmail.Text, txtTelefono.Text);
-
                 switch (Modo)
                 {
                     case HelperForms.Modo.Modificar:
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
                             HelperForms.OperacionExitosa(this, Modo, clientesNegocio.
-                                ModificarElemento(nuevoCliente));
+                                ModificarElemento(HelperForms.GenerarDTO(Controls, ClienteSeleccionadoDTO)));
                         }
                         break;
                     case HelperForms.Modo.Agregar:
                         HelperForms.OperacionExitosa(this, Modo, clientesNegocio.
-                            AgregarElemento(nuevoCliente));
+                            AgregarElemento(HelperForms.GenerarDTO<ClientesDTO>(Controls)));
                         break;
                 }
             }

@@ -8,24 +8,7 @@ namespace HuergoMotors.Negocio
     {
         DAO.VehiculosDAO vehiculosDAO = new DAO.VehiculosDAO();
         AccesoriosNegocio accesoriosNegocio = new AccesoriosNegocio();
-        public VehiculosDTO CargarDTO(int id, string modelo, decimal precio, int stock, string tipo)
-        {
-            try
-            {
-                VehiculosDTO vehiculoDTO = new VehiculosDTO();
-                vehiculoDTO.Id = id;
-                vehiculoDTO.PrecioVenta = precio;
-                vehiculoDTO.Stock = stock;
-                vehiculoDTO.Tipo = tipo;
-                vehiculoDTO.Modelo = modelo;
-                return vehiculoDTO;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
+      
         public VehiculosDTO BuscarId(int id)
         {
             return vehiculosDAO.BuscarId(id);

@@ -27,7 +27,6 @@ namespace HuergoMotorsForms
                 txtNombre.Text = string.Empty;
                 txtApellido.Text = string.Empty;
                 txtSucursal.Text = string.Empty;
-                VendedorSeleccionadoDTO = new HuergoMotors.DTO.VendedoresDTO();
             }
         }
         internal void CargarDatos()
@@ -53,22 +52,18 @@ namespace HuergoMotorsForms
         {
             try
             {
-                HelperForms.ValidarTextosVacios(txtNombre.Text, txtApellido.Text, txtSucursal.Text);
-                HelperForms.ValidarID(VendedorSeleccionadoDTO.Id);
-                VendedoresDTO nuevoVendedor = vendedoresNegocio.CargarDTO(VendedorSeleccionadoDTO.Id,
-                    txtNombre.Text, txtApellido.Text, txtSucursal.Text);
                 switch (Modo)
                 {
                     case HelperForms.Modo.Modificar:
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
                             HelperForms.OperacionExitosa(this, Modo,
-                                vendedoresNegocio.ModificarElemento(nuevoVendedor));
+                                vendedoresNegocio.ModificarElemento(HelperForms.GenerarDTO(Controls,VendedorSeleccionadoDTO)));
                         }
                         break;
                     case HelperForms.Modo.Agregar:
                         HelperForms.OperacionExitosa(this, Modo, 
-                            vendedoresNegocio.AgregarElemento(nuevoVendedor));
+                            vendedoresNegocio.AgregarElemento(HelperForms.GenerarDTO<VendedoresDTO>(Controls)));
                         break;
                 }
 

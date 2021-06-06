@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVehiculosAlta));
-            this.txtPrecio = new System.Windows.Forms.TextBox();
+            this.txtPrecioVenta = new System.Windows.Forms.TextBox();
             this.txtTipo = new System.Windows.Forms.TextBox();
             this.txtModelo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -51,12 +51,12 @@
             // 
             // txtPrecio
             // 
-            this.txtPrecio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtPrecioVenta.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPrecio.Location = new System.Drawing.Point(132, 175);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(240, 20);
-            this.txtPrecio.TabIndex = 3;
+            this.txtPrecioVenta.Location = new System.Drawing.Point(132, 175);
+            this.txtPrecioVenta.Name = "txtPrecioVenta";
+            this.txtPrecioVenta.Size = new System.Drawing.Size(240, 20);
+            this.txtPrecioVenta.TabIndex = 3;
             // 
             // txtTipo
             // 
@@ -209,7 +209,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtModelo);
             this.Controls.Add(this.txtTipo);
-            this.Controls.Add(this.txtPrecio);
+            this.Controls.Add(this.txtPrecioVenta);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -228,7 +228,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtPrecio;
+        private System.Windows.Forms.TextBox txtPrecioVenta;
         private System.Windows.Forms.TextBox txtTipo;
         private System.Windows.Forms.TextBox txtModelo;
         private System.Windows.Forms.Label label1;

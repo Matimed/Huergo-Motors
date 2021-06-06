@@ -27,9 +27,8 @@ namespace HuergoMotorsForms
                 // Vaciar todos los txtbox
                 txtModelo.Text = string.Empty;
                 txtTipo.Text = string.Empty;
-                txtPrecio.Text = "0.00";
+                txtPrecioVenta.Text = "0.00";
                 txtStock.Text = "0";
-                VehiculoSeleccionadoDTO = new HuergoMotors.DTO.VehiculosDTO();
             }
         }
 
@@ -37,7 +36,7 @@ namespace HuergoMotorsForms
         {
             try
             {
-                txtPrecio.Text = VehiculoSeleccionadoDTO.PrecioVenta.ToString();
+                txtPrecioVenta.Text = VehiculoSeleccionadoDTO.PrecioVenta.ToString();
                 txtModelo.Text = VehiculoSeleccionadoDTO.Modelo;
                 txtTipo.Text = VehiculoSeleccionadoDTO.Tipo;
                 txtStock.Text = VehiculoSeleccionadoDTO.Stock.ToString();
@@ -57,23 +56,18 @@ namespace HuergoMotorsForms
         {
             try
             {
-                HelperForms.ValidarTextosVacios(txtModelo.Text, txtPrecio.Text, txtStock.Text, txtTipo.Text);
-                HelperForms.ValidarID(VehiculoSeleccionadoDTO.Id);
-                VehiculosDTO nuevoVehiculo = vehiculosNegocio.CargarDTO(VehiculoSeleccionadoDTO.Id,
-                    txtModelo.Text, HelperForms.ConvertirNumeroRacional(txtPrecio.Text), 
-                    HelperForms.ConvertirNumeroNatural(txtStock.Text), txtTipo.Text);
                 switch (Modo)
                 {
                     case HelperForms.Modo.Modificar:
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
                             HelperForms.OperacionExitosa(this, Modo, 
-                                vehiculosNegocio.ModificarElemento(nuevoVehiculo));
+                                vehiculosNegocio.ModificarElemento(HelperForms.GenerarDTO(Controls, VehiculoSeleccionadoDTO)));
                         }
                         break;
                     case HelperForms.Modo.Agregar:
                         HelperForms.OperacionExitosa(this, Modo,
-                            vehiculosNegocio.AgregarElemento(nuevoVehiculo));
+                            vehiculosNegocio.AgregarElemento(HelperForms.GenerarDTO<VehiculosDTO>(Controls)));
                         break;
                 }
             }

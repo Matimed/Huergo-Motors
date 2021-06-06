@@ -13,7 +13,7 @@ namespace HuergoMotorsForms
         HuergoMotors.Negocio.VehiculosNegocio vehiculosNegocio =
             new HuergoMotors.Negocio.VehiculosNegocio();
 
-        public AccesoriosRDTO AccesorioSeleccionadoDTO { get; set; }
+        public AccesoriosDTO AccesorioSeleccionadoDTO { get; set; }
         
         public HelperForms.Modo Modo { get; private set; }
         
@@ -28,12 +28,11 @@ namespace HuergoMotorsForms
                 if (Modo == HelperForms.Modo.Agregar)
                 {
                     ActiveControl = txtNombre;
-                    HelperForms.DisplayCombo(cboModelos, "Modelo");
-                    cboModelos.DataSource = vehiculosNegocio.CargarTabla();
+                    HelperForms.DisplayCombo(cboVehiculos, "Modelo");
+                    cboVehiculos.DataSource = vehiculosNegocio.CargarTabla();
                     txtNombre.Text = string.Empty;
                     txtTipo.Text = string.Empty;
                     txtPrecio.Text = "0.00";
-                    AccesorioSeleccionadoDTO = new HuergoMotors.DTO.AccesoriosRDTO();
                 }
             }
             catch (Exception ex)
@@ -58,9 +57,9 @@ namespace HuergoMotorsForms
                 txtPrecio.Text = AccesorioSeleccionadoDTO.Precio.ToString();
                 txtTipo.Text = AccesorioSeleccionadoDTO.Tipo;
                 txtNombre.Text = AccesorioSeleccionadoDTO.Nombre;
-                HelperForms.DisplayCombo(cboModelos, "Modelo");
-                cboModelos.DataSource = vehiculosNegocio.CargarTabla();
-                cboModelos.SelectedValue = AccesorioSeleccionadoDTO.IdVehiculo;
+                HelperForms.DisplayCombo(cboVehiculos, "Modelo");
+                cboVehiculos.DataSource = vehiculosNegocio.CargarTabla();
+                cboVehiculos.SelectedValue = AccesorioSeleccionadoDTO.IdVehiculo;
             }
 
             catch (Exception ex)
@@ -78,24 +77,20 @@ namespace HuergoMotorsForms
         {
             try
             {
-                HelperForms.ValidarTextosVacios(cboModelos.Text, txtPrecio.Text, txtNombre.Text, txtTipo.Text);
-                HelperForms.ValidarID(AccesorioSeleccionadoDTO.Id);
-                AccesoriosDTO nuevoAccesorio = accesoriosNegocio.CargarDTO(AccesorioSeleccionadoDTO.Id, (int)cboModelos.SelectedValue, 
-                    HelperForms.ConvertirNumeroRacional(txtPrecio.Text), txtNombre.Text, txtTipo.Text);
-
+                HelperForms.VerificarCombosCargados(cboVehiculos);
                 switch (Modo)
                 {
                     case HelperForms.Modo.Modificar:
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
                             HelperForms.OperacionExitosa
-                                (this, Modo, accesoriosNegocio.ModificarElemento (nuevoAccesorio));
+                                (this, Modo, accesoriosNegocio.ModificarElemento (HelperForms.GenerarDTO(Controls,AccesorioSeleccionadoDTO)));
                         }
                         break;
                     case HelperForms.Modo.Agregar:
                        
                         HelperForms.OperacionExitosa
-                            (this, Modo, accesoriosNegocio.AgregarElemento(nuevoAccesorio));
+                            (this, Modo, accesoriosNegocio.AgregarElemento(HelperForms.GenerarDTO<AccesoriosDTO>(Controls)));
                         break;
                 }
             }
