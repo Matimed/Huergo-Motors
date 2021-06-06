@@ -108,38 +108,11 @@ namespace HuergoMotorsForms
                 if (control is TextBox)
                 {
                     ValidarTextBoxVacio((TextBox)control);
-                    PropertyInfo propiedad = dto.GetType().GetProperty(control.Name.Replace("txt", ""));
-                    switch (propiedad.PropertyType.Name)
-                    {
-                        case "String":
-                            propiedad.SetValue(dto, control.Text, null);
-                            break;
-
-                        case "Int32":
-                            propiedad.SetValue(dto, ConvertirNumeroNatural((TextBox)control), null);
-                            break;
-
-                        case "Decimal":
-                            propiedad.SetValue(dto, ConvertirNumeroRacional((TextBox)control), null);
-                            break;
-                        default:
-                            throw new Exception("Tipo de dato no reconocido");
-                    }
-                }
-                if (control is ComboBox)
-                {
-                    ValidarID((int)((ComboBox)control).SelectedValue);
-                    PropertyInfo propiedad = dto.GetType().GetProperty(control.Name.Replace("cbo", ""));
-                    propiedad.SetValue(dto, (int)((ComboBox)control).SelectedValue, null);
+                    string nombrePropiedad = control.Name.Replace("txt", "");
+                    PropertyInfo propiedad = dto.GetType().GetProperty(nombrePropiedad);
+                    propiedad.SetValue(dto, ((TextBox)control).Text, null);
                 }
             }
-            return dto;
-        }
-
-        public static T GenerarDTO<T>(Control.ControlCollection controls, int Id) where T : DTOBase, new()
-        {
-            T dto = GenerarDTO<T>(controls);
-            dto.Id = Id;
             return dto;
         }
 
