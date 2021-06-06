@@ -168,6 +168,29 @@ namespace HuergoMotorsForms
             return dto.Id;
         }
 
+        public static void VaciarTextBox<T>(Control.ControlCollection controls) where T : DTOBase, new()
+        {
+            foreach (Control control in controls)
+            {
+                T dto = new T();
+                if (control is TextBox)
+                {
+                    PropertyInfo propiedad = dto.GetType().GetProperty(control.Name.Replace("txt", ""));
+                    if (propiedad.PropertyType.Name == "String")
+                    {
+                        control.Text = string.Empty;
+                    }
+                    else if (propiedad.PropertyType.Name == "Int32")
+                    {
+                        control.Text = "0";
+                    }
+                    else if (propiedad.PropertyType.Name == "Decimal")
+                    {
+                        control.Text = "0.00";
+                    }
+                }
+            }
+        }
 
         /// <summary>
         /// Recibe un objeto RDTO y devuelve su equivalente en DTO
