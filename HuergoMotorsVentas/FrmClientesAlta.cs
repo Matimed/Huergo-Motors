@@ -24,10 +24,7 @@ namespace HuergoMotorsForms
             if (Modo == HelperForms.Modo.Agregar)
             {
                 ActiveControl = txtNombre;
-                txtNombre.Text = string.Empty;
-                txtDireccion.Text = string.Empty;
-                txtEmail.Text = string.Empty;
-                txtTelefono.Text = string.Empty;
+                HelperForms.VaciarTextBox<ClientesDTO>(Controls);
             }
 
         }

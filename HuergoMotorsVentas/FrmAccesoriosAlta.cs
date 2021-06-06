@@ -31,9 +31,7 @@ namespace HuergoMotorsForms
                     ActiveControl = txtNombre;
                     HelperForms.DisplayCombo(cboVehiculos, "Modelo");
                     cboVehiculos.DataSource = vehiculosNegocio.CargarTabla();
-                    txtNombre.Text = string.Empty;
-                    txtTipo.Text = string.Empty;
-                    txtPrecio.Text = "0.00";
+                    HelperForms.VaciarTextBox<AccesoriosDTO>(Controls);
                 }
             }
             catch (Exception ex)

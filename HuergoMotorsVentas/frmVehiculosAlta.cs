@@ -25,11 +25,7 @@ namespace HuergoMotorsForms
             if (Modo == HelperForms.Modo.Agregar)
             {
                 ActiveControl = txtTipo;
-                // Vaciar todos los txtbox
-                txtModelo.Text = string.Empty;
-                txtTipo.Text = string.Empty;
-                txtPrecioVenta.Text = "0.00";
-                txtStock.Text = "0";
+                HelperForms.VaciarTextBox<VehiculosDTO>(Controls);
             }
         }
 
