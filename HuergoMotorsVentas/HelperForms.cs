@@ -4,6 +4,7 @@ using System.Text.RegularExpressions;
 using System.Reflection;
 using HuergoMotors.DTO;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace HuergoMotorsForms
 {
@@ -134,63 +135,59 @@ namespace HuergoMotorsForms
             }
             return dto;
         }
-        public static T GenerarDTO<T>(Control.ControlCollection controls, T dto) where T : DTOBase, new()
+
+        public static T GenerarDTO<T>(Control.ControlCollection controls, int Id) where T : DTOBase, new()
         {
-            ValidarID(dto.Id);
+            T dto = GenerarDTO<T>(controls);
+            dto.Id = Id;
+            return dto;
+        }
+
+        public static int LeerDTO<T>(Control.ControlCollection controls, T dto) where T : DTOBase, new()
+        {
             foreach (Control control in controls)
             {
                 if (control is TextBox)
                 {
-                    ValidarTextBoxVacio((TextBox)control);
                     PropertyInfo propiedad = dto.GetType().GetProperty(control.Name.Replace("txt", ""));
-                    switch (propiedad.PropertyType.Name)
+                    if (propiedad.PropertyType.Name == "String")
                     {
-                        case "String":
-                            propiedad.SetValue(dto, control.Text, null);
-                            break;
-
-                        case "Int32":
-                            propiedad.SetValue(dto, ConvertirNumeroNatural((TextBox)control), null);
-                            break;
-
-                        case "Decimal":
-                            propiedad.SetValue(dto, ConvertirNumeroRacional((TextBox)control), null);
-                            break;
-                        default:
-                            throw new Exception("Tipo de dato no reconocido");
+                        control.Text = (string)propiedad.GetValue(dto);
+                    }
+                    else if (propiedad.PropertyType.Name == "Int32" | propiedad.PropertyType.Name == "Decimal")
+                    {
+                        control.Text = propiedad.GetValue(dto).ToString();
                     }
                 }
                 if (control is ComboBox)
                 {
-                    ValidarID((int)((ComboBox)control).SelectedValue);
                     PropertyInfo propiedad = dto.GetType().GetProperty(control.Name.Replace("cbo", ""));
-                    propiedad.SetValue(dto, (int)((ComboBox)control).SelectedValue, null);
+                    ((ComboBox)control).SelectedValue = propiedad.GetValue(dto);
                 }
             }
-            return dto;
+            return dto.Id;
         }
 
 
-        public static T ConvertRdtoToDto<T, R>(R rdto) where T : DTOBase, new() 
-        {
-            T dto = new T();
-            var propiedadesDTO = typeof(T).GetProperties().Where(p => p.CanWrite);
-            var propiedadesRDTO = typeof(R).GetProperties();
-            foreach (PropertyInfo propDTO in propiedadesDTO)
-            {
-                foreach (PropertyInfo propRDTO in propiedadesRDTO)
-                {
-                    if (propDTO.Name == propRDTO.Name)
-                    {
-                        propDTO.SetValue(dto, propRDTO.GetValue(rdto), null);
-                    }
-                }
-            }
-            return dto;
-        }
+        /// <summary>
+        /// Recibe un objeto RDTO y devuelve su equivalente en DTO
+        /// </summary>
+        //public static T ConvertRdtoToDto<T, R>(R rdto) where T : DTOBase, new() 
+        //{
+        //    T dto = new T();
+        //    var propiedadesDTO = typeof(T).GetProperties().Where(p => p.CanWrite);
+        //    foreach (PropertyInfo propDTO in propiedadesDTO)
+        //    {
+        //        PropertyInfo propRDTO = rdto.GetType().GetProperty(propDTO.Name);
+        //        propDTO.SetValue(dto, propRDTO.GetValue(rdto), null);
+        //    } 
+        //    return dto;
+        //}
 
 
         //Validaciones
+
+
         private static void ValidarTextBoxVacio(TextBox textBox)
         {
             if (string.IsNullOrEmpty(textBox.Text))
