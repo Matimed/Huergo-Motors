@@ -38,7 +38,7 @@ namespace HuergoMotors.DAO
         }
         public T BuscarId(int id)
         {
-            return CargarListaDTOs(CargarDataTable($"SELECT * FROM {NombreTabla()} WHERE Id = {id})"))[0];
+            return CargarListaDTOs(CargarDataTable($"SELECT * FROM {NombreTabla()} WHERE Id = {id}"))[0];
         }
 
 
