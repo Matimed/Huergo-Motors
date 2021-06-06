@@ -13,6 +13,7 @@ namespace HuergoMotorsForms
         HuergoMotors.Negocio.VehiculosNegocio vehiculosNegocio =
             new HuergoMotors.Negocio.VehiculosNegocio();
 
+        public int Id { get; set; }
         public AccesoriosDTO AccesorioSeleccionadoDTO { get; set; }
         
         public HelperForms.Modo Modo { get; private set; }
@@ -54,12 +55,8 @@ namespace HuergoMotorsForms
         {
             try
             {
-                txtPrecio.Text = AccesorioSeleccionadoDTO.Precio.ToString();
-                txtTipo.Text = AccesorioSeleccionadoDTO.Tipo;
-                txtNombre.Text = AccesorioSeleccionadoDTO.Nombre;
                 HelperForms.DisplayCombo(cboVehiculos, "Modelo");
                 cboVehiculos.DataSource = vehiculosNegocio.CargarTabla();
-                cboVehiculos.SelectedValue = AccesorioSeleccionadoDTO.IdVehiculo;
             }
 
             catch (Exception ex)
@@ -84,7 +81,7 @@ namespace HuergoMotorsForms
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
                             HelperForms.OperacionExitosa
-                                (this, Modo, accesoriosNegocio.ModificarElemento (HelperForms.GenerarDTO(Controls,AccesorioSeleccionadoDTO)));
+                                (this, Modo, accesoriosNegocio.ModificarElemento (HelperForms.GenerarDTO<AccesoriosDTO>(Controls,Id)));
                         }
                         break;
                     case HelperForms.Modo.Agregar:

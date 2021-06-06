@@ -1,5 +1,6 @@
 ﻿using HuergoMotors.DTO;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace HuergoMotorsForms
@@ -7,7 +8,7 @@ namespace HuergoMotorsForms
     public partial class frmVehiculosAlta : Form
     {
         HuergoMotors.Negocio.VehiculosNegocio vehiculosNegocio = new HuergoMotors.Negocio.VehiculosNegocio();
-        public VehiculosDTO VehiculoSeleccionadoDTO {get; set;}
+        public int Id { get; set; }
         public HelperForms.Modo Modo { get; private set; }
 
         public frmVehiculosAlta(HelperForms.Modo modo)
@@ -32,20 +33,6 @@ namespace HuergoMotorsForms
             }
         }
 
-        internal void CargarDatos()
-        {
-            try
-            {
-                txtPrecioVenta.Text = VehiculoSeleccionadoDTO.PrecioVenta.ToString();
-                txtModelo.Text = VehiculoSeleccionadoDTO.Modelo;
-                txtTipo.Text = VehiculoSeleccionadoDTO.Tipo;
-                txtStock.Text = VehiculoSeleccionadoDTO.Stock.ToString();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
         private void btCancelar_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
@@ -62,7 +49,7 @@ namespace HuergoMotorsForms
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
                             HelperForms.OperacionExitosa(this, Modo, 
-                                vehiculosNegocio.ModificarElemento(HelperForms.GenerarDTO(Controls, VehiculoSeleccionadoDTO)));
+                                vehiculosNegocio.ModificarElemento(HelperForms.GenerarDTO<VehiculosDTO>(Controls, Id)));
                         }
                         break;
                     case HelperForms.Modo.Agregar:

@@ -29,16 +29,14 @@ namespace HuergoMotorsForms
         {
             try
             {
-                frmClientesAlta frmClientesAlta = new frmClientesAlta(modo);
+                frmClientesAlta clientesAlta = new frmClientesAlta(modo);
                 if (modo == HelperForms.Modo.Modificar)
                 {
-                    object item = gv.SelectedRows[0].DataBoundItem;
-                    frmClientesAlta.ClienteSeleccionadoDTO = (ClientesDTO)gv.SelectedRows[0].DataBoundItem;
-                    frmClientesAlta.CargarDatos();
+                    clientesAlta.Id = HelperForms.LeerDTO(clientesAlta.Controls, (ClientesDTO)gv.SelectedRows[0].DataBoundItem);
                 }
-                frmClientesAlta.ShowDialog();
+                clientesAlta.ShowDialog();
                 //Solo recargo datos si se cerró con un OK.
-                if (frmClientesAlta.DialogResult == DialogResult.OK)
+                if (clientesAlta.DialogResult == DialogResult.OK)
                 {
                     CargarGridView(gv);
                 }

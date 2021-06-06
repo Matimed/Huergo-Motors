@@ -8,6 +8,7 @@ namespace HuergoMotorsForms
     {
         HuergoMotors.Negocio.VendedoresNegocio vendedoresNegocio = new HuergoMotors.Negocio.VendedoresNegocio();
         public VendedoresDTO VendedorSeleccionadoDTO { get; set; }
+        public int Id { get; set; }
         public HelperForms.Modo Modo { get; private set; }
         public frmVendedoresAlta(HelperForms.Modo modo)
         {
@@ -29,19 +30,7 @@ namespace HuergoMotorsForms
                 txtSucursal.Text = string.Empty;
             }
         }
-        internal void CargarDatos()
-        {
-            try
-            {
-                txtSucursal.Text = VendedorSeleccionadoDTO.Sucursal;
-                txtNombre.Text = VendedorSeleccionadoDTO.Nombre;
-                txtApellido.Text = VendedorSeleccionadoDTO.Apellido;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        } 
+       
      
         private void btCancelar_Click(object sender, EventArgs e)
         {
@@ -58,7 +47,7 @@ namespace HuergoMotorsForms
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
                             HelperForms.OperacionExitosa(this, Modo,
-                                vendedoresNegocio.ModificarElemento(HelperForms.GenerarDTO(Controls,VendedorSeleccionadoDTO)));
+                                vendedoresNegocio.ModificarElemento(HelperForms.GenerarDTO<VendedoresDTO>(Controls,Id)));
                         }
                         break;
                     case HelperForms.Modo.Agregar:

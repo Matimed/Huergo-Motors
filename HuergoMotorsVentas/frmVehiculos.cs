@@ -42,16 +42,14 @@ namespace HuergoMotorsForms
 
         private void CargarABM(HelperForms.Modo modo)
         {
-            frmVehiculosAlta frmVehiculosAlta = new frmVehiculosAlta(modo);
+            frmVehiculosAlta vehiculosAlta = new frmVehiculosAlta(modo);
             if (modo == HelperForms.Modo.Modificar)
             {
-                VehiculosDTO vehiculoDTO = new VehiculosDTO();
-                frmVehiculosAlta.VehiculoSeleccionadoDTO = (VehiculosDTO)gv.SelectedRows[0].DataBoundItem;
-                frmVehiculosAlta.CargarDatos();
+                vehiculosAlta.Id = HelperForms.LeerDTO(vehiculosAlta.Controls, (VehiculosDTO)gv.SelectedRows[0].DataBoundItem);
             }
-            frmVehiculosAlta.ShowDialog();
+            vehiculosAlta.ShowDialog();
             //Solo recargo datos si se cerró con un OK.
-            if (frmVehiculosAlta.DialogResult == DialogResult.OK)
+            if (vehiculosAlta.DialogResult == DialogResult.OK)
             {
                 try
                 {

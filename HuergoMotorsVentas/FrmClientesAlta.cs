@@ -7,7 +7,7 @@ namespace HuergoMotorsForms
     public partial class frmClientesAlta : Form
     {
         HuergoMotors.Negocio.ClientesNegocio clientesNegocio = new HuergoMotors.Negocio.ClientesNegocio();
-        public ClientesDTO ClienteSeleccionadoDTO { get; set; }
+        public int Id { get; set; }
         public HelperForms.Modo Modo { get; private set; }
 
         public frmClientesAlta(HelperForms.Modo modo)
@@ -31,20 +31,7 @@ namespace HuergoMotorsForms
             }
 
         }
-        internal void CargarDatos()
-        {
-            try
-            {
-                txtEmail.Text = ClienteSeleccionadoDTO.Email;
-                txtNombre.Text = ClienteSeleccionadoDTO.Nombre;
-                txtDireccion.Text = ClienteSeleccionadoDTO.Direccion;
-                txtTelefono.Text = ClienteSeleccionadoDTO.Telefono;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        } 
+       
        
         private void btCancelar_Click(object sender, EventArgs e)
         {
@@ -64,7 +51,7 @@ namespace HuergoMotorsForms
                         if (HelperForms.ConfirmacionModificacion() == DialogResult.Yes)
                         {
                             HelperForms.OperacionExitosa(this, Modo, clientesNegocio.
-                                ModificarElemento(HelperForms.GenerarDTO(Controls, ClienteSeleccionadoDTO)));
+                                ModificarElemento(HelperForms.GenerarDTO<ClientesDTO>(Controls, Id)));
                         }
                         break;
                     case HelperForms.Modo.Agregar:
