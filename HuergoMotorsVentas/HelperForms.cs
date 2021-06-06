@@ -284,8 +284,6 @@ namespace HuergoMotorsForms
             tabla = tabla.Remove(tabla.Length - 3);
             if (dto == null) throw new Exception($"Debe seleccionar un {tabla}");
         }
-
-
     }
 }
 
