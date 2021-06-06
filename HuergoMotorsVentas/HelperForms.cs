@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Reflection;
 using HuergoMotors.DTO;
+using System.Linq;
 
 namespace HuergoMotorsForms
 {
@@ -115,13 +116,19 @@ namespace HuergoMotorsForms
                         case "Int32":
                             propiedad.SetValue(dto, ConvertirNumeroNatural((TextBox)control), null);
                             break;
-                        
+
                         case "Decimal":
                             propiedad.SetValue(dto, ConvertirNumeroRacional((TextBox)control), null);
                             break;
                         default:
                             throw new Exception("Tipo de dato no reconocido");
                     }
+                }
+                if (control is ComboBox)
+                {
+                    ValidarID((int)((ComboBox)control).SelectedValue);
+                    PropertyInfo propiedad = dto.GetType().GetProperty(control.Name.Replace("cbo", ""));
+                    propiedad.SetValue(dto, (int)((ComboBox)control).SelectedValue, null);
                 }
             }
             return dto;
@@ -153,9 +160,35 @@ namespace HuergoMotorsForms
                             throw new Exception("Tipo de dato no reconocido");
                     }
                 }
+                if (control is ComboBox)
+                {
+                    ValidarID((int)((ComboBox)control).SelectedValue);
+                    PropertyInfo propiedad = dto.GetType().GetProperty(control.Name.Replace("cbo", ""));
+                    propiedad.SetValue(dto, (int)((ComboBox)control).SelectedValue, null);
+                }
             }
             return dto;
         }
+
+
+        public static T ConvertRdtoToDto<T, R>(R rdto) where T : DTOBase, new() 
+        {
+            T dto = new T();
+            var propiedadesDTO = typeof(T).GetProperties().Where(p => p.CanWrite);
+            var propiedadesRDTO = typeof(R).GetProperties();
+            foreach (PropertyInfo propDTO in propiedadesDTO)
+            {
+                foreach (PropertyInfo propRDTO in propiedadesRDTO)
+                {
+                    if (propDTO.Name == propRDTO.Name)
+                    {
+                        propDTO.SetValue(dto, propRDTO.GetValue(rdto), null);
+                    }
+                }
+            }
+            return dto;
+        }
+
         public static void ValidarTextBoxVacio(TextBox textBox)
         {
             if (string.IsNullOrEmpty(textBox.Text))
