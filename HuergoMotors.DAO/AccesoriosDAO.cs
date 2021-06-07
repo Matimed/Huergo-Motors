@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using HuergoMotors.DTO;
 
 namespace HuergoMotors.DAO
@@ -13,6 +14,12 @@ namespace HuergoMotors.DAO
         public List<AccesoriosRDTO> CargarTabla()
         {
             return daoJoins.CargarDatos(Campos, Tablas);
+        }
+
+        public void Referenciado(int id)
+        {
+            if (ReferenciaVentasAccesorios($"IdAccesorio = {id}"))
+                throw new Exception("No se puede borrar un accesorio que tenga ventas asociadas");
         }
 
         public List<AccesoriosDTO> BuscarIdVehiculo(int id)

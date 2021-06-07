@@ -64,7 +64,7 @@ namespace HuergoMotorsForms
             {
                 AccesoriosRDTO accesorioDTO = (AccesoriosRDTO)gv.SelectedRows[0].DataBoundItem;
                 if (HelperForms.ConfirmacionEliminación
-                    (accesorioDTO.Nombre, accesorioDTO.Tipo) == DialogResult.Yes)
+                    (accesorioDTO.Nombre) == DialogResult.Yes)
                 {
                     try
                     {

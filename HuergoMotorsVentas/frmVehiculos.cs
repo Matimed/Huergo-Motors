@@ -75,8 +75,7 @@ namespace HuergoMotorsForms
                 if (gv.SelectedRows.Count == 1)
                 {
                     VehiculosDTO vehiculoDTO  = (VehiculosDTO)gv.SelectedRows[0].DataBoundItem;
-                    object item = gv.SelectedRows[0].DataBoundItem;
-                    if (HelperForms.ConfirmacionEliminación(vehiculoDTO.Tipo) == DialogResult.Yes)
+                    if (HelperForms.ConfirmacionEliminación(vehiculoDTO.Tipo,vehiculoDTO.Modelo) == DialogResult.Yes)
                     {
                         HelperForms.OperacionExitosa(this, HelperForms.Modo.Eliminar, vehiculosNegocio.
                             EliminarElemento(vehiculoDTO.Id));
@@ -91,7 +90,7 @@ namespace HuergoMotorsForms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void btCerrar_Click(object sender, EventArgs e)

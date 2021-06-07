@@ -42,6 +42,19 @@ namespace HuergoMotors.DAO
         }
 
 
+        /// <summary>
+        /// Devuelve True si hay una venta que referencia al objeto y false si no se encontro ninguna
+        /// </summary>
+        public bool ReferenciaVentas(string condicion)
+        {
+            return CargarDataTable($"SELECT * FROM Ventas WHERE {condicion}").Rows.Count > 0;
+        }
+        public bool ReferenciaVentasAccesorios(string condicion)
+        {
+            return CargarDataTable($"SELECT * FROM VentasAccesorios WHERE {condicion}").Rows.Count > 0;
+        }
+
+
         //Funciones exclusivas de JOINS
         public List<T> CargarDatos(string campos, string tablas)
         {
@@ -150,7 +163,7 @@ namespace HuergoMotors.DAO
 
 
 
-        //Creacion de los querys
+        //Formulación de los querys
         private (string campos, string parametros) QueryCreate(List<string> propiedades)
         {
             string campos = "";

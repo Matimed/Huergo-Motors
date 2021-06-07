@@ -21,6 +21,7 @@ namespace HuergoMotors.Negocio
        
         public int EliminarElemento(int id)
         {
+            vendedoresDAO.Referenciado(id);
             return vendedoresDAO.EliminarElemento(id);
         }
 
