@@ -26,19 +26,19 @@ namespace HuergoMotors.DAO
         //Funicones de lectura
         public List<T> CargarDatos()
         {
-            return CargarListaDTOs(CargarDataTable($"SELECT * FROM {NombreTabla()}"));
+            return GenerearListaDTOs($"SELECT * FROM {NombreTabla()}");
         }
         public List<T> CargarDatos(string condicion)
         {
-            return CargarListaDTOs(CargarDataTable($"SELECT * FROM {NombreTabla()} WHERE {condicion}"));
+            return GenerearListaDTOs($"SELECT * FROM {NombreTabla()} WHERE {condicion}");
         }
         public List<T> Buscar(string filtro)
         {
-            return CargarListaDTOs(CargarDataTable(QuerySearch(ListaPropiedades(), filtro)));
+            return GenerearListaDTOs($"SELECT * FROM {NombreTabla()} WHERE " + QuerySearch(ListaPropiedades(), filtro));
         }
         public T BuscarId(int id)
         {
-            return CargarListaDTOs(CargarDataTable($"SELECT * FROM {NombreTabla()} WHERE Id = {id}"))[0];
+            return GenerearListaDTOs($"SELECT * FROM {NombreTabla()} WHERE Id = {id}")[0];
         }
 
 
@@ -58,30 +58,33 @@ namespace HuergoMotors.DAO
         //Funciones exclusivas de JOINS
         public List<T> CargarDatos(string campos, string tablas)
         {
-            return CargarListaDTOs(CargarDataTable($"SELECT {campos} FROM {tablas}"));
+            return GenerearListaDTOs($"SELECT {campos} FROM {tablas}");
         }
         public List<T> CargarDatos(string campos, string tablas, string condicion)
         {
-            return CargarListaDTOs(CargarDataTable($"SELECT {campos} FROM {tablas} WHERE {condicion}"));
+            return GenerearListaDTOs($"SELECT {campos} FROM {tablas} WHERE {condicion}");
+        }
+        public List<T> Buscar(string campos,string tablas, string filtro)
+        {
+            return CargarDatos(campos, tablas, QuerySearch(campos.Split(','), filtro));
+
         }
 
 
         //Funciones de ABM
         public int AgregarElemento(T dto)
         {
-            var propiedades = QueryCreate(ListaPropiedades());
             using (SqlCommand command = CargarParametros(dto))
             {
-                command.CommandText = $"INSERT INTO {NombreTabla()} ({propiedades.campos}) VALUES ({propiedades.parametros})";
+                command.CommandText = QueryCreate(ListaPropiedades());
                 return EditarDB(command);
             }
         }
         public void AgregarElemento(T dto,  SqlTransaction trans)
         {
-            var propiedades = QueryCreate(ListaPropiedades());
             using (SqlCommand command = CargarParametros(dto))
             {
-                command.CommandText = $"INSERT INTO {NombreTabla()} ({propiedades.campos}) VALUES ({propiedades.parametros})";
+                command.CommandText = QueryCreate(ListaPropiedades());
                 EditarDB(command, trans);
             }
         }
@@ -94,7 +97,7 @@ namespace HuergoMotors.DAO
                 return EditarDB(command);
             }
         }
-        public int ModificarElemento(T dto, List<string> listaPropiedades, SqlTransaction transaction)
+        public int ModificarElemento(T dto, string[] listaPropiedades, SqlTransaction transaction)
         {
             using (SqlCommand command = CargarParametros(dto))
             {
@@ -115,6 +118,10 @@ namespace HuergoMotors.DAO
 
 
         //Organizacion de los datos
+        private List<T>GenerearListaDTOs(string query)
+        {
+            return CargarListaDTOs(CargarDataTable(query));
+        }
         private List<T> CargarListaDTOs(DataTable dataTable)
         {
             try
@@ -143,7 +150,7 @@ namespace HuergoMotors.DAO
             }
         }
 
-        private List<string> ListaPropiedades()
+        private string[] ListaPropiedades()
         {
             List<string> nombrePropiedades = new List<string>();
             var propiedades = typeof(T).GetProperties().Where(p => p.CanWrite);
@@ -152,7 +159,7 @@ namespace HuergoMotors.DAO
                 if (prop.Name == "Id") continue; //Si es el Id, paso al que sigue.
                 nombrePropiedades.Add(prop.Name);
             }
-            return nombrePropiedades;
+            return nombrePropiedades.ToArray();
         }
 
         private string NombreTabla()
@@ -164,8 +171,8 @@ namespace HuergoMotors.DAO
 
 
         //Formulación de los querys
-        private (string campos, string parametros) QueryCreate(List<string> propiedades)
-        {
+        private string QueryCreate(string[] propiedades)
+        {   
             string campos = "";
             string parametros = "";
             foreach (string propiedad in propiedades)
@@ -175,10 +182,10 @@ namespace HuergoMotors.DAO
             }
             campos = campos.TrimEnd(',');
             parametros = parametros.TrimEnd(',');
-            return (campos, parametros);
+            return ($"INSERT INTO {NombreTabla()} ({campos}) VALUES({parametros})");
         }
 
-        private string QueryUpdate(List<string> propiedades)
+        private string QueryUpdate(string[] propiedades)
         {
             string update = $"UPDATE {NombreTabla()} SET ";
             foreach (string propiedad in propiedades)
@@ -188,9 +195,9 @@ namespace HuergoMotors.DAO
             return update.TrimEnd(',');
         }
 
-        private string QuerySearch(List<string> propiedades, string filtro)
+        private string QuerySearch(string[] propiedades, string filtro)
         {
-            string search = $"SELECT * FROM {NombreTabla()} WHERE";
+            string search = string.Empty;
             foreach (string propiedad in propiedades)
             {
                 search += $" {propiedad} LIKE '%{filtro}%' OR";

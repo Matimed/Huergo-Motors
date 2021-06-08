@@ -48,9 +48,7 @@ namespace HuergoMotors.DAO
 
                         //Actualizar Stock
                         vehiculo.Stock = vehiculo.Stock - 1;
-                        List<string> propiedades = new List<string>();
-                        //Solo se modifica el stock del vehiculo
-                        propiedades.Add("Stock");
+                        string[] propiedades = new string[1] {"Stock"};
                         vehiculosDAO.ModificarElemento(vehiculo, propiedades, transaction);
                        
 
