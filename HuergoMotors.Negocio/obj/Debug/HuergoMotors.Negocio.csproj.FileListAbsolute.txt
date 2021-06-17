@@ -9,3 +9,14 @@ C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\H
 C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.csproj.CopyComplete
 C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.dll
 C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.pdb
+L:\proyecto1\Huergo-Motors\HuergoMotors.Negocio\bin\Debug\HuergoMotors.Negocio.dll
+L:\proyecto1\Huergo-Motors\HuergoMotors.Negocio\bin\Debug\HuergoMotors.Negocio.pdb
+L:\proyecto1\Huergo-Motors\HuergoMotors.Negocio\bin\Debug\HuergoMotors.DAO.dll
+L:\proyecto1\Huergo-Motors\HuergoMotors.Negocio\bin\Debug\HuergoMotors.DTO.dll
+L:\proyecto1\Huergo-Motors\HuergoMotors.Negocio\bin\Debug\HuergoMotors.DAO.pdb
+L:\proyecto1\Huergo-Motors\HuergoMotors.Negocio\bin\Debug\HuergoMotors.DTO.pdb
+L:\proyecto1\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.csproj.AssemblyReference.cache
+L:\proyecto1\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.csproj.CoreCompileInputs.cache
+L:\proyecto1\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.csproj.CopyComplete
+L:\proyecto1\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.dll
+L:\proyecto1\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.pdb

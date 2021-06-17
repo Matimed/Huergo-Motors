@@ -1,0 +1,10 @@
+L:\proyecto1\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.Web.dll.config
+L:\proyecto1\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.Web.dll
+L:\proyecto1\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.Web.pdb
+L:\proyecto1\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.DTO.dll
+L:\proyecto1\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.DTO.pdb
+L:\proyecto1\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.csproj.AssemblyReference.cache
+L:\proyecto1\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.csproj.CoreCompileInputs.cache
+L:\proyecto1\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.csproj.CopyComplete
+L:\proyecto1\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.dll
+L:\proyecto1\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.pdb
