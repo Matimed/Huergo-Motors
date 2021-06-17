@@ -125,6 +125,7 @@ namespace HuergoMotorsForms
             this.gv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.gv.Size = new System.Drawing.Size(560, 375);
             this.gv.TabIndex = 11;
+            this.gv.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gv_CellContentClick);
             // 
             // Id
             // 

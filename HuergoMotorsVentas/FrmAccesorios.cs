@@ -135,6 +135,11 @@ namespace HuergoMotorsForms
             gv.AutoGenerateColumns = false;
             gv.DataSource = accesoriosNegocio.CargarTabla();
         }
+
+        private void gv_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
 
