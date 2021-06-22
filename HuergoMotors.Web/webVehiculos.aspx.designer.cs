@@ -24,6 +24,15 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// Control btVolver.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btVolver;
+
+        /// <summary>
         /// Control Label1.
         /// </summary>
         /// <remarks>
@@ -60,6 +69,15 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.Button btRecargar;
 
         /// <summary>
+        /// Control btNuevo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btNuevo;
+
+        /// <summary>
         /// Control gvVehiculos.
         /// </summary>
         /// <remarks>
@@ -76,23 +94,5 @@ namespace HuergoMotors.Web
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbMsg;
-
-        /// <summary>
-        /// Control btCerrar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btCerrar;
-
-        /// <summary>
-        /// Control btNuevo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btNuevo;
     }
 }

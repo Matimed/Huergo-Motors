@@ -12,6 +12,7 @@ namespace HuergoMotors.Web
     public partial class Vehiculos : System.Web.UI.Page
     {
         VehiculosNegocio vehiculosNegocio = new VehiculosNegocio();
+        private const string AM = "AMS/webVehiculosAlta.aspx";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -68,7 +69,7 @@ namespace HuergoMotors.Web
             if (e.CommandName == "Modificar")
             {
                 //O puedo pasar el ID por QueryString.
-                Response.Redirect("AMS/webVehiculosAlta.aspx?id=" + id);
+                Response.Redirect(AM + "?id=" + id);
             }
             else if (e.CommandName == "Eliminar")
             {
@@ -87,6 +88,11 @@ namespace HuergoMotors.Web
         protected void gvVehiculos_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btNuevo_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(AM);
         }
     }
 }
