@@ -16,7 +16,7 @@ namespace HuergoMotors.DAO
             return daoJoins.CargarDatos(Campos, Tablas);
         }
 
-        public void Referenciado(int id)
+        public new void Referenciado(int id)
         {
             if (ReferenciaVentasAccesorios($"IdAccesorio = {id}"))
                 throw new Exception("No se puede borrar un accesorio que tenga ventas asociadas");

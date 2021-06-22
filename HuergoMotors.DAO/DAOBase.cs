@@ -23,6 +23,10 @@ namespace HuergoMotors.DAO
         }
 
 
+        public void Referenciado (int id)
+        {
+            throw new NotImplementedException();
+        }
         //Funicones de lectura
         public List<T> CargarDatos()
         {
