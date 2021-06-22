@@ -24,16 +24,23 @@ namespace HuergoMotors.Web
                 {
                     Id = Convert.ToInt32(Request.QueryString["id"]);
                 }
-
                 if (!Page.IsPostBack)
                 {
-                    VehiculosDTO vehiculo = new VehiculosDTO();
-                    vehiculo = vehiculosNegocio.BuscarId(Id);
+                    if (Request.QueryString["id"] != null)
+                    {
+                        VehiculosDTO vehiculo = new VehiculosDTO();
+                        vehiculo = vehiculosNegocio.BuscarId(Id);
 
-                    txtModelo.Text = vehiculo.Modelo;
-                    txtPrecioVenta.Text = vehiculo.PrecioVenta.ToString();
-                    txtStock.Text = vehiculo.Stock.ToString();
-                    txtTipo.Text = vehiculo.Tipo;
+                        txtModelo.Text = vehiculo.Modelo;
+                        txtPrecioVenta.Text = vehiculo.PrecioVenta.ToString();
+                        txtStock.Text = vehiculo.Stock.ToString();
+                        txtTipo.Text = vehiculo.Tipo;
+                    }
+                    else
+                    {
+                        btGuardar.Text = "Agregar vehiculo";
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -45,13 +52,22 @@ namespace HuergoMotors.Web
         protected void btGuardar_Click(object sender, EventArgs e)
         {
             VehiculosDTO vehiculo = new VehiculosDTO();
-            vehiculo.Id = Id;
             vehiculo.Tipo = txtTipo.Text;
             vehiculo.Modelo = txtModelo.Text;
             vehiculo.PrecioVenta = HelperWeb.ConvertirNumeroRacional(txtPrecioVenta);
             vehiculo.Stock = HelperWeb.ConvertirNumeroNatural(txtStock);
-            vehiculosNegocio.ModificarElemento(vehiculo);
+            if (Request.QueryString["id"] != null)
+            {
+                vehiculo.Id = Id;
+                vehiculosNegocio.ModificarElemento(vehiculo);
+            }
+            else
+            {
+                vehiculosNegocio.AgregarElemento(vehiculo);
+            }
+                
             Response.Redirect(Backpage);
+
 
         }
 
