@@ -105,15 +105,6 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.Button btGuardar;
 
         /// <summary>
-        /// Control lbMsg.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbMsg;
-
-        /// <summary>
         /// Control btVolver.
         /// </summary>
         /// <remarks>
@@ -121,5 +112,14 @@ namespace HuergoMotors.Web
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btVolver;
+
+        /// <summary>
+        /// Control lbMsg.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbMsg;
     }
 }

@@ -7,3 +7,12 @@ C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\H
 C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.csproj.CopyComplete
 C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.dll
 C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.pdb
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotors.DAO\bin\Debug\HuergoMotors.DAO.dll
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotors.DAO\bin\Debug\HuergoMotors.DAO.pdb
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotors.DAO\bin\Debug\HuergoMotors.DTO.dll
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotors.DAO\bin\Debug\HuergoMotors.DTO.pdb
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.csprojAssemblyReference.cache
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.csproj.CoreCompileInputs.cache
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.csproj.CopyComplete
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.dll
+C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.pdb

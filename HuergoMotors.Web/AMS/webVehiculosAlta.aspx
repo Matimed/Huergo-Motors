@@ -24,8 +24,10 @@
             <asp:TextBox ID="txtStock" runat="server"></asp:TextBox>
         </p>
         <asp:Button ID="btGuardar" runat="server" OnClick="btGuardar_Click" Text="Guardar cambios" />
-        <asp:Label ID="lbMsg" runat="server" Text="Label"></asp:Label>
         <asp:Button ID="btVolver" runat="server" OnClick="btVolver_Click" Text="Volver" />
+        <p>
+            <asp:Label ID="lbMsg" runat="server" Text="lbMsg"></asp:Label>
+            </p>
     </form>
 </body>
 </html>

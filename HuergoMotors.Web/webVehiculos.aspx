@@ -15,7 +15,7 @@
         <asp:Button ID="btBuscar" runat="server" Text="Buscar" ViewStateMode="Disabled" OnClick="btBuscar_Click" />
         <asp:Button ID="btRecargar" runat="server" Text="Recargar" ViewStateMode="Disabled" OnClick="btRecargar_Click" />
         </div>
-        <asp:GridView ID="gvVehiculos" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="Id" OnRowCommand="gvVehiculos_RowCommand">
+        <asp:GridView ID="gvVehiculos" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="Id" OnRowCommand="gvVehiculos_RowCommand" OnSelectedIndexChanged="gvVehiculos_SelectedIndexChanged">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="ID" />

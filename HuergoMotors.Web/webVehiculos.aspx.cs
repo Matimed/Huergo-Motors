@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using HuergoMotors.Negocio;
+using HuergoMotors.DTO;
 
 namespace HuergoMotors.Web
 {
@@ -14,7 +15,6 @@ namespace HuergoMotors.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             try
             {
                 lbMsg.Text = string.Empty;
@@ -34,7 +34,6 @@ namespace HuergoMotors.Web
             {
                 lbMsg.Text = ex.Message;
             }
-
         }
 
         protected void btBuscar_Click(object sender, EventArgs e)
@@ -74,8 +73,22 @@ namespace HuergoMotors.Web
             }
             else if (e.CommandName == "Eliminar")
             {
-                //--
+                try
+                {
+
+                    vehiculosNegocio.EliminarElemento(id);
+                    CargarTabla();
+
+                }
+                catch (Exception ex)
+                {
+                    lbMsg.Text = ex.Message;
+                }
             }
+        }
+
+        protected void gvVehiculos_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }
