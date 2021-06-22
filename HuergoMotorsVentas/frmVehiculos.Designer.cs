@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVehiculos));
-            this.txFiltro = new System.Windows.Forms.TextBox();
+            this.txtFiltro = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gv = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,13 +49,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.picReload)).BeginInit();
             this.SuspendLayout();
             // 
-            // txFiltro
+            // txtFiltro
             // 
-            this.txFiltro.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txFiltro.Location = new System.Drawing.Point(47, 19);
-            this.txFiltro.Name = "txFiltro";
-            this.txFiltro.Size = new System.Drawing.Size(463, 20);
-            this.txFiltro.TabIndex = 0;
+            this.txtFiltro.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtFiltro.Location = new System.Drawing.Point(47, 19);
+            this.txtFiltro.Name = "txtFiltro";
+            this.txtFiltro.Size = new System.Drawing.Size(463, 20);
+            this.txtFiltro.TabIndex = 0;
             // 
             // label1
             // 
@@ -116,9 +116,9 @@
             // PrecioVenta
             // 
             this.PrecioVenta.DataPropertyName = "PrecioVenta";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.NullValue = "0";
-            this.PrecioVenta.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.NullValue = "0";
+            this.PrecioVenta.DefaultCellStyle = dataGridViewCellStyle1;
             this.PrecioVenta.HeaderText = "$ Venta";
             this.PrecioVenta.Name = "PrecioVenta";
             this.PrecioVenta.ReadOnly = true;
@@ -225,7 +225,7 @@
             this.Controls.Add(this.btModificar);
             this.Controls.Add(this.gv);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txFiltro);
+            this.Controls.Add(this.txtFiltro);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(600, 200);
             this.Name = "frmVehiculos";
@@ -242,7 +242,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox txFiltro;
+        private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView gv;
         private System.Windows.Forms.Button btModificar;

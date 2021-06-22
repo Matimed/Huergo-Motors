@@ -41,7 +41,7 @@ namespace HuergoMotorsForms
             this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
-            this.txFiltro = new System.Windows.Forms.TextBox();
+            this.txtFiltro = new System.Windows.Forms.TextBox();
             this.picBoxlupa = new System.Windows.Forms.PictureBox();
             this.picboxReload = new System.Windows.Forms.PictureBox();
             this.btnSeleccionar = new System.Windows.Forms.Button();
@@ -172,13 +172,13 @@ namespace HuergoMotorsForms
             this.label1.TabIndex = 10;
             this.label1.Text = "Filtro";
             // 
-            // txFiltro
+            // txtFiltro
             // 
-            this.txFiltro.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txFiltro.Location = new System.Drawing.Point(47, 17);
-            this.txFiltro.Name = "txFiltro";
-            this.txFiltro.Size = new System.Drawing.Size(472, 20);
-            this.txFiltro.TabIndex = 9;
+            this.txtFiltro.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtFiltro.Location = new System.Drawing.Point(47, 17);
+            this.txtFiltro.Name = "txtFiltro";
+            this.txtFiltro.Size = new System.Drawing.Size(472, 20);
+            this.txtFiltro.TabIndex = 9;
             // 
             // picBoxlupa
             // 
@@ -237,7 +237,7 @@ namespace HuergoMotorsForms
             this.Controls.Add(this.btModificar);
             this.Controls.Add(this.gv);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txFiltro);
+            this.Controls.Add(this.txtFiltro);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(600, 200);
             this.Name = "frmClientes";
@@ -260,7 +260,7 @@ namespace HuergoMotorsForms
         private System.Windows.Forms.Button btModificar;
         private System.Windows.Forms.DataGridView gv;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txFiltro;
+        private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Direccion;

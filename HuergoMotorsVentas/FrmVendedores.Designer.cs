@@ -29,7 +29,7 @@ namespace HuergoMotorsForms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVendedores));
             this.btCerrar = new System.Windows.Forms.Button();
             this.btEliminar = new System.Windows.Forms.Button();
@@ -41,7 +41,7 @@ namespace HuergoMotorsForms
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
-            this.txFiltro = new System.Windows.Forms.TextBox();
+            this.txtFiltro = new System.Windows.Forms.TextBox();
             this.picBusqueda = new System.Windows.Forms.PictureBox();
             this.picReload = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.gv)).BeginInit();
@@ -147,9 +147,9 @@ namespace HuergoMotorsForms
             // Sucursal
             // 
             this.Sucursal.DataPropertyName = "Sucursal";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.NullValue = "0";
-            this.Sucursal.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle1.NullValue = "0";
+            this.Sucursal.DefaultCellStyle = dataGridViewCellStyle1;
             this.Sucursal.HeaderText = "Sucursal";
             this.Sucursal.Name = "Sucursal";
             this.Sucursal.ReadOnly = true;
@@ -166,13 +166,13 @@ namespace HuergoMotorsForms
             this.label1.TabIndex = 10;
             this.label1.Text = "Filtro";
             // 
-            // txFiltro
+            // txtFiltro
             // 
-            this.txFiltro.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txFiltro.Location = new System.Drawing.Point(47, 17);
-            this.txFiltro.Name = "txFiltro";
-            this.txFiltro.Size = new System.Drawing.Size(471, 20);
-            this.txFiltro.TabIndex = 9;
+            this.txtFiltro.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtFiltro.Location = new System.Drawing.Point(47, 17);
+            this.txtFiltro.Name = "txtFiltro";
+            this.txtFiltro.Size = new System.Drawing.Size(471, 20);
+            this.txtFiltro.TabIndex = 9;
             // 
             // picBusqueda
             // 
@@ -217,7 +217,7 @@ namespace HuergoMotorsForms
             this.Controls.Add(this.btModificar);
             this.Controls.Add(this.gv);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txFiltro);
+            this.Controls.Add(this.txtFiltro);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(600, 200);
             this.Name = "frmVendedores";
@@ -240,7 +240,7 @@ namespace HuergoMotorsForms
         private System.Windows.Forms.Button btModificar;
         private System.Windows.Forms.DataGridView gv;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txFiltro;
+        private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;

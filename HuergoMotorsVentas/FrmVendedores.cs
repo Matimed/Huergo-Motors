@@ -113,8 +113,8 @@ namespace HuergoMotorsForms
             try
             {
 
-                gv.DataSource = vendedoresNegocio.Buscar(txFiltro.Text);
-                txFiltro.Text = "";
+                gv.DataSource = vendedoresNegocio.Buscar(txtFiltro.Text);
+                txtFiltro.Text = "";
             }
             catch (Exception ex)
             {

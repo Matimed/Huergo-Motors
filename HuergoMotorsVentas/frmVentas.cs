@@ -31,8 +31,8 @@ namespace HuergoMotors.Forms
         {
             try
             {
-                gvVentas.DataSource = ventasNegocio.Buscar(txFiltro.Text);
-                txFiltro.Text = "";
+                gvVentas.DataSource = ventasNegocio.Buscar(txtFiltro.Text);
+                txtFiltro.Text = "";
             }
             catch (Exception ex)
             {
@@ -46,7 +46,7 @@ namespace HuergoMotors.Forms
             {
                 CargarGridViewVentas();
                 CargarGridViewVentasAccesorios();
-                txFiltro.Text = "";
+                txtFiltro.Text = "";
             }
             catch (Exception ex)
             {

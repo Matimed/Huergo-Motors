@@ -46,7 +46,7 @@ namespace HuergoMotors.Forms
             this.Observaciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
-            this.txFiltro = new System.Windows.Forms.TextBox();
+            this.txtFiltro = new System.Windows.Forms.TextBox();
             this.splitTablas = new System.Windows.Forms.SplitContainer();
             this.gvAccesorios = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -219,13 +219,13 @@ namespace HuergoMotors.Forms
             this.label2.TabIndex = 14;
             this.label2.Text = "Filtro";
             // 
-            // txFiltro
+            // txtFiltro
             // 
-            this.txFiltro.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txFiltro.Location = new System.Drawing.Point(93, 15);
-            this.txFiltro.Name = "txFiltro";
-            this.txFiltro.Size = new System.Drawing.Size(463, 20);
-            this.txFiltro.TabIndex = 13;
+            this.txtFiltro.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtFiltro.Location = new System.Drawing.Point(93, 15);
+            this.txtFiltro.Name = "txtFiltro";
+            this.txtFiltro.Size = new System.Drawing.Size(463, 20);
+            this.txtFiltro.TabIndex = 13;
             // 
             // splitTablas
             // 
@@ -321,7 +321,7 @@ namespace HuergoMotors.Forms
             this.Controls.Add(this.picBusqueda);
             this.Controls.Add(this.btCerrar);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.txFiltro);
+            this.Controls.Add(this.txtFiltro);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(713, 500);
             this.Name = "frmVentas";
@@ -347,7 +347,7 @@ namespace HuergoMotors.Forms
         private System.Windows.Forms.Button btCerrar;
         private System.Windows.Forms.DataGridView gvVentas;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txFiltro;
+        private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.SplitContainer splitTablas;
         private System.Windows.Forms.DataGridView gvAccesorios;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;

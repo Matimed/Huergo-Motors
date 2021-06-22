@@ -69,16 +69,13 @@ namespace HuergoMotors.Web
             {
                 //O puedo pasar el ID por QueryString.
                 Response.Redirect("AMS/webVehiculosAlta.aspx?id=" + id);
-
             }
             else if (e.CommandName == "Eliminar")
             {
                 try
                 {
-
                     vehiculosNegocio.EliminarElemento(id);
                     CargarTabla();
-
                 }
                 catch (Exception ex)
                 {

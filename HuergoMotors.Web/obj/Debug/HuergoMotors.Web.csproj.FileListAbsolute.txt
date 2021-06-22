@@ -26,3 +26,17 @@ C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.We
 C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.csproj.CopyComplete
 C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.dll
 C:\Users\Pc\Desktop\GIT\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.pdb
+C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.Web.dll.config
+C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.Web.dll
+C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.Web.pdb
+C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.DTO.dll
+C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.Negocio.dll
+C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.DAO.dll
+C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.DTO.pdb
+C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.Negocio.pdb
+C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.DAO.pdb
+C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.csprojAssemblyReference.cache
+C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.csproj.CoreCompileInputs.cache
+C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.csproj.CopyComplete
+C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.dll
+C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.pdb
