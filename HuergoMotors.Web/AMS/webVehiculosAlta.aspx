@@ -23,8 +23,9 @@
             <asp:Label ID="Label4" runat="server" Text="Stock Disponible"></asp:Label>
             <asp:TextBox ID="txtStock" runat="server"></asp:TextBox>
         </p>
-        <asp:Button ID="btAceptar" runat="server" OnClick="Button1_Click" Text="Aceptar" />
-        <asp:Button ID="btCancelar" runat="server" OnClick="Button1_Click" Text="Cancelar" />
+        <asp:Button ID="btGuardar" runat="server" OnClick="btGuardar_Click" Text="Guardar cambios" />
+        <asp:Label ID="lbMsg" runat="server" Text="Label"></asp:Label>
+        <asp:Button ID="btVolver" runat="server" OnClick="btVolver_Click" Text="Volver" />
     </form>
 </body>
 </html>

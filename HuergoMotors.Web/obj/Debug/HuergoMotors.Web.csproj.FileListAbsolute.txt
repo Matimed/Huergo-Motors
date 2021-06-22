@@ -8,3 +8,7 @@ L:\proyecto1\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.csproj.Co
 L:\proyecto1\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.csproj.CopyComplete
 L:\proyecto1\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.dll
 L:\proyecto1\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.pdb
+L:\proyecto1\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.Negocio.dll
+L:\proyecto1\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.DAO.dll
+L:\proyecto1\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.Negocio.pdb
+L:\proyecto1\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.DAO.pdb

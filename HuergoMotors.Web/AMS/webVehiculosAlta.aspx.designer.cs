@@ -96,21 +96,30 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.TextBox txtStock;
 
         /// <summary>
-        /// Control btAceptar.
+        /// Control btGuardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btAceptar;
+        protected global::System.Web.UI.WebControls.Button btGuardar;
 
         /// <summary>
-        /// Control btCancelar.
+        /// Control lbMsg.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btCancelar;
+        protected global::System.Web.UI.WebControls.Label lbMsg;
+
+        /// <summary>
+        /// Control btVolver.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btVolver;
     }
 }

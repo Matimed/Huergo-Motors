@@ -11,11 +11,11 @@
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="Label1" runat="server" Text="Filtro"></asp:Label>
-            <asp:TextBox ID="txFiltro" runat="server" Width="226px"></asp:TextBox>
-            <asp:Image ID="Image1" runat="server" Height="28px" Width="28px" />
-            <asp:Image ID="Image2" runat="server" Height="28px" Width="28px" />
+            <asp:TextBox ID="txtFiltro" runat="server" Width="226px"></asp:TextBox>
+        <asp:Button ID="btBuscar" runat="server" Text="Buscar" ViewStateMode="Disabled" OnClick="btBuscar_Click" />
+        <asp:Button ID="btRecargar" runat="server" Text="Recargar" ViewStateMode="Disabled" OnClick="btRecargar_Click" />
         </div>
-        <asp:GridView ID="gv" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+        <asp:GridView ID="gvVehiculos" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="Id" OnRowCommand="gvVehiculos_RowCommand">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="ID" />
@@ -23,6 +23,8 @@
                 <asp:BoundField DataField="Modelo" HeaderText="Modelo" />
                 <asp:BoundField DataField="PrecioVenta" HeaderText="$ Venta" />
                 <asp:BoundField DataField="Stock" HeaderText="Stock" />
+                <asp:ButtonField ButtonType="Button" CommandName="Modificar" Text="Modificar" />
+                <asp:ButtonField ButtonType="Button" CommandName="Eliminar" Text="Eliminar" />
             </Columns>
             <EditRowStyle BackColor="#7C6F57" />
             <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -35,9 +37,8 @@
             <SortedDescendingCellStyle BackColor="#D4DFE1" />
             <SortedDescendingHeaderStyle BackColor="#15524A" />
         </asp:GridView>
+        <asp:Label ID="lbMsg" runat="server" Text="Label"></asp:Label>
         <asp:Button ID="btCerrar" runat="server" Text="Cerrar" />
-        <asp:Button ID="btEliminar" runat="server" Text="Eliminar" />
-        <asp:Button ID="btModificar" runat="server" Text="Modificar" />
         <asp:Button ID="btNuevo" runat="server" Text="Nuevo" ViewStateMode="Disabled" />
     </form>
 </body>

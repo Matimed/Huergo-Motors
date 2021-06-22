@@ -33,40 +33,49 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// Control txFiltro.
+        /// Control txtFiltro.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txFiltro;
+        protected global::System.Web.UI.WebControls.TextBox txtFiltro;
 
         /// <summary>
-        /// Control Image1.
+        /// Control btBuscar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
+        protected global::System.Web.UI.WebControls.Button btBuscar;
 
         /// <summary>
-        /// Control Image2.
+        /// Control btRecargar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image2;
+        protected global::System.Web.UI.WebControls.Button btRecargar;
 
         /// <summary>
-        /// Control gv.
+        /// Control gvVehiculos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv;
+        protected global::System.Web.UI.WebControls.GridView gvVehiculos;
+
+        /// <summary>
+        /// Control lbMsg.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbMsg;
 
         /// <summary>
         /// Control btCerrar.
@@ -76,24 +85,6 @@ namespace HuergoMotors.Web
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btCerrar;
-
-        /// <summary>
-        /// Control btEliminar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btEliminar;
-
-        /// <summary>
-        /// Control btModificar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btModificar;
 
         /// <summary>
         /// Control btNuevo.

@@ -12,7 +12,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HuergoMotors.Web</RootNamespace>
     <AssemblyName>HuergoMotors.Web</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44343</IISExpressSSLPort>
@@ -20,6 +20,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,6 +30,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,25 +39,25 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web.Debug.config">
@@ -68,18 +70,19 @@
   <ItemGroup>
     <Content Include="webMDI.aspx" />
     <Content Include="webVendedores.aspx" />
-    <Content Include="webVendedoresAlta.aspx" />
+    <Content Include="AMS\webVendedoresAlta.aspx" />
     <Content Include="webAccesorios.aspx" />
-    <Content Include="webAccesoriosAlta.aspx" />
+    <Content Include="AMS\webAccesoriosAlta.aspx" />
     <Content Include="webClientes.aspx" />
-    <Content Include="webClientesAlta.aspx" />
+    <Content Include="AMS\webClientesAlta.aspx" />
     <Content Include="webVehiculos.aspx" />
     <Content Include="Web.config" />
-    <Content Include="webVehiculosAlta.aspx" />
+    <Content Include="AMS\webVehiculosAlta.aspx" />
     <Content Include="webVentas.aspx" />
-    <Content Include="webVentasAlta.aspx" />
+    <Content Include="AMS\webVentasAlta.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HelperWeb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="webMDI.aspx.cs">
       <DependentUpon>webMDI.aspx</DependentUpon>
@@ -95,11 +98,11 @@
     <Compile Include="webVendedores.aspx.designer.cs">
       <DependentUpon>webVendedores.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webVendedoresAlta.aspx.cs">
+    <Compile Include="AMS\webVendedoresAlta.aspx.cs">
       <DependentUpon>webVendedoresAlta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webVendedoresAlta.aspx.designer.cs">
+    <Compile Include="AMS\webVendedoresAlta.aspx.designer.cs">
       <DependentUpon>webVendedoresAlta.aspx</DependentUpon>
     </Compile>
     <Compile Include="webAccesorios.aspx.cs">
@@ -109,11 +112,11 @@
     <Compile Include="webAccesorios.aspx.designer.cs">
       <DependentUpon>webAccesorios.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webAccesoriosAlta.aspx.cs">
+    <Compile Include="AMS\webAccesoriosAlta.aspx.cs">
       <DependentUpon>webAccesoriosAlta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webAccesoriosAlta.aspx.designer.cs">
+    <Compile Include="AMS\webAccesoriosAlta.aspx.designer.cs">
       <DependentUpon>webAccesoriosAlta.aspx</DependentUpon>
     </Compile>
     <Compile Include="webClientes.aspx.cs">
@@ -123,11 +126,11 @@
     <Compile Include="webClientes.aspx.designer.cs">
       <DependentUpon>webClientes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webClientesAlta.aspx.cs">
+    <Compile Include="AMS\webClientesAlta.aspx.cs">
       <DependentUpon>webClientesAlta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webClientesAlta.aspx.designer.cs">
+    <Compile Include="AMS\webClientesAlta.aspx.designer.cs">
       <DependentUpon>webClientesAlta.aspx</DependentUpon>
     </Compile>
     <Compile Include="webVehiculos.aspx.cs">
@@ -137,11 +140,11 @@
     <Compile Include="webVehiculos.aspx.designer.cs">
       <DependentUpon>webVehiculos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webVehiculosAlta.aspx.cs">
+    <Compile Include="AMS\webVehiculosAlta.aspx.cs">
       <DependentUpon>webVehiculosAlta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webVehiculosAlta.aspx.designer.cs">
+    <Compile Include="AMS\webVehiculosAlta.aspx.designer.cs">
       <DependentUpon>webVehiculosAlta.aspx</DependentUpon>
     </Compile>
     <Compile Include="webVentas.aspx.cs">
@@ -151,11 +154,11 @@
     <Compile Include="webVentas.aspx.designer.cs">
       <DependentUpon>webVentas.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webVentasAlta.aspx.cs">
+    <Compile Include="AMS\webVentasAlta.aspx.cs">
       <DependentUpon>webVentasAlta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webVentasAlta.aspx.designer.cs">
+    <Compile Include="AMS\webVentasAlta.aspx.designer.cs">
       <DependentUpon>webVentasAlta.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -169,9 +172,7 @@
       <Name>HuergoMotors.Negocio</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Fotos\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
