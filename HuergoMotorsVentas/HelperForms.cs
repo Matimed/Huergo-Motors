@@ -101,7 +101,7 @@ namespace HuergoMotorsForms
 
 
         public static T GenerarDTO<T>(Control.ControlCollection controls) where T : DTOBase, new()
-        {  
+        {
             T dto = new T();
             foreach (Control control in controls)
             {

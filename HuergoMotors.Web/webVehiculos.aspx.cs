@@ -19,7 +19,6 @@ namespace HuergoMotors.Web
             try
             {
                 lbMsg.Text = string.Empty;
-
                 if (!Page.IsPostBack)
                 {
                     //Esta es solo la primera vez que entra a la pagina.
