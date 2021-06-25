@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using HuergoMotors.Negocio;
-using HuergoMotors.DTO;
 
 namespace HuergoMotors.Web
 {
-    public partial class Vehiculos : System.Web.UI.Page
+    public partial class Vehiculos : Page
     {
         VehiculosNegocio vehiculosNegocio = new VehiculosNegocio();
+        private const string Backpage = "index.aspx";
         private const string AM = "AMS/webVehiculosAlta.aspx";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -19,15 +16,10 @@ namespace HuergoMotors.Web
             try
             {
                 lbMsg.Text = string.Empty;
-                if (!Page.IsPostBack)
+                if (!Page.IsPostBack)   //Esta es solo la primera vez que entra a la pagina.
                 {
-                    //Esta es solo la primera vez que entra a la pagina.
                     txtFiltro.Text = string.Empty;
                     CargarTabla();
-                }
-                else
-                {
-                    //Esto es en cada postback
                 }
             }
             catch (Exception ex)
@@ -67,7 +59,6 @@ namespace HuergoMotors.Web
 
             if (e.CommandName == "Modificar")
             {
-                //O puedo pasar el ID por QueryString.
                 Response.Redirect(AM + "?id=" + id);
             }
             else if (e.CommandName == "Eliminar")
@@ -84,14 +75,14 @@ namespace HuergoMotors.Web
             }
         }
 
-        protected void gvVehiculos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         protected void btNuevo_Click(object sender, EventArgs e)
         {
             Response.Redirect(AM);
+        }
+
+        protected void btVolver_Click(object sender, EventArgs e)
+        {
+            Response.Redirect(Backpage);
         }
     }
 }

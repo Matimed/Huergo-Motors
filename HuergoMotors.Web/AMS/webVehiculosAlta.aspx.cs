@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using HuergoMotors.Negocio;
-using HuergoMotors.Web;
 using HuergoMotors.DTO;
 
 namespace HuergoMotors.Web
 {
-    public partial class webVehiculosAlta : System.Web.UI.Page
+    public partial class webVehiculosAlta : Page
     {
         VehiculosNegocio vehiculosNegocio = new VehiculosNegocio();
         private int Id;
@@ -30,12 +25,12 @@ namespace HuergoMotors.Web
                     if (Request.QueryString["id"] != null)
                     {
                         HelperWeb.LeerDTO(Page.Controls, vehiculosNegocio.BuscarId(Id));
+                        btGuardar.Text = "Guardar Cambios";
                     }
                     else
                     {
                         btGuardar.Text = "Agregar vehiculo";
                     }
-
                 }
             }
             catch (Exception ex)
@@ -55,8 +50,6 @@ namespace HuergoMotors.Web
                 vehiculosNegocio.AgregarElemento(HelperWeb.GenerarDTO<VehiculosDTO>(Controls));
             }
             Response.Redirect(Backpage);
-
-
         }
         public void btVolver_Click(object sender, EventArgs e)
         {
