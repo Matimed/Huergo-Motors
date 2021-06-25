@@ -16,7 +16,8 @@ namespace HuergoMotors.Web
         private int Id;
         private const string Backpage = "../webVehiculos.aspx";
 
-        protected void Page_Load(object sender, EventArgs e)
+         
+        public void Page_Load(object sender, EventArgs e)
         {
             try
             {
@@ -28,13 +29,7 @@ namespace HuergoMotors.Web
                 {
                     if (Request.QueryString["id"] != null)
                     {
-                        VehiculosDTO vehiculo = new VehiculosDTO();
-                        vehiculo = vehiculosNegocio.BuscarId(Id);
-
-                        txtModelo.Text = vehiculo.Modelo;
-                        txtPrecioVenta.Text = vehiculo.PrecioVenta.ToString();
-                        txtStock.Text = vehiculo.Stock.ToString();
-                        txtTipo.Text = vehiculo.Tipo;
+                        HelperWeb.LeerDTO(Page.Controls, vehiculosNegocio.BuscarId(Id));
                     }
                     else
                     {
@@ -49,29 +44,21 @@ namespace HuergoMotors.Web
             }
         }
 
-        protected void btGuardar_Click(object sender, EventArgs e)
+        public void btGuardar_Click(object sender, EventArgs e)
         {
-            VehiculosDTO vehiculo = new VehiculosDTO();
-            vehiculo.Tipo = txtTipo.Text;
-            vehiculo.Modelo = txtModelo.Text;
-            vehiculo.PrecioVenta = HelperWeb.ConvertirNumeroRacional(txtPrecioVenta);
-            vehiculo.Stock = HelperWeb.ConvertirNumeroNatural(txtStock);
             if (Request.QueryString["id"] != null)
             {
-                vehiculo.Id = Id;
-                vehiculosNegocio.ModificarElemento(vehiculo);
+                vehiculosNegocio.ModificarElemento(HelperWeb.GenerarDTO<VehiculosDTO>(Controls, Id));
             }
             else
             {
-                vehiculosNegocio.AgregarElemento(vehiculo);
+                vehiculosNegocio.AgregarElemento(HelperWeb.GenerarDTO<VehiculosDTO>(Controls));
             }
-                
             Response.Redirect(Backpage);
 
 
         }
-
-        protected void btVolver_Click(object sender, EventArgs e)
+        public void btVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect(Backpage);
         }
