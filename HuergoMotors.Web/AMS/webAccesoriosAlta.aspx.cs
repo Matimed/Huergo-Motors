@@ -12,6 +12,7 @@ namespace HuergoMotors.Web
     public partial class webAccesoriosAlta : System.Web.UI.Page
     {
         AccesoriosNegocio accesoriosNegocio = new AccesoriosNegocio();
+        VehiculosNegocio vehiculosNegocio = new VehiculosNegocio();
         private int Id;
         private const string Backpage = "../webAccesorios.aspx";
         protected void Page_Load(object sender, EventArgs e)
@@ -27,10 +28,17 @@ namespace HuergoMotors.Web
                     if (Request.QueryString["id"] != null)
                     {
                         HelperWeb.LeerDTO(Page.Controls, accesoriosNegocio.BuscarId(Id));
+                        HelperWeb.DisplayCombo(ddlIdVehiculo, "Modelo");
+                        ddlIdVehiculo.DataSource = vehiculosNegocio.CargarTabla();
+                        ddlIdVehiculo.DataBind();
+                        HelperWeb.LeerDropDownList<AccesoriosDTO>(ddlIdVehiculo,accesoriosNegocio.BuscarId(Id));
                         btGuardarcambios.Text = "Guardar Cambios";
                     }
                     else
                     {
+                        HelperWeb.DisplayCombo(ddlIdVehiculo, "Modelo");
+                        ddlIdVehiculo.DataSource = vehiculosNegocio.CargarTabla();
+                        ddlIdVehiculo.DataBind();
                        btGuardarcambios.Text = "Agregar vehiculo";
                     }
                 }

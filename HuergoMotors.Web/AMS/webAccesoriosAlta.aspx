@@ -22,7 +22,7 @@
         <asp:TextBox ID="txtPrecio" runat="server"></asp:TextBox>
         <p>
             <asp:Label ID="Label4" runat="server" Text="Modelo de Auto"></asp:Label>
-            <asp:DropDownList ID="ddlModelo" runat="server">
+            <asp:DropDownList ID="ddlIdVehiculo" runat="server">
             </asp:DropDownList>
         </p>
         <asp:Button ID="btGuardarcambios" runat="server" Text="Guardar cambios" OnClick="btGuardarcambios_Click" />

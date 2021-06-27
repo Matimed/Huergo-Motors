@@ -107,11 +107,11 @@ namespace HuergoMotors.Web
                 throw new Exception("Error al cargar el drop down list", ex);
             }
         }
-        //public static void LeerDropDownList<T>(DropDownList dropDownList, T dto)
-        //{
-        //    PropertyInfo propiedad = dto.GetType().GetProperty(dropDownList.ID.Replace("ddl", ""));
-        //    dropDownList.SelectedValue = propiedad.GetValue(dto);
-        //}
+        public static void LeerDropDownList<T>(DropDownList dropDownList, T dto)
+        {
+            PropertyInfo propiedad = dto.GetType().GetProperty(dropDownList.ID.Replace("ddl", ""));
+            dropDownList.SelectedValue = propiedad.GetValue(dto).ToString();
+        }
 
         private static void GenerarListaControles<T>(ControlCollection controles, List<T> controlesResultantes) where T : Control
         {
