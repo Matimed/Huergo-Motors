@@ -8,3 +8,9 @@ C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\H
 C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.DTO\obj\Debug\HuergoMotors.DTO.csproj.CopyComplete
 C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.DTO\obj\Debug\HuergoMotors.DTO.dll
 C:\Users\matun\Documents\Colegio\Secundaria\5° año\Proyecto II\Huergo-Motors\Huergo-Motors\HuergoMotors.DTO\obj\Debug\HuergoMotors.DTO.pdb
+C:\Users\Joaquin\Desktop\joaqui\colegio\proyectos\Huergo-Motors\HuergoMotors.DTO\bin\Debug\HuergoMotors.DTO.dll
+C:\Users\Joaquin\Desktop\joaqui\colegio\proyectos\Huergo-Motors\HuergoMotors.DTO\bin\Debug\HuergoMotors.DTO.pdb
+C:\Users\Joaquin\Desktop\joaqui\colegio\proyectos\Huergo-Motors\HuergoMotors.DTO\obj\Debug\HuergoMotors.DTO.csprojAssemblyReference.cache
+C:\Users\Joaquin\Desktop\joaqui\colegio\proyectos\Huergo-Motors\HuergoMotors.DTO\obj\Debug\HuergoMotors.DTO.csproj.CoreCompileInputs.cache
+C:\Users\Joaquin\Desktop\joaqui\colegio\proyectos\Huergo-Motors\HuergoMotors.DTO\obj\Debug\HuergoMotors.DTO.dll
+C:\Users\Joaquin\Desktop\joaqui\colegio\proyectos\Huergo-Motors\HuergoMotors.DTO\obj\Debug\HuergoMotors.DTO.pdb
