@@ -93,24 +93,33 @@ namespace HuergoMotors.Web
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cboVehiculos;
+        protected global::System.Web.UI.WebControls.DropDownList ddlModelo;
 
         /// <summary>
-        /// Control btAceptar.
+        /// Control btGuardarcambios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btAceptar;
+        protected global::System.Web.UI.WebControls.Button btGuardarcambios;
 
         /// <summary>
-        /// Control btCancelar.
+        /// Control btVolver.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btCancelar;
+        protected global::System.Web.UI.WebControls.Button btVolver;
+
+        /// <summary>
+        /// Control lbMensaje.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbMensaje;
     }
 }

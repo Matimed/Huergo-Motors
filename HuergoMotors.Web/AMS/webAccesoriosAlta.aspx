@@ -25,9 +25,10 @@
             <asp:DropDownList ID="cboVehiculos" runat="server">
             </asp:DropDownList>
         </p>
-        <asp:Button ID="btAceptar" runat="server" OnClick="Button1_Click" Text="Aceptar" />
-        <asp:Button ID="btCancelar" runat="server" OnClick="Button1_Click" Text="Cancelar" />
+        <asp:Button ID="btGuardarcambios" runat="server" Text="Guardar cambios" OnClick="btGuardarcambios_Click" />
+        <asp:Button ID="btVolver" runat="server" Text="Volver" OnClick="btVolver_Click" />
         </div>
+        <asp:Label ID="lbMensaje" runat="server" Text="Label"></asp:Label>
     </form>
 </body>
 </html>

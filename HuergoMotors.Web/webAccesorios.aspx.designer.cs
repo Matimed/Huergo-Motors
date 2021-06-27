@@ -15,13 +15,13 @@ namespace HuergoMotors.Web
     {
 
         /// <summary>
-        /// Control form2.
+        /// Control frmAccesorios.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form2;
+        protected global::System.Web.UI.HtmlControls.HtmlForm frmAccesorios;
 
         /// <summary>
         /// Control Label1.
@@ -33,13 +33,13 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// Control txFiltro.
+        /// Control txtFiltro.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txFiltro;
+        protected global::System.Web.UI.WebControls.TextBox txtFiltro;
 
         /// <summary>
         /// Control btBuscar.
@@ -51,22 +51,13 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.Button btBuscar;
 
         /// <summary>
-        /// Control Image1.
+        /// Control btnRecargar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
-
-        /// <summary>
-        /// Control Image2.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image2;
+        protected global::System.Web.UI.WebControls.Button btnRecargar;
 
         /// <summary>
         /// Control gv.
@@ -96,12 +87,12 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.Button btNuevo;
 
         /// <summary>
-        /// Control form1.
+        /// Control lbMensaje.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label lbMensaje;
     }
 }
