@@ -39,7 +39,7 @@
             <SortedDescendingCellStyle BackColor="#D4DFE1" />
             <SortedDescendingHeaderStyle BackColor="#15524A" />
         </asp:GridView>
-        <asp:Label ID="lbMsg" runat="server" Text="Label"></asp:Label>
+        <asp:Label ID="lbMsg" runat="server" Text="lbMsg"></asp:Label>
     </form>
 </body>
 </html>
