@@ -77,7 +77,6 @@ namespace HuergoMotors.Web
             dto.Id = Id;
             return dto;
         }
-
         public static void LeerDTO<T>(ControlCollection controls, T dto) where T : DTOBase, new()
         {
             List<TextBox> textBoxes = new List<TextBox>();
@@ -95,6 +94,24 @@ namespace HuergoMotors.Web
                     }
             }
         }
+
+        public static void DisplayCombo(DropDownList dropDownList, string displaymember)
+        {
+            try
+            {
+                dropDownList.DataTextField = displaymember;
+                dropDownList.DataValueField = "Id";
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al cargar el drop down list", ex);
+            }
+        }
+        //public static void LeerDropDownList<T>(DropDownList dropDownList, T dto)
+        //{
+        //    PropertyInfo propiedad = dto.GetType().GetProperty(dropDownList.ID.Replace("ddl", ""));
+        //    dropDownList.SelectedValue = propiedad.GetValue(dto);
+        //}
 
         private static void GenerarListaControles<T>(ControlCollection controles, List<T> controlesResultantes) where T : Control
         {

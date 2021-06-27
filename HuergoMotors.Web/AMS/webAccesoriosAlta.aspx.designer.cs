@@ -87,7 +87,7 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.Label Label4;
 
         /// <summary>
-        /// Control cboVehiculos.
+        /// Control ddlModelo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
