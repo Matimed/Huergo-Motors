@@ -27,16 +27,15 @@ namespace HuergoMotors.Web
                 {
                     if (Request.QueryString["id"] != null)
                     {
-                        HelperWeb.LeerDTO(Page.Controls, accesoriosNegocio.BuscarId(Id));
-                        HelperWeb.DisplayCombo(ddlIdVehiculo, "Modelo");
+                        HelperWeb.DisplayDropDown(ddlIdVehiculo, "Modelo");
                         ddlIdVehiculo.DataSource = vehiculosNegocio.CargarTabla();
                         ddlIdVehiculo.DataBind();
-                        HelperWeb.LeerDropDownList<AccesoriosDTO>(ddlIdVehiculo,accesoriosNegocio.BuscarId(Id));
+                        HelperWeb.LeerDTO(Page.Controls, accesoriosNegocio.BuscarId(Id));
                         btGuardarcambios.Text = "Guardar Cambios";
                     }
                     else
                     {
-                        HelperWeb.DisplayCombo(ddlIdVehiculo, "Modelo");
+                        HelperWeb.DisplayDropDown(ddlIdVehiculo, "Modelo");
                         ddlIdVehiculo.DataSource = vehiculosNegocio.CargarTabla();
                         ddlIdVehiculo.DataBind();
                        btGuardarcambios.Text = "Agregar vehiculo";

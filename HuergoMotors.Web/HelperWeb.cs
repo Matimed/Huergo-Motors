@@ -11,11 +11,11 @@ namespace HuergoMotors.Web
 {
     public static class HelperWeb
     {
-        public static int ConvertirNumeroNatural(TextBox textBox)
+        public static int ConvertirNumeroNatural(string texto)
         {
             try
             {
-                if (!int.TryParse(textBox.Text, out int numeroNatural) | numeroNatural < 0)
+                if (!int.TryParse(texto, out int numeroNatural) | numeroNatural < 0)
                 {
                     throw new Exception($"Tipo de dato inválido. Se esperaba un numero entero.");
                 }
@@ -27,11 +27,11 @@ namespace HuergoMotors.Web
             }
         }
 
-        public static decimal ConvertirNumeroRacional(TextBox textBox)
+        public static decimal ConvertirNumeroRacional(string texto)
         {
             try
             {
-                if (!decimal.TryParse(textBox.Text, out decimal numeroRacional) | numeroRacional < 0)
+                if (!decimal.TryParse(texto, out decimal numeroRacional) | numeroRacional < 0)
                 {
                     throw new Exception($"Tipo de dato inválido. Se esperaba un numero racional.");
                 }
@@ -47,7 +47,9 @@ namespace HuergoMotors.Web
         {
             T dto = new T();
             List<TextBox> textBoxes = new List<TextBox>();
+            List<DropDownList> dropDownLists = new List<DropDownList>();
             GenerarListaControles<TextBox>(controls, textBoxes);
+            GenerarListaControles(controls, dropDownLists);
             foreach (TextBox textBox in textBoxes)
             {
                     ValidarTextBoxVacio(textBox);
@@ -59,15 +61,22 @@ namespace HuergoMotors.Web
                             break;
 
                         case "Int32":
-                            propiedad.SetValue(dto, ConvertirNumeroNatural(textBox), null);
+                            propiedad.SetValue(dto, ConvertirNumeroNatural(textBox.Text), null);
                             break;
 
                         case "Decimal":
-                            propiedad.SetValue(dto, ConvertirNumeroRacional(textBox), null);
+                            propiedad.SetValue(dto, ConvertirNumeroRacional(textBox.Text), null);
                             break;
                         default:
                             throw new Exception("Tipo de dato no reconocido");
                     }
+            }
+            foreach (DropDownList dropDown in dropDownLists)
+            {
+                int id = ConvertirNumeroNatural(dropDown.SelectedValue);
+                ValidarID(id);
+                PropertyInfo propiedad = dto.GetType().GetProperty(dropDown.ID.Replace("ddl", ""));
+                propiedad.SetValue(dto, id, null);
             }
             return dto;
         }
@@ -80,7 +89,9 @@ namespace HuergoMotors.Web
         public static void LeerDTO<T>(ControlCollection controls, T dto) where T : DTOBase, new()
         {
             List<TextBox> textBoxes = new List<TextBox>();
-            GenerarListaControles<TextBox>(controls, textBoxes);
+            List<DropDownList> dropDownLists = new List<DropDownList>();
+            GenerarListaControles(controls, textBoxes);
+            GenerarListaControles(controls, dropDownLists);
             foreach (TextBox textBox in textBoxes)
             {
                     PropertyInfo propiedad = dto.GetType().GetProperty(textBox.ID.Replace("txt", ""));
@@ -93,24 +104,24 @@ namespace HuergoMotors.Web
                         textBox.Text = propiedad.GetValue(dto).ToString();
                     }
             }
+            foreach (DropDownList dropDown in dropDownLists)
+            {
+                PropertyInfo propiedad = dto.GetType().GetProperty(dropDown.ID.Replace("ddl", ""));
+                dropDown.SelectedValue = propiedad.GetValue(dto).ToString();
+            }
         }
 
-        public static void DisplayCombo(DropDownList dropDownList, string displaymember)
+        public static void DisplayDropDown(DropDownList dropDown, string displaymember)
         {
             try
             {
-                dropDownList.DataTextField = displaymember;
-                dropDownList.DataValueField = "Id";
+                dropDown.DataTextField = displaymember;
+                dropDown.DataValueField = "Id";
             }
             catch (Exception ex)
             {
                 throw new Exception("Error al cargar el drop down list", ex);
             }
-        }
-        public static void LeerDropDownList<T>(DropDownList dropDownList, T dto)
-        {
-            PropertyInfo propiedad = dto.GetType().GetProperty(dropDownList.ID.Replace("ddl", ""));
-            dropDownList.SelectedValue = propiedad.GetValue(dto).ToString();
         }
 
         private static void GenerarListaControles<T>(ControlCollection controles, List<T> controlesResultantes) where T : Control
@@ -131,6 +142,10 @@ namespace HuergoMotors.Web
             {
                 throw new Exception($"No se pueden dejar el campo {textBox.ID.Replace("txt", "")} sin completar");
             }
+        }
+        private static void ValidarID(int id)
+        {
+            if (id < 0) throw new Exception("Ningun elemento seleccionado");
         }
     }
 }
