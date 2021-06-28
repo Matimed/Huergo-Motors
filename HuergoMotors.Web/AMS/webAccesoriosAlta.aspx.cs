@@ -38,7 +38,7 @@ namespace HuergoMotors.Web
                         HelperWeb.DisplayDropDown(ddlIdVehiculo, "Modelo");
                         ddlIdVehiculo.DataSource = vehiculosNegocio.CargarTabla();
                         ddlIdVehiculo.DataBind();
-                       btGuardarcambios.Text = "Agregar vehiculo";
+                       btGuardarcambios.Text = "Agregar accesorio";
                     }
                 }
             }
