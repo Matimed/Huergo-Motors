@@ -10,10 +10,12 @@
 <body>
     <form id="frmAccesorios" runat="server">
         <div>
+        <asp:Button ID="btVolver" runat="server" Text="Volver" OnClick="btVolver_Click" />
             <asp:Label ID="Label1" runat="server" Text="Filtro"></asp:Label>
             <asp:TextBox ID="txtFiltro" runat="server" Width="226px"></asp:TextBox>
         <asp:Button ID="btBuscar" runat="server" Text="Buscar" ViewStateMode="Disabled" OnClick="btBuscar_Click" />
         <asp:Button ID="btnRecargar" runat="server" Text="Recargar" ViewStateMode="Disabled" OnClick="btnRecargar_Click" />
+        <asp:Button ID="btNuevo" runat="server" Text="Nuevo" ViewStateMode="Disabled" OnClick="btNuevo_Click" />
         </div>
         <asp:GridView ID="gv" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="Id" OnRowCommand="gv_RowCommand">
             <AlternatingRowStyle BackColor="White" />
@@ -37,8 +39,6 @@
             <SortedDescendingCellStyle BackColor="#D4DFE1" />
             <SortedDescendingHeaderStyle BackColor="#15524A" />
         </asp:GridView>
-        <asp:Button ID="btVolver" runat="server" Text="Volver" OnClick="btVolver_Click" />
-        <asp:Button ID="btNuevo" runat="server" Text="Nuevo" ViewStateMode="Disabled" OnClick="btNuevo_Click" />
     </form>
     <p>
         <asp:Label ID="lbMensaje" runat="server" Text="Label"></asp:Label>

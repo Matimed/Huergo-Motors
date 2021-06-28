@@ -24,6 +24,15 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.HtmlControls.HtmlForm frmAccesorios;
 
         /// <summary>
+        /// Control btVolver.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btVolver;
+
+        /// <summary>
         /// Control Label1.
         /// </summary>
         /// <remarks>
@@ -60,24 +69,6 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.Button btnRecargar;
 
         /// <summary>
-        /// Control gv.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv;
-
-        /// <summary>
-        /// Control btVolver.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btVolver;
-
-        /// <summary>
         /// Control btNuevo.
         /// </summary>
         /// <remarks>
@@ -85,6 +76,15 @@ namespace HuergoMotors.Web
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btNuevo;
+
+        /// <summary>
+        /// Control gv.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv;
 
         /// <summary>
         /// Control lbMensaje.

@@ -10,14 +10,14 @@
 <body>
     <form id="form2" runat="server">
         <div>
+        <asp:Button ID="btVolver" runat="server" Text="Volver" OnClick="btVolver_Click" />
             <asp:Label ID="Label1" runat="server" Text="Filtro"></asp:Label>
             <asp:TextBox ID="txtFiltro" runat="server" Width="226px"></asp:TextBox>
-        <asp:Button ID="btNuevo" runat="server" Text="Nuevo" ViewStateMode="Disabled" />
         <asp:Button ID="btBuscar" runat="server" Text="Buscar" ViewStateMode="Disabled" OnClick="btBuscar_Click" />
         <asp:Button ID="btRecargar" runat="server" Text="Recargar" ViewStateMode="Disabled" OnClick="btRecargar_Click" />
-        <asp:Button ID="btVolver" runat="server" Text="Volver" OnClick="btVolver_Click" />
+        <asp:Button ID="btNuevo" runat="server" Text="Nuevo" ViewStateMode="Disabled" />
         </div>
-        <asp:GridView ID="gvVendedores" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="gv_SelectedIndexChanged">
+        <asp:GridView ID="gvVendedores" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="Id" OnRowCommand="gvVendedores_RowCommand">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="Id" Visible="False" />

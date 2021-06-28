@@ -11,7 +11,7 @@ namespace HuergoMotors.Web
     public partial class Vendedores : Page
     {
         VendedoresNegocio vendedoresNegocio = new VendedoresNegocio();
-        private const string Backpage = "webVendedores.aspx";
+        private const string Backpage = "index.aspx";
         private const string AM = "AMS/webVendedoresAlta.aspx";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -86,11 +86,6 @@ namespace HuergoMotors.Web
         {
             CargarTabla();
             txtFiltro.Text = string.Empty;
-        }
-
-        protected void gv_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

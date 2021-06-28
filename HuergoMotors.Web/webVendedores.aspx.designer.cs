@@ -24,6 +24,15 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.HtmlControls.HtmlForm form2;
 
         /// <summary>
+        /// Control btVolver.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btVolver;
+
+        /// <summary>
         /// Control Label1.
         /// </summary>
         /// <remarks>
@@ -40,15 +49,6 @@ namespace HuergoMotors.Web
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtFiltro;
-
-        /// <summary>
-        /// Control btNuevo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btNuevo;
 
         /// <summary>
         /// Control btBuscar.
@@ -69,13 +69,13 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.Button btRecargar;
 
         /// <summary>
-        /// Control btVolver.
+        /// Control btNuevo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btVolver;
+        protected global::System.Web.UI.WebControls.Button btNuevo;
 
         /// <summary>
         /// Control gvVendedores.

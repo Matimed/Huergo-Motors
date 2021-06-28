@@ -22,12 +22,12 @@ namespace HuergoMotors.Web
                 {
                     if (Request.QueryString["id"] != null)
                     {
-                        HelperWeb.LeerDTO(Page.Controls, vendedoresNegocio.BuscarId(Id));
                         btAceptar.Text = "Guardar Cambios";
+                        HelperWeb.LeerDTO(Page.Controls, vendedoresNegocio.BuscarId(Id));
                     }
                     else
                     {
-                        btAceptar.Text = "Agregar vehiculo";
+                        btAceptar.Text = "Agregar vendedor";
                     }
                 }
             }
