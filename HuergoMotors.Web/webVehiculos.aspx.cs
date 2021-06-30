@@ -82,7 +82,19 @@ namespace HuergoMotors.Web
 
         protected void btVolver_Click(object sender, EventArgs e)
         {
-            Response.Redirect(Backpage);
+            try
+            {
+                Response.Redirect(Backpage);
+            }
+            catch (Exception ex)
+            {
+                lbMsg.Text = ex.Message;
+            }
+        }
+
+        protected void gvVehiculos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

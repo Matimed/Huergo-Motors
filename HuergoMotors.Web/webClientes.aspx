@@ -12,12 +12,14 @@
         <div>
         </div>
         <div>
+        <asp:Button ID="btVolver" runat="server" Text="Volver" OnClick="btVolver_Click" />
             <asp:Label ID="Label1" runat="server" Text="Filtro"></asp:Label>
-            <asp:TextBox ID="txFiltro" runat="server" Width="226px"></asp:TextBox>
-            <asp:Image ID="Image1" runat="server" Height="28px" Width="28px" />
-            <asp:Image ID="Image2" runat="server" Height="28px" Width="28px" />
+            <asp:TextBox ID="txtFiltro" runat="server" Width="226px"></asp:TextBox>
+        <asp:Button ID="btBuscar" runat="server" Text="Buscar" ViewStateMode="Disabled" OnClick="btBuscar_Click" />
+        <asp:Button ID="btRecargar" runat="server" Text="Recargar" ViewStateMode="Disabled" OnClick="btRecargar_Click" />
+        <asp:Button ID="btNuevo" runat="server" Text="Nuevo" ViewStateMode="Disabled" OnClick="btNuevo_Click" />
         </div>
-        <asp:GridView ID="gv" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="gv_SelectedIndexChanged">
+        <asp:GridView ID="gvClientes" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="gv_SelectedIndexChanged">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:BoundField DataField="Id" HeaderText="Id" />
@@ -25,6 +27,8 @@
                 <asp:BoundField DataField="Direccion" HeaderText="Direccion" />
                 <asp:BoundField DataField="Telefono" HeaderText="Telefono" />
                 <asp:BoundField DataField="Email" HeaderText="Email" />
+                <asp:ButtonField ButtonType="Button" CommandName="Seleccionar" Text="Seleccionar" />
+                <asp:ButtonField ButtonType="Button" CommandName="Modificar" Text="Modificar" />
             </Columns>
             <EditRowStyle BackColor="#7C6F57" />
             <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
@@ -38,9 +42,8 @@
             <SortedDescendingHeaderStyle BackColor="#15524A" />
         </asp:GridView>
         <asp:Button ID="btCerrar" runat="server" Text="Cerrar" />
-        <asp:Button ID="btnSeleccionar" runat="server" Text="Seleccionar" />
-        <asp:Button ID="btModificar" runat="server" Text="Modificar" />
-        <asp:Button ID="btNuevo" runat="server" Text="Nuevo" ViewStateMode="Disabled" />
+        <br />
+        <asp:Label ID="lbMsg" runat="server" Text="lbMsg"></asp:Label>
     </form>
 </body>
 </html>
