@@ -23,11 +23,12 @@
             <asp:Label ID="Label4" runat="server" Text="Email"></asp:Label>
             <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox>
         </p>
-        <asp:Button ID="btAceptar" runat="server" OnClick="Button1_Click" Text="Aceptar" />
+        <asp:Button ID="btAceptar" runat="server" OnClick="Button1_Click" Text="Guardar Cambios" />
         <asp:Button ID="btCancelar" runat="server" OnClick="Button1_Click" Text="Cancelar" />
     </form>
-    <form id="form1" runat="server">
+    <form>
         <div>
+            <asp:Label ID="lbMsg" runat="server" Text="lbMsg"></asp:Label>
         </div>
     </form>
 </body>
