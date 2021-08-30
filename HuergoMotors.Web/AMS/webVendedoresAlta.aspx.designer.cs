@@ -7,30 +7,21 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace HuergoMotors.Web
+namespace HuergoMotors.Web.AMS
 {
 
 
-    public partial class VendedoresAlta
+    public partial class webVendedoresAlta
     {
 
         /// <summary>
-        /// Control form1.
+        /// Control lbNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
-        /// Control Label1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lbNombre;
 
         /// <summary>
         /// Control txtNombre.
@@ -42,13 +33,13 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
 
         /// <summary>
-        /// Control Label2.
+        /// Control lbApellido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lbApellido;
 
         /// <summary>
         /// Control txtApellido.
@@ -60,13 +51,13 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.TextBox txtApellido;
 
         /// <summary>
-        /// Control Label3.
+        /// Control lbSucursal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label lbSucursal;
 
         /// <summary>
         /// Control txtSucursal.
@@ -78,22 +69,22 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.TextBox txtSucursal;
 
         /// <summary>
-        /// Control btAceptar.
+        /// Control btnGuardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btAceptar;
+        protected global::System.Web.UI.WebControls.Button btnGuardar;
 
         /// <summary>
-        /// Control btCancelar.
+        /// Control btnVolver.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btCancelar;
+        protected global::System.Web.UI.WebControls.Button btnVolver;
 
         /// <summary>
         /// Control lbMsg.
