@@ -14,5 +14,18 @@ namespace HuergoMotors.Web
         {
 
         }
+
+        protected void Navbar_MenuItemClick(object sender, MenuEventArgs e)
+        {
+            try
+            {
+                
+                string path = ($"web{e.Item.Value}.aspx");
+                Response.Redirect(path);
+            }
+            catch
+            {}           
+            
+        }
     }
 }

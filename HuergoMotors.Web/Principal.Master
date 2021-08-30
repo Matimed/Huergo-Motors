@@ -12,7 +12,7 @@
 <body>
     <form id="formulario" runat="server">
         <div>
-            <asp:Menu ID="Navbar" runat="server" Orientation="Horizontal">
+            <asp:Menu ID="Navbar" runat="server" Orientation="Horizontal" OnMenuItemClick="Navbar_MenuItemClick">
                 <Items>
                     <asp:MenuItem Text="Home" Value="Home"></asp:MenuItem>
                     <asp:MenuItem Text="Vehiculos" Value="Vehiculos"></asp:MenuItem>
@@ -20,7 +20,7 @@
                     <asp:MenuItem Text="Clientes" Value="Clientes"></asp:MenuItem>
                     <asp:MenuItem Text="Vendedores" Value="Vendedores"></asp:MenuItem>
                     <asp:MenuItem Text="Ventas" Value="Ventas"></asp:MenuItem>
-                    <asp:MenuItem Text="Cerrar Sesión" Value="Cerrar Sesión"></asp:MenuItem>
+                    <asp:MenuItem Text="Cerrar Sesión" Value="Login"></asp:MenuItem>
                 </Items>
             </asp:Menu>
             <asp:Label ID="lbUsuario" runat="server" Text="[...]"></asp:Label>
