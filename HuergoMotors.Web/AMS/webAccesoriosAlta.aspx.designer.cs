@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace HuergoMotors.Web
+namespace HuergoMotors.Web.AMS
 {
 
 
@@ -15,22 +15,13 @@ namespace HuergoMotors.Web
     {
 
         /// <summary>
-        /// Control form1.
+        /// Control lbNombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
-        /// Control Label1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lbNombre;
 
         /// <summary>
         /// Control txtNombre.
@@ -42,13 +33,13 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
 
         /// <summary>
-        /// Control Label2.
+        /// Control lbTipo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lbTipo;
 
         /// <summary>
         /// Control txtTipo.
@@ -60,13 +51,13 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.TextBox txtTipo;
 
         /// <summary>
-        /// Control Label3.
+        /// Control lbPrecio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label lbPrecio;
 
         /// <summary>
         /// Control txtPrecio.
@@ -78,13 +69,13 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.TextBox txtPrecio;
 
         /// <summary>
-        /// Control Label4.
+        /// Control lbModelo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.Label lbModelo;
 
         /// <summary>
         /// Control ddlIdVehiculo.
@@ -96,30 +87,30 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.DropDownList ddlIdVehiculo;
 
         /// <summary>
-        /// Control btGuardarcambios.
+        /// Control btnGuardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btGuardarcambios;
+        protected global::System.Web.UI.WebControls.Button btnGuardar;
 
         /// <summary>
-        /// Control btVolver.
+        /// Control btnVolver.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btVolver;
+        protected global::System.Web.UI.WebControls.Button btnVolver;
 
         /// <summary>
-        /// Control lbMensaje.
+        /// Control lbMsg.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbMensaje;
+        protected global::System.Web.UI.WebControls.Label lbMsg;
     }
 }
