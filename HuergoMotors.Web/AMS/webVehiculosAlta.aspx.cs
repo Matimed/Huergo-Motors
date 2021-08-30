@@ -3,7 +3,7 @@ using System.Web.UI;
 using HuergoMotors.Negocio;
 using HuergoMotors.DTO;
 
-namespace HuergoMotors.Web
+namespace HuergoMotors.Web.AMS
 {
     public partial class webVehiculosAlta : Page
     {
@@ -11,9 +11,10 @@ namespace HuergoMotors.Web
         private int Id;
         private const string Backpage = "../webVehiculos.aspx";
 
-         
+
         public void Page_Load(object sender, EventArgs e)
         {
+            lbMsg.Text = string.Empty;
             try
             {
                 if (Request.QueryString["id"] != null)
@@ -25,11 +26,11 @@ namespace HuergoMotors.Web
                     if (Request.QueryString["id"] != null)
                     {
                         HelperWeb.LeerDTO(Page.Controls, vehiculosNegocio.BuscarId(Id));
-                        btGuardar.Text = "Guardar Cambios";
+                        btnGuardar.Text = "Guardar Cambios";
                     }
                     else
                     {
-                        btGuardar.Text = "Agregar vehiculo";
+                        btnGuardar.Text = "Agregar vehiculo";
                     }
                 }
             }
@@ -39,7 +40,7 @@ namespace HuergoMotors.Web
             }
         }
 
-        public void btGuardar_Click(object sender, EventArgs e)
+        public void btnGuardar_Click(object sender, EventArgs e)
         {
             if (Request.QueryString["id"] != null)
             {
@@ -51,7 +52,7 @@ namespace HuergoMotors.Web
             }
             Response.Redirect(Backpage);
         }
-        public void btVolver_Click(object sender, EventArgs e)
+        public void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect(Backpage);
         }

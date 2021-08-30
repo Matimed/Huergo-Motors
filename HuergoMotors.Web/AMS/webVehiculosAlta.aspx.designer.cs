@@ -7,7 +7,7 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace HuergoMotors.Web
+namespace HuergoMotors.Web.AMS
 {
 
 
@@ -15,22 +15,13 @@ namespace HuergoMotors.Web
     {
 
         /// <summary>
-        /// Control form1.
+        /// Control lbTipo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
-        /// Control Label1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lbTipo;
 
         /// <summary>
         /// Control txtTipo.
@@ -42,13 +33,13 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.TextBox txtTipo;
 
         /// <summary>
-        /// Control Label2.
+        /// Control lbModelo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lbModelo;
 
         /// <summary>
         /// Control txtModelo.
@@ -60,13 +51,13 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.TextBox txtModelo;
 
         /// <summary>
-        /// Control Label3.
+        /// Control lbPrecio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label lbPrecio;
 
         /// <summary>
         /// Control txtPrecioVenta.
@@ -75,7 +66,6 @@ namespace HuergoMotors.Web
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        //protected global::System.Web.UI.WebControls.TextBox txtPrecioVenta;
         protected global::System.Web.UI.WebControls.TextBox txtPrecioVenta;
 
         /// <summary>
@@ -97,22 +87,22 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.WebControls.TextBox txtStock;
 
         /// <summary>
-        /// Control btGuardar.
+        /// Control btnGuardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btGuardar;
+        protected global::System.Web.UI.WebControls.Button btnGuardar;
 
         /// <summary>
-        /// Control btVolver.
+        /// Control btnVolver.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btVolver;
+        protected global::System.Web.UI.WebControls.Button btnVolver;
 
         /// <summary>
         /// Control lbMsg.
