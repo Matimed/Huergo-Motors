@@ -16,6 +16,7 @@
                 <Items>
                     <asp:MenuItem Text="Home" Value="Home"></asp:MenuItem>
                     <asp:MenuItem Text="Vehiculos" Value="Vehiculos"></asp:MenuItem>
+                    <asp:MenuItem Text="Accesorios" Value="Accesorios"></asp:MenuItem>
                     <asp:MenuItem Text="Cerrar Sesión" Value="Cerrar Sesión"></asp:MenuItem>
                 </Items>
             </asp:Menu>
