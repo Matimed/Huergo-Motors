@@ -5,16 +5,18 @@ using HuergoMotors.Negocio;
 
 namespace HuergoMotors.Web
 {
-    public partial class Vehiculos : Page
+    public partial class webVehiculos : System.Web.UI.Page
     {
-        VehiculosNegocio vehiculosNegocio = new VehiculosNegocio();
-        private const string Backpage = "index.aspx";
+
+       VehiculosNegocio vehiculosNegocio = new VehiculosNegocio();
         private const string AM = "AMS/webVehiculosAlta.aspx";
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
+                
                 lbMsg.Text = string.Empty;
                 if (!Page.IsPostBack)   //Esta es solo la primera vez que entra a la pagina.
                 {
@@ -27,13 +29,12 @@ namespace HuergoMotors.Web
                 lbMsg.Text = ex.Message;
             }
         }
-
-        protected void btBuscar_Click(object sender, EventArgs e)
+        protected void btnBuscar_Click(object sender, EventArgs e)
         {
             try
             {
-                gvVehiculos.DataSource = vehiculosNegocio.Buscar(txtFiltro.Text);
-                gvVehiculos.DataBind();
+                gv.DataSource = vehiculosNegocio.Buscar(txtFiltro.Text);
+                gv.DataBind();
             }
             catch (Exception ex)
             {
@@ -43,19 +44,19 @@ namespace HuergoMotors.Web
 
         protected void CargarTabla()
         {
-            gvVehiculos.DataSource = vehiculosNegocio.CargarTabla();
-            gvVehiculos.DataBind();
+            gv.DataSource = vehiculosNegocio.CargarTabla();
+            gv.DataBind();
         }
 
-        protected void btRecargar_Click(object sender, EventArgs e)
+        protected void btnRecargar_Click(object sender, EventArgs e)
         {
             CargarTabla();
             txtFiltro.Text = string.Empty;
         }
 
-        protected void gvVehiculos_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gv_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int id = Convert.ToInt32(gvVehiculos.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["Id"]);
+            int id = Convert.ToInt32(gv.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["Id"]);
 
             if (e.CommandName == "Modificar")
             {
@@ -75,26 +76,10 @@ namespace HuergoMotors.Web
             }
         }
 
-        protected void btNuevo_Click(object sender, EventArgs e)
+        protected void btnNuevo_Click(object sender, EventArgs e)
         {
             Response.Redirect(AM);
         }
 
-        protected void btVolver_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Response.Redirect(Backpage);
-            }
-            catch (Exception ex)
-            {
-                lbMsg.Text = ex.Message;
-            }
-        }
-
-        protected void gvVehiculos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
