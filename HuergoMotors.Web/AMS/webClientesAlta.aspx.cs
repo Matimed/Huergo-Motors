@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using HuergoMotors.Negocio;
 using HuergoMotors.DTO;
+using HuergoMotors.Negocio;
 
-namespace HuergoMotors.Web
+namespace HuergoMotors.Web.AMS
 {
-    public partial class WebForm1 : Page
+    public partial class webClientesAlta : System.Web.UI.Page
     {
         ClientesNegocio clientesNegocio = new ClientesNegocio();
         private int Id;
@@ -17,6 +17,7 @@ namespace HuergoMotors.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            lbMsg.Text = string.Empty;
             try
             {
                 if (Request.QueryString["id"] != null)
@@ -28,11 +29,11 @@ namespace HuergoMotors.Web
                     if (Request.QueryString["id"] != null)
                     {
                         HelperWeb.LeerDTO(Page.Controls, clientesNegocio.BuscarId(Id));
-                        btAceptar.Text = "Guardar Cambios";
+                        btnGuardar.Text = "Guardar Cambios";
                     }
                     else
                     {
-                        btAceptar.Text = "Agregar vehiculo";
+                        btnGuardar.Text = "Agregar vehiculo";
                     }
                 }
             }
@@ -42,7 +43,7 @@ namespace HuergoMotors.Web
             }
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void btnGuardar_Click(object sender, EventArgs e)
         {
             if (Request.QueryString["id"] != null)
             {
@@ -52,6 +53,10 @@ namespace HuergoMotors.Web
             {
                 clientesNegocio.AgregarElemento(HelperWeb.GenerarDTO<ClientesDTO>(Controls));
             }
+            Response.Redirect(Backpage);
+        }
+        public void btnVolver_Click(object sender, EventArgs e)
+        {
             Response.Redirect(Backpage);
         }
     }
