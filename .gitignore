@@ -24,3 +24,14 @@ obj/
 [Rr]elease*/
 _ReSharper*/
 [Tt]est[Rr]esult*
+
+HuergoMotorsVentas/bin/
+HuergoMotorsVentas/obj/
+HuergoMotors.Web/bin/
+HuergoMotors.Web/obj/
+HuergoMotors.Negocio/bin/
+HuergoMotors.Negocio/obj/
+HuergoMotors.DTO/bin/
+HuergoMotors.DTO/obj/
+HuergoMotors.DAO/bin/
+HuergoMotors.DAO/obj/
