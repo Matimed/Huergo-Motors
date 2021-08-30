@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using HuergoMotors.Negocio;
@@ -11,13 +8,12 @@ namespace HuergoMotors.Web
     public partial class webAccesorios : System.Web.UI.Page
     {
         AccesoriosNegocio accesoriosNegocio = new AccesoriosNegocio();
-        private const string Backpage = "index.aspx";
         private const string AM = "AMS/webAccesoriosAlta.aspx";
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                lbMensaje.Text = string.Empty;
+                lbMsg.Text = string.Empty;
                 if (!Page.IsPostBack)   //Esta es solo la primera vez que entra a la pagina.
                 {
                     txtFiltro.Text = string.Empty;
@@ -26,7 +22,7 @@ namespace HuergoMotors.Web
             }
             catch (Exception ex)
             {
-                lbMensaje.Text = ex.Message;
+                lbMsg.Text = ex.Message;
             }
         }
 
@@ -45,7 +41,7 @@ namespace HuergoMotors.Web
             }
             catch (Exception ex)
             {
-                lbMensaje.Text = ex.Message;
+                lbMsg.Text = ex.Message;
             }
         }
 
@@ -72,7 +68,7 @@ namespace HuergoMotors.Web
                 }
                 catch (Exception ex)
                 {
-                    lbMensaje.Text = ex.Message;
+                    lbMsg.Text = ex.Message;
                 }
             }
         }
@@ -82,9 +78,6 @@ namespace HuergoMotors.Web
             Response.Redirect(AM);
         }
 
-        protected void btVolver_Click(object sender, EventArgs e)
-        {
-            Response.Redirect(Backpage);
-        }
+   
     }
 }

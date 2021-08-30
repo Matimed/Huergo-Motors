@@ -1,18 +1,17 @@
-﻿using System;
+﻿using HuergoMotors.Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using HuergoMotors.Negocio;
 
 namespace HuergoMotors.Web
 {
-
-    public partial class webClientes : Page
+    public partial class webClientes : System.Web.UI.Page
     {
+
         ClientesNegocio clientesNegocio = new ClientesNegocio();
-        private const string Backpage = "index.aspx";
         private const string AM = "AMS/webClientesAlta.aspx";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -32,28 +31,24 @@ namespace HuergoMotors.Web
             }
         }
 
-        protected void gv_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         protected void CargarTabla()
         {
-            gvClientes.DataSource = clientesNegocio.CargarTabla();
-            gvClientes.DataBind();
+            gv.DataSource = clientesNegocio.CargarTabla();
+            gv.DataBind();
         }
 
-        protected void btRecargar_Click(object sender, EventArgs e)
+        protected void btnRecargar_Click(object sender, EventArgs e)
         {
             CargarTabla();
             txtFiltro.Text = string.Empty;
         }
 
-        protected void btBuscar_Click(object sender, EventArgs e)
+        protected void btnBuscar_Click(object sender, EventArgs e)
         {
             try
             {
-                gvClientes.DataSource = clientesNegocio.Buscar(txtFiltro.Text);
-                gvClientes.DataBind();
+                gv.DataSource = clientesNegocio.Buscar(txtFiltro.Text);
+                gv.DataBind();
             }
             catch (Exception ex)
             {
@@ -61,25 +56,30 @@ namespace HuergoMotors.Web
             }
         }
 
-        protected void btNuevo_Click(object sender, EventArgs e)
+        protected void btnNuevo_Click(object sender, EventArgs e)
         {
             Response.Redirect(AM);
         }
 
-        protected void btVolver_Click(object sender, EventArgs e)
+        protected void gv_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            try
+            int id = Convert.ToInt32(gv.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["Id"]);
+
+            if (e.CommandName == "Modificar")
             {
-                Response.Redirect(Backpage);
+                Response.Redirect(AM + "?id=" + id);
             }
-            catch (Exception ex)
+            else if (e.CommandName == "Seleccionar")
             {
-                lbMsg.Text = ex.Message;
+                try
+                {
+                    throw new NotImplementedException();
+                }
+                catch (Exception ex)
+                {
+                    lbMsg.Text = ex.Message;
+                }
             }
         }
     }
-
-
-
-
 }

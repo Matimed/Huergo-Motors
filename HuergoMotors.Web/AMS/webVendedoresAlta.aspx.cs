@@ -3,15 +3,16 @@ using System.Web.UI;
 using HuergoMotors.Negocio;
 using HuergoMotors.DTO;
 
-namespace HuergoMotors.Web
+namespace HuergoMotors.Web.AMS
 {
-    public partial class VendedoresAlta : Page
+    public partial class webVendedoresAlta : System.Web.UI.Page
     {
         VendedoresNegocio vendedoresNegocio = new VendedoresNegocio();
         private int Id;
         private const string Backpage = "../webVendedores.aspx";
         protected void Page_Load(object sender, EventArgs e)
         {
+            lbMsg.Text = string.Empty;
             try
             {
                 if (Request.QueryString["id"] != null)
@@ -22,12 +23,12 @@ namespace HuergoMotors.Web
                 {
                     if (Request.QueryString["id"] != null)
                     {
-                        btAceptar.Text = "Guardar Cambios";
+                        btnGuardar.Text = "Guardar Cambios";
                         HelperWeb.LeerDTO(Page.Controls, vendedoresNegocio.BuscarId(Id));
                     }
                     else
                     {
-                        btAceptar.Text = "Agregar vendedor";
+                        btnGuardar.Text = "Agregar vendedor";
                     }
                 }
             }
@@ -36,12 +37,12 @@ namespace HuergoMotors.Web
                 lbMsg.Text = ex.Message;
             }
         }
-        public void btVolver_Click(object sender, EventArgs e)
+        public void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect(Backpage);
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
+        protected void btnGuardar_Click(object sender, EventArgs e)
         {
             if (Request.QueryString["id"] != null)
             {

@@ -60,6 +60,16 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AMS\webAccesoriosAlta.aspx" />
+    <Content Include="AMS\webClientesAlta.aspx" />
+    <Content Include="AMS\webVehiculosAlta.aspx" />
+    <Content Include="AMS\webVendedoresAlta.aspx" />
+    <Content Include="Principal.Master" />
+    <Content Include="Tablas.Master" />
+    <Content Include="webHome.aspx" />
+    <Content Include="webLogin.aspx" />
+    <Content Include="webVendedores.aspx" />
+    <Content Include="webVentas.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -68,63 +78,18 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="webMDI.aspx" />
-    <Content Include="webVendedores.aspx" />
-    <Content Include="AMS\webVendedoresAlta.aspx" />
     <Content Include="webAccesorios.aspx" />
-    <Content Include="AMS\webAccesoriosAlta.aspx" />
     <Content Include="webClientes.aspx" />
-    <Content Include="AMS\webClientesAlta.aspx" />
     <Content Include="webVehiculos.aspx" />
     <Content Include="Web.config" />
-    <Content Include="AMS\webVehiculosAlta.aspx" />
-    <Content Include="webVentas.aspx" />
-    <Content Include="AMS\webVentasAlta.aspx" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HelperWeb.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="webMDI.aspx.cs">
-      <DependentUpon>webMDI.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webMDI.aspx.designer.cs">
-      <DependentUpon>webMDI.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webVendedores.aspx.cs">
-      <DependentUpon>webVendedores.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webVendedores.aspx.designer.cs">
-      <DependentUpon>webVendedores.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AMS\webVendedoresAlta.aspx.cs">
-      <DependentUpon>webVendedoresAlta.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AMS\webVendedoresAlta.aspx.designer.cs">
-      <DependentUpon>webVendedoresAlta.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webAccesorios.aspx.cs">
-      <DependentUpon>webAccesorios.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webAccesorios.aspx.designer.cs">
-      <DependentUpon>webAccesorios.aspx</DependentUpon>
-    </Compile>
     <Compile Include="AMS\webAccesoriosAlta.aspx.cs">
       <DependentUpon>webAccesoriosAlta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AMS\webAccesoriosAlta.aspx.designer.cs">
       <DependentUpon>webAccesoriosAlta.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webClientes.aspx.cs">
-      <DependentUpon>webClientes.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webClientes.aspx.designer.cs">
-      <DependentUpon>webClientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="AMS\webClientesAlta.aspx.cs">
       <DependentUpon>webClientesAlta.aspx</DependentUpon>
@@ -133,13 +98,6 @@
     <Compile Include="AMS\webClientesAlta.aspx.designer.cs">
       <DependentUpon>webClientesAlta.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webVehiculos.aspx.cs">
-      <DependentUpon>webVehiculos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webVehiculos.aspx.designer.cs">
-      <DependentUpon>webVehiculos.aspx</DependentUpon>
-    </Compile>
     <Compile Include="AMS\webVehiculosAlta.aspx.cs">
       <DependentUpon>webVehiculosAlta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -147,19 +105,77 @@
     <Compile Include="AMS\webVehiculosAlta.aspx.designer.cs">
       <DependentUpon>webVehiculosAlta.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AMS\webVendedoresAlta.aspx.cs">
+      <DependentUpon>webVendedoresAlta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AMS\webVendedoresAlta.aspx.designer.cs">
+      <DependentUpon>webVendedoresAlta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HelperWeb.cs" />
+    <Compile Include="Principal.Master.cs">
+      <DependentUpon>Principal.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Principal.Master.designer.cs">
+      <DependentUpon>Principal.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tablas.Master.cs">
+      <DependentUpon>Tablas.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tablas.Master.designer.cs">
+      <DependentUpon>Tablas.Master</DependentUpon>
+    </Compile>
+    <Compile Include="webAccesorios.aspx.cs">
+      <DependentUpon>webAccesorios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webAccesorios.aspx.designer.cs">
+      <DependentUpon>webAccesorios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webClientes.aspx.cs">
+      <DependentUpon>webClientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webClientes.aspx.designer.cs">
+      <DependentUpon>webClientes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webHome.aspx.cs">
+      <DependentUpon>webHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webHome.aspx.designer.cs">
+      <DependentUpon>webHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webLogin.aspx.cs">
+      <DependentUpon>webLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webLogin.aspx.designer.cs">
+      <DependentUpon>webLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webVehiculos.aspx.cs">
+      <DependentUpon>webVehiculos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webVehiculos.aspx.designer.cs">
+      <DependentUpon>webVehiculos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webVendedores.aspx.cs">
+      <DependentUpon>webVendedores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webVendedores.aspx.designer.cs">
+      <DependentUpon>webVendedores.aspx</DependentUpon>
+    </Compile>
     <Compile Include="webVentas.aspx.cs">
       <DependentUpon>webVentas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="webVentas.aspx.designer.cs">
       <DependentUpon>webVentas.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AMS\webVentasAlta.aspx.cs">
-      <DependentUpon>webVentasAlta.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AMS\webVentasAlta.aspx.designer.cs">
-      <DependentUpon>webVentasAlta.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

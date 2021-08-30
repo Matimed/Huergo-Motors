@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using HuergoMotors.Negocio;
+using System;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using HuergoMotors.Negocio;
 
 namespace HuergoMotors.Web
 {
-    public partial class Vendedores : Page
+    public partial class webVendedores : System.Web.UI.Page
     {
         VendedoresNegocio vendedoresNegocio = new VendedoresNegocio();
-        private const string Backpage = "index.aspx";
         private const string AM = "AMS/webVendedoresAlta.aspx";
 
         protected void Page_Load(object sender, EventArgs e)
@@ -31,12 +27,12 @@ namespace HuergoMotors.Web
             }
         }
 
-        protected void btBuscar_Click(object sender, EventArgs e)
+        protected void btnBuscar_Click(object sender, EventArgs e)
         {
             try
             {
-                gvVendedores.DataSource = vendedoresNegocio.Buscar(txtFiltro.Text);
-                gvVendedores.DataBind();
+                gv.DataSource = vendedoresNegocio.Buscar(txtFiltro.Text);
+                gv.DataBind();
             }
             catch (Exception ex)
             {
@@ -46,13 +42,13 @@ namespace HuergoMotors.Web
 
         protected void CargarTabla()
         {
-            gvVendedores.DataSource = vendedoresNegocio.CargarTabla();
-            gvVendedores.DataBind();
+            gv.DataSource = vendedoresNegocio.CargarTabla();
+            gv.DataBind();
         }
 
-        protected void gvVendedores_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gv_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            int id = Convert.ToInt32(gvVendedores.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["Id"]);
+            int id = Convert.ToInt32(gv.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["Id"]);
 
             if (e.CommandName == "Modificar")
             {
@@ -72,32 +68,17 @@ namespace HuergoMotors.Web
             }
         }
 
-        protected void btNuevo_Click(object sender, EventArgs e)
+        protected void btnNuevo_Click(object sender, EventArgs e)
         {
             Response.Redirect(AM);
         }
 
-        protected void btVolver_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                Response.Redirect(Backpage);
-            }
-            catch (Exception ex)
-            {
-                lbMsg.Text = ex.Message;
-            }
-        }
 
-        protected void btRecargar_Click(object sender, EventArgs e)
+        protected void btnRecargar_Click(object sender, EventArgs e)
         {
             CargarTabla();
             txtFiltro.Text = string.Empty;
         }
 
-        protected void btNuevo_Click1(object sender, EventArgs e)
-        {
-            Response.Redirect(AM);
-        }
     }
 }

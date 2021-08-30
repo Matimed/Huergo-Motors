@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using HuergoMotors.Negocio;
 using HuergoMotors.DTO;
 
-namespace HuergoMotors.Web
+namespace HuergoMotors.Web.AMS
 {
     public partial class webAccesoriosAlta : System.Web.UI.Page
     {
@@ -17,6 +13,7 @@ namespace HuergoMotors.Web
         private const string Backpage = "../webAccesorios.aspx";
         protected void Page_Load(object sender, EventArgs e)
         {
+            lbMsg.Text = string.Empty;
             try
             {
                 if (Request.QueryString["id"] != null)
@@ -31,24 +28,24 @@ namespace HuergoMotors.Web
                         ddlIdVehiculo.DataSource = vehiculosNegocio.CargarTabla();
                         ddlIdVehiculo.DataBind();
                         HelperWeb.LeerDTO(Page.Controls, accesoriosNegocio.BuscarId(Id));
-                        btGuardarcambios.Text = "Guardar Cambios";
+                        btnGuardar.Text = "Guardar Cambios";
                     }
                     else
                     {
                         HelperWeb.DisplayDropDown(ddlIdVehiculo, "Modelo");
                         ddlIdVehiculo.DataSource = vehiculosNegocio.CargarTabla();
                         ddlIdVehiculo.DataBind();
-                       btGuardarcambios.Text = "Agregar accesorio";
+                        btnGuardar.Text = "Agregar accesorio";
                     }
                 }
             }
             catch (Exception ex)
             {
-                lbMensaje.Text = ex.Message;
+                lbMsg.Text = ex.Message;
             }
         }
 
-        protected void btGuardarcambios_Click(object sender, EventArgs e)
+        protected void btnGuardar_Click(object sender, EventArgs e)
         {
             if (Request.QueryString["id"] != null)
             {
@@ -61,7 +58,7 @@ namespace HuergoMotors.Web
             Response.Redirect(Backpage);
         }
 
-        protected void btVolver_Click(object sender, EventArgs e)
+        protected void btnVolver_Click(object sender, EventArgs e)
         {
             Response.Redirect(Backpage);
         }
