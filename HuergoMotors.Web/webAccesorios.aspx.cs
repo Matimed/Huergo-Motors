@@ -16,7 +16,7 @@ namespace HuergoMotors.Web
                 lbMsg.Text = string.Empty;
                 if (!Page.IsPostBack)   //Esta es solo la primera vez que entra a la pagina.
                 {
-                    txtFiltro.Text = string.Empty;
+                    ucBuscador.Filtro.Text = string.Empty;
                     CargarTabla();
                 }
             }
@@ -36,7 +36,7 @@ namespace HuergoMotors.Web
         {
             try
             {
-                gv.DataSource = accesoriosNegocio.Buscar(txtFiltro.Text);
+                gv.DataSource = accesoriosNegocio.Buscar(ucBuscador.Filtro.Text);
                 gv.DataBind();
             }
             catch (Exception ex)
@@ -48,7 +48,7 @@ namespace HuergoMotors.Web
         protected void btnRecargar_Click(object sender, EventArgs e)
         {
             CargarTabla();
-            txtFiltro.Text = string.Empty;
+            ucBuscador.Filtro.Text = string.Empty;
         }
 
         protected void gv_RowCommand(object sender, GridViewCommandEventArgs e)
