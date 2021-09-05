@@ -65,7 +65,7 @@
     <Content Include="AMS\webVehiculosAlta.aspx" />
     <Content Include="AMS\webVendedoresAlta.aspx" />
     <Content Include="Principal.Master" />
-    <Content Include="Tablas.Master" />
+    <Content Include="UserControlBuscador.ascx" />
     <Content Include="webHome.aspx" />
     <Content Include="webLogin.aspx" />
     <Content Include="webVendedores.aspx" />
@@ -121,12 +121,12 @@
       <DependentUpon>Principal.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tablas.Master.cs">
-      <DependentUpon>Tablas.Master</DependentUpon>
+    <Compile Include="UserControlBuscador.ascx.cs">
+      <DependentUpon>UserControlBuscador.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Tablas.Master.designer.cs">
-      <DependentUpon>Tablas.Master</DependentUpon>
+    <Compile Include="UserControlBuscador.ascx.designer.cs">
+      <DependentUpon>UserControlBuscador.ascx</DependentUpon>
     </Compile>
     <Compile Include="webAccesorios.aspx.cs">
       <DependentUpon>webAccesorios.aspx</DependentUpon>

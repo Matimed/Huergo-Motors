@@ -11,34 +11,25 @@ namespace HuergoMotors.Web
 {
 
 
-    public partial class webAccesorios
+    public partial class UserControlCampoTexto
     {
 
         /// <summary>
-        /// Control ucBuscador.
+        /// Control lbCampo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::HuergoMotors.Web.UserControlBuscador ucBuscador;
+        protected global::System.Web.UI.WebControls.Label lbCampo;
 
         /// <summary>
-        /// Control gv.
+        /// Control txtValor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gv;
-
-        /// <summary>
-        /// Control lbMsg.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbMsg;
+        protected global::System.Web.UI.WebControls.TextBox txtValor;
     }
 }

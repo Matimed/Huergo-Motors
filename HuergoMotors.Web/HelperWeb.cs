@@ -13,6 +13,29 @@ namespace HuergoMotors.Web
         {
             T dto = new T();
 
+            //Metodo para poder usar el UserControl CampoTexto:
+            //foreach (UserControlCampoTexto campo in GenerarListaControl<UserControlCampoTexto>(controls))
+            //{
+            //    ValidarCampoVacio(campo);
+            //    PropertyInfo propiedad = dto.GetType().GetProperty(campo.ID.Replace("ct", ""));
+            //    switch (propiedad.PropertyType.Name)
+            //    {
+            //        case "String":
+            //            propiedad.SetValue(dto, campo.Valor, null);
+            //            break;
+
+            //        case "Int32":
+            //            propiedad.SetValue(dto, ConvertirNumeroNatural(campo.Valor), null);
+            //            break;
+
+            //        case "Decimal":
+            //            propiedad.SetValue(dto, ConvertirNumeroRacional(campo.Valor), null);
+            //            break;
+            //        default:
+            //            throw new Exception("Tipo de dato no reconocido");
+            //    }
+            //}
+
             foreach (TextBox textBox in GenerarListaControl<TextBox>(controls))
             {
                 ValidarTextBoxVacio(textBox);
@@ -150,6 +173,14 @@ namespace HuergoMotors.Web
             if (string.IsNullOrEmpty(textBox.Text))
             {
                 throw new Exception($"No se pueden dejar el campo {textBox.ID.Replace("txt", "")} sin completar");
+            }
+        }
+
+        private static void ValidarCampoVacio(UserControlCampoTexto campo)
+        {
+            if (string.IsNullOrEmpty(campo.Valor))
+            {
+                throw new Exception($"No se pueden dejar el campo {campo.ID.Replace("ct", "")} sin completar");
             }
         }
 
