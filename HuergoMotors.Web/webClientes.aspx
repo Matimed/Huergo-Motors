@@ -3,13 +3,7 @@
 
 <asp:Content ID="contenido" ContentPlaceHolderID="body" runat="server">
     
-        <div>
-            <asp:Label ID="lbFiltro" runat="server" Text="Filtro"></asp:Label>
-            <asp:TextBox ID="txtFiltro" runat="server" Width="226px"></asp:TextBox>
-            <asp:Button ID="btnBuscar" runat="server" Text="Buscar" ViewStateMode="Disabled" OnClick="btnBuscar_Click" />
-            <asp:Button ID="btnRecargar" runat="server" Text="Recargar" ViewStateMode="Disabled" OnClick="btnRecargar_Click" />
-            <asp:Button ID="btnNuevo" runat="server" Text="Nuevo" ViewStateMode="Disabled" OnClick="btnNuevo_Click" />
-        </div>
+        <uc:Buscador ID="ucBuscador" runat="server" OnBuscarClick ="btnBuscar_Click" OnRecargarClick ="btnRecargar_Click" OnNuevoClick = "btnNuevo_Click"/>
         <div>
             <asp:GridView ID="gv" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="Id" OnRowCommand="gv_RowCommand">
                 <AlternatingRowStyle BackColor="White" />
