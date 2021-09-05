@@ -17,7 +17,7 @@ namespace HuergoMotors.Web
                 lbMsg.Text = string.Empty;
                 if (!Page.IsPostBack)
                 {
-                    txtFiltro.Text = string.Empty;
+                    ucBuscador.Filtro.Text = string.Empty;
                     CargarTabla();
                 }
             }
@@ -31,7 +31,7 @@ namespace HuergoMotors.Web
         {
             try
             {
-                gv.DataSource = vendedoresNegocio.Buscar(txtFiltro.Text);
+                gv.DataSource = vendedoresNegocio.Buscar(ucBuscador.Filtro.Text);
                 gv.DataBind();
             }
             catch (Exception ex)
@@ -77,7 +77,7 @@ namespace HuergoMotors.Web
         protected void btnRecargar_Click(object sender, EventArgs e)
         {
             CargarTabla();
-            txtFiltro.Text = string.Empty;
+            ucBuscador.Filtro.Text = string.Empty;
         }
 
     }
