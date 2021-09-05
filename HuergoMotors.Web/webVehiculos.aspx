@@ -2,7 +2,6 @@
 
 <%--Hace que se pueda referenciar a la master usando "Master.[..]"--%>
 <%@ MasterType VirtualPath = "~/Principal.Master" %>
-<%@ Register Src="~/UserControlBuscador.ascx" TagName="Buscador" TagPrefix="uc"%>
 
 <asp:Content ID="contenido" ContentPlaceHolderID="body" runat="server">
         

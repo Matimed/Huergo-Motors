@@ -32,7 +32,7 @@ namespace HuergoMotors.Web
             gv.DataBind();
         }
 
-        protected void btBuscar_Click(object sender, EventArgs e)
+        protected void btnBuscar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -73,7 +73,7 @@ namespace HuergoMotors.Web
             }
         }
 
-        protected void btNuevo_Click(object sender, EventArgs e)
+        protected void btnNuevo_Click(object sender, EventArgs e)
         {
             Response.Redirect(AM);
         }
