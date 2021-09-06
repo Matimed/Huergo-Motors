@@ -11,7 +11,7 @@
                     <asp:BoundField DataField="Vehiculo" HeaderText="Vehiculo" />
                     <asp:BoundField DataField="Cliente" HeaderText="Cliente" />
                     <asp:BoundField DataField="Vendedor" HeaderText="Vendedor" />
-                    <asp:BoundField DataField="Fecha" HeaderText="Fecha" DataFormatString="{dd/MM/yyyy}" />
+                    <asp:BoundField DataField="Fecha" HeaderText="Fecha" DataFormatString="{0:dd/MM/yyyy}" />
                     <asp:BoundField DataField="idVehiculo" HeaderText="idVehiculo" Visible="False" />
                     <asp:BoundField DataField="idCliente" HeaderText="idCliente" Visible="False" />
                     <asp:BoundField DataField="idVendedor" HeaderText="idVendedor" Visible="False" />

@@ -96,8 +96,16 @@ namespace HuergoMotors.Web
                         case "Decimal":
                             propiedad.SetValue(dto, ConvertirNumeroRacional(campo.Valor), null);
                             break;
+
                         case "DateTime":
-                            propiedad.SetValue(dto, ConvertirFecha(campo.Valor), null);
+                            if (campo.Nullable && string.IsNullOrEmpty(campo.Valor))
+                            {
+                                propiedad.SetValue(dto, DateTime.Now, null);
+                            }
+                            else
+                            {
+                                propiedad.SetValue(dto, ConvertirFecha(campo.Valor), null);
+                            }
                             break;
                         default:
                             throw new Exception("Tipo de dato no reconocido");

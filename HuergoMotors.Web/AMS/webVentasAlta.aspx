@@ -2,7 +2,7 @@
 
 <asp:Content ID="contenido" ContentPlaceHolderID="body" runat="server">
     <div>
-        <uc:CampoTexto ID="ctFecha"  runat="server" Text="Fecha" Propiedad="Fecha"/>
+        <uc:CampoTexto ID="ctFecha"  runat="server" Text="Fecha" Propiedad="Fecha" Nullable="True"/>
         <uc:CampoDropDown ID= "cddVendedor" runat="server" Text="Vendedor" Propiedad="IdVendedor" DisplayMember="NombreCompleto" />
         <uc:CampoDropDown ID= "cddVehiculo" runat="server" Text="Modelo de vehiculo" Propiedad="IdVehiculo" DisplayMember="Modelo" AutoPostBack="True" OnSelectedIndexChanged ="cddVehiculoIndexChanged" />
         <uc:CampoTexto ID="ctTipo"  runat="server" Text="Tipo" Propiedad="Tipo" ReadOnly="True" />
