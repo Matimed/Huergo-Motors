@@ -69,11 +69,12 @@ namespace HuergoMotors.Web
             {
                 Response.Redirect(AM + "?id=" + id);
             }
-            else if (e.CommandName == "Seleccionar")
+            else if (e.CommandName == "Eliminar")
             {
                 try
                 {
-                    throw new NotImplementedException();
+                    clientesNegocio.EliminarElemento(id);
+                    CargarTabla();
                 }
                 catch (Exception ex)
                 {
