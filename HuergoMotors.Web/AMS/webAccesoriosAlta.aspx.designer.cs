@@ -21,7 +21,7 @@ namespace HuergoMotors.Web.AMS
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::HuergoMotors.Web.UserControlCampoTexto ctNombre;
+        protected global::HuergoMotors.Web.UserControls.UserControlCampoTexto ctNombre;
 
         /// <summary>
         /// Control ctTipo.
@@ -30,7 +30,7 @@ namespace HuergoMotors.Web.AMS
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::HuergoMotors.Web.UserControlCampoTexto ctTipo;
+        protected global::HuergoMotors.Web.UserControls.UserControlCampoTexto ctTipo;
 
         /// <summary>
         /// Control ctPrecio.
@@ -39,7 +39,7 @@ namespace HuergoMotors.Web.AMS
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::HuergoMotors.Web.UserControlCampoTexto ctPrecio;
+        protected global::HuergoMotors.Web.UserControls.UserControlCampoTexto ctPrecio;
 
         /// <summary>
         /// Control lbModelo.

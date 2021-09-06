@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using HuergoMotors.DTO;
+using HuergoMotors.Web.UserControls;
 
 namespace HuergoMotors.Web
 {
@@ -121,6 +122,10 @@ namespace HuergoMotors.Web
             }
         }
 
+
+
+
+
         public static int ConvertirNumeroNatural(string texto)
         {
             try
@@ -176,7 +181,7 @@ namespace HuergoMotors.Web
             }
         }
 
-        private static void ValidarCampoVacio(UserControlCampoTexto campo)
+        private static void ValidarCampoVacio(UserControlCampoBase campo)
         {
             if (string.IsNullOrEmpty(campo.Valor))
             {

@@ -1,22 +1,23 @@
-﻿using System;
+﻿using HuergoMotors.Web.UserControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace HuergoMotors.Web
+namespace HuergoMotors.Web.UserControls
 {
-    public partial class UserControlCampoTexto : System.Web.UI.UserControl
+    public partial class UserControlCampoTexto : UserControlCampoBase
     {
 
-        public string Propiedad
+        public new string Propiedad
         {
             get { return Attributes["Propiedad"]; }
             set { Attributes["Propiedad"] = value; }
         }
 
-        public string Text
+        public new string Text
         {
             get { return Attributes["Text"]; }
             set 
@@ -25,7 +26,7 @@ namespace HuergoMotors.Web
                 lbCampo.Text = value+":"; 
             }
         }
-        public string Valor
+        public new string Valor
         {
             get { return txtValor.Text; }
             set { txtValor.Text = value; }

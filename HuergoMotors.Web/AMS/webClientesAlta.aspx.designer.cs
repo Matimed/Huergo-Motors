@@ -21,7 +21,7 @@ namespace HuergoMotors.Web.AMS
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::HuergoMotors.Web.UserControlCampoTexto ctNombre;
+        protected global::HuergoMotors.Web.UserControls.UserControlCampoTexto ctNombre;
 
         /// <summary>
         /// Control ctDireccion.
@@ -30,7 +30,7 @@ namespace HuergoMotors.Web.AMS
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::HuergoMotors.Web.UserControlCampoTexto ctDireccion;
+        protected global::HuergoMotors.Web.UserControls.UserControlCampoTexto ctDireccion;
 
         /// <summary>
         /// Control ctTelefono.
@@ -39,7 +39,7 @@ namespace HuergoMotors.Web.AMS
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::HuergoMotors.Web.UserControlCampoTexto ctTelefono;
+        protected global::HuergoMotors.Web.UserControls.UserControlCampoTexto ctTelefono;
 
         /// <summary>
         /// Control ctEmail.
@@ -48,7 +48,7 @@ namespace HuergoMotors.Web.AMS
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::HuergoMotors.Web.UserControlCampoTexto ctEmail;
+        protected global::HuergoMotors.Web.UserControls.UserControlCampoTexto ctEmail;
 
         /// <summary>
         /// Control btnGuardar.

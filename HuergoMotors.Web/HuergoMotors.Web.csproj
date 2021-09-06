@@ -64,8 +64,11 @@
     <Content Include="AMS\webClientesAlta.aspx" />
     <Content Include="AMS\webVehiculosAlta.aspx" />
     <Content Include="AMS\webVendedoresAlta.aspx" />
+    <Content Include="AMS\webVentasAlta.aspx" />
     <Content Include="Principal.Master" />
-    <Content Include="UserControlBuscador.ascx" />
+    <Content Include="UserControls\UserControlBuscador.ascx" />
+    <Content Include="UserControls\UserControlCampoDropDown.ascx" />
+    <Content Include="UserControls\UserControlCampoTexto.ascx" />
     <Content Include="webHome.aspx" />
     <Content Include="webLogin.aspx" />
     <Content Include="webVendedores.aspx" />
@@ -112,6 +115,13 @@
     <Compile Include="AMS\webVendedoresAlta.aspx.designer.cs">
       <DependentUpon>webVendedoresAlta.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AMS\webVentasAlta.aspx.cs">
+      <DependentUpon>webVentasAlta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AMS\webVentasAlta.aspx.designer.cs">
+      <DependentUpon>webVentasAlta.aspx</DependentUpon>
+    </Compile>
     <Compile Include="HelperWeb.cs" />
     <Compile Include="Principal.Master.cs">
       <DependentUpon>Principal.Master</DependentUpon>
@@ -121,12 +131,29 @@
       <DependentUpon>Principal.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControlBuscador.ascx.cs">
+    <Compile Include="UserControls\UserControlBuscador.ascx.cs">
       <DependentUpon>UserControlBuscador.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserControlBuscador.ascx.designer.cs">
+    <Compile Include="UserControls\UserControlBuscador.ascx.designer.cs">
       <DependentUpon>UserControlBuscador.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControlCampoBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlCampoDropDown.ascx.cs">
+      <DependentUpon>UserControlCampoDropDown.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlCampoDropDown.ascx.designer.cs">
+      <DependentUpon>UserControlCampoDropDown.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControlCampoTexto.ascx.cs">
+      <DependentUpon>UserControlCampoTexto.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlCampoTexto.ascx.designer.cs">
+      <DependentUpon>UserControlCampoTexto.ascx</DependentUpon>
     </Compile>
     <Compile Include="webAccesorios.aspx.cs">
       <DependentUpon>webAccesorios.aspx</DependentUpon>
