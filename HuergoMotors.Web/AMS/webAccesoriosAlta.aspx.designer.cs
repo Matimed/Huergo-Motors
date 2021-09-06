@@ -42,22 +42,13 @@ namespace HuergoMotors.Web.AMS
         protected global::HuergoMotors.Web.UserControls.UserControlCampoTexto ctPrecio;
 
         /// <summary>
-        /// Control lbModelo.
+        /// Control cddModelo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbModelo;
-
-        /// <summary>
-        /// Control ddlIdVehiculo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlIdVehiculo;
+        protected global::HuergoMotors.Web.UserControls.UserControlCampoDropDown cddModelo;
 
         /// <summary>
         /// Control btnGuardar.

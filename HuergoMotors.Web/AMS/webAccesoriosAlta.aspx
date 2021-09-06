@@ -5,10 +5,7 @@
         <uc:CampoTexto ID="ctNombre"  runat="server" Text="Nombre" Propiedad="Nombre"/>
         <uc:CampoTexto ID="ctTipo"  runat="server" Text="Tipo" Propiedad="Tipo"/>
         <uc:CampoTexto ID="ctPrecio"  runat="server" Text="Precio" Propiedad="Precio"/>
-
-        <asp:Label ID="lbModelo" runat="server" Text="Modelo de Auto"></asp:Label>
-        <asp:DropDownList ID="ddlIdVehiculo" runat="server"></asp:DropDownList>
-        <br />
+        <uc:CampoDropDown ID= "cddModelo" runat="server" Text="Modelo de Auto" Propiedad="IdVehiculo" DisplayMember="Modelo" />
 
         <asp:Button ID="btnGuardar" runat="server" Text="Guardar cambios" OnClick="btnGuardar_Click" />
         <asp:Button ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" />
