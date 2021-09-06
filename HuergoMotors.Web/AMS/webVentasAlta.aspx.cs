@@ -2,11 +2,7 @@
 using HuergoMotors.Negocio;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-
 namespace HuergoMotors.Web.AMS
 {
 	public partial class webVentasAlta : System.Web.UI.Page
@@ -50,6 +46,10 @@ namespace HuergoMotors.Web.AMS
                 if (vehiculo != null)
                 {
                     HelperWeb.LeerDTO(Page.Controls, vehiculo);
+
+                    HelperWeb.DisplayDropDown(ddlAccesorio, "Nombre");
+                    ddlAccesorio.DataSource = accesoriosNegocio.BuscarIdVehiculo(id);
+                    ddlAccesorio.DataBind();
                 }
                 else
                 {
@@ -84,10 +84,47 @@ namespace HuergoMotors.Web.AMS
             }
         }
 
-       
+        private decimal PrecioTotalAccesorios(List<AccesoriosDTO> accesoriosVenta)
+        {
+            decimal precioTotal = 0;
+            foreach (AccesoriosDTO accesorio in accesoriosVenta)
+            {
+                precioTotal += accesorio.Precio;
+            }
+            return precioTotal;
+         }
+
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                VentasDTO ventaDTO = HelperWeb.GenerarDTO<VentasDTO>(Controls);
+
+                if (ventaDTO.Fecha > DateTime.Now.Date) throw new Exception
+                            ("La fecha no puede ser posterior a la actual del sistema");
+
+                List<AccesoriosDTO> accesoriosVenta = GetAccesoriosVenta();
+
+                ventaDTO.Total = HelperWeb.ConvertirNumeroRacional(ctPrecio.Valor) + PrecioTotalAccesorios(accesoriosVenta);
+                ventasNegocio.ConfirmarVenta(ventaDTO, accesoriosVenta);
+
+                Response.Redirect(Backpage);
+            }
+            catch (Exception ex)
+            {
+                lbMsg.Text = ex.Message;
+            }
+        }
+
+        private List<AccesoriosDTO> GetAccesoriosVenta()
+        {
+            List<AccesoriosDTO> accesoriosVenta = new List<AccesoriosDTO>();
+            if ((List<AccesoriosDTO>)ViewState["accesoriosVenta"] != null)
+            {
+                accesoriosVenta = (List<AccesoriosDTO>)ViewState["accesoriosVenta"];
+            }
+
+            return accesoriosVenta;
         }
 
         protected void btnBuscarCliente_Click(object sender, EventArgs e)
@@ -103,10 +140,27 @@ namespace HuergoMotors.Web.AMS
             }
         }
 
-
         protected void btnAgregarAccesorio_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                int id = Convert.ToInt32(ddlAccesorio.SelectedValue);
+                AccesoriosDTO accesorio = accesoriosNegocio.BuscarId(id);
+
+                List<AccesoriosDTO> accesoriosVenta = GetAccesoriosVenta();
+
+                accesoriosVenta.Add(accesorio);
+
+                ViewState.Add("accesoriosVenta", accesoriosVenta);
+
+
+                gvAccesorios.DataSource = accesoriosVenta;
+                gvAccesorios.DataBind();
+            }
+            catch (Exception ex)
+            {
+                lbMsg.Text = ex.Message;
+            }
         }
 
         protected void btnVolver_Click(object sender, EventArgs e)

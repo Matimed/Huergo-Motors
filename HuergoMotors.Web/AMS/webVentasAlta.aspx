@@ -41,7 +41,7 @@
         <hr />
 
 
-        <uc:CampoTexto ID="ctObservaciones"  runat="server" Text="Observaciones" Propiedad="Observaciones" />
+        <uc:CampoTexto ID="ctObservaciones"  runat="server" Text="Observaciones" Propiedad="Observaciones" Nullable="True" />
 
         <asp:Button ID="btnGuardar" runat="server" OnClick="btnGuardar_Click" Text="Guardar cambios" />
         <asp:Button ID="btnVolver" runat="server" OnClick="btnVolver_Click" Text="Volver" />
