@@ -31,7 +31,7 @@ namespace HuergoMotors.Web.UserControls
             get { return ddlCampo.SelectedValue; }
             set { ddlCampo.SelectedValue = value; }
         }
-
+        
         public string DisplayMember
         {
             get { return Attributes["DisplayMember"]; }

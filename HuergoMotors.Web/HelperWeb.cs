@@ -220,6 +220,14 @@ namespace HuergoMotors.Web
             }
         }
 
+        private static void ValidarCampoVacio(UserControlCampoTexto campo)
+        {
+            if (string.IsNullOrEmpty(campo.Valor))
+            {
+                throw new Exception($"No se pueden dejar el campo {campo.ID.Replace("ct", "")} sin completar");
+            }
+        }
+
         private static void ValidarID(int id)
         {
             if (id < 0) throw new Exception("Ningun elemento seleccionado");

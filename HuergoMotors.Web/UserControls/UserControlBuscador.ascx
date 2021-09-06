@@ -1,5 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserControlBuscador.ascx.cs" Inherits="HuergoMotors.Web.UserControls.UserControlBuscador" %>
 
+
 <div>
     <asp:Label ID="lbFiltro" runat="server" Text="Filtro"></asp:Label>
     <asp:TextBox ID="txtFiltro" runat="server" Width="226px"></asp:TextBox>

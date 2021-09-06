@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace HuergoMotors.Web.UserControls
+
 {
     public partial class UserControlBuscador : System.Web.UI.UserControl
     {
