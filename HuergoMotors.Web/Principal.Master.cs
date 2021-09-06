@@ -23,7 +23,7 @@ namespace HuergoMotors.Web
         {
             try
             {
-                string path = ($"web{e.Item.Value}.aspx");
+                string path = ($"/web{e.Item.Value}.aspx");
                 Response.Redirect(path);
             }
             catch

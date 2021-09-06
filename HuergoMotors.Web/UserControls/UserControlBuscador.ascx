@@ -1,4 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserControlBuscador.ascx.cs" Inherits="HuergoMotors.Web.UserControlBuscador" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserControlBuscador.ascx.cs" Inherits="HuergoMotors.Web.UserControls.UserControlBuscador" %>
+
 
 <div>
     <asp:Label ID="lbFiltro" runat="server" Text="Filtro"></asp:Label>

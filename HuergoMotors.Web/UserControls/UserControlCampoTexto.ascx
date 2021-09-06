@@ -1,4 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserControlCampoTexto.ascx.cs" Inherits="HuergoMotors.Web.UserControlCampoTexto" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="UserControlCampoTexto.ascx.cs" Inherits="HuergoMotors.Web.UserControls.UserControlCampoTexto" %>
+
 
 
 <asp:Label ID="lbCampo" runat="server"></asp:Label>

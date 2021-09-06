@@ -13,8 +13,8 @@
                     <asp:BoundField DataField="Direccion" HeaderText="Direccion" />
                     <asp:BoundField DataField="Telefono" HeaderText="Telefono" />
                     <asp:BoundField DataField="Email" HeaderText="Email" />
-                    <asp:ButtonField ButtonType="Button" CommandName="Seleccionar" Text="Seleccionar" />
                     <asp:ButtonField ButtonType="Button" CommandName="Modificar" Text="Modificar" />
+                    <asp:ButtonField ButtonType="Button" CommandName="Eliminar" Text="Eliminar" />
                 </Columns>
                 <EditRowStyle BackColor="#7C6F57" />
                 <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />

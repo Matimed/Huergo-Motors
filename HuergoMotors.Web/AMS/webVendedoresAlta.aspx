@@ -2,17 +2,9 @@
 
 <asp:Content ID="contenido" ContentPlaceHolderID="body" runat="server">
     <div>
-            <asp:Label ID="lbNombre" runat="server" Text="Nombre"></asp:Label>
-            <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
-        <br />
-        
-        <asp:Label ID="lbApellido" runat="server" Text="Apellido"></asp:Label>
-        <asp:TextBox ID="txtApellido" runat="server"></asp:TextBox>
-        <br />
-
-        <asp:Label ID="lbSucursal" runat="server" Text="Sucursal"></asp:Label>
-        <asp:TextBox ID="txtSucursal" runat="server"></asp:TextBox>
-        <br />
+        <uc:CampoTexto ID="ctNombre"  runat="server" Text="Nombre" Propiedad="Nombre"/>
+        <uc:CampoTexto ID="ctApellido"  runat="server" Text="Apellido" Propiedad="Apellido"/>
+        <uc:CampoTexto ID="ctSucursal"  runat="server" Text="Sucursal" Propiedad="Sucursal"/>
         
         <asp:Button ID="btnGuardar" runat="server" Text="Guardar cambios" OnClick="btnGuardar_Click" />
         <asp:Button ID="btnVolver" runat="server" Text="Volver" OnClick="btnVolver_Click" />

@@ -22,19 +22,14 @@ namespace HuergoMotors.Web.AMS
                 }
                 if (!Page.IsPostBack)
                 {
+                    cddModelo.Cargar(vehiculosNegocio.CargarTabla());
                     if (Request.QueryString["id"] != null)
                     {
-                        HelperWeb.DisplayDropDown(ddlIdVehiculo, "Modelo");
-                        ddlIdVehiculo.DataSource = vehiculosNegocio.CargarTabla();
-                        ddlIdVehiculo.DataBind();
                         HelperWeb.LeerDTO(Page.Controls, accesoriosNegocio.BuscarId(Id));
                         btnGuardar.Text = "Guardar Cambios";
                     }
                     else
                     {
-                        HelperWeb.DisplayDropDown(ddlIdVehiculo, "Modelo");
-                        ddlIdVehiculo.DataSource = vehiculosNegocio.CargarTabla();
-                        ddlIdVehiculo.DataBind();
                         btnGuardar.Text = "Agregar accesorio";
                     }
                 }

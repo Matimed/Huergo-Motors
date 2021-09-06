@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Reflection;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using HuergoMotors.DTO;
+using HuergoMotors.Web.UserControls;
 
 namespace HuergoMotors.Web
 {
@@ -13,57 +16,16 @@ namespace HuergoMotors.Web
         {
             T dto = new T();
 
-            //Metodo para poder usar el UserControl CampoTexto:
-            //foreach (UserControlCampoTexto campo in GenerarListaControl<UserControlCampoTexto>(controls))
-            //{
-            //    ValidarCampoVacio(campo);
-            //    PropertyInfo propiedad = dto.GetType().GetProperty(campo.ID.Replace("ct", ""));
-            //    switch (propiedad.PropertyType.Name)
-            //    {
-            //        case "String":
-            //            propiedad.SetValue(dto, campo.Valor, null);
-            //            break;
-
-            //        case "Int32":
-            //            propiedad.SetValue(dto, ConvertirNumeroNatural(campo.Valor), null);
-            //            break;
-
-            //        case "Decimal":
-            //            propiedad.SetValue(dto, ConvertirNumeroRacional(campo.Valor), null);
-            //            break;
-            //        default:
-            //            throw new Exception("Tipo de dato no reconocido");
-            //    }
-            //}
-
-            foreach (TextBox textBox in GenerarListaControl<TextBox>(controls))
+            List<UserControlCampoTexto> camposTexto = GenerarListaControl<UserControlCampoTexto>(controls);
+            if (camposTexto.Any())
             {
-                ValidarTextBoxVacio(textBox);
-                PropertyInfo propiedad = dto.GetType().GetProperty(textBox.ID.Replace("txt", ""));
-                switch (propiedad.PropertyType.Name)
-                {
-                    case "String":
-                        propiedad.SetValue(dto, (textBox).Text, null);
-                        break;
-
-                    case "Int32":
-                        propiedad.SetValue(dto, ConvertirNumeroNatural(textBox.Text), null);
-                        break;
-
-                    case "Decimal":
-                        propiedad.SetValue(dto, ConvertirNumeroRacional(textBox.Text), null);
-                        break;
-                    default:
-                        throw new Exception("Tipo de dato no reconocido");
-                }
+                dto = GenerarCampoTextoDTO(camposTexto, dto);
             }
 
-            foreach (DropDownList dropDown in GenerarListaControl<DropDownList>(controls))
+            List<UserControlCampoDropDown> camposDropDown = GenerarListaControl<UserControlCampoDropDown>(controls);
+            if (camposDropDown.Any())
             {
-                int id = ConvertirNumeroNatural(dropDown.SelectedValue);
-                ValidarID(id);
-                PropertyInfo propiedad = dto.GetType().GetProperty(dropDown.ID.Replace("ddl", ""));
-                propiedad.SetValue(dto, id, null);
+                dto = GenerarCampoDropDownDTO(camposDropDown, dto);
             }
 
             return dto;
@@ -78,23 +40,16 @@ namespace HuergoMotors.Web
 
         public static void LeerDTO<T>(ControlCollection controls, T dto) where T : DTOBase, new()
         {
-            
-            foreach (TextBox textBox in GenerarListaControl<TextBox>(controls))
+            List<UserControlCampoTexto> camposTexto = GenerarListaControl<UserControlCampoTexto>(controls);
+            if (camposTexto.Any())
             {
-                    PropertyInfo propiedad = dto.GetType().GetProperty(textBox.ID.Replace("txt", ""));
-                    if (propiedad.PropertyType.Name == "String")
-                    {
-                        textBox.Text = (string)propiedad.GetValue(dto);
-                    }
-                    else if (propiedad.PropertyType.Name == "Int32" | propiedad.PropertyType.Name == "Decimal")
-                    {
-                        textBox.Text = propiedad.GetValue(dto).ToString();
-                    }
+                LeerCampoTextoDTO(camposTexto, dto);
             }
-            foreach (DropDownList dropDown in GenerarListaControl<DropDownList>(controls))
+
+            List<UserControlCampoDropDown> camposDropDown = GenerarListaControl<UserControlCampoDropDown>(controls);
+            if (camposDropDown.Any())
             {
-                PropertyInfo propiedad = dto.GetType().GetProperty(dropDown.ID.Replace("ddl", ""));
-                dropDown.SelectedValue = propiedad.GetValue(dto).ToString();
+                LeerCampoDropDownDTO(camposDropDown, dto);
             }
         }
 
@@ -120,39 +75,127 @@ namespace HuergoMotors.Web
         }
 
 
+        private static T GenerarCampoTextoDTO<T>(List<UserControlCampoTexto> campos, T dto)
+        {
+            foreach (UserControlCampoTexto campo in campos)
+            {
+                if (!campo.ReadOnly)
+                {
+                    if(!campo.Nullable) ValidarCampoVacio(campo);
+                    PropertyInfo propiedad = dto.GetType().GetProperty(campo.Propiedad);
+                    switch (propiedad.PropertyType.Name)
+                    {
+                        case "String":
+                            propiedad.SetValue(dto, campo.Valor, null);
+                            break;
+
+                        case "Int32":
+                            propiedad.SetValue(dto, ConvertirNumeroNatural(campo.Valor), null);
+                            break;
+
+                        case "Decimal":
+                            propiedad.SetValue(dto, ConvertirNumeroRacional(campo.Valor), null);
+                            break;
+
+                        case "DateTime":
+                            if (campo.Nullable && string.IsNullOrEmpty(campo.Valor))
+                            {
+                                propiedad.SetValue(dto, DateTime.Now, null);
+                            }
+                            else
+                            {
+                                propiedad.SetValue(dto, ConvertirFecha(campo.Valor), null);
+                            }
+                            break;
+                        default:
+                            throw new Exception("Tipo de dato no reconocido");
+                    }
+                }
+            }
+            return dto;
+        }
+
+        private static void LeerCampoTextoDTO<T>(List<UserControlCampoTexto> campos, T dto)
+        {
+            foreach (UserControlCampoTexto campo in campos)
+            {
+                if (dto.GetType().GetProperty(campo.Propiedad) != null)
+                {
+                    PropertyInfo propiedad = dto.GetType().GetProperty(campo.Propiedad);
+                    if (propiedad.PropertyType.Name == "String")
+                    {
+                        campo.Valor = (string)propiedad.GetValue(dto);
+                    }
+                    else if (propiedad.PropertyType.Name == "Int32" | propiedad.PropertyType.Name == "Decimal")
+                    {
+                        campo.Valor = propiedad.GetValue(dto).ToString();
+                    }
+                }
+            }
+        }
+
+        private static T GenerarCampoDropDownDTO<T>(List<UserControlCampoDropDown> campos, T dto)
+        {
+            foreach (UserControlCampoDropDown campo in campos)
+            {
+                ValidarCampoVacio(campo);
+                int id = ConvertirNumeroNatural(campo.Valor);
+                ValidarID(id);
+                PropertyInfo propiedad = dto.GetType().GetProperty(campo.Propiedad);
+                propiedad.SetValue(dto, id, null);
+            }
+            return dto;
+        }
+
+        private static void LeerCampoDropDownDTO<T>(List<UserControlCampoDropDown> campos, T dto)
+        {
+            foreach (UserControlCampoDropDown campo in campos)
+            {
+                if (dto.GetType().GetProperty(campo.Propiedad) != null)
+                {
+                    PropertyInfo propiedad = dto.GetType().GetProperty(campo.Propiedad);
+                    if (propiedad.PropertyType.Name == "String")
+                    {
+                        campo.Valor = (string)propiedad.GetValue(dto);
+                    }
+                    else if (propiedad.PropertyType.Name == "Int32" | propiedad.PropertyType.Name == "Decimal")
+                    {
+                        campo.Valor = propiedad.GetValue(dto).ToString();
+                    }
+                }
+            }
+        }
+
+
 
         public static int ConvertirNumeroNatural(string texto)
         {
-            try
+            if (!int.TryParse(texto, out int numeroNatural) | numeroNatural < 0)
             {
-                if (!int.TryParse(texto, out int numeroNatural) | numeroNatural < 0)
-                {
-                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero entero.");
-                }
-                return numeroNatural;
+                throw new Exception($"Tipo de dato inválido. Se esperaba un numero entero.");
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return numeroNatural;
         }
 
         public static decimal ConvertirNumeroRacional(string texto)
         {
-            try
+            if (!decimal.TryParse(texto, out decimal numeroRacional) | numeroRacional < 0)
             {
-                if (!decimal.TryParse(texto, out decimal numeroRacional) | numeroRacional < 0)
-                {
-                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero racional.");
-                }
-                return numeroRacional;
+                throw new Exception($"Tipo de dato inválido. Se esperaba un numero racional.");
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return numeroRacional;
         }
 
+        public static DateTime ConvertirFecha(string texto)
+        {
+            var formats = new[] { "d/M/yyyy", "dd/M/yyyy", "d/MM/yyyy", "dd/MM/yyyy" };
+            DateTime fecha;
+            if (!DateTime.TryParseExact(texto, formats, null, DateTimeStyles.None, out fecha))
+            {
+                throw new Exception($"Tipo de dato inválido. Se esperaba una fecha válida.");
+            }
+            return fecha;
+        }
 
 
         public static void DisplayDropDown(DropDownList dropDown, string displaymember)
@@ -168,11 +211,12 @@ namespace HuergoMotors.Web
             }
         }
 
-        private static void ValidarTextBoxVacio(TextBox textBox)
+
+        private static void ValidarCampoVacio(UserControlCampoBase campo)
         {
-            if (string.IsNullOrEmpty(textBox.Text))
+            if (string.IsNullOrEmpty(campo.Valor))
             {
-                throw new Exception($"No se pueden dejar el campo {textBox.ID.Replace("txt", "")} sin completar");
+                throw new Exception($"No se pueden dejar el campo '{campo.Text}' sin completar");
             }
         }
 

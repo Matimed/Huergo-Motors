@@ -7,9 +7,9 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace HuergoMotors.Web
-{
 
+namespace HuergoMotors.Web.UserControls
+{
 
     public partial class UserControlCampoTexto
     {
