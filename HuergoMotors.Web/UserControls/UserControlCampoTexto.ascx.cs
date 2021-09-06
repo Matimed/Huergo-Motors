@@ -11,13 +11,13 @@ namespace HuergoMotors.Web.UserControls
     public partial class UserControlCampoTexto : UserControlCampoBase
     {
 
-        public new string Propiedad
+        public override string Propiedad
         {
             get { return Attributes["Propiedad"]; }
             set { Attributes["Propiedad"] = value; }
         }
 
-        public new string Text
+        public override string Text
         {
             get { return Attributes["Text"]; }
             set 
@@ -26,7 +26,7 @@ namespace HuergoMotors.Web.UserControls
                 lbCampo.Text = value+":"; 
             }
         }
-        public new string Valor
+        public override string Valor
         {
             get { return txtValor.Text; }
             set { txtValor.Text = value; }

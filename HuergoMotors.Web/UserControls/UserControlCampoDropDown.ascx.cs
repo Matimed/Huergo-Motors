@@ -9,18 +9,23 @@ namespace HuergoMotors.Web.UserControls
 {
     public partial class UserControlCampoDropDown : UserControlCampoBase
     {
-        public new string Propiedad
+        public override string Propiedad
         {
             get { return Attributes["Propiedad"]; }
             set { Attributes["Propiedad"] = value; }
         }
 
-        public new string Text
+        public override string Text
         {
-            set { lbCampo.Text = value; }
+            get { return Attributes["Text"]; }
+            set
+            {
+                Attributes["Text"] = value;
+                lbCampo.Text = value + ":";
+            }
         }
       
-        public new string Valor
+        public override string Valor
         {
             get { return ddlCampo.SelectedValue; }
             set { ddlCampo.SelectedValue = value; }

@@ -5,10 +5,10 @@ using System.Web;
 
 namespace HuergoMotors.Web.UserControls
 {
-    public class UserControlCampoBase : System.Web.UI.UserControl
+    public abstract class UserControlCampoBase : System.Web.UI.UserControl
     {
-        public string Propiedad;
-        public string Text;
-        public string Valor;
+        abstract public string Propiedad { get; set; }
+        abstract public string Text { get; set; }
+        abstract public string Valor { get; set; }
     }
 }
