@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -13,50 +14,12 @@ namespace HuergoMotors.Web
         {
             T dto = new T();
 
-            //Metodo para poder usar el UserControl CampoTexto:
-            //foreach (UserControlCampoTexto campo in GenerarListaControl<UserControlCampoTexto>(controls))
-            //{
-            //    ValidarCampoVacio(campo);
-            //    PropertyInfo propiedad = dto.GetType().GetProperty(campo.ID.Replace("ct", ""));
-            //    switch (propiedad.PropertyType.Name)
-            //    {
-            //        case "String":
-            //            propiedad.SetValue(dto, campo.Valor, null);
-            //            break;
-
-            //        case "Int32":
-            //            propiedad.SetValue(dto, ConvertirNumeroNatural(campo.Valor), null);
-            //            break;
-
-            //        case "Decimal":
-            //            propiedad.SetValue(dto, ConvertirNumeroRacional(campo.Valor), null);
-            //            break;
-            //        default:
-            //            throw new Exception("Tipo de dato no reconocido");
-            //    }
-            //}
-
-            foreach (TextBox textBox in GenerarListaControl<TextBox>(controls))
+            List<UserControlCampoTexto> camposTexto = GenerarListaControl<UserControlCampoTexto>(controls);
+            if (camposTexto.Any())
             {
-                ValidarTextBoxVacio(textBox);
-                PropertyInfo propiedad = dto.GetType().GetProperty(textBox.ID.Replace("txt", ""));
-                switch (propiedad.PropertyType.Name)
-                {
-                    case "String":
-                        propiedad.SetValue(dto, (textBox).Text, null);
-                        break;
-
-                    case "Int32":
-                        propiedad.SetValue(dto, ConvertirNumeroNatural(textBox.Text), null);
-                        break;
-
-                    case "Decimal":
-                        propiedad.SetValue(dto, ConvertirNumeroRacional(textBox.Text), null);
-                        break;
-                    default:
-                        throw new Exception("Tipo de dato no reconocido");
-                }
+                dto = GenerarCampoTextoDTO(camposTexto, dto);
             }
+
 
             foreach (DropDownList dropDown in GenerarListaControl<DropDownList>(controls))
             {
@@ -78,19 +41,12 @@ namespace HuergoMotors.Web
 
         public static void LeerDTO<T>(ControlCollection controls, T dto) where T : DTOBase, new()
         {
-            
-            foreach (TextBox textBox in GenerarListaControl<TextBox>(controls))
+            List<UserControlCampoTexto> camposTexto = GenerarListaControl<UserControlCampoTexto>(controls);
+            if (camposTexto.Any())
             {
-                    PropertyInfo propiedad = dto.GetType().GetProperty(textBox.ID.Replace("txt", ""));
-                    if (propiedad.PropertyType.Name == "String")
-                    {
-                        textBox.Text = (string)propiedad.GetValue(dto);
-                    }
-                    else if (propiedad.PropertyType.Name == "Int32" | propiedad.PropertyType.Name == "Decimal")
-                    {
-                        textBox.Text = propiedad.GetValue(dto).ToString();
-                    }
+                LeerCampoTextoDTO(camposTexto, dto);
             }
+
             foreach (DropDownList dropDown in GenerarListaControl<DropDownList>(controls))
             {
                 PropertyInfo propiedad = dto.GetType().GetProperty(dropDown.ID.Replace("ddl", ""));
@@ -120,6 +76,50 @@ namespace HuergoMotors.Web
         }
 
 
+        private static T GenerarCampoTextoDTO<T>(List<UserControlCampoTexto> campos, T dto)
+        {
+            foreach (UserControlCampoTexto campo in campos)
+            {
+                ValidarCampoVacio(campo);
+                PropertyInfo propiedad = dto.GetType().GetProperty(campo.Propiedad);
+                switch (propiedad.PropertyType.Name)
+                {
+                    case "String":
+                        propiedad.SetValue(dto, campo.Valor, null);
+                        break;
+
+                    case "Int32":
+                        propiedad.SetValue(dto, ConvertirNumeroNatural(campo.Valor), null);
+                        break;
+
+                    case "Decimal":
+                        propiedad.SetValue(dto, ConvertirNumeroRacional(campo.Valor), null);
+                        break;
+                    case "DateTime":
+                        propiedad.SetValue(dto, Convert.ToDateTime(campo.Valor), null);
+                        break;
+                    default:
+                        throw new Exception("Tipo de dato no reconocido");
+                }
+            }
+            return dto;
+        }
+
+        private static void LeerCampoTextoDTO<T>(List<UserControlCampoTexto> campos, T dto)
+        {
+            foreach (UserControlCampoTexto campo in campos)
+            {
+                PropertyInfo propiedad = dto.GetType().GetProperty(campo.Propiedad);
+                if (propiedad.PropertyType.Name == "String")
+                {
+                    campo.Valor = (string)propiedad.GetValue(dto);
+                }
+                else if (propiedad.PropertyType.Name == "Int32" | propiedad.PropertyType.Name == "Decimal")
+                {
+                    campo.Valor = propiedad.GetValue(dto).ToString();
+                }
+            }
+        }
 
         public static int ConvertirNumeroNatural(string texto)
         {
