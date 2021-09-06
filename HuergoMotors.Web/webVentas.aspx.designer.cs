@@ -21,7 +21,7 @@ namespace HuergoMotors.Web
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::HuergoMotors.Web.UserControlBuscador ucBuscador;
+        protected global::HuergoMotors.Web.UserControls.UserControlBuscador ucBuscador;
 
         /// <summary>
         /// Control gv.
