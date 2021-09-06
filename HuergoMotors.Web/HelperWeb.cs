@@ -21,13 +21,10 @@ namespace HuergoMotors.Web
                 dto = GenerarCampoTextoDTO(camposTexto, dto);
             }
 
-
-            foreach (DropDownList dropDown in GenerarListaControl<DropDownList>(controls))
+            List<UserControlCampoDropDown> camposDropDown = GenerarListaControl<UserControlCampoDropDown>(controls);
+            if (camposDropDown.Any())
             {
-                int id = ConvertirNumeroNatural(dropDown.SelectedValue);
-                ValidarID(id);
-                PropertyInfo propiedad = dto.GetType().GetProperty(dropDown.ID.Replace("ddl", ""));
-                propiedad.SetValue(dto, id, null);
+                dto = GenerarCampoDropDownDTO(camposDropDown, dto);
             }
 
             return dto;
@@ -48,10 +45,10 @@ namespace HuergoMotors.Web
                 LeerCampoTextoDTO(camposTexto, dto);
             }
 
-            foreach (DropDownList dropDown in GenerarListaControl<DropDownList>(controls))
+            List<UserControlCampoDropDown> camposDropDown = GenerarListaControl<UserControlCampoDropDown>(controls);
+            if (camposDropDown.Any())
             {
-                PropertyInfo propiedad = dto.GetType().GetProperty(dropDown.ID.Replace("ddl", ""));
-                dropDown.SelectedValue = propiedad.GetValue(dto).ToString();
+                LeerCampoDropDownDTO(camposDropDown, dto);
             }
         }
 
@@ -122,7 +119,34 @@ namespace HuergoMotors.Web
             }
         }
 
+        private static T GenerarCampoDropDownDTO<T>(List<UserControlCampoDropDown> campos, T dto)
+        {
+            foreach (UserControlCampoDropDown campo in campos)
+            {
+                ValidarCampoVacio(campo);
+                int id = ConvertirNumeroNatural(campo.Valor);
+                ValidarID(id);
+                PropertyInfo propiedad = dto.GetType().GetProperty(campo.Propiedad);
+                propiedad.SetValue(dto, id, null);
+            }
+            return dto;
+        }
 
+        private static void LeerCampoDropDownDTO<T>(List<UserControlCampoDropDown> campos, T dto)
+        {
+            foreach (UserControlCampoDropDown campo in campos)
+            {
+                PropertyInfo propiedad = dto.GetType().GetProperty(campo.Propiedad);
+                if (propiedad.PropertyType.Name == "String")
+                {
+                    campo.Valor = (string)propiedad.GetValue(dto);
+                }
+                else if (propiedad.PropertyType.Name == "Int32" | propiedad.PropertyType.Name == "Decimal")
+                {
+                    campo.Valor = propiedad.GetValue(dto).ToString();
+                }
+            }
+        }
 
 
 
@@ -185,7 +209,7 @@ namespace HuergoMotors.Web
         {
             if (string.IsNullOrEmpty(campo.Valor))
             {
-                throw new Exception($"No se pueden dejar el campo {campo.ID.Replace("ct", "")} sin completar");
+                throw new Exception($"No se pueden dejar el campo '{campo.Text}' sin completar");
             }
         }
 
