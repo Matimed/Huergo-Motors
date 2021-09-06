@@ -32,5 +32,15 @@ namespace HuergoMotors.Web.UserControls
             set { txtValor.Text = value; }
         }
 
+        public bool ReadOnly
+        {
+            get { return Convert.ToBoolean(Attributes["ReadOnly"]); }
+            set 
+            { 
+                Attributes["ReadOnly"] = value.ToString();
+                txtValor.ReadOnly = ReadOnly;
+            }
+        }
+
     }
 }

@@ -78,26 +78,29 @@ namespace HuergoMotors.Web
         {
             foreach (UserControlCampoTexto campo in campos)
             {
-                ValidarCampoVacio(campo);
-                PropertyInfo propiedad = dto.GetType().GetProperty(campo.Propiedad);
-                switch (propiedad.PropertyType.Name)
+                if (!campo.ReadOnly)
                 {
-                    case "String":
-                        propiedad.SetValue(dto, campo.Valor, null);
-                        break;
+                    ValidarCampoVacio(campo);
+                    PropertyInfo propiedad = dto.GetType().GetProperty(campo.Propiedad);
+                    switch (propiedad.PropertyType.Name)
+                    {
+                        case "String":
+                            propiedad.SetValue(dto, campo.Valor, null);
+                            break;
 
-                    case "Int32":
-                        propiedad.SetValue(dto, ConvertirNumeroNatural(campo.Valor), null);
-                        break;
+                        case "Int32":
+                            propiedad.SetValue(dto, ConvertirNumeroNatural(campo.Valor), null);
+                            break;
 
-                    case "Decimal":
-                        propiedad.SetValue(dto, ConvertirNumeroRacional(campo.Valor), null);
-                        break;
-                    case "DateTime":
-                        propiedad.SetValue(dto, Convert.ToDateTime(campo.Valor), null);
-                        break;
-                    default:
-                        throw new Exception("Tipo de dato no reconocido");
+                        case "Decimal":
+                            propiedad.SetValue(dto, ConvertirNumeroRacional(campo.Valor), null);
+                            break;
+                        case "DateTime":
+                            propiedad.SetValue(dto, Convert.ToDateTime(campo.Valor), null);
+                            break;
+                        default:
+                            throw new Exception("Tipo de dato no reconocido");
+                    }
                 }
             }
             return dto;
@@ -107,14 +110,17 @@ namespace HuergoMotors.Web
         {
             foreach (UserControlCampoTexto campo in campos)
             {
-                PropertyInfo propiedad = dto.GetType().GetProperty(campo.Propiedad);
-                if (propiedad.PropertyType.Name == "String")
+                if (dto.GetType().GetProperty(campo.Propiedad) != null)
                 {
-                    campo.Valor = (string)propiedad.GetValue(dto);
-                }
-                else if (propiedad.PropertyType.Name == "Int32" | propiedad.PropertyType.Name == "Decimal")
-                {
-                    campo.Valor = propiedad.GetValue(dto).ToString();
+                    PropertyInfo propiedad = dto.GetType().GetProperty(campo.Propiedad);
+                    if (propiedad.PropertyType.Name == "String")
+                    {
+                        campo.Valor = (string)propiedad.GetValue(dto);
+                    }
+                    else if (propiedad.PropertyType.Name == "Int32" | propiedad.PropertyType.Name == "Decimal")
+                    {
+                        campo.Valor = propiedad.GetValue(dto).ToString();
+                    }
                 }
             }
         }
@@ -136,14 +142,17 @@ namespace HuergoMotors.Web
         {
             foreach (UserControlCampoDropDown campo in campos)
             {
-                PropertyInfo propiedad = dto.GetType().GetProperty(campo.Propiedad);
-                if (propiedad.PropertyType.Name == "String")
+                if (dto.GetType().GetProperty(campo.Propiedad) != null)
                 {
-                    campo.Valor = (string)propiedad.GetValue(dto);
-                }
-                else if (propiedad.PropertyType.Name == "Int32" | propiedad.PropertyType.Name == "Decimal")
-                {
-                    campo.Valor = propiedad.GetValue(dto).ToString();
+                    PropertyInfo propiedad = dto.GetType().GetProperty(campo.Propiedad);
+                    if (propiedad.PropertyType.Name == "String")
+                    {
+                        campo.Valor = (string)propiedad.GetValue(dto);
+                    }
+                    else if (propiedad.PropertyType.Name == "Int32" | propiedad.PropertyType.Name == "Decimal")
+                    {
+                        campo.Valor = propiedad.GetValue(dto).ToString();
+                    }
                 }
             }
         }

@@ -9,6 +9,7 @@ namespace HuergoMotors.Web.UserControls
 {
     public partial class UserControlCampoDropDown : UserControlCampoBase
     {
+        public event EventHandler SelectedIndexChanged;
         public override string Propiedad
         {
             get { return Attributes["Propiedad"]; }
@@ -37,11 +38,30 @@ namespace HuergoMotors.Web.UserControls
             set { Attributes["DisplayMember"] = value; }
         }
 
+        public bool AutoPostBack
+        {
+            get { return Convert.ToBoolean(Attributes["AutoPostBack"]); }
+            set
+            {
+                Attributes["AutoPostBack"] = value.ToString();
+                ddlCampo.AutoPostBack = AutoPostBack;
+            }
+        }
+
+
         public void Cargar(object dataSource)
         {
             HelperWeb.DisplayDropDown(ddlCampo, DisplayMember);
             ddlCampo.DataSource = dataSource;
             ddlCampo.DataBind();
+        }
+
+        protected void ddlCampo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (SelectedIndexChanged != null)
+            {
+                SelectedIndexChanged(sender, e);
+            }
         }
     }
 }
