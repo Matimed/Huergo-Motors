@@ -42,5 +42,10 @@ namespace HuergoMotors.Web.UserControls
             }
         }
 
+        public bool Nullable
+        {
+            get { return Convert.ToBoolean(Attributes["Nullable"]); }
+            set { Attributes["Nullable"] = value.ToString(); }
+        }
     }
 }

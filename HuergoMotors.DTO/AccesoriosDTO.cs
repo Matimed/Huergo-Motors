@@ -1,5 +1,6 @@
 ﻿namespace HuergoMotors.DTO
 {
+    [System.Serializable]
     public class AccesoriosDTO : DTOBase
     {
         public string Nombre { get; set; }

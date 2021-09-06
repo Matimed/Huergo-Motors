@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Web.UI;
@@ -80,7 +81,7 @@ namespace HuergoMotors.Web
             {
                 if (!campo.ReadOnly)
                 {
-                    ValidarCampoVacio(campo);
+                    if(!campo.Nullable) ValidarCampoVacio(campo);
                     PropertyInfo propiedad = dto.GetType().GetProperty(campo.Propiedad);
                     switch (propiedad.PropertyType.Name)
                     {
@@ -96,7 +97,7 @@ namespace HuergoMotors.Web
                             propiedad.SetValue(dto, ConvertirNumeroRacional(campo.Valor), null);
                             break;
                         case "DateTime":
-                            propiedad.SetValue(dto, Convert.ToDateTime(campo.Valor), null);
+                            propiedad.SetValue(dto, ConvertirFecha(campo.Valor), null);
                             break;
                         default:
                             throw new Exception("Tipo de dato no reconocido");
@@ -161,36 +162,32 @@ namespace HuergoMotors.Web
 
         public static int ConvertirNumeroNatural(string texto)
         {
-            try
+            if (!int.TryParse(texto, out int numeroNatural) | numeroNatural < 0)
             {
-                if (!int.TryParse(texto, out int numeroNatural) | numeroNatural < 0)
-                {
-                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero entero.");
-                }
-                return numeroNatural;
+                throw new Exception($"Tipo de dato inválido. Se esperaba un numero entero.");
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return numeroNatural;
         }
 
         public static decimal ConvertirNumeroRacional(string texto)
         {
-            try
+            if (!decimal.TryParse(texto, out decimal numeroRacional) | numeroRacional < 0)
             {
-                if (!decimal.TryParse(texto, out decimal numeroRacional) | numeroRacional < 0)
-                {
-                    throw new Exception($"Tipo de dato inválido. Se esperaba un numero racional.");
-                }
-                return numeroRacional;
+                throw new Exception($"Tipo de dato inválido. Se esperaba un numero racional.");
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return numeroRacional;
         }
 
+        public static DateTime ConvertirFecha(string texto)
+        {
+            var formats = new[] { "d/M/yyyy", "dd/M/yyyy", "d/MM/yyyy", "dd/MM/yyyy" };
+            DateTime fecha;
+            if (!DateTime.TryParseExact(texto, formats, null, DateTimeStyles.None, out fecha))
+            {
+                throw new Exception($"Tipo de dato inválido. Se esperaba una fecha válida.");
+            }
+            return fecha;
+        }
 
 
         public static void DisplayDropDown(DropDownList dropDown, string displaymember)
@@ -206,13 +203,6 @@ namespace HuergoMotors.Web
             }
         }
 
-        private static void ValidarTextBoxVacio(TextBox textBox)
-        {
-            if (string.IsNullOrEmpty(textBox.Text))
-            {
-                throw new Exception($"No se pueden dejar el campo {textBox.ID.Replace("txt", "")} sin completar");
-            }
-        }
 
         private static void ValidarCampoVacio(UserControlCampoBase campo)
         {
