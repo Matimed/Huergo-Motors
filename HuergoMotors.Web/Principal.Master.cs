@@ -15,7 +15,7 @@ namespace HuergoMotors.Web
             }
             else
             {
-                Response.Redirect("webLogin.aspx");
+                Response.Redirect("/webLogin.aspx");
             }
         }
 
