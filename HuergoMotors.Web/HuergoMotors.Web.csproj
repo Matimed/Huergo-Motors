@@ -74,6 +74,7 @@
     <Content Include="webLogin.aspx" />
     <Content Include="webVendedores.aspx" />
     <Content Include="webVentas.aspx" />
+    <Content Include="webVentasAccesorios.aspx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -204,6 +205,13 @@
     </Compile>
     <Compile Include="webVentas.aspx.designer.cs">
       <DependentUpon>webVentas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webVentasAccesorios.aspx.cs">
+      <DependentUpon>webVentasAccesorios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webVentasAccesorios.aspx.designer.cs">
+      <DependentUpon>webVentasAccesorios.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

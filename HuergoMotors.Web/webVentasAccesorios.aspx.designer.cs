@@ -11,7 +11,7 @@ namespace HuergoMotors.Web
 {
 
 
-    public partial class webVentas
+    public partial class webVentasAccesorios
     {
 
         /// <summary>
