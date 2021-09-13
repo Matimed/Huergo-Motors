@@ -30,7 +30,7 @@
             <hr />
 
             
-            <div class="container-fluid pl-5">
+            <div class="container-fluid px-5">
                 <asp:ContentPlaceHolder ID="body" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
