@@ -66,6 +66,7 @@
     <Content Include="AMS\webVendedoresAlta.aspx" />
     <Content Include="AMS\webVentasAlta.aspx" />
     <Content Include="Principal.Master" />
+    <Content Include="Resources\HuergoMotorsIcono.png" />
     <Content Include="UserControls\UserControlBuscador.ascx" />
     <Content Include="UserControls\UserControlCampoDropDown.ascx" />
     <Content Include="UserControls\UserControlCampoTexto.ascx" />

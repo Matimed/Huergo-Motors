@@ -2,7 +2,7 @@
 
 <asp:Content ID="contenido" ContentPlaceHolderID="body" runat="server">
     
-    <div>
-        <asp:Label ID="lbMensaje" runat="server" Text="Hola Mundo (Home)"></asp:Label>
+    <div class="p-4">
+        <h1 >Bienvenido al sitio!</h1>
     </div>
 </asp:Content>

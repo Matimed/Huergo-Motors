@@ -33,15 +33,6 @@ namespace HuergoMotors.Web
         protected global::System.Web.UI.HtmlControls.HtmlForm formulario;
 
         /// <summary>
-        /// Control Navbar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu Navbar;
-
-        /// <summary>
         /// Control lbUsuario.
         /// </summary>
         /// <remarks>

@@ -13,28 +13,59 @@
 <body>
     <form id="formulario" runat="server">
         <div>
-            <asp:Menu ID="Navbar" runat="server" Orientation="Horizontal" OnMenuItemClick="Navbar_MenuItemClick">
-                <Items>
-                    <asp:MenuItem Text="Home" Value="Home"></asp:MenuItem>
-                    <asp:MenuItem Text="Vehiculos" Value="Vehiculos"></asp:MenuItem>
-                    <asp:MenuItem Text="Accesorios" Value="Accesorios"></asp:MenuItem>
-                    <asp:MenuItem Text="Clientes" Value="Clientes"></asp:MenuItem>
-                    <asp:MenuItem Text="Vendedores" Value="Vendedores"></asp:MenuItem>
-                    <asp:MenuItem Text="Ventas" Value="Ventas"></asp:MenuItem>
-                    <asp:MenuItem Text="Cerrar Sesión" Value="Login"></asp:MenuItem>
-                </Items>
-            </asp:Menu>
-            <asp:Label ID="lbUsuario" runat="server" Text="[...]"></asp:Label>
-            <br />
-            <br />
-            <hr />
+            
+            <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+                <a class="navbar-brand" href="#">
+                    <img src="/Resources\HuergoMotorsIcono.png" width="32" height="32" class="d-inline-block align-top" alt=""> HuergoMotors</a>
 
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/webVehiculos.aspx">Vehiculos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/webAccesorios.aspx">Accesorios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/webClientes.aspx">Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/webVendedores.aspx">Vendedores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/webVentas.aspx">Ventas</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nuevo
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="/AMS/webVehiculosAlta.aspx">Vehiculo</a>
+                                <a class="dropdown-item" href="/AMS/webAccesoriosAlta.aspx">Accesorio</a>
+                                <a class="dropdown-item" href="/AMS/webClientesAlta.aspx">Cliente</a>
+                                <a class="dropdown-item" href="/AMS/webVendedoresAlta.aspx">Vendedor</a>
+                                <a class="dropdown-item" href="/AMS/webVentasAlta.aspx">Venta</a>
+                            </div>
+                        </li>
+                        <li
+                            
+                            <asp:Label ID="lbUsuario" CssClass="navbar-text" runat="server" Text="[...]"></asp:Label>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/webLogin.aspx">Cerrar Sesion</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
             
             <div class="container-fluid px-5">
                 <asp:ContentPlaceHolder ID="body" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
         </div>
+
     </form>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
