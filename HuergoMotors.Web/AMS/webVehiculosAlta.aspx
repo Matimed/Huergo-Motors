@@ -20,7 +20,7 @@
         </div>
     </div>
          
-    <div class="row pt-5 justify-content-lg-around justify-content-md-between">
+    <div class="row pt-5  justify-content-lg-end justify-content-md-between">
         <div class="col-md-5 col-lg-4 py-2">
                 <asp:Button ID="btnGuardar" runat="server" Text="Guardar cambios" CssClass="btn btn-outline-primary btn-block" OnClick="btnGuardar_Click" />
         </div>

@@ -9,9 +9,7 @@
         <div class="col-md-6 col-lg-4">
             <uc:CampoTexto ID="ctDireccion"  runat="server" Text="Direccion" Propiedad="Direccion"/>
         </div>
-    </div>
 
-    <div class="row">
         <div class="col-md-6 col-lg-4">
             <uc:CampoTexto ID="ctTelefono"  runat="server" Text="Telefono" Propiedad="Telefono"/>
         </div>
@@ -20,11 +18,11 @@
         </div>
     </div>
 
-    <div class="row pt-5 justify-content-lg-around justify-content-md-between">
-        <div class="col-md-5 col-lg-4 py-2">
+    <div class="row pt-5 justify-content-lg-end justify-content-md-between">
+        <div class="col-md-5 col-lg-4 p-4">
                 <asp:Button ID="btnGuardar" runat="server" Text="Guardar cambios" CssClass="btn btn-outline-primary btn-block" OnClick="btnGuardar_Click" />
         </div>
-        <div class="col-md-4 col-lg-3 py-2">
+        <div class="col-md-4 col-lg-3 p-4">
              <asp:Button ID="btnVolver" runat="server" Text="Volver" CssClass="btn btn-outline-secondary btn-block" OnClick="btnVolver_Click" />
         </div>
     </div>

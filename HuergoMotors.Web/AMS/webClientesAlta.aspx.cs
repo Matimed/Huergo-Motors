@@ -29,7 +29,7 @@ namespace HuergoMotors.Web.AMS
                     }
                     else
                     {
-                        btnGuardar.Text = "Agregar vehiculo";
+                        btnGuardar.Text = "Agregar cliente";
                     }
                 }
             }
