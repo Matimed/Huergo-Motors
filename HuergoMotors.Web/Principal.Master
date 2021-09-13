@@ -60,7 +60,7 @@
                 </div>
             </nav>
             
-            <div class="container-fluid px-5">
+            <div class="container-fluid px-5 py-4">
                 <asp:ContentPlaceHolder ID="body" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
