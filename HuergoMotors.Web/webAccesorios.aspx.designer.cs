@@ -23,7 +23,6 @@ namespace HuergoMotors.Web
         /// </remarks>
         protected global::HuergoMotors.Web.UserControls.UserControlBuscador ucBuscador;
 
-
         /// <summary>
         /// Control gv.
         /// </summary>

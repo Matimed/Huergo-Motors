@@ -2,31 +2,22 @@
 
 <asp:Content ID="contenido" ContentPlaceHolderID="body" runat="server">
     
-        <uc:Buscador ID="ucBuscador" runat="server" OnBuscarClick ="btnBuscar_Click" OnRecargarClick ="btnRecargar_Click" OnNuevoClick = "btnNuevo_Click"/>
-        <div>
-            <asp:GridView ID="gv" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" DataKeyNames="Id" OnRowCommand="gv_RowCommand">
-                <AlternatingRowStyle BackColor="White" />
+    <uc:Buscador ID="ucBuscador" runat="server" OnBuscarClick ="btnBuscar_Click" OnRecargarClick ="btnRecargar_Click" OnNuevoClick = "btnNuevo_Click"/>
+        
+    <div class="row justify-content-center p-3 text-center">
+        <div class="table-responsive">
+            <asp:GridView ID="gv" runat="server" class="table table-hover table-striped" HeaderStyle-CssClass="thead-dark" AutoGenerateColumns="False" GridLines="None" DataKeyNames="Id" OnRowCommand="gv_RowCommand">
                 <Columns>
                     <asp:BoundField DataField="Id" HeaderText="Id" Visible="False" />
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                     <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
                     <asp:BoundField DataField="Sucursal" HeaderText="Sucursal" />
-                    <asp:ButtonField ButtonType="Button" CommandName="Modificar" Text="Modificar" />
-                    <asp:ButtonField ButtonType="Button" CommandName="Eliminar" Text="Eliminar" />
+                    <asp:ButtonField ButtonType="Button" CommandName="Modificar" Text="Modificar" ControlStyle-CssClass="btn btn-outline-primary btn-block" />
+                    <asp:ButtonField ButtonType="Button" CommandName="Eliminar" Text="Eliminar" ControlStyle-CssClass="btn btn-outline-danger btn-block" />
                 </Columns>
-                <EditRowStyle BackColor="#7C6F57" />
-                <FooterStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#1C5E55" Font-Bold="True" ForeColor="White" />
-                <PagerStyle BackColor="#666666" ForeColor="White" HorizontalAlign="Center" />
-                <RowStyle BackColor="#E3EAEB" />
-                <SelectedRowStyle BackColor="#C5BBAF" Font-Bold="True" ForeColor="#333333" />
-                <SortedAscendingCellStyle BackColor="#F8FAFA" />
-                <SortedAscendingHeaderStyle BackColor="#246B61" />
-                <SortedDescendingCellStyle BackColor="#D4DFE1" />
-                <SortedDescendingHeaderStyle BackColor="#15524A" />
             </asp:GridView>
-
-            <asp:Label ID="lbMsg" runat="server" Text="Label"></asp:Label>
         </div>
-  
+    </div>
+
+    <asp:Label ID="lbMsg" runat="server" Text="Label"></asp:Label>
 </asp:Content>

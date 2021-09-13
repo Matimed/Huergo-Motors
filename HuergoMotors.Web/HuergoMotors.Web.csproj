@@ -69,7 +69,6 @@
     <Content Include="UserControls\UserControlBuscador.ascx" />
     <Content Include="UserControls\UserControlCampoDropDown.ascx" />
     <Content Include="UserControls\UserControlCampoTexto.ascx" />
-
     <Content Include="webHome.aspx" />
     <Content Include="webLogin.aspx" />
     <Content Include="webVendedores.aspx" />
@@ -132,7 +131,6 @@
       <DependentUpon>Principal.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-
     <Compile Include="UserControls\UserControlBuscador.ascx.cs">
       <DependentUpon>UserControlBuscador.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -156,7 +154,6 @@
     </Compile>
     <Compile Include="UserControls\UserControlCampoTexto.ascx.designer.cs">
       <DependentUpon>UserControlCampoTexto.ascx</DependentUpon>
-
     </Compile>
     <Compile Include="webAccesorios.aspx.cs">
       <DependentUpon>webAccesorios.aspx</DependentUpon>
