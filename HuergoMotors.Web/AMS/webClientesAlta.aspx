@@ -11,10 +11,10 @@
         </div>
 
         <div class="col-md-6 col-lg-4">
-            <uc:CampoTexto ID="ctTelefono"  runat="server" Text="Telefono" Propiedad="Telefono"/>
+            <uc:CampoTexto ID="ctTelefono"  runat="server" Tipo="Tel" Text="Telefono" Propiedad="Telefono"/>
         </div>
         <div class="col-md-6 col-lg-4">
-            <uc:CampoTexto ID="ctEmail"  runat="server" Text="Email" Propiedad="Email"/>
+            <uc:CampoTexto ID="ctEmail" Tipo="Email" runat="server" Text="Email" Propiedad="Email"/>
         </div>
     </div>
 

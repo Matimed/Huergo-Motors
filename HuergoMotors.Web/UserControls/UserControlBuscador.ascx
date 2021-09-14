@@ -2,7 +2,7 @@
 
     <div class="row py-3 justify-content-around">
         <div class="col-5 col-md-6">
-            <asp:TextBox ID="txtFiltro" runat="server" class="form-control input-lg" type="search" placeholder="Filtro"></asp:TextBox>
+            <asp:TextBox ID="txtFiltro" runat="server" type="search" class="form-control input-lg" placeholder="Filtro"></asp:TextBox>
         </div>
         <div class="col-2 px-1">
             <asp:Button ID="btnBuscar" runat="server" Text="Buscar"  class="btn btn-outline-primary btn-block" ViewStateMode="Disabled" OnClick="btnBuscar_Click" />

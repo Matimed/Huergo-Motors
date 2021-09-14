@@ -16,7 +16,7 @@
         </div>
 
         <div class="col-md-6 col-lg-4">
-            <uc:CampoTexto ID="ctStock"  runat="server" Text="Stock" Propiedad="Stock"/>
+            <uc:CampoTexto ID="ctStock" Tipo="number" step="1" runat="server" Text="Stock" Propiedad="Stock"/>
         </div>
     </div>
          

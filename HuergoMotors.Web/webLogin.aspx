@@ -24,7 +24,7 @@
             </div>
             <div class="row justify-content-center p-2">
                 <div class="col-6">
-                    <uc:CampoTexto ID="ctPassword" runat="server" Text="Contraseña" Propiedad="Password" />
+                    <uc:CampoTexto ID="ctPassword" Tipo="Password" runat="server" Text="Contraseña" Propiedad="Password" />
                 </div>
             </div>
             <div class="row justify-content-center p-2">

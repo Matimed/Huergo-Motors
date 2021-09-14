@@ -6,7 +6,7 @@
     <hr />
     <div class="row pt-2 pb-4">
           <div class="col-md-6 col-lg-4">
-              <uc:CampoTexto ID="ctFecha" runat="server" Text="Fecha" Propiedad="Fecha" Nullable="True" />
+              <uc:CampoTexto ID="ctFecha" runat="server" Text="Fecha" Tipo="Date" Propiedad="Fecha" Nullable="True" />
           </div>
           <div class="col-md-6 col-lg-4">
               <uc:CampoDropDown ID="cddVendedor" runat="server" Text="Vendedor" Propiedad="IdVendedor" DisplayMember="NombreCompleto" />
@@ -38,7 +38,7 @@
 
     <div class="row pb-4">
         <div class="col-md-6 col-lg-4">
-            <uc:CampoTexto ID="ctDireccion" runat="server" Text="Direcion" Propiedad="Direccion" ReadOnly="True" />
+            <uc:CampoTexto ID="ctDireccion" runat="server" Text="Direccion" Propiedad="Direccion" ReadOnly="True" />
         </div>
         <div class="col-md-6 col-lg-4">
             <uc:CampoTexto ID="ctTelefono" runat="server" Text="Telefono" Propiedad="Telefono" ReadOnly="True" />
@@ -61,7 +61,7 @@
 
     <div class="row justify-content-center p-3 text-center">
         <div class="table-responsive">
-            <asp:GridView ID="gvAccesorios" class="table table-hover table-striped" HeaderStyle-CssClass="thead-light" GridLines="None" runat="server" ShowHeaderWhenEmpty="True" AutoGenerateColumns="False" OnRowCommand="gv_RowCommand" DataKeyNames="Id" >
+            <asp:GridView ID="gvAccesorios" class="table table-hover table-striped" HeaderStyle-CssClass="thead-light" GridLines="None" runat="server" AutoGenerateColumns="False" OnRowCommand="gv_RowCommand" DataKeyNames="Id" >
                 <Columns>
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
