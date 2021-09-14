@@ -23,7 +23,23 @@ namespace HuergoMotors.Web.UserControls
             set 
             {
                 Attributes["Text"] = value;
-                lbCampo.Text = value+":"; 
+                if (value != string.Empty)
+                {
+                    lbCampo.Visible = true;
+                    lbCampo.Text = value + ":";
+                }
+                else { lbCampo.Visible = false; }
+            }
+        }
+        public string Tipo
+        {
+            get { return Attributes["type"]; }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    txtValor.Attributes["type"] = value;
+                }
             }
         }
         public override string Valor
