@@ -21,6 +21,10 @@
                     <asp:ButtonField ButtonType="Button" CommandName="Detalle" Text="Detalles" ControlStyle-CssClass="btn btn-outline-primary btn-block" />
 
                 </Columns>
+                <EmptyDataTemplate>
+                    <div class="text-center">
+                        No se encontraron resultados.</div>
+                </EmptyDataTemplate>
             </asp:GridView>
         </div>
     </div>

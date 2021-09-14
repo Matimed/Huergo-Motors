@@ -15,7 +15,7 @@
                 </Columns>
                 <EmptyDataTemplate>
                     <div class="text-center">
-                        La Venta no contiene accesorios</div>
+                        No se encontraron resultados.</div>
                 </EmptyDataTemplate>
             </asp:GridView>
         </div>

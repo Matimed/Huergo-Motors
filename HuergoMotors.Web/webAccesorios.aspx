@@ -18,6 +18,10 @@
                         <asp:ButtonField ButtonType="Button" CommandName="Modificar" Text="Modificar" ControlStyle-CssClass="btn btn-outline-primary btn-block" />
                         <asp:ButtonField ButtonType="Button" CommandName="Eliminar" Text="Eliminar" ControlStyle-CssClass="btn btn-outline-danger btn-block" />
                     </Columns>
+                    <EmptyDataTemplate>
+                    <div class="text-center">
+                        No se encontraron resultados.</div>
+                </EmptyDataTemplate>
                 </asp:GridView>
             </div>
         </div>
