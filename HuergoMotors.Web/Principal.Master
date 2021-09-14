@@ -8,29 +8,69 @@
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
     <form id="formulario" runat="server">
         <div>
-            <asp:Menu ID="Navbar" runat="server" Orientation="Horizontal" OnMenuItemClick="Navbar_MenuItemClick">
-                <Items>
-                    <asp:MenuItem Text="Home" Value="Home"></asp:MenuItem>
-                    <asp:MenuItem Text="Vehiculos" Value="Vehiculos"></asp:MenuItem>
-                    <asp:MenuItem Text="Accesorios" Value="Accesorios"></asp:MenuItem>
-                    <asp:MenuItem Text="Clientes" Value="Clientes"></asp:MenuItem>
-                    <asp:MenuItem Text="Vendedores" Value="Vendedores"></asp:MenuItem>
-                    <asp:MenuItem Text="Ventas" Value="Ventas"></asp:MenuItem>
-                    <asp:MenuItem Text="Cerrar Sesión" Value="Login"></asp:MenuItem>
-                </Items>
-            </asp:Menu>
-            <asp:Label ID="lbUsuario" runat="server" Text="[...]"></asp:Label>
-            <br />
-            <br />
-            <hr />
+            
+            <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+                <a class="navbar-brand" href="/webHome.aspx">
+                    <img src="/Resources/HuergoMotorsIcono.png" width="50" height="50" class="d-inline-block align-top" alt=""></a>
 
-            <asp:ContentPlaceHolder ID="body" runat="server">
-            </asp:ContentPlaceHolder>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/webVehiculos.aspx">Vehiculos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/webAccesorios.aspx">Accesorios</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/webClientes.aspx">Clientes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/webVendedores.aspx">Vendedores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/webVentas.aspx">Ventas</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nuevo
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="/AMS/webVehiculosAlta.aspx">Vehiculo</a>
+                                <a class="dropdown-item" href="/AMS/webAccesoriosAlta.aspx">Accesorio</a>
+                                <a class="dropdown-item" href="/AMS/webClientesAlta.aspx">Cliente</a>
+                                <a class="dropdown-item" href="/AMS/webVendedoresAlta.aspx">Vendedor</a>
+                                <a class="dropdown-item" href="/AMS/webVentasAlta.aspx">Venta</a>
+                            </div>
+                        </li>
+                    </ul>
+
+
+                    <div class="nav-item">
+                        <asp:Label ID="lbUsuario" CssClass="navbar-text" runat="server" Text="[...]"></asp:Label>
+                    </div>
+                    <div class="nav-link">
+                        <a class="nav-link" href="/webLogin.aspx">Cerrar Sesion</a>
+                    </div>
+                </div>
+            </nav>
+            
+            <div class="container-fluid px-5 py-4">
+                <asp:ContentPlaceHolder ID="body" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
         </div>
+
     </form>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

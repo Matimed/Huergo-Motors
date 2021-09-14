@@ -19,13 +19,13 @@ namespace HuergoMotors.Web
         }
         protected void btnLogin_Click(object sender, EventArgs e)
         {
-            if (txtUsuario.Text == "admin" && txtPassword.Text == "1234")
+            if (ctUsuario.Valor == "admin" && ctPassword.Valor == "1234")
             {
                 lbMsg.Text = "Sesión Iniciada";
 
                 UsuarioDTO usuario = new UsuarioDTO();
                 usuario.Id = 1;
-                usuario.Username = txtUsuario.Text;
+                usuario.Username = ctUsuario.Valor;
                 Session.Add("user", usuario);
                 Response.Redirect("webHome.aspx");
             }

@@ -3,6 +3,8 @@ using HuergoMotors.Negocio;
 using System;
 using System.Collections.Generic;
 using System.Web.UI;
+using System.Web.UI.WebControls;
+
 namespace HuergoMotors.Web.AMS
 {
 	public partial class webVentasAlta : System.Web.UI.Page
@@ -160,6 +162,34 @@ namespace HuergoMotors.Web.AMS
             catch (Exception ex)
             {
                 lbMsg.Text = ex.Message;
+            }
+        }
+
+        protected void gv_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            int id = Convert.ToInt32(gvAccesorios.DataKeys[Convert.ToInt32(e.CommandArgument)].Values["Id"]);
+
+
+            if (e.CommandName == "Remover")
+            {
+                try
+                {
+                    AccesoriosDTO accesorio = accesoriosNegocio.BuscarId(id);
+
+                    List<AccesoriosDTO> accesoriosVenta = GetAccesoriosVenta();
+
+                    accesoriosVenta.RemoveAll(x => x.Id == id);
+
+                    ViewState.Add("accesoriosVenta", accesoriosVenta);
+
+
+                    gvAccesorios.DataSource = accesoriosVenta;
+                    gvAccesorios.DataBind();
+                }
+                catch (Exception ex)
+                {
+                    lbMsg.Text = ex.Message;
+                }
             }
         }
 

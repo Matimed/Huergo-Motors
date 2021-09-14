@@ -11,11 +11,12 @@ namespace HuergoMotors.Web
         {
             if (Session["user"] != null)
             {
+
                 lbUsuario.Text = ((UsuarioDTO)Session["user"]).Username;
             }
             else
             {
-                Response.Redirect("webLogin.aspx");
+                Response.Redirect("/webLogin.aspx");
             }
         }
 

@@ -60,15 +60,6 @@ namespace HuergoMotors.Web.AMS
         protected global::HuergoMotors.Web.UserControls.UserControlCampoTexto ctPrecio;
 
         /// <summary>
-        /// Control lbCliente.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbCliente;
-
-        /// <summary>
         /// Control txtCliente.
         /// </summary>
         /// <remarks>
@@ -121,15 +112,6 @@ namespace HuergoMotors.Web.AMS
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::HuergoMotors.Web.UserControls.UserControlCampoTexto CtEmail;
-
-        /// <summary>
-        /// Control lbAccesorios.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbAccesorios;
 
         /// <summary>
         /// Control ddlAccesorio.

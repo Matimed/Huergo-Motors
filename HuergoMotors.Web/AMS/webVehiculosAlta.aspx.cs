@@ -42,15 +42,22 @@ namespace HuergoMotors.Web.AMS
 
         public void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (Request.QueryString["id"] != null)
+            try
             {
-                vehiculosNegocio.ModificarElemento(HelperWeb.GenerarDTO<VehiculosDTO>(Controls, Id));
+                if (Request.QueryString["id"] != null)
+                {
+                    vehiculosNegocio.ModificarElemento(HelperWeb.GenerarDTO<VehiculosDTO>(Controls, Id));
+                }
+                else
+                {
+                    vehiculosNegocio.AgregarElemento(HelperWeb.GenerarDTO<VehiculosDTO>(Controls));
+                }
+                Response.Redirect(Backpage);
             }
-            else
+            catch (Exception ex)
             {
-                vehiculosNegocio.AgregarElemento(HelperWeb.GenerarDTO<VehiculosDTO>(Controls));
+                lbMsg.Text = ex.Message;
             }
-            Response.Redirect(Backpage);
         }
         public void btnVolver_Click(object sender, EventArgs e)
         {

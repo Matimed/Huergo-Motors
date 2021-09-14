@@ -29,7 +29,7 @@ namespace HuergoMotors.Web.AMS
                     }
                     else
                     {
-                        btnGuardar.Text = "Agregar vehiculo";
+                        btnGuardar.Text = "Agregar cliente";
                     }
                 }
             }
@@ -41,15 +41,22 @@ namespace HuergoMotors.Web.AMS
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (Request.QueryString["id"] != null)
+            try
             {
-                clientesNegocio.ModificarElemento(HelperWeb.GenerarDTO<ClientesDTO>(Controls));
+                if (Request.QueryString["id"] != null)
+                {
+                    clientesNegocio.ModificarElemento(HelperWeb.GenerarDTO<ClientesDTO>(Controls));
+                }
+                else
+                {
+                    clientesNegocio.AgregarElemento(HelperWeb.GenerarDTO<ClientesDTO>(Controls));
+                }
+                Response.Redirect(Backpage);
             }
-            else
+            catch (Exception ex)
             {
-                clientesNegocio.AgregarElemento(HelperWeb.GenerarDTO<ClientesDTO>(Controls));
+                lbMsg.Text = ex.Message;
             }
-            Response.Redirect(Backpage);
         }
         public void btnVolver_Click(object sender, EventArgs e)
         {
