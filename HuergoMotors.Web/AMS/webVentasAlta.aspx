@@ -52,7 +52,7 @@
     <hr />
     <div class="row pt-2 pb-4 justify-content-between">
         <div class="col-8 col-lg-6">
-            <asp:DropDownList ID="ddlAccesorio"  CssClass="custom-select" runat="server" AutoPostBack="True"></asp:DropDownList>
+            <asp:DropDownList ID="ddlAccesorio"  CssClass="custom-select" runat="server"></asp:DropDownList>
         </div>
         <div class="col-4 col-lg-3">
             <asp:Button ID="btnAgregarAccesorio" runat="server"  CssClass="btn btn-outline-primary btn-block" OnClick="btnAgregarAccesorio_Click" Text="Agregar" />
@@ -61,11 +61,12 @@
 
     <div class="row justify-content-center p-3 text-center">
         <div class="table-responsive">
-            <asp:GridView ID="gvAccesorios" class="table table-hover table-striped" HeaderStyle-CssClass="thead-light" GridLines="None" runat="server" ShowHeaderWhenEmpty="True" AutoGenerateColumns="False" >
+            <asp:GridView ID="gvAccesorios" class="table table-hover table-striped" HeaderStyle-CssClass="thead-light" GridLines="None" runat="server" ShowHeaderWhenEmpty="True" AutoGenerateColumns="False" OnRowCommand="gv_RowCommand" DataKeyNames="Id" >
                 <Columns>
                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                     <asp:BoundField DataField="Tipo" HeaderText="Tipo" />
                     <asp:BoundField DataField="Precio" HeaderText="Precio" />
+                    <asp:ButtonField ButtonType="Button" CommandName="Remover" Text="Remover" ControlStyle-CssClass="btn btn-outline-danger btn-block" />
                 </Columns>
             </asp:GridView>
         </div>
