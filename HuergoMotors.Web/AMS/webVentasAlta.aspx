@@ -18,7 +18,7 @@
               <uc:CampoTexto ID="ctTipo" runat="server" Text="Tipo" Propiedad="Tipo" ReadOnly="True" />
           </div>
           <div class="col-md-6 col-lg-4">
-              <uc:CampoTexto ID="ctPrecio" runat="server" Text="Precio" Propiedad="PrecioVenta" ReadOnly="True" />
+              <uc:CampoTexto ID="ctPrecio" Tipo="price" runat="server" Text="Precio" Propiedad="PrecioVenta" ReadOnly="True" />
           </div>
     </div>
 

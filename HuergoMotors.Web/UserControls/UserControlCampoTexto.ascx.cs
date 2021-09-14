@@ -10,7 +10,6 @@ namespace HuergoMotors.Web.UserControls
 {
     public partial class UserControlCampoTexto : UserControlCampoBase
     {
-
         public override string Propiedad
         {
             get { return Attributes["Propiedad"]; }
@@ -33,12 +32,20 @@ namespace HuergoMotors.Web.UserControls
         }
         public string Tipo
         {
-            get { return Attributes["type"]; }
+            get { return Tipo; }
             set
-            {
+            {          
                 if (!string.IsNullOrEmpty(value))
                 {
-                    txtValor.Attributes["type"] = value;
+                    if (value == "price" || value=="Price")
+                    {
+                        divPrependDollar.Visible = true;
+                        txtValor.Attributes["placeholder"] = "0,00";
+                    }
+                    else
+                    {
+                        txtValor.Attributes["type"] = value;
+                    }
                 }
             }
         }

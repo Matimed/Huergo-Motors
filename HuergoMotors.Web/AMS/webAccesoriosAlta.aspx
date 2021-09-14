@@ -11,7 +11,7 @@
             </div>
 
             <div class="col-md-6 col-lg-4">
-            <uc:CampoTexto ID="ctPrecio"  runat="server" Text="Precio" Propiedad="Precio"/>
+            <uc:CampoTexto ID="ctPrecio" Tipo="Price" runat="server" Text="Precio" Propiedad="Precio"/>
             </div>
 
             <div class="col-md-6 col-lg-4">
