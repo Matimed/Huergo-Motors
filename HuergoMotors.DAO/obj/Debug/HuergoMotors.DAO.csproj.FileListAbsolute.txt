@@ -34,3 +34,12 @@ L:\proyecto1\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.csproj.Co
 L:\proyecto1\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.csproj.CopyComplete
 L:\proyecto1\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.dll
 L:\proyecto1\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.pdb
+D:\GIT\Huergo-Motors\HuergoMotors.DAO\bin\Debug\HuergoMotors.DAO.dll
+D:\GIT\Huergo-Motors\HuergoMotors.DAO\bin\Debug\HuergoMotors.DAO.pdb
+D:\GIT\Huergo-Motors\HuergoMotors.DAO\bin\Debug\HuergoMotors.DTO.dll
+D:\GIT\Huergo-Motors\HuergoMotors.DAO\bin\Debug\HuergoMotors.DTO.pdb
+D:\GIT\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.csproj.AssemblyReference.cache
+D:\GIT\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.csproj.CoreCompileInputs.cache
+D:\GIT\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.csproj.CopyComplete
+D:\GIT\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.dll
+D:\GIT\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.pdb

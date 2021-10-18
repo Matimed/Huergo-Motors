@@ -53,3 +53,17 @@ C:\Users\Joaquin\Desktop\joaqui\colegio\proyectos\Huergo-Motors\HuergoMotors.Web
 C:\Users\Joaquin\Desktop\joaqui\colegio\proyectos\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.csproj.CopyComplete
 C:\Users\Joaquin\Desktop\joaqui\colegio\proyectos\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.dll
 C:\Users\Joaquin\Desktop\joaqui\colegio\proyectos\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.pdb
+D:\GIT\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.Web.dll.config
+D:\GIT\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.Web.dll
+D:\GIT\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.Web.pdb
+D:\GIT\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.DTO.dll
+D:\GIT\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.Negocio.dll
+D:\GIT\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.DAO.dll
+D:\GIT\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.DTO.pdb
+D:\GIT\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.Negocio.pdb
+D:\GIT\Huergo-Motors\HuergoMotors.Web\bin\HuergoMotors.DAO.pdb
+D:\GIT\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.csproj.AssemblyReference.cache
+D:\GIT\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.csproj.CoreCompileInputs.cache
+D:\GIT\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.csproj.CopyComplete
+D:\GIT\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.dll
+D:\GIT\Huergo-Motors\HuergoMotors.Web\obj\Debug\HuergoMotors.Web.pdb
