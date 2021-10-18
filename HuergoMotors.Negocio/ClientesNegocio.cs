@@ -24,6 +24,11 @@ namespace HuergoMotors.Negocio
             return clientesDAO.BuscarId(id);
         }
 
+        public ClientesDTO BuscarCliente(string email, string clave)
+        {
+            return clientesDAO.BuscarCliente(email, clave);
+        }
+
         public int EliminarElemento(int id)
         {
             clientesDAO.Referenciado(id);

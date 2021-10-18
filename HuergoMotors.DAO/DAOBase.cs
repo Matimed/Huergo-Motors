@@ -122,7 +122,7 @@ namespace HuergoMotors.DAO
 
 
         //Organizacion de los datos
-        private List<T>GenerearListaDTOs(string query)
+        public List<T>GenerearListaDTOs(string query)
         {
             return CargarListaDTOs(CargarDataTable(query));
         }
