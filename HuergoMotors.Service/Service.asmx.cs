@@ -22,5 +22,23 @@ namespace HuergoMotors.Service
             return clientesNegocio.BuscarCliente(email, clave);
         }
 
+        [WebMethod]
+        public void Register(ClientesDTO cliente)
+        {
+            ClientesNegocio clientesNegocio = new ClientesNegocio();
+            clientesNegocio.AgregarElemento(cliente);
+        }
+        [WebMethod]
+        public List<AccesoriosRDTO> CargarAccesorios()
+        {
+            AccesoriosNegocio accesoriosNegocio = new AccesoriosNegocio();
+            return accesoriosNegocio.CargarTabla();
+        }
+        [WebMethod]
+        public List<AccesoriosRDTO> BuscarAccesorios(string filtro)
+        {
+            AccesoriosNegocio accesoriosNegocio = new AccesoriosNegocio();
+            return accesoriosNegocio.Buscar(filtro);
+        }
     }
 }

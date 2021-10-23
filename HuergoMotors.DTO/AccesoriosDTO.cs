@@ -7,5 +7,6 @@
         public string Tipo { get; set; }
         public decimal Precio { get; set; }
         public int IdVehiculo { get; set; }
+        public byte[] Foto { get;set; }
     }
 }

@@ -42,3 +42,4 @@ D:\GIT\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.csproj.Assembly
 D:\GIT\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.csproj.CoreCompileInputs.cache
 D:\GIT\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.dll
 D:\GIT\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.pdb
+D:\GIT\Huergo-Motors\HuergoMotors.DAO\obj\Debug\HuergoMotors.DAO.csproj.CopyComplete

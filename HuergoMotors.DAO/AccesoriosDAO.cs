@@ -6,7 +6,7 @@ namespace HuergoMotors.DAO
 {
     public class AccesoriosDAO : DAOBase<AccesoriosDTO>
     {
-        public static string Campos = "a.Id,a.Nombre,a.Tipo,a.Precio,a.IdVehiculo,b.Modelo";
+        public static string Campos = "a.Id,a.Nombre,a.Tipo,a.Precio,a.IdVehiculo,a.Foto,b.Modelo";
         public static string Tablas = "Accesorios a JOIN Vehiculos b ON a.IdVehiculo = b.Id";
 
         DAOBase<AccesoriosRDTO> daoJoins = new DAOBase<AccesoriosRDTO>();
