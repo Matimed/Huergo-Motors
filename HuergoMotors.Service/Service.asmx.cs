@@ -26,8 +26,17 @@ namespace HuergoMotors.Service
         public void Register(ClientesDTO cliente)
         {
             ClientesNegocio clientesNegocio = new ClientesNegocio();
-            clientesNegocio.AgregarElemento(cliente);
+            if (cliente.Id == 0)
+            {
+                clientesNegocio.AgregarElemento(cliente);
+            }
+            else
+            {
+                clientesNegocio.ModificarElemento(cliente);
+            }
+            
         }
+         
         [WebMethod]
         public List<AccesoriosRDTO> CargarAccesorios()
         {
@@ -39,6 +48,37 @@ namespace HuergoMotors.Service
         {
             AccesoriosNegocio accesoriosNegocio = new AccesoriosNegocio();
             return accesoriosNegocio.Buscar(filtro);
+        }
+        [WebMethod]
+        public List<AccesoriosDTO> CargarAccesoriosID(List<int> idAccesorios)
+        {
+            AccesoriosNegocio accesoriosNegocio = new AccesoriosNegocio();
+            List<AccesoriosDTO> accesorios = new List<AccesoriosDTO>();
+            foreach (int idAccesorio in idAccesorios)
+            {
+                AccesoriosDTO accesorio = accesoriosNegocio.BuscarId(idAccesorio);
+                accesorios.Add(accesorio);
+            }
+            return accesorios;
+        }
+        [WebMethod]
+        public void RealizarVenta(VentasDTO venta, List<AccesoriosDTO> accesoriosVenta)
+        {
+            VentasNegocio ventasNegocio = new VentasNegocio();
+            ventasNegocio.ConfirmarVenta(venta, accesoriosVenta);
+        }
+
+        [WebMethod]
+        public List<VentasRDTO> CargarVentasCliente(int id)
+        {
+            VentasNegocio ventasNegocio = new VentasNegocio();
+            return ventasNegocio.CargarTablaVentasCliente(id);
+        }
+        [WebMethod]
+        public List<VentasAccesoriosRDTO> CargarVentasDetalle(int id)
+        {
+            VentasNegocio ventasNegocio = new VentasNegocio();
+            return ventasNegocio.CargarTablaVentasAccesorios(id);
         }
     }
 }

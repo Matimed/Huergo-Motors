@@ -142,7 +142,10 @@ namespace HuergoMotors.DAO
                     foreach (PropertyInfo propiedad in propiedades)
                     {
                         object valor = dataRow[propiedad.Name];
-                        propiedad.SetValue(dto, valor, null);
+                        if (valor != DBNull.Value)
+                        { 
+                            propiedad.SetValue(dto, valor, null);
+                        }
                     }
                     listaDTOs.Add(dto);
                 }

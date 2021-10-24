@@ -7,7 +7,7 @@ namespace HuergoMotors.DAO
 {
     public class VentasDAO : DAOBase<VentasDTO>
     {
-        private static (string campos, string tablas) Ventas = ("a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor, a.Observaciones, a.Total, b.Modelo AS Vehiculo, c.Nombre AS Cliente, (d.Nombre + ' ' + d.Apellido) AS Vendedor", "Ventas a JOIN Vehiculos b ON a.IdVehiculo = b.Id JOIN Clientes c ON a.IdCliente = c.Id JOIN Vendedores d ON a.IdVendedor = d.Id");
+        private static (string campos, string tablas) Ventas = ("a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor, a.Observaciones, a.Total, b.Modelo AS Vehiculo, c.Nombre AS Cliente, (d.Nombre + ' ' + d.Apellido) AS Vendedor", "Ventas a LEFT JOIN Vehiculos b ON a.IdVehiculo = b.Id JOIN Clientes c ON a.IdCliente = c.Id LEFT JOIN Vendedores d ON a.IdVendedor = d.Id");
         private static (string campos, string tablas) VentasAccesorios = ("a.Id, a.IdVenta, a.IdAccesorio, a.Precio, b.Nombre AS NombreAccesorio, b.Tipo AS TipoAccesorio", "VentasAccesorios a JOIN Accesorios b ON a.IdAccesorio = b.Id");
 
 
@@ -22,6 +22,11 @@ namespace HuergoMotors.DAO
         public List<VentasAccesoriosRDTO> CargarTablaVentasAccesorios(int idVenta)
         {
             return daoVentasAccesoriosJoins.CargarDatos(VentasAccesorios.campos, VentasAccesorios.tablas, $"a.IdVenta = {idVenta}");
+        }
+
+        public List<VentasRDTO> CargarTablaVentasCliente(int id)
+        {
+            return daoVentasJoins.CargarDatos(Ventas.campos, Ventas.tablas, $"a.idCliente = {id}");
         }
 
         public new List<VentasRDTO> Buscar(string filtro)

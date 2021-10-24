@@ -50,6 +50,6 @@ D:\GIT\Huergo-Motors\HuergoMotors.Negocio\bin\Debug\HuergoMotors.DAO.pdb
 D:\GIT\Huergo-Motors\HuergoMotors.Negocio\bin\Debug\HuergoMotors.DTO.pdb
 D:\GIT\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.csproj.AssemblyReference.cache
 D:\GIT\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.csproj.CoreCompileInputs.cache
-D:\GIT\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.csproj.CopyComplete
 D:\GIT\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.dll
 D:\GIT\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.pdb
+D:\GIT\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.csproj.CopyComplete
