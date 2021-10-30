@@ -43,11 +43,12 @@ namespace HuergoMotors.Service
             AccesoriosNegocio accesoriosNegocio = new AccesoriosNegocio();
             return accesoriosNegocio.CargarTabla();
         }
+  
         [WebMethod]
-        public List<AccesoriosRDTO> BuscarAccesorios(string filtro)
+        public List<AccesoriosRDTO> BuscarAccesorios(string filtro, decimal minimo, decimal maximo)
         {
             AccesoriosNegocio accesoriosNegocio = new AccesoriosNegocio();
-            return accesoriosNegocio.Buscar(filtro);
+            return accesoriosNegocio.Filtrar(filtro,minimo, maximo);
         }
         [WebMethod]
         public List<AccesoriosDTO> CargarAccesoriosID(List<int> idAccesorios)

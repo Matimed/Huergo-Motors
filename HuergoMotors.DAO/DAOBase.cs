@@ -71,9 +71,11 @@ namespace HuergoMotors.DAO
         public List<T> Buscar(string campos,string tablas, string filtro)
         {
             return CargarDatos(campos, tablas, QuerySearch(campos.Split(','), filtro));
-
         }
-
+        public List<T> Buscar(string campos, string tablas, string filtro, string condicion)
+        {
+            return CargarDatos(campos, tablas, $"({QuerySearch(campos.Split(','), filtro)}){condicion}");
+        }
 
         //Funciones de ABM
         public int AgregarElemento(T dto)

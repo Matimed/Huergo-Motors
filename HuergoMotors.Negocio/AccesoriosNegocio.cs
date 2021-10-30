@@ -19,6 +19,11 @@ namespace HuergoMotors.Negocio
             return accesoriosDAO.Buscar(filtro);
         }
 
+        public List<AccesoriosRDTO> Filtrar(string filtro, decimal minimo, decimal maximo)
+        {
+            return accesoriosDAO.Filtrar(filtro, minimo, maximo);
+        }
+
         public List<AccesoriosDTO> BuscarIdVehiculo(int id)
         {
             return accesoriosDAO.BuscarIdVehiculo(id);

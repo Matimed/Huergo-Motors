@@ -22,6 +22,20 @@ namespace HuergoMotors.DAO
                 throw new Exception("No se puede borrar un accesorio que tenga ventas asociadas");
         }
 
+        public List<AccesoriosRDTO> Filtrar(string filtro, decimal minimo, decimal maximo)
+        {
+            string condicion = "";
+            if (minimo != 0)
+            {
+                condicion += $" AND Precio > {minimo}";
+            }
+            if (maximo != 0)
+            {
+                condicion += $" AND Precio < {maximo}";
+            }
+            return daoJoins.Buscar(Campos, Tablas, filtro, condicion);
+        }
+
         public List<AccesoriosDTO> BuscarIdVehiculo(int id)
         {
             return CargarDatos($"IdVehiculo = {id}");
