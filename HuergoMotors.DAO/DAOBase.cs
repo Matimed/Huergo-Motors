@@ -180,7 +180,7 @@ namespace HuergoMotors.DAO
 
 
         //Formulación de los querys
-        private string QueryCreate(string[] propiedades)
+        public string QueryCreate(string[] propiedades)
         {   
             string campos = "";
             string parametros = "";

@@ -34,5 +34,10 @@ namespace HuergoMotors.Negocio
         {
             ventasDAO.ConfirmarVenta(venta, accesorios);
         }
+
+        public void ConfirmarVentaAccesorios(VentasDTO venta, List<AccesoriosDTO> accesoriosVenta)
+        {
+            ventasDAO.ConfirmarVentaAccesorios(venta, accesoriosVenta);
+        }
     }
 }

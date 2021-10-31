@@ -66,7 +66,7 @@ namespace HuergoMotors.Service
         public void RealizarVenta(VentasDTO venta, List<AccesoriosDTO> accesoriosVenta)
         {
             VentasNegocio ventasNegocio = new VentasNegocio();
-            ventasNegocio.ConfirmarVenta(venta, accesoriosVenta);
+            ventasNegocio.ConfirmarVentaAccesorios(venta, accesoriosVenta);
         }
 
         [WebMethod]
