@@ -71,9 +71,11 @@ namespace HuergoMotors.DAO
         public List<T> Buscar(string campos,string tablas, string filtro)
         {
             return CargarDatos(campos, tablas, QuerySearch(campos.Split(','), filtro));
-
         }
-
+        public List<T> Buscar(string campos, string tablas, string filtro, string condicion)
+        {
+            return CargarDatos(campos, tablas, $"({QuerySearch(campos.Split(','), filtro)}){condicion}");
+        }
 
         //Funciones de ABM
         public int AgregarElemento(T dto)
@@ -122,7 +124,7 @@ namespace HuergoMotors.DAO
 
 
         //Organizacion de los datos
-        private List<T>GenerearListaDTOs(string query)
+        public List<T>GenerearListaDTOs(string query)
         {
             return CargarListaDTOs(CargarDataTable(query));
         }
@@ -142,7 +144,10 @@ namespace HuergoMotors.DAO
                     foreach (PropertyInfo propiedad in propiedades)
                     {
                         object valor = dataRow[propiedad.Name];
-                        propiedad.SetValue(dto, valor, null);
+                        if (valor != DBNull.Value)
+                        { 
+                            propiedad.SetValue(dto, valor, null);
+                        }
                     }
                     listaDTOs.Add(dto);
                 }
@@ -175,7 +180,7 @@ namespace HuergoMotors.DAO
 
 
         //Formulación de los querys
-        private string QueryCreate(string[] propiedades)
+        public string QueryCreate(string[] propiedades)
         {   
             string campos = "";
             string parametros = "";

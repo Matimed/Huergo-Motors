@@ -1,5 +1,6 @@
 ﻿namespace HuergoMotors.DTO
 {
+    [System.Serializable]
     public class AccesoriosRDTO:DTOBase
     {
         public string Nombre { get; set; }
@@ -7,5 +8,6 @@
         public decimal Precio { get; set; }
         public int IdVehiculo { get; set; }
         public string Modelo { get; set; }
+        public byte[] Foto { get; set; }
     }
 }

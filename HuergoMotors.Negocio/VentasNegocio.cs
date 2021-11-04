@@ -13,6 +13,10 @@ namespace HuergoMotors.Negocio
         {
             return ventasDAO.CargarTablaVentas();
         }
+        public List<VentasRDTO> CargarTablaVentasCliente(int id)
+        {
+            return ventasDAO.CargarTablaVentasCliente(id);
+        }
 
         public List<VentasAccesoriosRDTO> CargarTablaVentasAccesorios(int id)
         {
@@ -29,6 +33,11 @@ namespace HuergoMotors.Negocio
         public void ConfirmarVenta(VentasDTO venta, List<AccesoriosDTO> accesorios)
         {
             ventasDAO.ConfirmarVenta(venta, accesorios);
+        }
+
+        public void ConfirmarVentaAccesorios(VentasDTO venta, List<AccesoriosDTO> accesoriosVenta)
+        {
+            ventasDAO.ConfirmarVentaAccesorios(venta, accesoriosVenta);
         }
     }
 }
