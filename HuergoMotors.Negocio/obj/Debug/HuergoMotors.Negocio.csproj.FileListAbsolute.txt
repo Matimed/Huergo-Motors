@@ -9,3 +9,14 @@ D:\GIT\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.csproj.
 D:\GIT\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.dll
 D:\GIT\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.pdb
 D:\GIT\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.csproj.CopyComplete
+D:\Documentos\GIT\Huergo-Motors\HuergoMotors.Negocio\bin\Debug\HuergoMotors.Negocio.dll
+D:\Documentos\GIT\Huergo-Motors\HuergoMotors.Negocio\bin\Debug\HuergoMotors.Negocio.pdb
+D:\Documentos\GIT\Huergo-Motors\HuergoMotors.Negocio\bin\Debug\HuergoMotors.DAO.dll
+D:\Documentos\GIT\Huergo-Motors\HuergoMotors.Negocio\bin\Debug\HuergoMotors.DTO.dll
+D:\Documentos\GIT\Huergo-Motors\HuergoMotors.Negocio\bin\Debug\HuergoMotors.DAO.pdb
+D:\Documentos\GIT\Huergo-Motors\HuergoMotors.Negocio\bin\Debug\HuergoMotors.DTO.pdb
+D:\Documentos\GIT\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.csproj.AssemblyReference.cache
+D:\Documentos\GIT\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.csproj.CoreCompileInputs.cache
+D:\Documentos\GIT\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.csproj.CopyComplete
+D:\Documentos\GIT\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.dll
+D:\Documentos\GIT\Huergo-Motors\HuergoMotors.Negocio\obj\Debug\HuergoMotors.Negocio.pdb

@@ -7,31 +7,32 @@ namespace HuergoMotors.DAO
 {
     public class VentasDAO : DAOBase<VentasDTO>
     {
-        private static (string campos, string tablas) Ventas = ("a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor, a.Observaciones, a.Total, b.Modelo AS Vehiculo, c.Nombre AS Cliente, (d.Nombre + ' ' + d.Apellido) AS Vendedor", "Ventas a LEFT JOIN Vehiculos b ON a.IdVehiculo = b.Id JOIN Clientes c ON a.IdCliente = c.Id LEFT JOIN Vendedores d ON a.IdVendedor = d.Id");
-        private static (string campos, string tablas) VentasAccesorios = ("a.Id, a.IdVenta, a.IdAccesorio, a.Precio, b.Nombre AS NombreAccesorio, b.Tipo AS TipoAccesorio", "VentasAccesorios a JOIN Accesorios b ON a.IdAccesorio = b.Id");
-
+        private static string camposVentas = "a.Id, a.Fecha, a.IdVehiculo, a.IdCliente, a.IdVendedor, a.Observaciones, a.Total, b.Modelo AS Vehiculo, c.Nombre AS Cliente, (d.Nombre + ' ' + d.Apellido) AS Vendedor";
+        private static string tablasVentas = "Ventas a LEFT JOIN Vehiculos b ON a.IdVehiculo = b.Id JOIN Clientes c ON a.IdCliente = c.Id LEFT JOIN Vendedores d ON a.IdVendedor = d.Id";
+        private static string camposVentasAccesorios = "a.Id, a.IdVenta, a.IdAccesorio, a.Precio, b.Nombre AS NombreAccesorio, b.Tipo AS TipoAccesorio";
+        private static string tablasVentasAccesorios = "VentasAccesorios a JOIN Accesorios b ON a.IdAccesorio = b.Id";
 
         DAOBase<VentasRDTO> daoVentasJoins = new DAOBase<VentasRDTO>();
         DAOBase<VentasAccesoriosRDTO> daoVentasAccesoriosJoins = new DAOBase<VentasAccesoriosRDTO>();
 
         public List<VentasRDTO> CargarTablaVentas()
         {
-            return daoVentasJoins.CargarDatos(Ventas.campos, Ventas.tablas);
+            return daoVentasJoins.CargarDatos(camposVentas, tablasVentas);
         }
 
         public List<VentasAccesoriosRDTO> CargarTablaVentasAccesorios(int idVenta)
         {
-            return daoVentasAccesoriosJoins.CargarDatos(VentasAccesorios.campos, VentasAccesorios.tablas, $"a.IdVenta = {idVenta}");
+            return daoVentasAccesoriosJoins.CargarDatos(camposVentasAccesorios, tablasVentasAccesorios, $"a.IdVenta = {idVenta}");
         }
 
         public List<VentasRDTO> CargarTablaVentasCliente(int id)
         {
-            return daoVentasJoins.CargarDatos(Ventas.campos, Ventas.tablas, $"a.idCliente = {id}");
+            return daoVentasJoins.CargarDatos(camposVentas, tablasVentas, $"a.idCliente = {id}");
         }
 
         public new List<VentasRDTO> Buscar(string filtro)
         {
-            return daoVentasJoins.CargarDatos(Ventas.campos, Ventas.tablas,
+            return daoVentasJoins.CargarDatos(camposVentas, tablasVentas,
                 $"a.Fecha LIKE '%{filtro}%' OR a.Total LIKE '%{filtro}%' OR b.Modelo LIKE '%{filtro}%'" +
                 $"OR c.Nombre LIKE '%{filtro}%' OR d.Nombre LIKE '%{filtro}%' OR d.Apellido LIKE '%{filtro}%'");
         }
